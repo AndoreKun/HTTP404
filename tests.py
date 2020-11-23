@@ -1,5 +1,6 @@
 print("ola")
 print("ola")
 print("ola")
-print("ola")
-print("Ola mUndo")
+for i in range(1000):
+    print("ola")
+
