@@ -89,10 +89,10 @@ $action = isset($_POST['acao']) ? trim($_POST['acao']) : '';
 				$Autentica->email	= $_POST['email'];
 				$Autentica->pass	= $_POST['pass'];
 				//chamamos nosso método						
-				if($Autentica->Validar_Usuario()){	
-				   echo  "<script type='text/javascript'>
-							location.href='logado.php'
-						</script>";
+				if($Autentica->Validar_Usuario()){
+                    echo  "<script type='text/javascript'>
+                                location.href='logado.php'
+                            </script>"; 
 				  }else{
 				   echo  "<script type='text/javascript'>
                             alert('ATEN\u00c7\u00c4O, Login ou Senha inv\u00e1lidos...');location.href='login.php'

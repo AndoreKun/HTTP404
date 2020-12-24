@@ -26,6 +26,13 @@
 <body>
 	<center>
 		<article>
+			<?php
+			switch ($id_users) {
+				case 1:
+					header("location: localhost/index.html");
+					break;
+				}
+			?>	
 			<h1><?php echo $nome_user;?> voc&ecirc; est&aacute; logado...</h1>
 			<a href="logout.php"><input type="button" value="Sair"/></a>
 		</article>
