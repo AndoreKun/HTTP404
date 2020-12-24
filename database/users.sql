@@ -8,15 +8,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
---
--- Banco de dados: `admins`
---
-
 -- --------------------------------------------------------
-
---
--- Estrutura da tabela `users`
---
 
 DROP DATABASE IF EXISTS `admins`;
 CREATE DATABASE `admins`;
@@ -30,11 +22,9 @@ CREATE TABLE IF NOT EXISTS `users` (
   `email` varchar(200) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `pass` varchar(200) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id_users`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Extraindo dados da tabela `users`
---
+-- --------------------------------------------------------
 
 INSERT INTO `users` (`id_users`, `nome`, `email`, `pass`) VALUES
 (1, 'André Pereira', 'andorelouise@gmail.com', '88462331'),
