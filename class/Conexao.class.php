@@ -21,22 +21,22 @@
 				E_USER_NOTICE);
 			return null;
 		}
-		//método que retorna a variável $pdo
+		//mï¿½todo que retorna a variï¿½vel $pdo
 		public function getPdo() {
 			return $this->pdo;
 		}
 
-		//método construtor da classe
+		//mï¿½todo construtor da classe
 		function __construct($pdo = null) {
 			$this->pdo = $pdo;
 			if ($this->pdo == null)
 				$this->conectar();
 		}
 
-		//método que conecta com o banco de dados
+		//mï¿½todo que conecta com o banco de dados
 		public function conectar() {
 			try{
-				$this->pdo = new PDO("mysql:host=localhost;dbname=admins",
+				$this->pdo = new PDO("mysql:host=localhost;dbname=http404",
 								"root",
 								"88462331",
 								array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
@@ -46,7 +46,7 @@
 			}
 		}
 
-		//método que desconecta
+		//mï¿½todo que desconecta
 		public function desconectar() {
 			$this->pdo = null;
 		}
