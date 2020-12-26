@@ -10,10 +10,10 @@ SET time_zone = "+00:00";
 
 -- --------------------------------------------------------
 
-DROP DATABASE IF EXISTS `admins`;
-CREATE DATABASE `admins`;
+DROP DATABASE IF EXISTS `http404`;
+CREATE DATABASE `http404`;
 
-USE `admins`;
+USE `http404`;
 
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
