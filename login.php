@@ -25,6 +25,11 @@
 </head>
 <body>
     <div class="wrapper">
+    <div class="col-lg-4 col-md-4 col-4">
+        <div class="logo-small-device">
+            <a href="index.html"><img alt="" src="assets/img/logo/logo.png"></a>
+        </div>
+        </div>
         <div class="breadcrumb-area pt-255 pb-170" style="background-image: url(assets/img/banner/banner-4.jpg)">
             <div class="container-fluid">
                 <div class="breadcrumb-content text-center">
