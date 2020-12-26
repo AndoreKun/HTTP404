@@ -21,19 +21,19 @@
 				E_USER_NOTICE);
 			return null;
 		}
-		//m�todo que retorna a vari�vel $pdo
+		//metodo que retorna a variável $pdo
 		public function getPdo() {
 			return $this->pdo;
 		}
 
-		//m�todo construtor da classe
+		//metodo construtor da classe
 		function __construct($pdo = null) {
 			$this->pdo = $pdo;
 			if ($this->pdo == null)
 				$this->conectar();
 		}
 
-		//m�todo que conecta com o banco de dados
+		//metodo que conecta com o banco de dados
 		public function conectar() {
 			try{
 				$this->pdo = new PDO("mysql:host=localhost;dbname=http404",
@@ -46,7 +46,7 @@
 			}
 		}
 
-		//m�todo que desconecta
+		//metodo que desconecta
 		public function desconectar() {
 			$this->pdo = null;
 		}

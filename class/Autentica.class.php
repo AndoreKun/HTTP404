@@ -47,6 +47,7 @@ class Autentica extends Conexao{
 					$_SESSION['email'] = $res['email'];
 					$_SESSION['pass'] = $res['pass'];
 					$_SESSION['logado'] = 'S';
+					$_SESSION['cargo'] = $res['cargo'];
 			}
 				//se tudo ocorrer bem retornamos true, ou seja verdade
 				return true;
