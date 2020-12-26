@@ -21,7 +21,7 @@
 				E_USER_NOTICE);
 			return null;
 		}
-		//metodo que retorna a variável $pdo
+		//metodo que retorna a variavel $pdo
 		public function getPdo() {
 			return $this->pdo;
 		}
