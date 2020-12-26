@@ -62,24 +62,12 @@
                     </ul>
                 </div>
             </div>
-        </div>
-        <div class="login-register-area ptb-130">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-7 ml-auto mr-auto">
-                        <div class="login-register-wrapper">
-                            <div class="login-register-tab-list nav">
-                                <h1><?php echo $nome_user;?>, Bem vindo!</h1>
-                            </div>
-
-
-
-
-                        </div> 
-                    </div>
-                </div>
-            </div>
-        </div>
+    </div>
+    </div>
+    </br>
+    <div style="text-align: center">
+        <h1><?php echo $nome_user;?>, Bem vindo!</h1>
+        <button style="cursor: pointer" id="sair" value="Sair" class="btn-style cr-btn" onclick="location.href = 'logout.php';">Sair</button>
     </div>
 </body>
 </html>
