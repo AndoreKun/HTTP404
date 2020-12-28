@@ -38,7 +38,7 @@
 			try{
 				$this->pdo = new PDO("mysql:host=localhost;dbname=adc_http404",
 								"root",
-								"",
+								"http404#2021%",
 								array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
 			}catch (PDOException $e) {
 				print "Error!: " . $e->getMessage() ."<br/>";
