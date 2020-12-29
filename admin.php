@@ -11,7 +11,7 @@
     $cargo = isset($_SESSION['cargo']) ? $_SESSION['cargo']: "";	
 	//verificamos se a var logado contem o valor (S) OU (N), se conter N quer dizer que a pessoa não fez o login corretamente
 	//que no caso satisfará nossa condição no if e a pessoa sera redirecionada para a tela de login novamente
-	if ($logado == "N" || $cargo != "admin"){	    
+	if ($logado == "N" || $cargo == ""){	    
 		echo  "<script type='text/javascript'>
 					location.href='login.php'
 				</script>";	
@@ -53,7 +53,7 @@
         <div class="breadcrumb-area pt-255 pb-170" style="background-image: url(assets/img/banner/banner-4.jpg)">
             <div class="container-fluid">
                 <div class="breadcrumb-content text-center">
-                    <h2>acesso de admins</h2>
+                    <h2>acesso de <?php echo $cargo;?></h2>
                     <ul>
                         <li>
                             <a href="index.html">home</a>
@@ -69,5 +69,7 @@
         <h1><?php echo $nome_user;?>, Bem vindo!</h1>
         <button style="cursor: pointer" id="sair" value="Sair" class="btn-style cr-btn" onclick="location.href = 'logout.php';">Sair</button>
     </div>
+        <button style="cursor: pointer" id="sair" value="Sair" class="btn-style cr-btn" onclick="location.href = 'test.php';">TEST</button>
+        </table>
 </body>
 </html>
