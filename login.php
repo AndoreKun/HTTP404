@@ -38,7 +38,7 @@
                         <li>
                             <a href="index.html">home</a>
                         </li>
-                        <li>login de admin</li>
+                        <li>acesso reservado</li>
                     </ul>
                 </div>
             </div>
@@ -96,7 +96,7 @@ $action = isset($_POST['acao']) ? trim($_POST['acao']) : '';
 				//chamamos nosso método						
 				if($Autentica->Validar_Usuario()){
                     echo  "<script type='text/javascript'>
-                                location.href='admin.php'
+                                location.href='reservado.php'
                             </script>"; 
 				  }else{
 				   echo  "<script type='text/javascript'>
