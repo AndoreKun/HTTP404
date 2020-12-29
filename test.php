@@ -1,7 +1,6 @@
 <?php
 try{
-$conexao = new PDO("mysql:host=localhost;dbname=adc_http404", $cargo, $pass_users,
-array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+$conexao = new PDO("mysql:host=localhost;dbname=adc_http404", $cargo, $pass_users);
 }catch (PDOException $e) {
     echo "Failed to connect to MySQL: " . $e->getMessage();
     exit();
