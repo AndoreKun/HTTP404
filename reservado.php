@@ -62,14 +62,49 @@
                     </ul>
                 </div>
             </div>
-    </div>
+        </div>
     </div>
     </br>
     <div style="text-align: center">
         <h1><?php echo $nome_user;?>, Bem vindo!</h1>
         <button style="cursor: pointer" id="sair" value="Sair" class="btn-style cr-btn" onclick="location.href = 'logout.php';">Sair</button>
     </div>
-        <button style="cursor: pointer" id="sair" value="Sair" class="btn-style cr-btn" onclick="location.href = 'test.php';">TEST</button>
-        </table>
+    <form action="" method="post">
+        <label for="actions"><h2>Finanças</h2></label>
+        <select name="downloadfile" id="download" onchange="javascript:this.form.submit()">
+            <option name= "" value="">Select a option...</option>
+            <option name="download "value="download">Download</option>
+            <option name="reset" value="reset">Reset</option>
+            <option name="submit" value="submit">Submit</option> 
+        </select>
+        <input style="cursor: pointer" name="submit" type="submit" value="submit" class="btn-style cr-btn"></input>
+    </form>
+    <?php 
+    if(isset($_POST['submit']) ){
+        $opcao = $_POST['downloadfile'];
+        switch($opcao){
+            case 'download':
+                $consulta = "SELECT * FROM vendas";
+            
+                //downloadfile($cargo, $pass_users, $consulta);
+                break;
+            case 'submit':
+                echo "<script type='text/javascript'>
+                    location.href='product-details.html'
+                    </script>";
+                break;
+            case 'reset':
+                echo "<script type='text/javascript'>
+                    location.href='about-us.html'
+                    </script>";
+                break;
+            case '':
+                "<script type='text/javascript'>
+                alert('Escolha uma Opcao!')
+		        </script>";
+            }
+        }
+
+?>
 </body>
 </html>
