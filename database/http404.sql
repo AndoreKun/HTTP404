@@ -22,29 +22,29 @@ USE `adc_http404`;
 DROP TABLE IF EXISTS `artigos`;
 CREATE TABLE IF NOT EXISTS `artigos` (
   `IDArtigo` int NOT NULL AUTO_INCREMENT,
+  `Descricao` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `Tipo_artigo` varchar(40) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `Nome` varchar(80) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `Preço` char(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `Descricao` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `Preço` float DEFAULT NULL,
   PRIMARY KEY (`IDArtigo`)
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table adc_http404.artigos: ~0 rows (approximately)
+-- Dumping data for table adc_http404.artigos: ~12 rows (approximately)
 DELETE FROM `artigos`;
 /*!40000 ALTER TABLE `artigos` DISABLE KEYS */;
-INSERT INTO `artigos` (`IDArtigo`, `Tipo_artigo`, `Nome`, `Preço`, `Descricao`) VALUES
-	(1, 'Peças', 'Performance Machine Supra Real Wheel', '1399', 'Rodas para mota'),
-	(2, 'Peças', 'Motorcycle Radiator Cooler For Kawasaki Ninja', '83', 'Radiador para mota'),
-	(3, 'Peças', 'Universal Motorcycle Retro Diamond Flat Style Seat', '40', 'Assento para mota'),
-	(4, 'Peças', 'Halo Motorcycle Headlight', '79', 'Farol da frente para mota'),
-	(5, 'Peças', 'Dished Wassell Peanut Motorcycle Gas Tank', '1999.99', 'Tanque de gasolina para mota'),
-	(6, 'Peças', 'Fydun Motorcycle Speedometer', '69.99', 'Velocimetro'),
-	(7, 'Acessorios', 'Adult Full Face Matto Blue Helmet', '63.88', 'Capacete '),
-	(8, 'Acessorios', '\nRacing 3 Leather Jacket\n', '489', 'Casaco desportivo para moto '),
-	(9, 'Acessorios', '\nFORMA Adventure Off-Road Motorcycle Boots\n', '270', 'Botas '),
-	(10, 'Acessorios', '\nHEROBIKER Motorcycle Knee Pads\n', '36', 'Joelheiras'),
-	(11, 'Acessorios', 'Daianese V E1 Elbow Guards\n', '64', 'Cotoveleiras'),
-	(12, 'Acessorios', 'LS2 Helmets Full Face Blaze Adventure Motorcycle Helmet, Matte Titanium 436B-103', '134', 'Capacete');
+INSERT INTO `artigos` (`IDArtigo`, `Descricao`, `Tipo_artigo`, `Nome`, `Preço`) VALUES
+	(1, 'Rodas para mota', 'Peças', 'Performance Machine Supra Real Wheel', 1399),
+	(2, 'Radiador para mota', 'Peças', 'Motorcycle Radiator Cooler For Kawasaki Ninja', 83),
+	(3, 'Assento para mota', 'Peças', 'Universal Motorcycle Retro Diamond Flat Style Seat', 40),
+	(4, 'Farol da frente para mota', 'Peças', 'Halo Motorcycle Headlight', 79),
+	(5, 'Tanque de gasolina para mota', 'Peças', 'Dished Wassell Peanut Motorcycle Gas Tank', 1999.99),
+	(6, 'Velocimetro', 'Peças', 'Fydun Motorcycle Speedometer', 69.99),
+	(7, 'Capacete ', 'Acessorios', 'Adult Full Face Matto Blue Helmet', 63.88),
+	(8, 'Casaco desportivo para moto ', 'Acessorios', '\nRacing 3 Leather Jacket\n', 489),
+	(9, 'Botas ', 'Acessorios', '\nFORMA Adventure Off-Road Motorcycle Boots\n', 270),
+	(10, 'Joelheiras', 'Acessorios', '\nHEROBIKER Motorcycle Knee Pads\n', 36),
+	(11, 'Cotoveleiras', 'Acessorios', 'Daianese V E1 Elbow Guards\n', 64),
+	(12, 'Capacete', 'Acessorios', 'LS2 Helmets Full Face Blaze Adventure Motorcycle Helmet, Matte Titanium 436B-103', 134);
 /*!40000 ALTER TABLE `artigos` ENABLE KEYS */;
 
 -- Dumping structure for table adc_http404.clientes
@@ -71,7 +71,7 @@ DELETE FROM `clientes`;
 INSERT INTO `clientes` (`IDCliente`, `Nome`, `NIF`, `Email`, `Telemovel`, `Pais`, `Morada`, `Cod_Postal`, `ValorTotalCompras`, `foto`) VALUES
 	(1, 'Jacob Alexender', '999 999 999', 'jacobalexender@thisemailsdoesnotexist.com', '999 123 123 ', 'Portugal', 'Rua Aleatoria, Porta 12, 5º Direito', '8800-070', '66.000', NULL),
 	(2, 'James Momem Nirob', '123 123 123 ', 'jamesnirob@randommail.com', '123 812 000', 'Portugal', 'Rua Direita, Porta 21,  12º Esquerdo', '8300-100', '67.552,88', NULL),
-	(3, 'Pedro Gomes', '290 189 213', 'pedrogomes123@emailnaoexiste.com', '122 231 123', 'Portugal', 'Avenida Central, Edificio Rosas, 2º Direito', '8700-171', '489', NULL);
+	(3, 'Pedro Gomes', '290 189 213', 'pedrogomes123@emailnaoexiste.com', '122 231 123', 'Portugal', 'Avenida Central, Edificio Rosas, 2º Direito', '8700-171', '759', NULL);
 /*!40000 ALTER TABLE `clientes` ENABLE KEYS */;
 
 -- Dumping structure for table adc_http404.cod_postal
@@ -122,7 +122,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   PRIMARY KEY (`id_users`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
--- Dumping data for table adc_http404.users: ~4 rows (approximately)
+-- Dumping data for table adc_http404.users: ~5 rows (approximately)
 DELETE FROM `users`;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id_users`, `nome`, `email`, `pass`, `cargo`) VALUES
@@ -152,7 +152,7 @@ CREATE TABLE IF NOT EXISTS `veiculos` (
   PRIMARY KEY (`IDVeiculo`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
--- Dumping data for table adc_http404.veiculos: ~4 rows (approximately)
+-- Dumping data for table adc_http404.veiculos: ~6 rows (approximately)
 DELETE FROM `veiculos`;
 /*!40000 ALTER TABLE `veiculos` DISABLE KEYS */;
 INSERT INTO `veiculos` (`IDVeiculo`, `modelo`, `marca`, `preco`, `Tipoveiculo`, `estadoveiculo`, `velocidademaxima`, `peso`, `consumomedio`, `cambio`, `combustivel`, `Em_stock`, `pronto_adicionar_stock`) VALUES
@@ -172,7 +172,7 @@ CREATE TABLE IF NOT EXISTS `vendas` (
   `IDVeiculo` int DEFAULT NULL,
   `IDArtigo` int DEFAULT NULL,
   `ValorVenda` char(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `DataVenda` datetime NOT NULL,
+  `DataVenda` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`IDVenda`),
   KEY `FKIDCliente` (`IDCliente`),
   KEY `FKIDVeiculo` (`IDVeiculo`),
@@ -180,18 +180,19 @@ CREATE TABLE IF NOT EXISTS `vendas` (
   CONSTRAINT `FKIDArtigo` FOREIGN KEY (`IDArtigo`) REFERENCES `artigos` (`IDArtigo`) ON UPDATE CASCADE,
   CONSTRAINT `FKIDCliente` FOREIGN KEY (`IDCliente`) REFERENCES `clientes` (`IDCliente`) ON UPDATE CASCADE,
   CONSTRAINT `FKIDVeiculo` FOREIGN KEY (`IDVeiculo`) REFERENCES `veiculos` (`IDVeiculo`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table adc_http404.vendas: ~0 rows (approximately)
+-- Dumping data for table adc_http404.vendas: ~7 rows (approximately)
 DELETE FROM `vendas`;
 /*!40000 ALTER TABLE `vendas` DISABLE KEYS */;
 INSERT INTO `vendas` (`IDVenda`, `IDCliente`, `IDVeiculo`, `IDArtigo`, `ValorVenda`, `DataVenda`) VALUES
-	(1, 1, 3, NULL, '66.000', '2020-12-21 18:32:31'),
+	(1, 1, 3, NULL, '66.000', '2020-11-21 18:32:31'),
 	(2, 2, 1, NULL, '50.000', '2020-12-27 10:27:45'),
 	(3, 2, 4, NULL, '17.000', '2020-12-27 10:30:45'),
 	(4, 2, NULL, 7, '64,88', '2020-12-28 15:31:59'),
 	(5, 2, NULL, 8, '489', '2020-12-28 15:31:59'),
-	(6, 3, NULL, 8, '489', '2020-12-28 18:48:37');
+	(6, 3, NULL, 8, '489', '2020-12-28 18:48:37'),
+	(7, 3, NULL, 9, '270', '2020-12-30 13:53:17');
 /*!40000 ALTER TABLE `vendas` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
