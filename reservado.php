@@ -13,11 +13,10 @@
 	//que no caso satisfará nossa condição no if e a pessoa sera redirecionada para a tela de login novamente
 	if ($logado == "N" || $id_users == ""){	    
 		echo  "<script type='text/javascript'>
-					location.href='reservado.php'
+					location.href='login.php'
 				</script>";	
 		exit();
     }
-    include('selects_basedados.php');
 ?>
 <!DOCTYPE HTML>
 <html class="no-js" lang="zxx">
@@ -84,47 +83,46 @@
         switch($opcao){
             case 'vertodos':
                 $consulta = 'SELECT * from vendas';
-            case 'mesatual':
-                $consulta = 'SELECT * from vendas';
-                $_SESSION['consulta'] = $consulta;
-                $resultado_consulta = $_SESSION['resultado_consulta'];
-                ?>
-                <div class="container">
-                <br/>
-                <br/>
-                <h2 style='color:black'>Venda de Veículo/Artigos (Total)</h2>
-                <div class="col-sm-12">
-                    <div>
-                        <form action="" method="post">
-                        <button type="submit" name="baixarexcel"
-                        value="Exportar Para Excel" class="btn btn-success" style="cursor: pointer">Exportar Para Excel</button>
-                        </form>
-                    </div>
-                </div>
-                    <br/>
-                    <table class="table table-striped table-bordered"> 
-                        <?php foreach($resultado_consulta as $item){?>
-                            <tr> 
-                                <th><?php implode("\t", array_keys($item)). "\n";?></th>
-                            </tr>
-                        <?php } ?>
-                        <tbody>
-                            <?php foreach($resultado_consulta as $row) { ?>
-                            <tr>
-                                <td><?php echo $row ['IDVenda']; ?></td>
-                                <td><?php echo $row ['IDCliente']; ?></td>
-                                <td><?php echo $row ['IDVeiculo']; ?></td>
-                                <td><?php echo $row ['IDArtigo']; ?></td>
-                                <td><?php echo $row ['ValorVenda']; ?></td>
-                                <td><?php echo $row ['DataVenda']; ?></td>
-                            </tr>
-                            <?php } ?>
-                            </tbody>
-                    </table>
-                </div>
-                <?php
                 break;
-        }
+            case 'mesatual':
+            $consulta = 'SELECT * from vendas WHERE YEAR(DataVenda) = YEAR(CURRENT_DATE()) AND MONTH(DataVenda) = MONTH(CURRENT_DATE())';
+            include "selects_basedados.php";      
+            ?>
+            <div class="container">
+            <br/>
+            <br/>
+            <h2 style='color:black'>Venda de Veículo/Artigos (Total)</h2>
+            <div class="col-sm-12">
+                <button onclick="location.href='download.php?consulta=<?php echo $consulta ?>'" name="downloadfile"
+                value="Exportar Para Excel" class="btn btn-success" style="cursor: pointer">Exportar Para Excel</button>
+            </div>
+                <br/>
+                <table class="table table-striped table-bordered"> 
+                        <tr> 
+                            <th>IDVenda</th>
+                            <th>IDCliente</th>
+                            <th>IDVeiculo</th>
+                            <th>IDArtigo</th>
+                            <th>ValorVenda</th>
+                            <th>DataVenda</th>
+                        </tr>
+                    <tbody>
+                        <?php foreach($dados as $row) { ?>
+                        <tr>
+                            <td><?php echo $row ['IDVenda']; ?></td>
+                            <td><?php echo $row ['IDCliente']; ?></td>
+                            <td><?php echo $row ['IDVeiculo']; ?></td>
+                            <td><?php echo $row ['IDArtigo']; ?></td>
+                            <td><?php echo $row ['ValorVenda']; ?></td>
+                            <td><?php echo $row ['DataVenda']; ?></td>
+                        </tr>
+                        <?php } ?>
+                        </tbody>
+                </table>
+            </div>
+                <?php
+            break;
+        }       
     }
 ?>
 </body>
