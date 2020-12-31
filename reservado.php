@@ -66,7 +66,7 @@
     </div>
     </br>
     <div style="text-align: center">
-        <h1><?php echo $nome_user;?>, Bem vindo!</h1>
+        <h1>Olá, <?php echo $nome_user;?>!</h1>
         <button style="cursor: pointer" id="sair" value="Sair" class="btn-style cr-btn" onclick="location.href = 'logout.php';">Sair</button>
     </div>
     <form action="" method="post">
@@ -83,45 +83,80 @@
         switch($opcao){
             case 'vertodos':
                 $consulta = 'SELECT * from vendas';
+                include "selects_basedados.php";      
+                ?>
+                <div class="container">
+                <br/>
+                <br/>
+                <h2 style='color:black'>Venda de Veículo/Artigos (Total)</h2>
+                <div class="col-sm-12">
+                    <button onclick="location.href='download.php?consulta=<?php echo $consulta ?>'" name="downloadfile"
+                    value="Exportar Para Excel" class="btn btn-success" style="cursor: pointer">Exportar Para Excel</button>
+                </div>
+                    <br/>
+                    <table class="table table-striped table-bordered"> 
+                            <tr> 
+                                <th>IDVenda</th>
+                                <th>IDCliente</th>
+                                <th>IDVeiculo</th>
+                                <th>IDArtigo</th>
+                                <th>ValorVenda</th>
+                                <th>DataVenda</th>
+                            </tr>
+                        <tbody>
+                            <?php foreach($dados as $row) { ?>
+                            <tr>
+                                <td><?php echo $row ['IDVenda']; ?></td>
+                                <td><?php echo $row ['IDCliente']; ?></td>
+                                <td><?php echo $row ['IDVeiculo']; ?></td>
+                                <td><?php echo $row ['IDArtigo']; ?></td>
+                                <td><?php echo $row ['ValorVenda']; ?></td>
+                                <td><?php echo $row ['DataVenda']; ?></td>
+                            </tr>
+                            <?php } ?>
+                            </tbody>
+                    </table>
+                </div>
+                    <?php
                 break;
             case 'mesatual':
-            $consulta = 'SELECT * from vendas WHERE YEAR(DataVenda) = YEAR(CURRENT_DATE()) AND MONTH(DataVenda) = MONTH(CURRENT_DATE())';
-            include "selects_basedados.php";      
-            ?>
-            <div class="container">
-            <br/>
-            <br/>
-            <h2 style='color:black'>Venda de Veículo/Artigos (Total)</h2>
-            <div class="col-sm-12">
-                <button onclick="location.href='download.php?consulta=<?php echo $consulta ?>'" name="downloadfile"
-                value="Exportar Para Excel" class="btn btn-success" style="cursor: pointer">Exportar Para Excel</button>
-            </div>
+                $consulta = 'SELECT * from vendas WHERE YEAR(DataVenda) = YEAR(CURRENT_DATE()) AND MONTH(DataVenda) = MONTH(CURRENT_DATE())';
+                include "selects_basedados.php";      
+                ?>
+                <div class="container">
                 <br/>
-                <table class="table table-striped table-bordered"> 
-                        <tr> 
-                            <th>IDVenda</th>
-                            <th>IDCliente</th>
-                            <th>IDVeiculo</th>
-                            <th>IDArtigo</th>
-                            <th>ValorVenda</th>
-                            <th>DataVenda</th>
-                        </tr>
-                    <tbody>
-                        <?php foreach($dados as $row) { ?>
-                        <tr>
-                            <td><?php echo $row ['IDVenda']; ?></td>
-                            <td><?php echo $row ['IDCliente']; ?></td>
-                            <td><?php echo $row ['IDVeiculo']; ?></td>
-                            <td><?php echo $row ['IDArtigo']; ?></td>
-                            <td><?php echo $row ['ValorVenda']; ?></td>
-                            <td><?php echo $row ['DataVenda']; ?></td>
-                        </tr>
-                        <?php } ?>
-                        </tbody>
-                </table>
-            </div>
-                <?php
-            break;
+                <br/>
+                <h2 style='color:black'>Venda de Veículo/Artigos (Este Mês)</h2>
+                <div class="col-sm-12">
+                    <button onclick="location.href='download.php?consulta=<?php echo $consulta ?>'" name="downloadfile"
+                    value="Exportar Para Excel" class="btn btn-success" style="cursor: pointer">Exportar Para Excel</button>
+                </div>
+                    <br/>
+                    <table class="table table-striped table-bordered"> 
+                            <tr> 
+                                <th>IDVenda</th>
+                                <th>IDCliente</th>
+                                <th>IDVeiculo</th>
+                                <th>IDArtigo</th>
+                                <th>ValorVenda</th>
+                                <th>DataVenda</th>
+                            </tr>
+                        <tbody>
+                            <?php foreach($dados as $row) { ?>
+                            <tr>
+                                <td><?php echo $row ['IDVenda']; ?></td>
+                                <td><?php echo $row ['IDCliente']; ?></td>
+                                <td><?php echo $row ['IDVeiculo']; ?></td>
+                                <td><?php echo $row ['IDArtigo']; ?></td>
+                                <td><?php echo $row ['ValorVenda']; ?></td>
+                                <td><?php echo $row ['DataVenda']; ?></td>
+                            </tr>
+                            <?php } ?>
+                            </tbody>
+                    </table>
+                </div>
+                    <?php
+                break;
         }       
     }
 ?>
