@@ -96,7 +96,7 @@ $action = isset($_POST['acao']) ? trim($_POST['acao']) : '';
 				//chamamos nosso método						
 				if($Autentica->Validar_Usuario()){
                     echo  "<script type='text/javascript'>
-                                location.href='selects/reservado.php'
+                                location.href='reservado.php'
                             </script>"; 
 				  }else{
 				   echo  "<script type='text/javascript'>
