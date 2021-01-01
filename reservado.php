@@ -15,8 +15,15 @@
 		echo  "<script type='text/javascript'>
 					location.href='login.php'
 				</script>";	
-		exit();
+        exit();
     }
+    if ($cargo == "vendedor"){
+        echo  "<script type='text/javascript'>
+                    location.href='vendedor.php'
+                </script>";	
+        exit();
+    }
+    setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
 ?>
 <!DOCTYPE HTML>
 <html class="no-js" lang="zxx">
@@ -81,10 +88,8 @@
             <option name="novembro2020" value="novembro2020">Outobro de 2020</option>
             <option name="dezembro2020" value="dezembro2020">Dezembro de 2020</option>
             <option name="janeiro2021" value="janeiro">Janeiro de 2021</option>
-            <option name="fevereiro2021" value="janeiro">Fevereiro de 2021</option>
-            <option name="marco2021" value="marco2021">Março de 2021</option>
         </select>
-        <input style="cursor: pointer" name="submit" type="submit" value="submit" class="btn-style cr-btn"></input>
+        <input style="cursor: pointer; width:300px; margin:4px;" name="submit" type="submit" value="submit" class="btn-style cr-btn"></input>
     </form>
     <?php 
     if(isset($_POST['submit']) || isset($_POST['submit'])){
@@ -98,81 +103,20 @@
                 <br/>
                 <br/>
                 <h2 style='color:black'>Venda de Veículo/Artigos (Total)</h2>
-                <div class="col-sm-12">
-                    <button onclick="location.href='database/download.php?consulta=<?php echo $consulta ?>'" name="downloadfile"
-                    value="Exportar Para Excel" class="btn btn-success" style="cursor: pointer">Exportar Para Excel</button>
-                </div>
                     <br/>
                     <table class="table table-striped table-bordered"> 
                             <tr> 
-                                <th>IDVenda</th>
-                                <th>IDCliente</th>
-                                <th>IDVeiculo</th>
-                                <th>IDArtigo</th>
-                                <th>ValorVenda</th>
-                                <th>DataVenda</th>
+                                <th>Número daVenda</th>
+                                <th>Número do Cliente</th>
+                                <th>Número do Veiculo</th>
+                                <th>Número do Artigo</th>
+                                <th>Valor da Venda</th>
+                                <th>Data da Venda</th>
                             </tr>
                         <tbody>
-                            <?php foreach($dados as $row) { ?>
-                            <tr>
-                                <td><?php echo $row ['IDVenda']; ?></td>
-                                <td><?php echo $row ['IDCliente']; ?></td>
-                                <td><?php echo $row ['IDVeiculo']; ?></td>
-                                <td><?php echo $row ['IDArtigo']; ?></td>
-                                <td><?php echo $row ['ValorVenda']; ?></td>
-                                <td><?php echo $row ['DataVenda']; ?></td>
-                            </tr>
-                            <?php } ?>
-                            </tbody>
-                    </table>
-                </div>
-                    <?php
-                break;
-            case 'mesatual':
-                $mes = $_POST['elemento'];
-                switch($mes){
-                    case "mesatual":
-                        $consultatmp = 'SELECT * from vendas WHERE YEAR(DataVenda) = YEAR(CURRENT_DATE()) AND MONTH(DataVenda) = MONTH(CURRENT_DATE())';
-                        break;
-                    case "novembro2020":
-                        $consultatmp = 'SELECT * from vendas WHERE YEAR(DataVenda) = 2020 AND MONTH(DataVenda) = 11';
-                        break;
-                    case "dezembro2020":
-                        $consultatmp = 'SELECT * from vendas WHERE YEAR(DataVenda) = 2020 AND MONTH(DataVenda) = 12';
-                        break;
-                    case "janeiro2021":
-                        $consultatmp = 'SELECT * from vendas WHERE YEAR(DataVenda) = 2021 AND MONTH(DataVenda) = 1';
-                        break;
-                    case "fevereiro2021":
-                        $consultatmp = 'SELECT * from vendas WHERE YEAR(DataVenda) = 2021 AND MONTH(DataVenda) = 2';
-                        break;
-                    case "marco2021":
-                        $consultatmp = 'SELECT * from vendas WHERE YEAR(DataVenda) = 2021 AND MONTH(DataVenda) = 3';
-                        break;
-                    }
-                $consulta = $consultatmp;
-                include "database/selects_basedados.php";      
-                ?>
-                <div class="container">
-                <br/>
-                <br/>
-                <h2 style='color:black'>Venda de Veículo/Artigos (Este Mês)</h2>
-                <div class="col-sm-12">
-                    <button onclick="location.href='database/download.php?consulta=<?php echo $consulta ?>'" name="downloadfile"
-                    value="Exportar Para Excel" class="btn btn-success" style="cursor: pointer">Exportar Para Excel</button>
-                </div>
-                    <br/>
-                    <table class="table table-striped table-bordered"> 
-                            <tr> 
-                                <th>IDVenda</th>
-                                <th>IDCliente</th>
-                                <th>IDVeiculo</th>
-                                <th>IDArtigo</th>
-                                <th>ValorVenda</th>
-                                <th>DataVenda</th>
-                            </tr>
-                        <tbody>
-                            <?php foreach($dados as $linha) { ?>
+                            <?php 
+                            $vendas = 0;
+                            foreach($dados as $linha) { ?>
                             <tr>
                                 <td><?php echo $linha ['IDVenda']; ?></td>
                                 <td><?php echo $linha ['IDCliente']; ?></td>
@@ -180,12 +124,98 @@
                                 <td><?php echo $linha ['IDArtigo']; ?></td>
                                 <td><?php echo $linha ['ValorVenda']; ?></td>
                                 <td><?php echo $linha ['DataVenda']; ?></td>
+                                <?php $vendas += (float)$linha['ValorVenda'];?>
                             </tr>
                             <?php } ?>
                             </tbody>
                     </table>
+                    <table>
+                    <tr>
+                        <th>Total de Vendas</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <?php
+                            echo $vendas.'€'; 
+                            $nomevalorextra = "Valor Total de Vendas";
+                            ?>
+                        </td>
+                    </table>
+                    <button onclick="location.href='database/download.php?consulta=<?php echo $consulta ?>&valorextra=<?php echo $vendas?>&nomevalorextra=<?php echo $nomevalorextra?>&adicionarvalor=S'" 
+                    name="downloadfile" value="Exportar Para Excel" class="btn btn-success" style="cursor: pointer; width:300px; float:right; margin-top:-40px">Exportar Para Excel</button>
                 </div>
-                    <?php
+                <?php
+                break;
+            case 'mesatual':
+                $mes = $_POST['elemento'];
+                switch($mes){
+                    case "mesatual":
+                        $consultatmp = 'SELECT * from vendas WHERE YEAR(DataVenda) = YEAR(CURRENT_DATE()) AND MONTH(DataVenda) = MONTH(CURRENT_DATE())';
+                        $dataatual = strftime('%B de %Y', strtotime('today'));
+                        $titulotabela = "Valor Total de Vendas($dataatual)"; 
+                        break;
+                    case "novembro2020":
+                        $consultatmp = 'SELECT * from vendas WHERE YEAR(DataVenda) = 2020 AND MONTH(DataVenda) = 11';
+                        $titulotabela = "Valor Total de Vendas(Novembro de 2020)"; 
+                        break;
+                    case "dezembro2020":
+                        $consultatmp = 'SELECT * from vendas WHERE YEAR(DataVenda) = 2020 AND MONTH(DataVenda) = 12';
+                        $titulotabela = "Valor Total de Vendas(Dezembro de 2020)"; 
+                        break;
+                    case "janeiro2021":
+                        $consultatmp = 'SELECT * from vendas WHERE YEAR(DataVenda) = 2021 AND MONTH(DataVenda) = 1';
+                        $titulotabela = "Valor Total de Vendas(Janeiro de 2021)"; 
+                        break;
+                }
+                $consulta = $consultatmp;
+                $nomevalorextra = $titulotabela;
+                include "database/selects_basedados.php";      
+                ?>
+                <div class="container">
+                <br/>
+                <br/>
+                <h2 style='color:black'><?php echo $titulotabela;?></h2>
+                    <br/>
+                    <table class="table table-striped table-bordered"> 
+                            <tr> 
+                                <th>IDVenda</th>
+                                <th>IDCliente</th>
+                                <th>IDVeiculo</th>
+                                <th>IDArtigo</th>
+                                <th>ValorVenda</th>
+                                <th>DataVenda</th>
+                            </tr>
+                        <tbody>
+                            <?php 
+                            $vendas = 0;
+                            foreach($dados as $linha) { ?>
+                            <tr>
+                                <td><?php echo $linha ['IDVenda']; ?></td>
+                                <td><?php echo $linha ['IDCliente']; ?></td>
+                                <td><?php echo $linha ['IDVeiculo']; ?></td>
+                                <td><?php echo $linha ['IDArtigo']; ?></td>
+                                <td><?php echo $linha ['ValorVenda']; ?></td>
+                                <td><?php echo $linha ['DataVenda']; ?></td>
+                                <?php $vendas += (float)$linha['ValorVenda'];?>
+                            </tr>
+                            <?php } ?>
+                            </tbody>
+                    </table>
+                    <table>
+                    <tr>
+                        <th>Total de Vendas</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <?php 
+                            echo $vendas.'€';
+                            ?> 
+                        </td>
+                    </table>
+                    <button onclick="location.href='database/download.php?consulta=<?php echo $consulta ?>&valorextra=<?php echo $vendas?>&nomevalorextra=<?php echo $nomevalorextra?>&adicionarvalor=S'" 
+                    name="downloadfile" value="Exportar Para Excel" class="btn btn-success" style="cursor: pointer; width:300px; float:right; margin-top:-40px">Exportar Para Excel</button>
+                </div>
+                <?php
                 break;
             }       
         }
