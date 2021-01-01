@@ -7,13 +7,13 @@ GRANT SELECT ON `adc_http404`.`vendas` TO `patrao`@`localhost`;
 
 # Privilégios para `vendedores`@`localhost`
 
-CREATE USER `vendedores`@`localhost` IDENTIFIED BY `vendedores$2021*`;
+CREATE USER 'vendedores'@'localhost' IDENTIFIED BY 'vendedores$2021*';
 
-GRANT SELECT, INSERT, UPDATE, DELETE ON adc_http404.clientes TO `vendedores`@`localhost`;
+GRANT SELECT, INSERT, UPDATE, DELETE ON adc_http404.clientes TO vendedores@localhost;
 
-GRANT SELECT, INSERT, UPADATE, DELETE ON adc_http404.vendas TO `vendedores`@`localhost`;
+GRANT SELECT, INSERT, UPADATE, DELETE ON adc_http404.vendas TO vendedores@localhost;
 
-GRANT SELECT, INSERT, UPADATE, DELETE ON adc_http404.veiculos TO `vendedores`@`localhost`;
+GRANT SELECT, INSERT, UPADATE, DELETE ON adc_http404.veiculos TO vendedores@localhost;
 
 
 # Privilégios para `admin`@`localhost`
