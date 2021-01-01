@@ -20,6 +20,16 @@ if ($logado == "N" || $id_users == ""){
 
 $consulta = $_GET['consulta'];
 
+$adicionarvalor = $_GET['adicionarvalor'];
+
+if ($adicionarvalor == 'S'){
+    $valorextra = $_GET['valorextra'];
+    $nomevalorextra = $_GET['nomevalorextra'];
+}else{
+    $valorextra = "";
+    $nomevalorextra = "";
+}
+
 
 $dados = include 'selects_basedados.php';
 
@@ -40,9 +50,12 @@ $fileName = "dados".date('d-m-Y').".xls";
                     $heading = true;
                 }
                 echo implode("\t", array_values($item)) . "\n";
+                
             }
+            
         }
-        exit();
-?>
+        echo $nomevalorextra . "\n";
+        echo $valorextra;
 
+        exit();
 ?>
