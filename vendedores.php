@@ -68,154 +68,95 @@
     </br>
     <div style="text-align: center">
         <h1>Olá, <?php echo $nome_user;?>!</h1>
-        <button style="cursor: pointer" id="sair" value="Sair" class="btn-style cr-btn" onclick="location.href = 'logout.php';">Sair</button>
+        <button style="cursor: pointer" id="sair" value="Sair" class="btn-style cr-btn" onclick="location.href ='logout.php';">Sair</button>
     </div>
     <form action="" method="post">
-        <label for="actions"><h2>Venda de Veículos/Artigos</h2></label><br/>
-        <select name="vendaveiculos" id="vendaveiculos" style="width:300px; margin:4px;" onchange="admSelectCheck(this);">
-            <option selected name= "" value="">Selecione uma opção...</option>
-            <option name="vertodos" value="vertodos">Ver Dados - TODOS</option>
-            <option id="opcao" name="mesatual" value="mesatual">Ver Dados - POR MÊS</option>
-        </select>  
-        <select id="elemento" name="elemento" style="width:300px; margin:4px; display: inline; display:none;">
-            <option selected name= "mesatual" value="mesatual">Mês Atual</option>
-            <option name="novembro2020" value="novembro2020">Outobro de 2020</option>
-            <option name="dezembro2020" value="dezembro2020">Dezembro de 2020</option>
-            <option name="janeiro2021" value="janeiro">Janeiro de 2021</option>
-        </select>
-        <input style="cursor: pointer; width:300px; margin:4px;" name="submit" type="submit" value="submit" class="btn-style cr-btn"></input>
+        <label for="actions"><h2>Registar venda de Veículos/Artigos</h2></label><br/> 
+        <div id="elemento" name="elemento" style="width:300px; margin:4px;">
+                <h5>Cliente:</h5>
+                <select name="cliente" style="width:300px; margin:4px;">
+                    <option selected name= "" value="">Selecione uma opção...</option>
+                    <?php $consulta = "SELECT CONCAT(IDNIF_Cliente, ' - ', Nome) AS clientes FROM clientes";
+                    include('database/selects_basedados.php');
+                    foreach($dados as $linha){ ?>
+                    <option value="<?php echo $linha['clientes'];?>"><?php echo $linha['clientes'];?></option>
+                    <?php } ?>
+                </select>
+                <h5>Veículo:</h5>
+                <select name="veiculo" style="width:300px; margin:4px;">
+                    <option selected name= "" value="">Selecione uma opção...</option>
+                    <?php $consulta = "SELECT CONCAT(IDVeiculo, ' - ', marca, ' ', modelo) AS veiculos FROM veiculos WHERE Em_stock='Sim'";
+                    include('database/selects_basedados.php');
+                    foreach($dados as $linha){ ?>
+                    <option value="<?php echo $linha['veiculos'];?>"><?php echo $linha['veiculos'];?></option>
+                    <?php } ?>
+                </select>
+                <h5>Artigo:</h5>
+                <select name="artigo" style="width:300px; margin:4px;">
+                    <option selected name= "" value="">Selecione uma opção...</option>
+                    <?php $consulta = "SELECT CONCAT(IDArtigo, ' - ', Nome) AS artigos FROM artigos WHERE Em_stock='Sim'";
+                    include('database/selects_basedados.php');
+                    foreach($dados as $linha){ ?>
+                    <option value="<?php echo $linha['artigos'];?>"><?php echo $linha['artigos'];?></option>
+                    <?php } ?>
+                </select>
+            <input style="cursor: pointer; width:300px; margin:4px;" name="submit" type="submit" value="submit" class="btn-style cr-btn"></input>
     </form>
     <?php 
     if(isset($_POST['submit']) || isset($_POST['submit'])){
-        $ver_dados = $_POST['vendaveiculos'];
-        switch($ver_dados){
-            case 'vertodos':
-                $consulta = 'SELECT * from vendas';
-                include "database/selects_basedados.php";      
-                ?>
-                <div class="container">
-                <br/>
-                <br/>
-                <h2 style='color:black'>Venda de Veículo/Artigos (Total)</h2>
-                    <br/>
-                    <table class="table table-striped table-bordered"> 
-                            <tr> 
-                                <th>Número daVenda</th>
-                                <th>Número do Cliente</th>
-                                <th>Número do Veiculo</th>
-                                <th>Número do Artigo</th>
-                                <th>Valor da Venda</th>
-                                <th>Data da Venda</th>
-                            </tr>
-                        <tbody>
-                            <?php 
-                            $vendas = 0;
-                            foreach($dados as $linha) { ?>
-                            <tr>
-                                <td><?php echo $linha ['IDVenda']; ?></td>
-                                <td><?php echo $linha ['IDCliente']; ?></td>
-                                <td><?php echo $linha ['IDVeiculo']; ?></td>
-                                <td><?php echo $linha ['IDArtigo']; ?></td>
-                                <td><?php echo $linha ['ValorVenda']; ?></td>
-                                <td><?php echo $linha ['DataVenda']; ?></td>
-                                <?php $vendas += (float)$linha['ValorVenda'];?>
-                            </tr>
-                            <?php } ?>
-                            </tbody>
-                    </table>
-                    <table>
-                    <tr>
-                        <th>Total de Vendas</th>
-                    </tr>
-                    <tr>
-                        <td>
-                            <?php
-                            echo $vendas.'€'; 
-                            $nomevalorextra = "Valor Total de Vendas";
-                            ?>
-                        </td>
-                    </table>
-                    <button onclick="location.href='database/download.php?consulta=<?php echo $consulta ?>&valorextra=<?php echo $vendas?>&nomevalorextra=<?php echo $nomevalorextra?>&adicionarvalor=S'" 
-                    name="downloadfile" value="Exportar Para Excel" class="btn btn-success" style="cursor: pointer; width:300px; float:right; margin-top:-40px">Exportar Para Excel</button>
-                </div>
-                <?php
-                break;
-            case 'mesatual':
-                $mes = $_POST['elemento'];
-                switch($mes){
-                    case "mesatual":
-                        $consultatmp = 'SELECT * from vendas WHERE YEAR(DataVenda) = YEAR(CURRENT_DATE()) AND MONTH(DataVenda) = MONTH(CURRENT_DATE())';
-                        $dataatual = strftime('%B de %Y', strtotime('today'));
-                        $titulotabela = "Valor Total de Vendas($dataatual)"; 
-                        break;
-                    case "novembro2020":
-                        $consultatmp = 'SELECT * from vendas WHERE YEAR(DataVenda) = 2020 AND MONTH(DataVenda) = 11';
-                        $titulotabela = "Valor Total de Vendas(Novembro de 2020)"; 
-                        break;
-                    case "dezembro2020":
-                        $consultatmp = 'SELECT * from vendas WHERE YEAR(DataVenda) = 2020 AND MONTH(DataVenda) = 12';
-                        $titulotabela = "Valor Total de Vendas(Dezembro de 2020)"; 
-                        break;
-                    case "janeiro2021":
-                        $consultatmp = 'SELECT * from vendas WHERE YEAR(DataVenda) = 2021 AND MONTH(DataVenda) = 1';
-                        $titulotabela = "Valor Total de Vendas(Janeiro de 2021)"; 
-                        break;
-                }
-                $consulta = $consultatmp;
-                $nomevalorextra = $titulotabela;
-                include "database/selects_basedados.php";      
-                ?>
-                <div class="container">
-                <br/>
-                <br/>
-                <h2 style='color:black'><?php echo $titulotabela;?></h2>
-                    <br/>
-                    <table class="table table-striped table-bordered"> 
-                            <tr> 
-                                <th>IDVenda</th>
-                                <th>IDCliente</th>
-                                <th>IDVeiculo</th>
-                                <th>IDArtigo</th>
-                                <th>ValorVenda</th>
-                                <th>DataVenda</th>
-                            </tr>
-                        <tbody>
-                            <?php 
-                            $vendas = 0;
-                            foreach($dados as $linha) { ?>
-                            <tr>
-                                <td><?php echo $linha ['IDVenda']; ?></td>
-                                <td><?php echo $linha ['IDCliente']; ?></td>
-                                <td><?php echo $linha ['IDVeiculo']; ?></td>
-                                <td><?php echo $linha ['IDArtigo']; ?></td>
-                                <td><?php echo $linha ['ValorVenda']; ?></td>
-                                <td><?php echo $linha ['DataVenda']; ?></td>
-                                <?php $vendas += (float)$linha['ValorVenda'];?>
-                            </tr>
-                            <?php } ?>
-                            </tbody>
-                    </table>
-                    <table>
-                    <tr>
-                        <th>Total de Vendas</th>
-                    </tr>
-                    <tr>
-                        <td>
-                            <?php 
-                            echo $vendas.'€';
-                            ?> 
-                        </td>
-                    </table>
-                    <button onclick="location.href='database/download.php?consulta=<?php echo $consulta ?>&valorextra=<?php echo $vendas?>&nomevalorextra=<?php echo $nomevalorextra?>&adicionarvalor=S'" 
-                    name="downloadfile" value="Exportar Para Excel" class="btn btn-success" style="cursor: pointer; width:300px; float:right; margin-top:-40px">Exportar Para Excel</button>
-                </div>
-                <?php
-                break;
-            }       
+        $insertpronto = false;
+        $clienteselecionado = $_POST['cliente'];
+        $clienteselecionado = substr($clienteselecionado, 0, 9);
+        $insertpronto = true;
+        if ($clienteselecionado == ""){
+            $insertpronto = false;
         }
+
+        $veiculoselecionado = $_POST['veiculo'];
+        $veiculoselecionado = substr($veiculoselecionado, 0, 1);
+        $artigoselecionado = $_POST['artigo'];
+        $artigoselecionado = substr($artigoselecionado, 0, 1);
+
+        if($veiculoselecionado == "" and $artigoselecionado == ""){
+            $insertpronto = false;
+        }
+
+        if ($insertpronto == true){
+            if ($veiculoselecionado == "" and $artigoselecionado != ""){
+                $consulta = "SELECT preco from artigos WHERE IDArtigo = '$artigoselecionado'";
+                include('database/selects_basedados.php');
+                foreach($dados as $linha){
+                    $valordavenda = $linha['preco'];
+                }
+                $insert = "INSERT INTO vendas(IDNIF_Cliente, IDArtigo, ValorVenda, IDFuncionario) VALUES ('$clienteselecionado', '$artigoselecionado', '$valordavenda', '$id_users')";
+
+                include('database/inserts_basedados.php');
+                exit();
+            }
+            if ($artigoselecionado == "" and $veiculoselecionado != ""){
+                $consulta = "SELECT preco from veiculos WHERE IDVeiculo = '$veiculoselecionado'";
+                include('database/selects_basedados.php');
+                foreach($dados as $linha){
+                    $valordavenda = $linha['preco'];
+                }
+                $insert = "INSERT INTO vendas(IDNIF_Cliente, IDVeiculo, ValorVenda, IDFuncionario) VALUES ('$clienteselecionado', '$veiculoselecionado', '$valordavenda', '$id_users')";
+                include('database/inserts_basedados.php');
+                exit();
+            }else{
+                $consulta = "SELECT SUM(artigos.preco + veiculos.preco) AS preco from artigos, veiculos WHERE IDArtigo = '$artigoselecionado' AND IDVeiculo = '$veiculoselecionado'";
+                include('database/selects_basedados.php');
+                foreach($dados as $linha){
+                    $valordavenda = $linha['preco'];
+                }
+                $insert = "INSERT INTO vendas(IDNIF_Cliente, IDVeiculo, IDArtigo, ValorVenda, IDFuncionario) VALUES ('$clienteselecionado', '$veiculoselecionado', '$artigoselecionado', '$valordavenda', '$id_users')";
+                include('database/inserts_basedados.php');
+            }
+        }else{
+            ?><h5 style="color:red">Valores em falta!</h5><?php
+        }
+        }      
 ?>
 
 <script src="assets/js/mostraselecao.js"></script>
-
 </body>
 </html>
