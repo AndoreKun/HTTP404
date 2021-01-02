@@ -1,29 +1,3 @@
-/*-----------------------------------------------------------------------------------
-
-    Template Name: Oswan - eCommerce HTML5 Template
-    Description: This is html5 template
-    Author: HasTech
-    Version: 1.0
-
------------------------------------------------------------------------------------
-    
-    [Table of contents] 
-	
-    1. Template default css (assets/css/bundle.css)
-    2. Home page style
-    3. About us
-    4. Contact page
-    5. Shop page
-    6. Product details
-    7. Shopping cart
-    8. Checkout page
-    9. Login register page
-    10. Blog page
-    11. Blog details
-    12. Scrollup
-    
------------------------------------------------------------------------------------*/
-
 /*----------- 2. Home page style --------*/
 /* header area */
 .header-area {
@@ -33,6 +7,7 @@
     width: 100%;
     z-index: 99;
     transition: all 0.7s ease 0s;
+
 }
 .transparent-bar.stick {
     background-color: #fff;

@@ -1,36 +1,4 @@
-/*
-    Template Name: Oswan - eCommerce HTML5 Template
-    Description: This is html5 template
-    Author: HasTech
-    Version: 1.0
 
-*/
-/*================================================
-[  Table of contents  ]
-================================================
-01. General
-02. Page section margin padding 
-03. Section title 1
-04. Section title 2
-05. button
-06. button small
-07. share button
-08. Text color
-09. Input
-10. Extra class
-11. Tool tip
-12. loading
-13. Box Layout
-14. Back to top
-15. Basic margin padding
- 
-======================================
-[ End table content ]
-======================================*/
-
-/*************************
-    General
-*************************/
 @import url('https://fonts.googleapis.com/css?family=Oswald:300,400,500,600,700|Poppins:300,400,500,600,700,800');
 body {
     font-family: 'Poppins', sans-serif;
