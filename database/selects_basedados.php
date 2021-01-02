@@ -11,7 +11,6 @@ try{
     $items = array();
     $stmt = $conexao->query($consulta);
     $dados = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    //$_SESSION['dados'] = $dados;
 
     $conexao = null;
     return $dados;
