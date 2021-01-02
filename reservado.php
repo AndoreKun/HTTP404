@@ -17,9 +17,9 @@
 				</script>";	
         exit();
     }
-    if ($cargo == "vendedor"){
+    if ($cargo == "vendedores"){
         echo  "<script type='text/javascript'>
-                    location.href='vendedor.php'
+                    location.href='vendedores.php'
                 </script>";	
         exit();
     }
@@ -106,12 +106,13 @@
                     <br/>
                     <table class="table table-striped table-bordered"> 
                             <tr> 
-                                <th>Número daVenda</th>
-                                <th>Número do Cliente</th>
+                                <th>Número da Venda</th>
+                                <th>NIF do Cliente</th>
                                 <th>Número do Veiculo</th>
                                 <th>Número do Artigo</th>
                                 <th>Valor da Venda</th>
                                 <th>Data da Venda</th>
+                                <th>Número do Funcionário</th>
                             </tr>
                         <tbody>
                             <?php 
@@ -119,11 +120,12 @@
                             foreach($dados as $linha) { ?>
                             <tr>
                                 <td><?php echo $linha ['IDVenda']; ?></td>
-                                <td><?php echo $linha ['IDCliente']; ?></td>
+                                <td><?php echo $linha ['IDNIF_Cliente']; ?></td>
                                 <td><?php echo $linha ['IDVeiculo']; ?></td>
                                 <td><?php echo $linha ['IDArtigo']; ?></td>
                                 <td><?php echo $linha ['ValorVenda']; ?></td>
                                 <td><?php echo $linha ['DataVenda']; ?></td>
+                                <td><?php echo $linha ['IDFuncionario']; ?></td>
                                 <?php $vendas += (float)$linha['ValorVenda'];?>
                             </tr>
                             <?php } ?>
@@ -178,12 +180,13 @@
                     <br/>
                     <table class="table table-striped table-bordered"> 
                             <tr> 
-                                <th>IDVenda</th>
-                                <th>IDCliente</th>
-                                <th>IDVeiculo</th>
-                                <th>IDArtigo</th>
-                                <th>ValorVenda</th>
-                                <th>DataVenda</th>
+                                <th>Número da Venda</th>
+                                <th>NIF do Cliente</th>
+                                <th>Número do Veiculo</th>
+                                <th>Número do Artigo</th>
+                                <th>Valor da Venda</th>
+                                <th>Data da Venda</th>
+                                <th>Número do Funcionário</th>
                             </tr>
                         <tbody>
                             <?php 
@@ -191,11 +194,12 @@
                             foreach($dados as $linha) { ?>
                             <tr>
                                 <td><?php echo $linha ['IDVenda']; ?></td>
-                                <td><?php echo $linha ['IDCliente']; ?></td>
+                                <td><?php echo $linha ['IDNIF_Cliente']; ?></td>
                                 <td><?php echo $linha ['IDVeiculo']; ?></td>
                                 <td><?php echo $linha ['IDArtigo']; ?></td>
                                 <td><?php echo $linha ['ValorVenda']; ?></td>
                                 <td><?php echo $linha ['DataVenda']; ?></td>
+                                <td><?php echo $linha ['IDFuncionario']; ?></td>
                                 <?php $vendas += (float)$linha['ValorVenda'];?>
                             </tr>
                             <?php } ?>
