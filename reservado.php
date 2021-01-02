@@ -78,7 +78,7 @@
     </div>
     <form action="" method="post">
         <label for="actions"><h2>Venda de Veículos/Artigos</h2></label><br/>
-        <select name="vendaveiculos" id="vendaveiculos" style="width:300px; margin:4px;" onchange="admSelectCheck(this);">
+        <select name="vendaveiculos" id="vendaveiculos" style="width:300px; margin:4px;" onchange="admSelectCheck(this, false);">
             <option selected name= "" value="">Selecione uma opção...</option>
             <option name="vertodos" value="vertodos">Ver Dados - TODOS</option>
             <option id="opcao" name="mesatual" value="mesatual">Ver Dados - POR MÊS</option>
