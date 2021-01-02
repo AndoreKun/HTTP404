@@ -66,15 +66,15 @@
         </div>
     </div>
     </br>
-    <div style="text-align: center">
+    <div style="text-align:center;">
         <h1>Olá, <?php echo $nome_user;?>!</h1>
         <button style="cursor: pointer" id="sair" value="Sair" class="btn-style cr-btn" onclick="location.href ='logout.php';">Sair</button>
     </div>
     <form action="" method="post">
         <label for="actions"><h2>Registar venda de Veículos/Artigos</h2></label><br/> 
-        <div id="elemento" name="elemento" style="width:300px; margin:4px;">
-                <h5>Cliente:</h5>
-                <select name="cliente" style="width:300px; margin:4px;">
+        <div id="registarvenda" name="registarvenda" style="width:300px; margin:4px;">
+                <h5>Cliente: </h5>
+                <select name="cliente">
                     <option selected name= "" value="">Selecione uma opção...</option>
                     <?php $consulta = "SELECT CONCAT(IDNIF_Cliente, ' - ', Nome) AS clientes FROM clientes";
                     include('database/selects_basedados.php');
@@ -102,8 +102,9 @@
                 </select>
             <input style="cursor: pointer; width:300px; margin:4px;" name="submit" type="submit" value="submit" class="btn-style cr-btn"></input>
     </form>
+    </div>
     <?php 
-    if(isset($_POST['submit']) || isset($_POST['submit'])){
+    if(isset($_POST['submit'])){
         $insertpronto = false;
         $clienteselecionado = $_POST['cliente'];
         $clienteselecionado = substr($clienteselecionado, 0, 9);
@@ -131,7 +132,6 @@
                 $insert = "INSERT INTO vendas(IDNIF_Cliente, IDArtigo, ValorVenda, IDFuncionario) VALUES ('$clienteselecionado', '$artigoselecionado', '$valordavenda', '$id_users')";
 
                 include('database/inserts_basedados.php');
-                exit();
             }
             if ($artigoselecionado == "" and $veiculoselecionado != ""){
                 $consulta = "SELECT preco from veiculos WHERE IDVeiculo = '$veiculoselecionado'";
@@ -141,7 +141,6 @@
                 }
                 $insert = "INSERT INTO vendas(IDNIF_Cliente, IDVeiculo, ValorVenda, IDFuncionario) VALUES ('$clienteselecionado', '$veiculoselecionado', '$valordavenda', '$id_users')";
                 include('database/inserts_basedados.php');
-                exit();
             }else{
                 $consulta = "SELECT SUM(artigos.preco + veiculos.preco) AS preco from artigos, veiculos WHERE IDArtigo = '$artigoselecionado' AND IDVeiculo = '$veiculoselecionado'";
                 include('database/selects_basedados.php');
@@ -154,9 +153,87 @@
         }else{
             ?><h5 style="color:red">Valores em falta!</h5><?php
         }
-        }      
+    }      
 ?>
+<label for="actions"><h2>Opções de Clientes</h2></label><br/>
+<select name="clientes" id="clientes" style="width:300px; margin:4px;" onchange="admSelectCheck(this, true);">
+    <option selected id="" name="" value="">Selecione uma opcao...</option>
+    <option id="opcao" value="nvcliente">Adicionar novo cliente</option>
+    <option id="opcao2" value="rmcliente">Remover cliente</option>
+    <option id="opcao3" value="atcliente">Atualizar dados de um cliente</option>
+</select>
+<div id="elemento" name="elemento" style="display: none">
+    <form action="" method="post" enctype="multipart/form-data"><form>
+        <div style="width:300px; margin:4px; float:left;">
+            <h5>NIF do Cliente: <span style="color: red" >*</span></h5>
+            <input name="nif_cliente" value="" minlength="9" maxlength="9" required/>
+        </div>
+        <div style="width:300px; margin:4px; float:left;">
+            <h5>Nome do Cliente: <span style="color: red" >*</span><h5>
+            <input name="nome_cliente" value="" minlength="3" required/>
+        </div>
+        <div style="width:300px; margin:4px; float:left;">
+            <h5>Email do Cliente: <span style="color: red" >*</span><h5>
+            <input name="email_cliente" value="" minlength="7" required/>
+        </div>
+        <div style="width:300px; margin:4px; float:left;">
+            <h5>Telemóvel do Cliente: <span style="color: red" >*</span><h5>
+            <input name="telemovel_cliente" value="" minlength="9" maxlength="13" required/>
+        </div>
+        <div style="width:300px; margin:4px; float:left;">
+            <h5>Morada do cliente: <span style="color: red">*</span><h5>
+            <input name="morada_cliente" value="" minlength="5" required/>
+        </div>
+        <div style="width:150px; margin:4px; float:left;">
+            <h5>País de Residência: <span style="color: red" >*</span><h5>
+            <input name="pais_cliente" value="" minlength="3" required/>
+        </div>
+        <div style="width:150px; margin:4px; float:left;">
+            <h5>Código Postal: <span style="color: red" >*</span><h5>
+            <input name="codpostal_cliente" value="" minlength="5" maxlength="8" required/>
+        </div> 
+        <div style="width:300px; margin:4px; float:left;">
+            <h5>Localidade/Cidade do cliente: <span style="color: red" >*</span><h5>
+            <input name="localidade_cliente" value="" minlength="3" required/>
+        </div> 
+        <div style="width:300px; margin:4px; float:left;">
+            <h5>Foto do cliente:<h5>
+            <input name="foto_cliente" type="file" name="image[]" />
+        </div>    
+        <input style="cursor: pointer; width:300px; margin:4px;" name="criarcliente" type="submit" value="submit" class="btn-style cr-btn"></input>
+    </form>
+</div>
+<?php 
+if(isset($_POST['criarcliente'])){
+    $nif_cliente = $_POST['nif_cliente'];
+    $nome = $_POST['nome_cliente'];
+    $email = $_POST['email_cliente'];
+    $telemovel = $_POST['telemovel_cliente'];
+    $pais = $_POST['pais_cliente'];
+    $morada = $_POST['morada_cliente'];
+    if(isset($_POST['foto_cliente'])){
+        $foto = $_POST['foto_cliente'];
+    }else{
+        $foto = false;
+    }
+    if(isset($_POST['codpostal_cliente'])){
+        $codpostal = $_POST['codpostal_cliente'];
+    }
+    if(isset($_POST['localidade_cliente'])){
+        $localidade = $_POST['localidade_cliente'];
+    }
+    
+    $consulta = 'SELECT IDNIF_Cliente FROM clientes';
+    include("database/selects_basedados.php");
+    foreach($dados as $linha){
+        if($nif_cliente == $linha['IDNIF_Cliente']){
+            ?><h5 style="color: red">Este cliente já existe na base de dados!</h5> <?php
+        }
+    }
 
+
+}
+?>
 <script src="assets/js/mostraselecao.js"></script>
 </body>
 </html>
