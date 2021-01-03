@@ -163,7 +163,7 @@
     <option id="opcao3" value="atcliente">Atualizar dados de um cliente</option>
 </select>
 <div id="elemento" name="elemento" style="display: none">
-    <form action="" method="post" enctype="multipart/form-data"><form>
+    <form id="nvcliente" name="nvcliente" action="" method="post" enctype="multipart/form-data"><form>
         <div style="width:300px; margin:4px; float:left;">
             <h5>NIF do Cliente: <span style="color: red" >*</span></h5>
             <input name="nif_cliente" value="" minlength="9" maxlength="9" required/>
@@ -195,12 +195,13 @@
         <div style="width:300px; margin:4px; float:left;">
             <h5>Localidade/Cidade do cliente: <span style="color: red" >*</span><h5>
             <input name="localidade_cliente" value="" minlength="3" required/>
-        </div> 
-        <div style="width:300px; margin:4px; float:left;">
+        </div>
+        <div style="width:300px; float:left;">
             <h5>Foto do cliente:<h5>
-            <input name="foto_cliente" type="file" name="image[]" />
-        </div>    
-        <input style="cursor: pointer; width:300px; margin:4px;" name="criarcliente" type="submit" value="submit" class="btn-style cr-btn"></input>
+                <input type="file" name="image" onclick="" style="background-color: white; border:hidden; margin:-3%;"/>
+            <br/><br/>
+        </div>   
+        <input style="cursor: pointer; width:300px; margin:4px;" name="criarcliente" type="submit" value="submit" class="btn-style cr-btn"/>
     </form>
 </div>
 <?php 
@@ -211,28 +212,35 @@ if(isset($_POST['criarcliente'])){
     $telemovel = $_POST['telemovel_cliente'];
     $pais = $_POST['pais_cliente'];
     $morada = $_POST['morada_cliente'];
-    if(isset($_POST['foto_cliente'])){
-        $foto = $_POST['foto_cliente'];
-    }else{
-        $foto = false;
-    }
-    if(isset($_POST['codpostal_cliente'])){
-        $codpostal = $_POST['codpostal_cliente'];
-    }
-    if(isset($_POST['localidade_cliente'])){
-        $localidade = $_POST['localidade_cliente'];
-    }
-    
-    $consulta = 'SELECT IDNIF_Cliente FROM clientes';
+    $codpostal = $_POST['codpostal_cliente'];
+    $localidade = $_POST['localidade_cliente'];
+    $consulta = 'SELECT IDNIF_Cliente, Telemovel FROM clientes';
     include("database/selects_basedados.php");
+    $clientenovo = FALSE;
     foreach($dados as $linha){
         if($nif_cliente == $linha['IDNIF_Cliente']){
             ?><h5 style="color: red">Este cliente já existe na base de dados!</h5> <?php
+            $clientenovo = FALSE;
+        }else{
+            $clientenovo = TRUE;
+        }
+    }
+    if($clientenovo == TRUE){
+        $insert = "INSERT INTO clientes(IDNIF_Cliente, Nome, Email, Telemovel, Pais, Morada, Cod_Postal, Localidade) 
+        VALUES ('$nif_cliente', '$nome', '$email', '$telemovel', '$pais', '$morada', '$codpostal', '$localidade')";
+        $acao = 'insert';
+        if(isset($_FILES['image'])){
+            $imagem = $_FILES['image']['tmp_name'];
+            $foto_do_cliente = file_get_contents($imagem);
+            $update_foto = "UPDATE clientes SET Foto=? WHERE IDNIF_Cliente=$nif_cliente";
+            $adicionar_foto = TRUE;
+        } else {
+            $adicionar_foto = FALSE;
+        }
+        include('database/inserts_basedados.php');
         }
     }
 
-
-}
 ?>
 <script src="assets/js/mostraselecao.js"></script>
 </body>
