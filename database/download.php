@@ -35,27 +35,27 @@ $dados = include 'selects_basedados.php';
 
 $fileName = "dados".date('d-m-Y').".xls";
 
-        //Set header information to export data in excel format
-        header('Content-Type: application/vnd.ms-excel');
-        header('Content-Disposition: attachment; filename='.$fileName);
+// Define a informação do cabeçalho para exportar como dados para o excel
+header('Content-Type: application/vnd.ms-excel');
+header('Content-Disposition: attachment; filename='.$fileName);
 
-        //Set variable to false for heading
-        $heading = false;
+//Define para falso a variável do cabeçalho
+$heading = false;
 
-        //Add the MySQL table data to excel file
-        if(!empty($dados)) {
-            foreach($dados as $item) {
-                if(!$heading) {
-                    echo implode("\t", array_keys($item)) . "\n";
-                    $heading = true;
-                }
-                echo implode("\t", array_values($item)) . "\n";
-                
-            }
-            
+//Adiciona os dados da tabela para o ficheiro excel
+if(!empty($dados)) {
+    foreach($dados as $item) {
+        if(!$heading) {
+            echo implode("\t", array_keys($item)) . "\n";
+            $heading = true;
         }
-        echo $nomevalorextra . "\n";
-        echo $valorextra;
+        echo implode("\t", array_values($item)) . "\n";
+        
+    }
+    
+}
+echo $nomevalorextra . "\n";
+echo $valorextra;
 
-        exit();
+exit();
 ?>
