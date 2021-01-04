@@ -106,11 +106,7 @@ if(isset($_SESSION['cart'])){ //if the cart isn't empty
                                                 <ul>
                                                     <li><a href="index.html">PÁGINA INICIAL</a></li>
                                                     <li class="active"><a href="about-us.html">SOBRE NÓS</a></li>
-                                                    <li><a href="#">LOJA</a>
-                                                        <ul>
-                                                            <li><a href="shop.html">Loja</a></li>                                                       
-                                                            <li><a href="checkout.html">Checkout</a></li>                                                         
-                                                        </ul>
+                                                    <li><a href="product-details.php">LOJA</a>
                                                     </li>
                                                     <li><a href="#">ACESSOS</a>
                                                         <ul>
@@ -122,12 +118,10 @@ if(isset($_SESSION['cart'])){ //if the cart isn't empty
                                             </nav>
                                         </div>
                                     </div>
-                                </div>
-                                
+                                </div> 
                             </div>                         
                         </div>
                     </div>
-
                 </div>
             </header>
             <div class="breadcrumb-area pt-255 pb-170" style="background-image: url(assets/img/banner/banner-4.jpg)">
