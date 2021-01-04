@@ -51,6 +51,6 @@ if(isset($_GET['mudar_carrinho'])){
 echo "<script type='text/javascript'>
 					location.href='$voltar_para'
                 </script>";	
+
+
 ?>
-
-
