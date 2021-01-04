@@ -1,4 +1,4 @@
-<?php session_start(); ?>
+<?php session_start();  ?>
 <!doctype html>
 <html class="no-js" lang="zxx">
     <head>
@@ -154,19 +154,19 @@
                                 </div>
                                     <div class="quickview-btn-cart">
                                         <form method="get" action="carrinho.php">
-                                            <input type="hidden" id="id_artigo" name="id_artigo" value="1">
+                                            <input type="hidden" id="id_veiculo" name="id_veiculo" value="1">
                                             <input type="hidden" id="acao" name="acao" value="adicionar">
                                             <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#lexus">
                                             <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                         </form>
                                         <form method="get" action="carrinho.php">
-                                            <input type="hidden" id="id_artigo" name="id_artigo" value="1">
+                                            <input type="hidden" id="id_veiculo" name="id_veiculo" value="1">
                                             <input type="hidden" id="acao" name="acao" value="remover">
                                             <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#lexus">
                                             <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                         </form>
                                     <br/>
-                                    <?php if ($_SESSION['id_artigo']['id_artigo'] == 1){echo $_SESSION['feedback']['feedback'];}?>
+                                    <?php if ($_SESSION['id_veiculo']['id_veiculo'] == 1){echo $_SESSION['feedback']['feedback'];}?>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                    <ul>
@@ -251,19 +251,19 @@
                                 </div>
                                     <div class="quickview-btn-cart">
                                     <form method="get" action="carrinho.php">
-                                        <input type="hidden" id="id_artigo" name="id_artigo" value="2">
+                                        <input type="hidden" id="id_veiculo" name="id_veiculo" value="2">
                                         <input type="hidden" id="acao" name="acao" value="adicionar">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#volvo">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <form method="get" action="carrinho.php">
-                                        <input type="hidden" id="id_artigo" name="id_artigo" value="2">
+                                        <input type="hidden" id="id_veiculo" name="id_veiculo" value="2">
                                         <input type="hidden" id="acao" name="acao" value="remover">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#volvo">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <br/>
-                                    <?php if ($_SESSION['id_artigo']['id_artigo'] == 2){echo $_SESSION['feedback']['feedback'];}?>
+                                    <?php if ($_SESSION['id_veiculo']['id_veiculo'] == 2){echo $_SESSION['feedback']['feedback'];}?>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                    <ul>
@@ -349,21 +349,19 @@
                                 </div>
                                     <div class="quickview-btn-cart">
                                     <form method="get" action="carrinho.php">
-                                        <input type="hidden" id="id_artigo" name="id_artigo" value="3">
+                                        <input type="hidden" id="id_veiculo" name="id_veiculo" value="3">
                                         <input type="hidden" id="acao" name="acao" value="adicionar">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#volvo">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <form method="get" action="carrinho.php">
-                                        <input type="hidden" id="id_artigo" name="id_artigo" value="3">
+                                        <input type="hidden" id="id_veiculo" name="id_veiculo" value="3">
                                         <input type="hidden" id="acao" name="acao" value="remover">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#volvo">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <br/>
-                                    <?php if ($_SESSION['id_artigo']['id_artigo'] == 3){echo $_SESSION['feedback']['feedback'];}?>
-                                        <a class="btn-style cr-btn" href="#"><span> <h4>Adicionar ao carrinho</h4>
-                                        </div></span></a>
+                                    <?php if ($_SESSION['id_veiculo']['id_veiculo'] == 3){echo $_SESSION['feedback']['feedback'];}?>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                   <ul>
@@ -448,19 +446,19 @@
                                 </div>
                                     <div class="quickview-btn-cart">
                                     <form method="get" action="carrinho.php">
-                                        <input type="hidden" id="id_artigo" name="id_artigo" value="4">
+                                        <input type="hidden" id="id_veiculo" name="id_veiculo" value="4">
                                         <input type="hidden" id="acao" name="acao" value="adicionar">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#volvo">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <form method="get" action="carrinho.php">
-                                        <input type="hidden" id="id_artigo" name="id_artigo" value="4">
+                                        <input type="hidden" id="id_veiculo" name="id_veiculo" value="4">
                                         <input type="hidden" id="acao" name="acao" value="remover">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#volvo">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <br/>
-                                    <?php if ($_SESSION['id_artigo']['id_artigo'] == 4){echo $_SESSION['feedback']['feedback'];}?>
+                                    <?php if ($_SESSION['id_veiculo']['id_veiculo'] == 4){echo $_SESSION['feedback']['feedback'];}?>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                   <ul>
@@ -511,19 +509,19 @@
                                 </div>
                                     <div class="quickview-btn-cart">
                                     <form method="get" action="carrinho.php">
-                                        <input type="hidden" id="id_artigo" name="id_artigo" value="5">
+                                        <input type="hidden" id="id_artigo" name="id_artigo" value="11">
                                         <input type="hidden" id="acao" name="acao" value="adicionar">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#volvo">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <form method="get" action="carrinho.php">
-                                        <input type="hidden" id="id_artigo" name="id_artigo" value="5">
+                                        <input type="hidden" id="id_artigo" name="id_artigo" value="11">
                                         <input type="hidden" id="acao" name="acao" value="remover">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#volvo">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <br/>
-                                    <?php if ($_SESSION['id_artigo']['id_artigo'] == 5){echo $_SESSION['feedback']['feedback'];}?>
+                                    <?php if ($_SESSION['id_artigo']['id_artigo'] == 11){echo $_SESSION['feedback']['feedback'];}?>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                     <ul>
@@ -574,19 +572,19 @@
                                 </div>
                                     <div class="quickview-btn-cart">
                                     <form method="get" action="carrinho.php">
-                                        <input type="hidden" id="id_artigo" name="id_artigo" value="6">
+                                        <input type="hidden" id="id_artigo" name="id_artigo" value="12">
                                         <input type="hidden" id="acao" name="acao" value="adicionar">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#volvo">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <form method="get" action="carrinho.php">
-                                        <input type="hidden" id="id_artigo" name="id_artigo" value="6">
+                                        <input type="hidden" id="id_artigo" name="id_artigo" value="12">
                                         <input type="hidden" id="acao" name="acao" value="remover">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#volvo">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <br/>
-                                    <?php if ($_SESSION['id_artigo']['id_artigo'] == 6){echo $_SESSION['feedback']['feedback'];}?>
+                                    <?php if ($_SESSION['id_artigo']['id_artigo'] == 12){echo $_SESSION['feedback']['feedback'];}?>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                     <ul>
@@ -637,19 +635,19 @@
                                 </div>
                                     <div class="quickview-btn-cart">
                                     <form method="get" action="carrinho.php">
-                                        <input type="hidden" id="id_artigo" name="id_artigo" value="7">
+                                        <input type="hidden" id="id_artigo" name="id_artigo" value="13">
                                         <input type="hidden" id="acao" name="acao" value="adicionar">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#volvo">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <form method="get" action="carrinho.php">
-                                        <input type="hidden" id="id_artigo" name="id_artigo" value="7">
+                                        <input type="hidden" id="id_artigo" name="id_artigo" value="13">
                                         <input type="hidden" id="acao" name="acao" value="remover">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#volvo">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <br/>
-                                    <?php if ($_SESSION['id_artigo']['id_artigo'] == 7){echo $_SESSION['feedback']['feedback'];}?>
+                                    <?php if ($_SESSION['id_artigo']['id_artigo'] == 13){echo $_SESSION['feedback']['feedback'];}?>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                     <ul>
@@ -700,19 +698,19 @@
                                 </div>
                                     <div class="quickview-btn-cart">
                                     <form method="get" action="carrinho.php">
-                                        <input type="hidden" id="id_artigo" name="id_artigo" value="8">
+                                        <input type="hidden" id="id_artigo" name="id_artigo" value="14">
                                         <input type="hidden" id="acao" name="acao" value="adicionar">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#volvo">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <form method="get" action="carrinho.php">
-                                        <input type="hidden" id="id_artigo" name="id_artigo" value="8">
+                                        <input type="hidden" id="id_artigo" name="id_artigo" value="14">
                                         <input type="hidden" id="acao" name="acao" value="remover">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#volvo">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <br/>
-                                    <?php if ($_SESSION['id_artigo']['id_artigo'] == 8){echo $_SESSION['feedback']['feedback'];}?>
+                                    <?php if ($_SESSION['id_artigo']['id_artigo'] == 14){echo $_SESSION['feedback']['feedback'];}?>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                    <ul>
@@ -763,19 +761,19 @@
                                 </div>
                                     <div class="quickview-btn-cart">
                                     <form method="get" action="carrinho.php">
-                                        <input type="hidden" id="id_artigo" name="id_artigo" value="9">
+                                        <input type="hidden" id="id_artigo" name="id_artigo" value="15">
                                         <input type="hidden" id="acao" name="acao" value="adicionar">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#volvo">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <form method="get" action="carrinho.php">
-                                        <input type="hidden" id="id_artigo" name="id_artigo" value="9">
+                                        <input type="hidden" id="id_artigo" name="id_artigo" value="15">
                                         <input type="hidden" id="acao" name="acao" value="remover">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#volvo">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <br/>
-                                    <?php if ($_SESSION['id_artigo']['id_artigo'] == 9){echo $_SESSION['feedback']['feedback'];}?>
+                                    <?php if ($_SESSION['id_artigo']['id_artigo'] == 15){echo $_SESSION['feedback']['feedback'];}?>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                    <ul>
@@ -826,19 +824,19 @@
                                 </div>
                                     <div class="quickview-btn-cart">
                                     <form method="get" action="carrinho.php">
-                                        <input type="hidden" id="id_artigo" name="id_artigo" value="10">
+                                        <input type="hidden" id="id_artigo" name="id_artigo" value="16">
                                         <input type="hidden" id="acao" name="acao" value="adicionar">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#volvo">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <form method="get" action="carrinho.php">
-                                        <input type="hidden" id="id_artigo" name="id_artigo" value="10">
+                                        <input type="hidden" id="id_artigo" name="id_artigo" value="16">
                                         <input type="hidden" id="acao" name="acao" value="remover">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#volvo">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <br/>
-                                    <?php if ($_SESSION['id_artigo']['id_artigo'] == 10){echo $_SESSION['feedback']['feedback'];}?>
+                                    <?php if ($_SESSION['id_artigo']['id_artigo'] == 16){echo $_SESSION['feedback']['feedback'];}?>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                    <ul>
@@ -889,19 +887,19 @@
                                 </div>
                                     <div class="quickview-btn-cart">
                                     <form method="get" action="carrinho.php">
-                                        <input type="hidden" id="id_artigo" name="id_artigo" value="11">
+                                        <input type="hidden" id="id_artigo" name="id_artigo" value="119">
                                         <input type="hidden" id="acao" name="acao" value="adicionar">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#volvo">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <form method="get" action="carrinho.php">
-                                        <input type="hidden" id="id_artigo" name="id_artigo" value="11">
+                                        <input type="hidden" id="id_artigo" name="id_artigo" value="119">
                                         <input type="hidden" id="acao" name="acao" value="remover">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#volvo">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <br/>
-                                    <?php if ($_SESSION['id_artigo']['id_artigo'] == 11){echo $_SESSION['feedback']['feedback'];}?>
+                                    <?php if ($_SESSION['id_artigo']['id_artigo'] == 119){echo $_SESSION['feedback']['feedback'];}?>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                    <ul>
@@ -952,19 +950,19 @@
                                 </div>
                                     <div class="quickview-btn-cart">
                                     <form method="get" action="carrinho.php">
-                                        <input type="hidden" id="id_artigo" name="id_artigo" value="12">
+                                        <input type="hidden" id="id_artigo" name="id_artigo" value="17">
                                         <input type="hidden" id="acao" name="acao" value="adicionar">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#volvo">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <form method="get" action="carrinho.php">
-                                        <input type="hidden" id="id_artigo" name="id_artigo" value="12">
+                                        <input type="hidden" id="id_artigo" name="id_artigo" value="17">
                                         <input type="hidden" id="acao" name="acao" value="remover">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#volvo">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <br/>
-                                    <?php if ($_SESSION['id_artigo']['id_artigo'] == 12){echo $_SESSION['feedback']['feedback'];}?>
+                                    <?php if ($_SESSION['id_artigo']['id_artigo'] == 17){echo $_SESSION['feedback']['feedback'];}?>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                    <ul>
@@ -1015,19 +1013,19 @@
                                 </div>
                                     <div class="quickview-btn-cart">
                                     <form method="get" action="carrinho.php">
-                                        <input type="hidden" id="id_artigo" name="id_artigo" value="13">
+                                        <input type="hidden" id="id_artigo" name="id_artigo" value="18">
                                         <input type="hidden" id="acao" name="acao" value="adicionar">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#volvo">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <form method="get" action="carrinho.php">
-                                        <input type="hidden" id="id_artigo" name="id_artigo" value="13">
+                                        <input type="hidden" id="id_artigo" name="id_artigo" value="18">
                                         <input type="hidden" id="acao" name="acao" value="remover">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#volvo">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <br/>
-                                    <?php if ($_SESSION['id_artigo']['id_artigo'] == 13){echo $_SESSION['feedback']['feedback'];}?>
+                                    <?php if ($_SESSION['id_artigo']['id_artigo'] == 18){echo $_SESSION['feedback']['feedback'];}?>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                   <ul>
@@ -1078,19 +1076,19 @@
                                 </div>
                                     <div class="quickview-btn-cart">
                                     <form method="get" action="carrinho.php">
-                                        <input type="hidden" id="id_artigo" name="id_artigo" value="14">
+                                        <input type="hidden" id="id_artigo" name="id_artigo" value="19">
                                         <input type="hidden" id="acao" name="acao" value="adicionar">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#volvo">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <form method="get" action="carrinho.php">
-                                        <input type="hidden" id="id_artigo" name="id_artigo" value="14">
+                                        <input type="hidden" id="id_artigo" name="id_artigo" value="19">
                                         <input type="hidden" id="acao" name="acao" value="remover">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#volvo">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <br/>
-                                    <?php if ($_SESSION['id_artigo']['id_artigo'] == 14){echo $_SESSION['feedback']['feedback'];}?>
+                                    <?php if ($_SESSION['id_artigo']['id_artigo'] == 19){echo $_SESSION['feedback']['feedback'];}?>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                   <ul>
@@ -1141,19 +1139,19 @@
                                 </div>
                                     <div class="quickview-btn-cart">
                                     <form method="get" action="carrinho.php">
-                                        <input type="hidden" id="id_artigo" name="id_artigo" value="15">
+                                        <input type="hidden" id="id_artigo" name="id_artigo" value="110">
                                         <input type="hidden" id="acao" name="acao" value="adicionar">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#volvo">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <form method="get" action="carrinho.php">
-                                        <input type="hidden" id="id_artigo" name="id_artigo" value="15">
+                                        <input type="hidden" id="id_artigo" name="id_artigo" value="110">
                                         <input type="hidden" id="acao" name="acao" value="remover">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#volvo">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <br/>
-                                    <?php if ($_SESSION['id_artigo']['id_artigo'] == 15){echo $_SESSION['feedback']['feedback'];}?>
+                                    <?php if ($_SESSION['id_artigo']['id_artigo'] == 110){echo $_SESSION['feedback']['feedback'];}?>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                   <ul>
@@ -1204,19 +1202,19 @@
                                 </div>
                                     <div class="quickview-btn-cart">
                                     <form method="get" action="carrinho.php">
-                                        <input type="hidden" id="id_artigo" name="id_artigo" value="16">
+                                        <input type="hidden" id="id_artigo" name="id_artigo" value="112">
                                         <input type="hidden" id="acao" name="acao" value="adicionar">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#volvo">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <form method="get" action="carrinho.php">
-                                        <input type="hidden" id="id_artigo" name="id_artigo" value="16">
+                                        <input type="hidden" id="id_artigo" name="id_artigo" value="112">
                                         <input type="hidden" id="acao" name="acao" value="remover">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#volvo">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <br/>
-                                    <?php if ($_SESSION['id_artigo']['id_artigo'] == 16){echo $_SESSION['feedback']['feedback'];}?>
+                                    <?php if ($_SESSION['id_artigo']['id_artigo'] == 112){echo $_SESSION['feedback']['feedback'];}?>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                   <ul>
@@ -1266,19 +1264,19 @@
                                 </div>
                                     <div class="quickview-btn-cart">
                                     <form method="get" action="carrinho.php">
-                                        <input type="hidden" id="id_artigo" name="id_artigo" value="17">
+                                        <input type="hidden" id="id_artigo" name="id_artigo" value="113">
                                         <input type="hidden" id="acao" name="acao" value="adicionar">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#volvo">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <form method="get" action="carrinho.php">
-                                        <input type="hidden" id="id_artigo" name="id_artigo" value="17">
+                                        <input type="hidden" id="id_artigo" name="id_artigo" value="113">
                                         <input type="hidden" id="acao" name="acao" value="remover">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#volvo">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <br/>
-                                    <?php if ($_SESSION['id_artigo']['id_artigo'] == 17){echo $_SESSION['feedback']['feedback'];}?>
+                                    <?php if ($_SESSION['id_artigo']['id_artigo'] == 113){echo $_SESSION['feedback']['feedback'];}?>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                   <ul>
@@ -1327,19 +1325,19 @@
                                 </div>
                                     <div class="quickview-btn-cart">
                                     <form method="get" action="carrinho.php">
-                                        <input type="hidden" id="id_artigo" name="id_artigo" value="17">
+                                        <input type="hidden" id="id_artigo" name="id_artigo" value="114">
                                         <input type="hidden" id="acao" name="acao" value="adicionar">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#volvo">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <form method="get" action="carrinho.php">
-                                        <input type="hidden" id="id_artigo" name="id_artigo" value="17">
+                                        <input type="hidden" id="id_artigo" name="id_artigo" value="114">
                                         <input type="hidden" id="acao" name="acao" value="remover">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#volvo">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <br/>
-                                    <?php if ($_SESSION['id_artigo']['id_artigo'] == 17){echo $_SESSION['feedback']['feedback'];}?>
+                                    <?php if ($_SESSION['id_artigo']['id_artigo'] == 114){echo $_SESSION['feedback']['feedback'];}?>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                    <ul>
@@ -1390,19 +1388,19 @@
                                 </div>
                                     <div class="quickview-btn-cart">
                                     <form method="get" action="carrinho.php">
-                                        <input type="hidden" id="id_artigo" name="id_artigo" value="18">
+                                        <input type="hidden" id="id_artigo" name="id_artigo" value="115">
                                         <input type="hidden" id="acao" name="acao" value="adicionar">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#volvo">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <form method="get" action="carrinho.php">
-                                        <input type="hidden" id="id_artigo" name="id_artigo" value="18">
+                                        <input type="hidden" id="id_artigo" name="id_artigo" value="115">
                                         <input type="hidden" id="acao" name="acao" value="remover">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#volvo">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <br/>
-                                    <?php if ($_SESSION['id_artigo']['id_artigo'] == 18){echo $_SESSION['feedback']['feedback'];}?>
+                                    <?php if ($_SESSION['id_artigo']['id_artigo'] == 115){echo $_SESSION['feedback']['feedback'];}?>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                    <ul>
@@ -1453,19 +1451,19 @@
                                 </div>
                                     <div class="quickview-btn-cart">
                                     <form method="get" action="carrinho.php">
-                                        <input type="hidden" id="id_artigo" name="id_artigo" value="19">
+                                        <input type="hidden" id="id_artigo" name="id_artigo" value="116">
                                         <input type="hidden" id="acao" name="acao" value="adicionar">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#volvo">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <form method="get" action="carrinho.php">
-                                        <input type="hidden" id="id_artigo" name="id_artigo" value="19">
+                                        <input type="hidden" id="id_artigo" name="id_artigo" value="116">
                                         <input type="hidden" id="acao" name="acao" value="remover">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#volvo">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <br/>
-                                    <?php if ($_SESSION['id_artigo']['id_artigo'] == 19){echo $_SESSION['feedback']['feedback'];}?>
+                                    <?php if ($_SESSION['id_artigo']['id_artigo'] == 116){echo $_SESSION['feedback']['feedback'];}?>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                   <ul>
@@ -1516,19 +1514,19 @@
                                 </div>
                                     <div class="quickview-btn-cart">
                                     <form method="get" action="carrinho.php">
-                                        <input type="hidden" id="id_artigo" name="id_artigo" value="20">
+                                        <input type="hidden" id="id_artigo" name="id_artigo" value="117">
                                         <input type="hidden" id="acao" name="acao" value="adicionar">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#volvo">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <form method="get" action="carrinho.php">
-                                        <input type="hidden" id="id_artigo" name="id_artigo" value="20">
+                                        <input type="hidden" id="id_artigo" name="id_artigo" value="117">
                                         <input type="hidden" id="acao" name="acao" value="remover">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#volvo">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <br/>
-                                    <?php if ($_SESSION['id_artigo']['id_artigo'] == 20){echo $_SESSION['feedback']['feedback'];}?>
+                                    <?php if ($_SESSION['id_artigo']['id_artigo'] == 117){echo $_SESSION['feedback']['feedback'];}?>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                   <ul>
@@ -1579,19 +1577,19 @@
                                 </div>
                                     <div class="quickview-btn-cart">
                                     <form method="get" action="carrinho.php">
-                                        <input type="hidden" id="id_artigo" name="id_artigo" value="21">
+                                        <input type="hidden" id="id_artigo" name="id_artigo" value="118">
                                         <input type="hidden" id="acao" name="acao" value="adicionar">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#volvo">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <form method="get" action="carrinho.php">
-                                        <input type="hidden" id="id_artigo" name="id_artigo" value="21">
+                                        <input type="hidden" id="id_artigo" name="id_artigo" value="118">
                                         <input type="hidden" id="acao" name="acao" value="remover">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#volvo">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <br/>
-                                    <?php if ($_SESSION['id_artigo']['id_artigo'] == 21){echo $_SESSION['feedback']['feedback'];}?>
+                                    <?php if ($_SESSION['id_artigo']['id_artigo'] == 118){echo $_SESSION['feedback']['feedback'];}?>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                     <ul>
