@@ -14,42 +14,47 @@
 
 
 -- Dumping database structure for adc_http404
-DROP DATABASE IF EXISTS `adc_http404`;
 CREATE DATABASE IF NOT EXISTS `adc_http404` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `adc_http404`;
 
 -- Dumping structure for table adc_http404.artigos
-DROP TABLE IF EXISTS `artigos`;
 CREATE TABLE IF NOT EXISTS `artigos` (
   `IDArtigo` int NOT NULL AUTO_INCREMENT,
-  `Nome` varchar(80) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `Descricao` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `Tipo_artigo` varchar(40) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `nome` varchar(80) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `descricao` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `tipo_artigo` varchar(40) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `preco` float NOT NULL,
-  `Em_Stock` char(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `em_stock` char(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `quantidade_stock` int NOT NULL,
   PRIMARY KEY (`IDArtigo`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=113 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Dumping data for table adc_http404.artigos: ~12 rows (approximately)
 DELETE FROM `artigos`;
 /*!40000 ALTER TABLE `artigos` DISABLE KEYS */;
-INSERT INTO `artigos` (`IDArtigo`, `Nome`, `Descricao`, `Tipo_artigo`, `preco`, `Em_Stock`) VALUES
-	(1, 'Performance Machine Supra Real Wheel', 'Rodas para mota', 'Peças', 1399, 'Sim'),
-	(2, 'Motorcycle Radiator Cooler For Kawasaki Ninja', 'Radiador para mota', 'Peças', 83, 'Sim'),
-	(3, 'Universal Motorcycle Retro Diamond Flat Style Seat', 'Assento para mota', 'Peças', 40, 'Sim'),
-	(4, 'Halo Motorcycle Headlight', 'Farol da frente para mota', 'Peças', 79, 'Sim'),
-	(5, 'Dished Wassell Peanut Motorcycle Gas Tank', 'Tanque de gasolina para mota', 'Peças', 1999.99, 'Sim'),
-	(6, 'Fydun Motorcycle Speedometer', 'Velocimetro', 'Peças', 69.99, 'Sim'),
-	(7, 'Adult Full Face Matto Blue Helmet', 'Capacete ', 'Acessorios', 63.88, 'Sim'),
-	(8, '\nRacing 3 Leather Jacket\n', 'Casaco desportivo para moto ', 'Acessorios', 489, 'Sim'),
-	(9, '\nFORMA Adventure Off-Road Motorcycle Boots\n', 'Botas ', 'Acessorios', 270, 'Sim'),
-	(10, '\nHEROBIKER Motorcycle Knee Pads\n', 'Joelheiras', 'Acessorios', 36, 'Sim'),
-	(11, 'Daianese V E1 Elbow Guards\n', 'Cotoveleiras', 'Acessorios', 64, 'Sim'),
-	(12, 'LS2 Helmets Full Face Blaze Adventure Motorcycle Helmet, Matte Titanium 436B-103', 'Capacete', 'Acessorios', 134, 'Sim');
+INSERT INTO `artigos` (`IDArtigo`, `nome`, `descricao`, `tipo_artigo`, `preco`, `em_stock`, `quantidade_stock`) VALUES
+	(1, 'Performance Machine Supra Real Wheel', 'Rodas para mota', 'Peças', 1399, 'Sim', 10),
+	(2, 'Motorcycle Radiator Cooler For Kawasaki Ninja', 'Radiador para mota', 'Peças', 83, 'Sim', 9),
+	(3, 'Universal Motorcycle Retro Diamond Flat Style Seat', 'Assento para mota', 'Peças', 40, 'Sim', 29),
+	(4, 'Halo Motorcycle Headlight', 'Farol da frente para mota', 'Peças', 79, 'Sim', 100),
+	(5, 'Dished Wassell Peanut Motorcycle Gas Tank', 'Tanque de gasolina para mota', 'Peças', 1999.99, 'Sim', 20),
+	(6, 'Fydun Motorcycle Speedometer', 'Velocimetro', 'Peças', 69.99, 'Sim', 100),
+	(7, 'Adult Full Face Matto Blue Helmet', 'Capacete ', 'Acessorios', 63.88, 'Sim', 59),
+	(8, '\nRacing 3 Leather Jacket\n', 'Casaco desportivo para moto ', 'Acessorios', 489, 'Sim', 100),
+	(9, '\nFORMA Adventure Off-Road Motorcycle Boots\n', 'Botas ', 'Acessorios', 270, 'Sim', 29),
+	(10, '\nHEROBIKER Motorcycle Knee Pads\n', 'Joelheiras', 'Acessorios', 36, 'Sim', 120),
+	(11, 'Daianese V E1 Elbow Guards', 'Cotoveleiras', 'Acessorios', 45, 'Não', 0),
+	(12, 'LS2 Helmets Full Face Blaze Adventure Motorcycle Helmet, Matte Titanium 436B-103', 'Capacete', 'Acessorios', 134, 'Sim', 93),
+	(13, 'Kit 12 SunFlower Accessories ', 'kit de 12 acessórios de girassol para carros', 'Acessorio', 95, 'Sim', 20),
+	(14, 'Waterproof Car Cover - Large Sedan', 'Capa à prova de agua para carros', 'Acessorio', 90, 'Sim', 8),
+	(15, 'Organizador de Items', 'Organizador de Items para assentos de carro', 'Acessorio', 25, 'Sim', 87),
+	(16, 'Govee luzes interiores para carro', 'luzes interiores para carro', 'Acessorio', 25, 'Sim', 99),
+	(17, ' PhoneHolder', 'Suport de Telemóvel para carros', 'Acessorio', 20, 'Sim', 115),
+	(18, 'Capa para volante', 'Tampa do volante do carro respirável antiderrapante', 'Acessorio', 3, 'Sim', 55),
+	(19, 'Racetech Fuel Level Gauge', 'Medidor elétrico de nível do tanque de combustível Racetech.', 'Peças', 40, 'Sim', 32);
 /*!40000 ALTER TABLE `artigos` ENABLE KEYS */;
 
 -- Dumping structure for table adc_http404.clientes
-DROP TABLE IF EXISTS `clientes`;
 CREATE TABLE IF NOT EXISTS `clientes` (
   `IDNIF_Cliente` char(9) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `Nome` varchar(60) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
@@ -63,7 +68,7 @@ CREATE TABLE IF NOT EXISTS `clientes` (
   PRIMARY KEY (`IDNIF_Cliente`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Clientes que se registaram através do checkout na loja online ou numa loja física';
 
--- Dumping data for table adc_http404.clientes: ~3 rows (approximately)
+-- Dumping data for table adc_http404.clientes: ~8 rows (approximately)
 DELETE FROM `clientes`;
 /*!40000 ALTER TABLE `clientes` DISABLE KEYS */;
 INSERT INTO `clientes` (`IDNIF_Cliente`, `Nome`, `Email`, `Telemovel`, `Pais`, `Morada`, `Cod_Postal`, `Localidade`, `Foto`) VALUES
@@ -78,7 +83,6 @@ INSERT INTO `clientes` (`IDNIF_Cliente`, `Nome`, `Email`, `Telemovel`, `Pais`, `
 /*!40000 ALTER TABLE `clientes` ENABLE KEYS */;
 
 -- Dumping structure for table adc_http404.interessados
-DROP TABLE IF EXISTS `interessados`;
 CREATE TABLE IF NOT EXISTS `interessados` (
   `IDInteressado` int NOT NULL AUTO_INCREMENT,
   `Email` varchar(80) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
@@ -97,7 +101,6 @@ INSERT INTO `interessados` (`IDInteressado`, `Email`) VALUES
 /*!40000 ALTER TABLE `interessados` ENABLE KEYS */;
 
 -- Dumping structure for table adc_http404.users
-DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
   `id_users` int NOT NULL AUTO_INCREMENT,
   `nome` varchar(200) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
@@ -107,7 +110,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   PRIMARY KEY (`id_users`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Dumping data for table adc_http404.users: ~5 rows (approximately)
+-- Dumping data for table adc_http404.users: ~6 rows (approximately)
 DELETE FROM `users`;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id_users`, `nome`, `email`, `pass`, `cargo`) VALUES
@@ -120,38 +123,37 @@ INSERT INTO `users` (`id_users`, `nome`, `email`, `pass`, `cargo`) VALUES
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 -- Dumping structure for table adc_http404.veiculos
-DROP TABLE IF EXISTS `veiculos`;
 CREATE TABLE IF NOT EXISTS `veiculos` (
   `IDVeiculo` int NOT NULL AUTO_INCREMENT,
   `modelo` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `marca` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `preco` float NOT NULL,
-  `Tipoveiculo` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `tipoveiculo` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `estadoveiculo` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `velocidademaxima` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `peso` float NOT NULL,
   `consumomedio` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `cambio` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `combustivel` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `Em_stock` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `pronto_adicionar_stock` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `em_stock` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `quantidade_stock` int NOT NULL,
+  `pronto_adicionar_stand` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`IDVeiculo`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Dumping data for table adc_http404.veiculos: ~6 rows (approximately)
 DELETE FROM `veiculos`;
 /*!40000 ALTER TABLE `veiculos` DISABLE KEYS */;
-INSERT INTO `veiculos` (`IDVeiculo`, `modelo`, `marca`, `preco`, `Tipoveiculo`, `estadoveiculo`, `velocidademaxima`, `peso`, `consumomedio`, `cambio`, `combustivel`, `Em_stock`, `pronto_adicionar_stock`) VALUES
-	(1, 'RC 200t', 'Lexus', 50000, 'Carro', 'Novo', '230 km/h', 1755, ' 7.2 litros/100km', 'Automatico', 'Gasolina', 'Sim', NULL),
-	(2, 'S60 T6 AWD R-Design Platinum 2017', 'Volvo', 30000, 'Carro', 'Novo', '230 km/h', 1684, ' 10 litros/100km', 'Automatico', 'Gasolina', 'Sim', NULL),
-	(3, 'GR Supra', 'Toyota', 66000, 'Carro', 'Novo', '250 km/h', 1815, '6 litros/100km', 'Automatico', 'Gasolina', 'Sim', NULL),
-	(4, 'K 1600 GT', 'BMW', 17000, 'Moto', 'Novo', '250 km/h', 306, '6 litros/100km', 'Manual', 'Gasolina', 'Sim', NULL),
-	(5, '525 D PACK M AUTO', 'BMW', 51000, 'Carro', 'Semi-Novo', '243 km/h', 1725, '6.2 litros/100km', 'Semi-Automatico', 'Gasolina', 'Não', 'Sim'),
-	(6, 'Tracer 700', 'Yamaha', 8700, 'Moto', 'Novo', '201 km/h', 196, '4.3 litros/100km', 'Manual', 'Gasolina', 'Não', 'Sim');
+INSERT INTO `veiculos` (`IDVeiculo`, `modelo`, `marca`, `preco`, `tipoveiculo`, `estadoveiculo`, `velocidademaxima`, `peso`, `consumomedio`, `cambio`, `combustivel`, `em_stock`, `quantidade_stock`, `pronto_adicionar_stand`) VALUES
+	(1, 'RC 200t', 'Lexus', 50000, 'Carro', 'Novo', '230 km/h', 1755, ' 7.2 litros/100km', 'Automatico', 'Gasolina', 'Sim', 1, 'Sim'),
+	(2, 'S60 T6 AWD R-Design Platinum 2017', 'Volvo', 30000, 'Carro', 'Novo', '230 km/h', 1684, ' 10 litros/100km', 'Automatico', 'Gasolina', 'Sim', 1, 'Sim'),
+	(3, 'GR Supra', 'Toyota', 66000, 'Carro', 'Novo', '250 km/h', 1815, '6 litros/100km', 'Automatico', 'Gasolina', 'Sim', 1, 'Sim'),
+	(4, 'K 1600 GT', 'BMW', 17000, 'Moto', 'Novo', '250 km/h', 306, '6 litros/100km', 'Manual', 'Gasolina', 'Sim', 1, 'Sim'),
+	(5, '525 D PACK M AUTO', 'BMW', 51000, 'Carro', 'Semi-Novo', '243 km/h', 1725, '6.2 litros/100km', 'Semi-Automatico', 'Gasolina', 'Nao', 0, 'Sim'),
+	(6, 'Tracer 700', 'Yamaha', 8700, 'Moto', 'Novo', '201 km/h', 196, '4.3 litros/100km', 'Manual', 'Gasolina', 'Nao', 0, 'Sim');
 /*!40000 ALTER TABLE `veiculos` ENABLE KEYS */;
 
 -- Dumping structure for table adc_http404.vendas
-DROP TABLE IF EXISTS `vendas`;
 CREATE TABLE IF NOT EXISTS `vendas` (
   `IDVenda` int NOT NULL AUTO_INCREMENT,
   `IDNIF_Cliente` char(9) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
@@ -171,7 +173,7 @@ CREATE TABLE IF NOT EXISTS `vendas` (
   CONSTRAINT `FKIDVeiculo` FOREIGN KEY (`IDVeiculo`) REFERENCES `veiculos` (`IDVeiculo`) ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Dumping data for table adc_http404.vendas: ~10 rows (approximately)
+-- Dumping data for table adc_http404.vendas: ~7 rows (approximately)
 DELETE FROM `vendas`;
 /*!40000 ALTER TABLE `vendas` DISABLE KEYS */;
 INSERT INTO `vendas` (`IDVenda`, `IDNIF_Cliente`, `IDVeiculo`, `IDArtigo`, `ValorVenda`, `DataVenda`, `IDFuncionario`) VALUES
