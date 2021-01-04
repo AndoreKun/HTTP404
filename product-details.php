@@ -1,4 +1,25 @@
-<?php session_start();  ?>
+<?php session_start(); 
+
+function feedback ($id, $tipo_produto){
+    if($tipo_produto == "veiculo"){
+        if(isset($_SESSION['id_veiculo']['id_veiculo'])){
+            if($_SESSION['id_veiculo']['id_veiculo'] == 1)
+            {
+                echo $_SESSION['feedback']['feedback'];
+            }
+        }
+    }
+    if($tipo_produto == "artigo"){
+        if(isset($_SESSION['id_artigo']['id_artigo'])){
+            if($_SESSION['id_artigo']['id_artigo'] == 1)
+            {
+                echo $_SESSION['id_artigo']['id_artigo'];
+            }
+        }
+    }
+
+}
+?>
 <!doctype html>
 <html class="no-js" lang="zxx">
     <head>
@@ -50,7 +71,7 @@
                                                 <ul>
                                                     <li><a href="index.html">PÁGINA INICIAL</a></li>
                                                     <li class="active"><a href="about-us.html">SOBRE NÓS</a></li>
-                                                    <li><a href="checkout.html">Checkout</a>                                                     
+                                                    <li><a href="checkout.php">Checkout</a>                                                     
                                                     </li>
                                                     <li><a href="#">ACESSOS</a>
                                                         <ul>
@@ -166,7 +187,7 @@
                                             <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                         </form>
                                     <br/>
-                                    <?php if ($_SESSION['id_veiculo']['id_veiculo'] == 1){echo $_SESSION['feedback']['feedback'];}?>
+                                    <?php feedback(1, "veiculo")?>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                    <ul>
@@ -263,7 +284,7 @@
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <br/>
-                                    <?php if ($_SESSION['id_veiculo']['id_veiculo'] == 2){echo $_SESSION['feedback']['feedback'];}?>
+                                    <?php feedback(2, "veiculo")?>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                    <ul>
@@ -361,7 +382,7 @@
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <br/>
-                                    <?php if ($_SESSION['id_veiculo']['id_veiculo'] == 3){echo $_SESSION['feedback']['feedback'];}?>
+                                    <?php feedback(3, "veiculo") ?>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                   <ul>
@@ -458,7 +479,7 @@
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <br/>
-                                    <?php if ($_SESSION['id_veiculo']['id_veiculo'] == 4){echo $_SESSION['feedback']['feedback'];}?>
+                                    <?php feedback(4, "veiculo") ?>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                   <ul>
@@ -521,7 +542,7 @@
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <br/>
-                                    <?php if ($_SESSION['id_artigo']['id_artigo'] == 11){echo $_SESSION['feedback']['feedback'];}?>
+                                    <?php feedback(11, "artigo") ?>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                     <ul>
@@ -584,7 +605,7 @@
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <br/>
-                                    <?php if ($_SESSION['id_artigo']['id_artigo'] == 12){echo $_SESSION['feedback']['feedback'];}?>
+                                    <?php feedback(12, "artigo") ?>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                     <ul>
@@ -647,7 +668,7 @@
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <br/>
-                                    <?php if ($_SESSION['id_artigo']['id_artigo'] == 13){echo $_SESSION['feedback']['feedback'];}?>
+                                    <?php feedback(13, "artigo") ?>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                     <ul>
@@ -710,7 +731,7 @@
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <br/>
-                                    <?php if ($_SESSION['id_artigo']['id_artigo'] == 14){echo $_SESSION['feedback']['feedback'];}?>
+                                    <?php feedback(14, "artigo") ?>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                    <ul>
@@ -773,7 +794,7 @@
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <br/>
-                                    <?php if ($_SESSION['id_artigo']['id_artigo'] == 15){echo $_SESSION['feedback']['feedback'];}?>
+                                    <?php feedback(15, "artigo") ?>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                    <ul>
@@ -836,7 +857,7 @@
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <br/>
-                                    <?php if ($_SESSION['id_artigo']['id_artigo'] == 16){echo $_SESSION['feedback']['feedback'];}?>
+                                    <?php feedback(16, "artigo") ?>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                    <ul>
@@ -899,7 +920,7 @@
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <br/>
-                                    <?php if ($_SESSION['id_artigo']['id_artigo'] == 119){echo $_SESSION['feedback']['feedback'];}?>
+                                    <?php feedback(119, "artigo") ?>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                    <ul>
@@ -962,7 +983,7 @@
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <br/>
-                                    <?php if ($_SESSION['id_artigo']['id_artigo'] == 17){echo $_SESSION['feedback']['feedback'];}?>
+                                    <?php feedback(17, "artigo") ?>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                    <ul>
@@ -1025,7 +1046,7 @@
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <br/>
-                                    <?php if ($_SESSION['id_artigo']['id_artigo'] == 18){echo $_SESSION['feedback']['feedback'];}?>
+                                    <?php feedback(18, "artigo") ?>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                   <ul>
@@ -1088,7 +1109,7 @@
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <br/>
-                                    <?php if ($_SESSION['id_artigo']['id_artigo'] == 19){echo $_SESSION['feedback']['feedback'];}?>
+                                    <?php feedback(19, "artigo") ?>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                   <ul>
@@ -1151,7 +1172,7 @@
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <br/>
-                                    <?php if ($_SESSION['id_artigo']['id_artigo'] == 110){echo $_SESSION['feedback']['feedback'];}?>
+                                    <?php feedback(110, "artigo") ?>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                   <ul>
@@ -1214,7 +1235,7 @@
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <br/>
-                                    <?php if ($_SESSION['id_artigo']['id_artigo'] == 112){echo $_SESSION['feedback']['feedback'];}?>
+                                    <?php feedback(112, "artigo") ?>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                   <ul>
@@ -1276,7 +1297,7 @@
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <br/>
-                                    <?php if ($_SESSION['id_artigo']['id_artigo'] == 113){echo $_SESSION['feedback']['feedback'];}?>
+                                    <?php feedback(113, "artigo") ?>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                   <ul>
@@ -1337,7 +1358,7 @@
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <br/>
-                                    <?php if ($_SESSION['id_artigo']['id_artigo'] == 114){echo $_SESSION['feedback']['feedback'];}?>
+                                    <?php feedback(114, "artigo") ?>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                    <ul>
@@ -1400,7 +1421,7 @@
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <br/>
-                                    <?php if ($_SESSION['id_artigo']['id_artigo'] == 115){echo $_SESSION['feedback']['feedback'];}?>
+                                    <?php feedback(115, "artigo") ?>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                    <ul>
@@ -1463,7 +1484,7 @@
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <br/>
-                                    <?php if ($_SESSION['id_artigo']['id_artigo'] == 116){echo $_SESSION['feedback']['feedback'];}?>
+                                    <?php feedback(116, "artigo") ?>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                   <ul>
@@ -1526,7 +1547,7 @@
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <br/>
-                                    <?php if ($_SESSION['id_artigo']['id_artigo'] == 117){echo $_SESSION['feedback']['feedback'];}?>
+                                    <?php feedback(117, "artigo") ?>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                   <ul>
@@ -1589,7 +1610,7 @@
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <br/>
-                                    <?php if ($_SESSION['id_artigo']['id_artigo'] == 118){echo $_SESSION['feedback']['feedback'];}?>
+                                    <?php feedback(118, "artigo") ?>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                     <ul>
