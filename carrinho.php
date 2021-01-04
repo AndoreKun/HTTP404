@@ -1,11 +1,24 @@
 <?php 
+ini_set('display_errors', 0);
 session_start();
 
 if(isset($_GET['mudar_carrinho'])){
 
-    $product_id = $_GET['id_artigo']; //the product id from the URL
     $action = $_GET['acao']; //the action from the URL
     $voltar_para = $_GET['voltar_para'];
+    $product_id = "";
+    if(isset($_GET['id_artigo'])){
+        $id_artigo = $_GET['id_artigo']; //the product id from the URL
+        $product_id = (substr($id_artigo, 1));
+        $_SESSION['id_artigo']['id_artigo'] = $id_artigo;
+    }
+
+    if(isset($_GET['id_veiculo'])){
+        $id_veiculo = $_GET['id_veiculo']; //the product id from the URL
+        $product_id = $id_veiculo;
+        $_SESSION['id_veiculo']['id_veiculo'] = $id_veiculo;
+    }
+
 
     switch($action) { //decide what to do
 
@@ -17,7 +30,6 @@ if(isset($_GET['mudar_carrinho'])){
                             <input class='btn-style cr-btn' value='Ver Carrinho' type='button' style='cursor: pointer;'></input>
                             </a>
                         </div>";
-            $_SESSION['id_artigo']['id_artigo'] = $product_id;
         break;
 
         case "remover":
