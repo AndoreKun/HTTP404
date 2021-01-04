@@ -1,3 +1,61 @@
+<?php
+session_start();
+
+if(isset($_SESSION['cart'])){ //if the cart isn't empty
+        //iterate through the cart, the $product_id is the key and $quantity is the value
+        $total = 0;
+        $veiculo = FALSE;
+        $artigo = FALSE;
+        $produtos = array();
+        foreach($_SESSION['cart'] as $product_id => $quantity) {
+            $consulta = "";
+            if (isset($_SESSION['id_veiculo']['id_veiculo'])){
+                $consulta = "SELECT modelo, marca, preco FROM veiculos WHERE IDVeiculo = '$product_id'";
+                $veiculo = TRUE;
+            }
+            if (isset($_SESSION['id_artigo']['id_artigo'])){
+                $consulta = "SELECT nome, preco FROM artigos WHERE IDArtigo = '$product_id'";
+                $artigo = TRUE;
+            }
+            //get the name, description and price from the database - this will depend on your database implementation.
+            //use sprintf to make sure that $product_id is inserted into the query as a number - to prevent SQL injection
+            $pass_users = 'http404#2021%';
+            $cargo = "admin";
+            include('database/selects_basedados.php');
+            
+            //Only display the row if there is a product (though there should always be as we have already checked)
+            if($dados) {
+                foreach($dados as $linha){
+                    if($veiculo == TRUE){
+                        $modelo = $linha['modelo'];
+                        $marca = $linha['marca'];
+                    }
+                    if($artigo == TRUE){
+                        $nome = $linha['nome'];
+                    }
+                    $preco = $linha['preco'];
+                }
+                if(isset($_SESSION['produtos']['produtos'])){
+                    $produtos = $_SESSION['produtos']['produtos'];
+                }
+                if($veiculo == TRUE){
+                    $veiculo_nome = $marca.''.$modelo;
+                    array_push($produtos, $veiculo_nome);
+                    $_SESSION['produtos']['produtos'] = $produtos;
+                }
+                if($artigo == TRUE){
+                    array_push($produtos, $nome);
+                    $_SESSION['produtos']['produtos'] = $produtos;
+                }
+                $line_cost = $preco * $quantity; //work out the line cost
+                $total = $total + $line_cost; //add to the total cost
+            }else{
+            //otherwise tell the user they have no items in their cart
+            $sem_produtos = "Não há nenhum produto no carrinho";
+            }
+        }
+    }
+    ?>
 <!doctype html>
 <html class="no-js" lang="zxx">
     <head>
@@ -50,7 +108,8 @@
                                                     <li class="active"><a href="about-us.html">SOBRE NÓS</a></li>
                                                     <li><a href="#">LOJA</a>
                                                         <ul>
-                                                            <li><a href="product-details.html">Loja</a></li>                                                                                                                                                                      
+                                                            <li><a href="shop.html">Loja</a></li>                                                       
+                                                            <li><a href="checkout.html">Checkout</a></li>                                                         
                                                         </ul>
                                                     </li>
                                                     <li><a href="#">ACESSOS</a>
@@ -172,9 +231,8 @@
                                                 <input type="text" />
                                             </div>
                                         </div>
-                                        							
+                                    <div id="carrinho"></div> 							
                                     </div>
-                                    
                                         <div class="order-notes">
                                             <div class="checkout-form-list mrg-nn">
                                                 <label>Informações adicionais</label>
@@ -188,37 +246,20 @@
                         <div class="col-lg-6 col-md-12 col-12">
                             <div class="your-order">
                                 <h3>A SUA ENCOMENDA</h3>
-                                <div class="your-order-table table-responsive">
+                                <?php if(isset($produtos)){?>
+                                <div class="your-order-table table-responsive" >
                                     <table>
-                                        <thead>
-                                            <tr>
-                                                <th class="product-name">Produto</th>
-                                                <th class="product-total">Total</th>
-                                            </tr>							
-                                        </thead>
-                                        <tbody>
+                                        <?php foreach($produtos as $produto){ ?>
                                             <tr class="cart_item">
                                                 <td class="product-name">
-                                                    Capacete  <strong class="product-quantity"> × 1</strong>
-                                                </td>
-                                                <td class="product-total">
-                                                    <span class="amount">£165.00</span>
-                                                </td>
+                                                    <?php echo $produto;?> <strong class="product-quantity"><?php echo "X".$quantity;?></strong>  
+                                                </tr> 
                                             </tr>
-                                            <tr class="cart_item">
-                                                <td class="product-name">
-                                                    Botas	<strong class="product-quantity"> × 1</strong>
-                                                </td>
-                                                <td class="product-total">
-                                                    <span class="amount">50.00¨€</span>
-                                                </td>
-                                            </tr>
-                                        </tbody>
+                                            <td class="product-total">
+                                                <span class="amount"><?php echo $total;?>€</span>
+                                            </td>
+                                        <?php } ?>
                                         <tfoot>
-                                            <tr class="cart-subtotal">
-                                                <th>Subtotal</th>
-                                                <td><span class="amount">215.00€</span></td>
-                                            </tr>
                                             <tr class="order-total">
                                                 <th>Total</th>
                                                 <td><strong><span class="amount">215.00€</span></strong>
@@ -226,12 +267,26 @@
                                             </tr>								
                                         </tfoot>
                                     </table>
-                                </div>                         
+                                    <div class="order-button-payment">
+                                        <form method="get" action="carrinho.php">
+                                            <input type="hidden" id="acao" name="acao" value="limpar">
+                                            <input type="hidden" id="voltar_para" name="voltar_para" value="checkout.php#carrinho">
+                                            <input style="color:red;" name="mudar_carrinho" value="Limpar Carrinho" type="submit"></input>
+                                        </form>
+                                    <div>
+                                    <div class="order-button-payment">
+                                            <input type="submit" value="Fazer Pedido" />
+                                        </div>    
+                                </div>
+                                <?php } else { echo "<h4>Não há nenhum produto no carrinho</h4>"; } ?>                         
                                         <div class="order-button-payment">
-                                            <input type="submit" value="Place order" />
+                                            <a href="product-details.php">
+                                            <input class='btn-style cr-btn' value='Voltar para a Loja' type='button' style='cursor: pointer;'></input>
+                                            </a>
                                         </div>								
                                     </div>
                                 </div>
+                                <br/>
                             </div>
                         </div>
                     </div>
