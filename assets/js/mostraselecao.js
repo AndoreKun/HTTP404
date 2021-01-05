@@ -1,5 +1,8 @@
 function admSelectCheck(nameSelect, adicionarvalores)
 {
+    /// <summary>
+    /// 
+    /// </summary>
     console.log(nameSelect);
     if(nameSelect){
         admOptionValue = document.getElementById("opcao").value;
