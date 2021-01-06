@@ -216,7 +216,7 @@ if(isset($_SESSION['produtos']['produtos'])){
                                         <tfoot>
                                             <tr class="order-total">
                                                 <th>Total</th>
-                                                <td><strong><span class="amount">0.00€</span></strong>
+                                                <td><strong><span class="amount">000.00€</span></strong>
                                                 </td>
                                             </tr>								
                                         </tfoot>
