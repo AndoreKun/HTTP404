@@ -1,61 +1,15 @@
-<?php
-session_start();
+<?php session_start(); 
 
-if(isset($_SESSION['cart'])){ //if the cart isn't empty
-        //iterate through the cart, the $product_id is the key and $quantity is the value
-        $total = 0;
-        $veiculo = FALSE;
-        $artigo = FALSE;
-        $produtos = array();
-        foreach($_SESSION['cart'] as $product_id => $quantity) {
-            $consulta = "";
-            if (isset($_SESSION['id_veiculo']['id_veiculo'])){
-                $consulta = "SELECT modelo, marca, preco FROM veiculos WHERE IDVeiculo = '$product_id'";
-                $veiculo = TRUE;
-            }
-            if (isset($_SESSION['id_artigo']['id_artigo'])){
-                $consulta = "SELECT nome, preco FROM artigos WHERE IDArtigo = '$product_id'";
-                $artigo = TRUE;
-            }
-            //get the name, description and price from the database - this will depend on your database implementation.
-            //use sprintf to make sure that $product_id is inserted into the query as a number - to prevent SQL injection
-            $pass_users = 'http404#2021%';
-            $cargo = "admin";
-            include('database/selects_basedados.php');
-            
-            //Only display the row if there is a product (though there should always be as we have already checked)
-            if($dados) {
-                foreach($dados as $linha){
-                    if($veiculo == TRUE){
-                        $modelo = $linha['modelo'];
-                        $marca = $linha['marca'];
-                    }
-                    if($artigo == TRUE){
-                        $nome = $linha['nome'];
-                    }
-                    $preco = $linha['preco'];
-                }
-                if(isset($_SESSION['produtos']['produtos'])){
-                    $produtos = $_SESSION['produtos']['produtos'];
-                }
-                if($veiculo == TRUE){
-                    $veiculo_nome = $marca.''.$modelo;
-                    array_push($produtos, $veiculo_nome);
-                    $_SESSION['produtos']['produtos'] = $produtos;
-                }
-                if($artigo == TRUE){
-                    array_push($produtos, $nome);
-                    $_SESSION['produtos']['produtos'] = $produtos;
-                }
-                $line_cost = $preco * $quantity; //work out the line cost
-                $total = $total + $line_cost; //add to the total cost
-            }else{
-            //otherwise tell the user they have no items in their cart
-            $sem_produtos = "Não há nenhum produto no carrinho";
-            }
-        }
+if(isset($_SESSION['produtos']['produtos'])){
+    $produtos = $_SESSION['produtos']['produtos'];
+    if(isset($_SESSION['num_produtos']['num_produtos']))    
+    {
+        $num_produtos = $_SESSION['num_produtos']['num_produtos'];
     }
-    ?>
+
+
+} 
+?>
 <!doctype html>
 <html class="no-js" lang="zxx">
     <head>
@@ -237,22 +191,28 @@ if(isset($_SESSION['cart'])){ //if the cart isn't empty
                                 </div>
                             </form>
                         </div>	
-                        <div class="col-lg-6 col-md-12 col-12">
+                        <div class="col-lg-6 col-md-12 col-12" style="text-align: center;">
                             <div class="your-order">
                                 <h3>A SUA ENCOMENDA</h3>
                                 <?php if(isset($produtos)){?>
                                 <div class="your-order-table table-responsive" >
                                     <table>
-                                        <?php foreach($produtos as $produto){ ?>
+                                        <thead>
                                             <tr class="cart_item">
-                                                <td class="product-name">
-                                                    <?php echo $produto;?> <strong class="product-quantity"><?php echo "X".$quantity;?></strong>  
-                                                </tr> 
+                                                <td id="teste" class="product-name">
+                                                <label>Nome:</label>
+                                                    <?php echo $nome; ?>   
+                                                </td> 
+                                                <td>
+                                                <label>Quantidade:</label>
+                                                    <strong><?php echo "X".$quantidade;?></strong>
+                                                </td>
+                                                <td class="product-total">
+                                                    <label>Preço:</label>
+                                                    <span class="amount"><?php echo $total;?>€</span>
+                                                </td>
                                             </tr>
-                                            <td class="product-total">
-                                                <span class="amount"><?php echo $total;?>€</span>
-                                            </td>
-                                        <?php } ?>
+                                        </thead>
                                         <tfoot>
                                             <tr class="order-total">
                                                 <th>Total</th>

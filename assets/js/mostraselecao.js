@@ -1,5 +1,8 @@
 function admSelectCheck(nameSelect, adicionarvalores)
 {
+    /// <summary>
+    /// Função para mostrar e esconder elementos ao selecionar opções de uma caixa de seleção
+    /// </summary>
     console.log(nameSelect);
     if(nameSelect){
         admOptionValue = document.getElementById("opcao").value;
