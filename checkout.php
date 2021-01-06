@@ -6,9 +6,7 @@ if(isset($_SESSION['produtos']['produtos'])){
     {
         $num_produtos = $_SESSION['num_produtos']['num_produtos'];
     }
-    $nome = $produtos[0];
-    $quantidade = $produtos[1];
-    $total = $produtos[2];
+
 
 } 
 ?>
