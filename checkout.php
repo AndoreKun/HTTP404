@@ -2,12 +2,7 @@
 
 if(isset($_SESSION['produtos']['produtos'])){
     $produtos = $_SESSION['produtos']['produtos'];
-    if(isset($_SESSION['num_produtos']['num_produtos']))    
-    {
-        $num_produtos = $_SESSION['num_produtos']['num_produtos'];
-    }
-
-
+    $num_produtos = count($produtos);  
 } 
 ?>
 <!doctype html>
@@ -197,20 +192,28 @@ if(isset($_SESSION['produtos']['produtos'])){
                                 <?php if(isset($produtos)){?>
                                 <div class="your-order-table table-responsive" >
                                     <table>
+                                    <?php for($num_linhas = 0; $num_linhas < $num_produtos;) {
+                                        $nomes_produtos = $nomes_produtos + 0;  
+                                        $qntd_produtos ++;
+                                        $preco_produtos ++
+                                        
+                                        
+                                        ?>
                                         <thead>
                                             <tr class="cart_item">
                                                 <td id="teste" class="product-name">
                                                 <label>Nome:</label>
-                                                    <?php echo $nome; ?>   
-                                                </td> 
+                                                    <?php echo $produtos[$nomes_produtos]; ?>   
+                                                </td>
                                                 <td>
                                                 <label>Quantidade:</label>
-                                                    <strong><?php echo "X".$quantidade;?></strong>
+                                                    <strong><?php echo "X".$produtos[$qntd_produtos];?></strong>
                                                 </td>
                                                 <td class="product-total">
                                                     <label>Preço:</label>
-                                                    <span class="amount"><?php echo $total;?>€</span>
+                                                    <span class="amount"><?php echo $produtos[$preco_produtos];?>€</span>
                                                 </td>
+                                            <?php } ?> 
                                             </tr>
                                         </thead>
                                         <tfoot>
