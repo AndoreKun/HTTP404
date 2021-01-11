@@ -90,12 +90,12 @@ if(isset($_SESSION['cart'])){ //if the cart isn't empty
             if($veiculo == TRUE){
                 $veiculo_nome = $marca.''.$modelo;
                 $line_cost = $preco * $quantity; //work out the line cost
-                $total_veiculo = $total + $line_cost; //add to the total cost
+                $total_veiculo = $total_veiculo + $line_cost; //add to the total cost
                 array_push($produtos, $veiculo_nome, $quantity, $total_veiculo);
             }
             if($artigo == TRUE){
                 $line_cost = $preco * $quantity; //work out the line cost
-                $total_artigo = $total + $line_cost; //add to the total cost
+                $total_artigo = $total_artigo + $line_cost; //add to the total cost
                 array_push($produtos, $nome, $quantity, $total_artigo);
             }
         }
