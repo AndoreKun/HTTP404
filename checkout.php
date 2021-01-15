@@ -2,7 +2,9 @@
 
 if(isset($_SESSION['produtos']['produtos'])){
     $produtos = $_SESSION['produtos']['produtos'];
-    $num_produtos = count($produtos);  
+    $num_produtos = count($produtos);
+    $num_final_produtos = $num_produtos / 3;  
+
 } 
 ?>
 <!doctype html>
@@ -192,12 +194,12 @@ if(isset($_SESSION['produtos']['produtos'])){
                                 <?php if(isset($produtos)){?>
                                 <div class="your-order-table table-responsive" >
                                     <table>
-                                    <?php for($num_linhas = 0; $num_linhas < $num_produtos;) {
-                                        $nomes_produtos = $nomes_produtos + 0;  
-                                        $qntd_produtos ++;
-                                        $preco_produtos ++
-                                        
-                                        
+                                    <?php 
+                                    $nomes_produtos = 0;
+                                    $qntd_produtos = 1;
+                                    $preco_produtos = 2;
+                                    $primeira_run = TRUE;
+                                    for($num_linhas = 0; $num_final_produtos > $num_linhas; $num_linhas++) {
                                         ?>
                                         <thead>
                                             <tr class="cart_item">
@@ -213,7 +215,11 @@ if(isset($_SESSION['produtos']['produtos'])){
                                                     <label>Preço:</label>
                                                     <span class="amount"><?php echo $produtos[$preco_produtos];?>€</span>
                                                 </td>
-                                            <?php } ?> 
+                                            <?php 
+                                        $nomes_produtos += 3;
+                                        $qntd_produtos += 3;
+                                        $preco_produtos += 3;
+                                        } ?> 
                                             </tr>
                                         </thead>
                                         <tfoot>
