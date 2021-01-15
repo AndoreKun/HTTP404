@@ -1,20 +1,19 @@
 <?php session_start(); 
+/**
+ * Funcao feedback que retorna uma mensagem quando um produto/artigo é adicionado/removido do carrinho
+*@author André Pereira
+
+*/
 
 function feedback ($id, $tipo_produto){
     if($tipo_produto == "veiculo"){
         if(isset($_SESSION['id_veiculo']['id_veiculo'])){
-            if($_SESSION['id_veiculo']['id_veiculo'] == 1)
-            {
                 echo $_SESSION['feedback']['feedback'];
             }
         }
-    }
     if($tipo_produto == "artigo"){
         if(isset($_SESSION['id_artigo']['id_artigo'])){
-            if($_SESSION['id_artigo']['id_artigo'] == 1)
-            {
                 echo $_SESSION['id_artigo']['id_artigo'];
-            }
         }
     }
 
