@@ -1,5 +1,6 @@
 <?php session_start(); 
 
+// Funcao feedback
 function feedback ($id, $tipo_produto){
     if($tipo_produto == "veiculo"){
         if(isset($_SESSION['id_veiculo']['id_veiculo'])){
