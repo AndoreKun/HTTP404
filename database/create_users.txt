@@ -2,7 +2,7 @@
 
 -- Criar usuário e dar privilégios para `patrao`@`localhost`
 
-CREATE USER `patrao`@`localhost` IDENTIFIED BY `patrao&%2021`;
+CREATE USER `patrao`@`localhost` IDENTIFIED BY 'patrao&%2021';
 
 GRANT SELECT ON `adc_http404`.`vendas` TO `patrao`@`localhost`;
 
