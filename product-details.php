@@ -1,22 +1,33 @@
 <?php session_start(); 
-/**
- * Funcao feedback que retorna uma mensagem quando um produto/artigo é adicionado/removido do carrinho
-*@author André Pereira
-
-*/
 
 function feedback ($id, $tipo_produto){
+    /**
+        *Funcao feedback que retorna uma mensagem quando um produto/artigo é adicionado/removido do carrinho
+        *@author André Pereira
+        *@param int $id Número de Identificação do produto/veiculo, utilizado para mostrar a mensagem apenas naquele produto/artigo
+        *@param string $tipo_produto Tipo do produto artigo/veículo
+        *@param string $feedback Contém o feedback em html quando um produto é adicionado ou removido do carrinho
+        *@return array $verificacao Retorna as variáveis id e feedback
+        *@version 2.1                                                                                                                                                                                                                                                                               
+
+    */
+    $feedback = "";
     if($tipo_produto == "veiculo"){
         if(isset($_SESSION['id_veiculo']['id_veiculo'])){
-                echo $_SESSION['feedback']['feedback'];
+            if ($_SESSION['id_veiculo']['id_veiculo'] == $id){
+                $feedback = $_SESSION['feedback']['feedback'];
             }
         }
+    }
     if($tipo_produto == "artigo"){
         if(isset($_SESSION['id_artigo']['id_artigo'])){
-                echo $_SESSION['id_artigo']['id_artigo'];
+            if ($_SESSION['id_artigo']['id_artigo'] == $id){
+                $feedback = $_SESSION['feedback']['feedback'];
+            }
         }
     }
-
+$verificacao = array($id, $feedback);
+return $verificacao;
 }
 ?>
 <!doctype html>
@@ -186,7 +197,11 @@ function feedback ($id, $tipo_produto){
                                             <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                         </form>
                                     <br/>
-                                    <?php feedback(1, "veiculo")?>
+                                    <?php 
+                                    $retorno = feedback(1, "veiculo");
+                                    if ($retorno[0] == 1){
+                                        echo $retorno[1];
+                                    }?>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                    <ul>
@@ -283,7 +298,11 @@ function feedback ($id, $tipo_produto){
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <br/>
-                                    <?php feedback(2, "veiculo")?>
+                                    <?php 
+                                    $retorno = feedback(2, "veiculo");
+                                    if ($retorno[0] == 2){
+                                        echo $retorno[1];
+                                    }?>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                    <ul>
@@ -381,7 +400,11 @@ function feedback ($id, $tipo_produto){
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <br/>
-                                    <?php feedback(3, "veiculo") ?>
+                                    <?php 
+                                    $retorno = feedback(3, "veiculo");
+                                    if ($retorno[0] == 3){
+                                        echo $retorno[1];
+                                    }?>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                   <ul>
@@ -478,7 +501,11 @@ function feedback ($id, $tipo_produto){
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <br/>
-                                    <?php feedback(4, "veiculo") ?>
+                                    <?php 
+                                    $retorno = feedback(4, "veiculo");
+                                    if ($retorno[0] == 4){
+                                        echo $retorno[1];
+                                    }?>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                   <ul>
@@ -541,7 +568,11 @@ function feedback ($id, $tipo_produto){
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <br/>
-                                    <?php feedback(11, "artigo") ?>
+                                    <?php 
+                                    $retorno = feedback(11, "artigo");
+                                    if ($retorno[0] == 11){
+                                        echo $retorno[1];
+                                    }?>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                     <ul>
@@ -604,7 +635,11 @@ function feedback ($id, $tipo_produto){
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <br/>
-                                    <?php feedback(12, "artigo") ?>
+                                    <?php 
+                                    $retorno = feedback(12, "artigo");
+                                    if ($retorno[0] == 12){
+                                        echo $retorno[1];
+                                    }?>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                     <ul>
@@ -667,7 +702,11 @@ function feedback ($id, $tipo_produto){
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <br/>
-                                    <?php feedback(13, "artigo") ?>
+                                    <?php 
+                                    $retorno = feedback(13, "artigo");
+                                    if ($retorno[0] == 13){
+                                        echo $retorno[1];
+                                    }?>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                     <ul>
@@ -730,7 +769,11 @@ function feedback ($id, $tipo_produto){
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <br/>
-                                    <?php feedback(14, "artigo") ?>
+                                    <?php 
+                                    $retorno = feedback(14, "artigo");
+                                    if ($retorno[0] == 14){
+                                        echo $retorno[1];
+                                    }?>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                    <ul>
@@ -793,7 +836,11 @@ function feedback ($id, $tipo_produto){
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <br/>
-                                    <?php feedback(15, "artigo") ?>
+                                    <?php 
+                                    $retorno = feedback(15, "artigo");
+                                    if ($retorno[0] == 15){
+                                        echo $retorno[1];
+                                    }?>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                    <ul>
@@ -856,7 +903,11 @@ function feedback ($id, $tipo_produto){
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <br/>
-                                    <?php feedback(16, "artigo") ?>
+                                    <?php 
+                                    $retorno = feedback(16, "artigo");
+                                    if ($retorno[0] == 16){
+                                        echo $retorno[1];
+                                    }?>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                    <ul>
@@ -919,7 +970,11 @@ function feedback ($id, $tipo_produto){
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <br/>
-                                    <?php feedback(119, "artigo") ?>
+                                    <?php 
+                                    $retorno = feedback(119, "artigo");
+                                    if ($retorno[0] == 119){
+                                        echo $retorno[1];
+                                    }?>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                    <ul>
@@ -982,7 +1037,11 @@ function feedback ($id, $tipo_produto){
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <br/>
-                                    <?php feedback(17, "artigo") ?>
+                                    <?php 
+                                    $retorno = feedback(1, "veiculo");
+                                    if ($retorno[0] == 17){
+                                        echo $retorno[1];
+                                    }?>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                    <ul>
@@ -1045,7 +1104,11 @@ function feedback ($id, $tipo_produto){
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <br/>
-                                    <?php feedback(18, "artigo") ?>
+                                    <?php 
+                                    $retorno = feedback(18, "artigo");
+                                    if ($retorno[0] == 18){
+                                        echo $retorno[1];
+                                    }?>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                   <ul>
@@ -1108,7 +1171,11 @@ function feedback ($id, $tipo_produto){
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <br/>
-                                    <?php feedback(19, "artigo") ?>
+                                    <?php 
+                                    $retorno = feedback(19, "artigo");
+                                    if ($retorno[0] == 19){
+                                        echo $retorno[1];
+                                    }?>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                   <ul>
@@ -1171,7 +1238,11 @@ function feedback ($id, $tipo_produto){
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <br/>
-                                    <?php feedback(110, "artigo") ?>
+                                    <?php 
+                                    $retorno = feedback(110, "artigo");
+                                    if ($retorno[0] == 110){
+                                        echo $retorno[1];
+                                    }?>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                   <ul>
@@ -1234,7 +1305,11 @@ function feedback ($id, $tipo_produto){
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <br/>
-                                    <?php feedback(112, "artigo") ?>
+                                    <?php 
+                                    $retorno = feedback(112, "artigo");
+                                    if ($retorno[0] == 112){
+                                        echo $retorno[1];
+                                    }?>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                   <ul>
@@ -1296,7 +1371,11 @@ function feedback ($id, $tipo_produto){
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <br/>
-                                    <?php feedback(113, "artigo") ?>
+                                    <?php 
+                                    $retorno = feedback(113, "artigo");
+                                    if ($retorno[0] == 113){
+                                        echo $retorno[1];
+                                    }?>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                   <ul>
@@ -1357,7 +1436,11 @@ function feedback ($id, $tipo_produto){
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <br/>
-                                    <?php feedback(114, "artigo") ?>
+                                    <?php 
+                                    $retorno = feedback(114, "artigo");
+                                    if ($retorno[0] == 114){
+                                        echo $retorno[1];
+                                    }?>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                    <ul>
@@ -1420,7 +1503,11 @@ function feedback ($id, $tipo_produto){
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <br/>
-                                    <?php feedback(115, "artigo") ?>
+                                    <?php 
+                                    $retorno = feedback(115, "artigo");
+                                    if ($retorno[0] == 115){
+                                        echo $retorno[1];
+                                    }?>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                    <ul>
@@ -1483,7 +1570,11 @@ function feedback ($id, $tipo_produto){
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <br/>
-                                    <?php feedback(116, "artigo") ?>
+                                    <?php 
+                                    $retorno = feedback(116, "artigo");
+                                    if ($retorno[0] == 116){
+                                        echo $retorno[1];
+                                    }?>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                   <ul>
@@ -1546,7 +1637,11 @@ function feedback ($id, $tipo_produto){
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <br/>
-                                    <?php feedback(117, "artigo") ?>
+                                    <?php 
+                                    $retorno = feedback(117, "artigo");
+                                    if ($retorno[0] == 117){
+                                        echo $retorno[1];
+                                    }?>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                   <ul>
@@ -1609,7 +1704,11 @@ function feedback ($id, $tipo_produto){
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <br/>
-                                    <?php feedback(118, "artigo") ?>
+                                    <?php 
+                                    $retorno = feedback(118, "artigo");
+                                    if ($retorno[0] == 118){
+                                        echo $retorno[1];
+                                    }?>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                     <ul>
