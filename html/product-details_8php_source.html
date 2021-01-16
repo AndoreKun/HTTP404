@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Portal Http404: Referência do Arquivo product-details.php</title>
+<title>Portal Http404: Código-Fonte de product-details.php</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -46,6 +46,7 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
+</div><!-- top -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -60,69 +61,14 @@ $(function() {
 </iframe>
 </div>
 
-</div><!-- top -->
 <div class="header">
-  <div class="summary">
-<a href="#func-members">Funções</a> &#124;
-<a href="#var-members">Variáveis</a>  </div>
   <div class="headertitle">
-<div class="title">Referência do Arquivo product-details.php</div>  </div>
+<div class="title">product-details.php</div>  </div>
 </div><!--header-->
 <div class="contents">
-
-<p><a href="product-details_8php_source.html">Vá para o código-fonte desse arquivo.</a></p>
-<table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
-Funções</h2></td></tr>
-<tr class="memitem:a5029c4d08bf53127c9182988e34ebac5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="product-details_8php.html#a5029c4d08bf53127c9182988e34ebac5">feedback</a> ($id, $tipo_produto)</td></tr>
-<tr class="separator:a5029c4d08bf53127c9182988e34ebac5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
-Variáveis</h2></td></tr>
-<tr class="memitem:ad15526db963f0e34576dab4e37e4a4b0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="product-details_8php.html#ad15526db963f0e34576dab4e37e4a4b0">$retorno</a> = <a class="el" href="product-details_8php.html#a5029c4d08bf53127c9182988e34ebac5">feedback</a>(1, &quot;veiculo&quot;)</td></tr>
-<tr class="separator:ad15526db963f0e34576dab4e37e4a4b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table>
-<h2 class="groupheader">Funções</h2>
-<a id="a5029c4d08bf53127c9182988e34ebac5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5029c4d08bf53127c9182988e34ebac5">&#9670;&nbsp;</a></span>feedback()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">feedback </td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>$id</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>$tipo_produto</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Funcao feedback que retorna uma mensagem quando um produto/artigo é adicionado/removido do carrinho e cria um botão para permitir o redirecionamento para a página que contém o carrinho </p><dl class="section author"><dt>Autor</dt><dd>André Pereira </dd></dl>
-<dl class="params"><dt>Parâmetros</dt><dd>
-  <table class="params">
-    <tr><td class="paramtype">int</td><td class="paramname">$id</td><td>Número de Identificação do produto/veiculo, utilizado para mostrar a mensagem apenas naquele produto/artigo </td></tr>
-    <tr><td class="paramtype">string</td><td class="paramname">$tipo_produto</td><td>Tipo do produto artigo/veículo </td></tr>
-    <tr><td class="paramtype">string</td><td class="paramname">$feedback</td><td>Contém o feedback em html quando um produto é adicionado ou removido do carrinho </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Retorna</dt><dd>array $verificacao Retorna as variáveis id e feedback </dd></dl>
-<dl class="section version"><dt>Versão</dt><dd>2.1 </dd></dl>
-<dl class="section since"><dt>Desde</dt><dd>16 jan 2021</dd></dl>
-
-<p class="definition">Definição na linha <a class="el" href="product-details_8php_source.html#l00003">3</a> do arquivo <a class="el" href="product-details_8php_source.html">product-details.php</a>.</p>
-<div class="fragment"><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;                                      {</div>
+<a href="product-details_8php.html">Vá para a documentação desse arquivo.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;&lt;?php session_start(); </div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno"><a class="line" href="product-details_8php.html#a5029c4d08bf53127c9182988e34ebac5">    3</a></span>&#160;<span class="keyword">function</span> <a class="code" href="product-details_8php.html#a5029c4d08bf53127c9182988e34ebac5">feedback</a> ($id, $tipo_produto){</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    $feedback = <span class="stringliteral">&quot;&quot;</span>;</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keywordflow">if</span>($tipo_produto == <span class="stringliteral">&quot;veiculo&quot;</span>){</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <span class="keywordflow">if</span>(isset(<a class="code" href="logout_8php.html#a5f545b9684799a00f7a14442205b98e3">$_SESSION</a>[<span class="stringliteral">&#39;id_veiculo&#39;</span>][<span class="stringliteral">&#39;id_veiculo&#39;</span>])){</div>
@@ -311,7 +257,7 @@ Variáveis</h2></td></tr>
 <div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;                                        &lt;/form&gt;</div>
 <div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;                                    &lt;br/&gt;</div>
 <div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;                                    &lt;?php</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;                                    <a class="code" href="product-details_8php.html#ad15526db963f0e34576dab4e37e4a4b0">$retorno</a> = <a class="code" href="product-details_8php.html#a5029c4d08bf53127c9182988e34ebac5">feedback</a>(1, <span class="stringliteral">&quot;veiculo&quot;</span>);</div>
+<div class="line"><a name="l00204"></a><span class="lineno"><a class="line" href="product-details_8php.html#ad15526db963f0e34576dab4e37e4a4b0">  204</a></span>&#160;                                    <a class="code" href="product-details_8php.html#ad15526db963f0e34576dab4e37e4a4b0">$retorno</a> = <a class="code" href="product-details_8php.html#a5029c4d08bf53127c9182988e34ebac5">feedback</a>(1, <span class="stringliteral">&quot;veiculo&quot;</span>);</div>
 <div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;                                    <span class="keywordflow">if</span> (<a class="code" href="product-details_8php.html#ad15526db963f0e34576dab4e37e4a4b0">$retorno</a>[0] == 1){</div>
 <div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;                                        echo <a class="code" href="product-details_8php.html#ad15526db963f0e34576dab4e37e4a4b0">$retorno</a>[1];</div>
 <div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;                                    }?&gt;</div>
@@ -1895,30 +1841,152 @@ Variáveis</h2></td></tr>
 <div class="line"><a name="l01785"></a><span class="lineno"> 1785</span>&#160;                                    <span class="keywordflow">if</span> (<a class="code" href="product-details_8php.html#ad15526db963f0e34576dab4e37e4a4b0">$retorno</a>[0] == 118){</div>
 <div class="line"><a name="l01786"></a><span class="lineno"> 1786</span>&#160;                                        echo <a class="code" href="product-details_8php.html#ad15526db963f0e34576dab4e37e4a4b0">$retorno</a>[1];</div>
 <div class="line"><a name="l01787"></a><span class="lineno"> 1787</span>&#160;                                    }?&gt;</div>
+<div class="line"><a name="l01788"></a><span class="lineno"> 1788</span>&#160;                                &lt;/div&gt;</div>
+<div class="line"><a name="l01789"></a><span class="lineno"> 1789</span>&#160;                                &lt;div <span class="keyword">class</span>=<span class="stringliteral">&quot;product-share&quot;</span>&gt;</div>
+<div class="line"><a name="l01790"></a><span class="lineno"> 1790</span>&#160;                                    &lt;h5 <span class="keyword">class</span>=<span class="stringliteral">&quot;pd-sub-title&quot;</span>&gt;Partilhar&lt;/h5&gt;</div>
+<div class="line"><a name="l01791"></a><span class="lineno"> 1791</span>&#160;                                    &lt;ul&gt;</div>
+<div class="line"><a name="l01792"></a><span class="lineno"> 1792</span>&#160;                                        &lt;li <span class="keyword">class</span>=<span class="stringliteral">&quot;facebook&quot;</span>&gt;&lt;a href=<span class="stringliteral">&quot;https://www.facebook.com/Http404-104014971631032&quot;</span>&gt;&lt;i <span class="keyword">class</span>=<span class="stringliteral">&quot;icofont icofont-social-facebook&quot;</span>&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;</div>
+<div class="line"><a name="l01793"></a><span class="lineno"> 1793</span>&#160;                                        &lt;li <span class="keyword">class</span>=<span class="stringliteral">&quot;twitter&quot;</span>&gt;&lt;a href=<span class="stringliteral">&quot;https://twitter.com/Http404V&quot;</span>&gt;&lt;i <span class="keyword">class</span>=<span class="stringliteral">&quot;icofont icofont-social-twitter&quot;</span>&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;</div>
+<div class="line"><a name="l01794"></a><span class="lineno"> 1794</span>&#160;                                    &lt;/ul&gt;</div>
+<div class="line"><a name="l01795"></a><span class="lineno"> 1795</span>&#160;                                &lt;/div&gt;</div>
+<div class="line"><a name="l01796"></a><span class="lineno"> 1796</span>&#160;                            &lt;/div&gt;</div>
+<div class="line"><a name="l01797"></a><span class="lineno"> 1797</span>&#160;                        &lt;/div&gt;</div>
+<div class="line"><a name="l01798"></a><span class="lineno"> 1798</span>&#160;                    &lt;/div&gt;</div>
+<div class="line"><a name="l01799"></a><span class="lineno"> 1799</span>&#160;                &lt;/div&gt;</div>
+<div class="line"><a name="l01800"></a><span class="lineno"> 1800</span>&#160;            &lt;/div&gt;</div>
+<div class="line"><a name="l01801"></a><span class="lineno"> 1801</span>&#160;            &lt;div <span class="keyword">class</span>=<span class="stringliteral">&quot;newsletter-area&quot;</span>&gt;</div>
+<div class="line"><a name="l01802"></a><span class="lineno"> 1802</span>&#160;                &lt;div <span class="keyword">class</span>=<span class="stringliteral">&quot;container&quot;</span>&gt;</div>
+<div class="line"><a name="l01803"></a><span class="lineno"> 1803</span>&#160;                    &lt;div <span class="keyword">class</span>=<span class="stringliteral">&quot;newsletter-wrapper-all theme-bg-2&quot;</span>&gt;</div>
+<div class="line"><a name="l01804"></a><span class="lineno"> 1804</span>&#160;                        &lt;div <span class="keyword">class</span>=<span class="stringliteral">&quot;row&quot;</span>&gt;</div>
+<div class="line"><a name="l01805"></a><span class="lineno"> 1805</span>&#160; </div>
+<div class="line"><a name="l01806"></a><span class="lineno"> 1806</span>&#160;                            &lt;div <span class="keyword">class</span>=<span class="stringliteral">&quot;col-lg-20 col-12 col-md-12&quot;</span>&gt;</div>
+<div class="line"><a name="l01807"></a><span class="lineno"> 1807</span>&#160;                                &lt;div <span class="keyword">class</span>=<span class="stringliteral">&quot;newsletter-wrapper text-center&quot;</span>&gt;</div>
+<div class="line"><a name="l01808"></a><span class="lineno"> 1808</span>&#160;                                    &lt;div <span class="keyword">class</span>=<span class="stringliteral">&quot;newsletter-title&quot;</span>&gt;</div>
+<div class="line"><a name="l01809"></a><span class="lineno"> 1809</span>&#160;                                        &lt;h3&gt;Subscreva aos nossos alertas&lt;/h3&gt;</div>
+<div class="line"><a name="l01810"></a><span class="lineno"> 1810</span>&#160;                                    &lt;/div&gt;</div>
+<div class="line"><a name="l01811"></a><span class="lineno"> 1811</span>&#160;                                    &lt;div <span class="keywordtype">id</span>=<span class="stringliteral">&quot;mc_embed_signup&quot;</span> <span class="keyword">class</span>=<span class="stringliteral">&quot;subscribe-form&quot;</span>&gt;</div>
+<div class="line"><a name="l01812"></a><span class="lineno"> 1812</span>&#160;                                        &lt;form action=<span class="stringliteral">&quot;#&quot;</span> method=<span class="stringliteral">&quot;post&quot;</span> <span class="keywordtype">id</span>=<span class="stringliteral">&quot;#&quot;</span> name=<span class="stringliteral">&quot;mc-embedded-subscribe-form&quot;</span> <span class="keyword">class</span>=<span class="stringliteral">&quot;validate&quot;</span> target=<span class="stringliteral">&quot;_blank&quot;</span> novalidate&gt;</div>
+<div class="line"><a name="l01813"></a><span class="lineno"> 1813</span>&#160;                                            &lt;div <span class="keywordtype">id</span>=<span class="stringliteral">&quot;mc_embed_signup_scroll&quot;</span> <span class="keyword">class</span>=<span class="stringliteral">&quot;mc-form&quot;</span>&gt;</div>
+<div class="line"><a name="l01814"></a><span class="lineno"> 1814</span>&#160;                                                &lt;input type=<span class="stringliteral">&quot;email&quot;</span> value=<span class="stringliteral">&quot;&quot;</span> name=<span class="stringliteral">&quot;EMAIL&quot;</span> <span class="keyword">class</span>=<span class="stringliteral">&quot;email&quot;</span> placeholder=<span class="stringliteral">&quot;Deixe aqui o seu email...&quot;</span> required&gt;</div>
+<div class="line"><a name="l01815"></a><span class="lineno"> 1815</span>&#160;                                                &lt;!-- real people should not fill <span class="keyword">this</span> in and expect good things - <span class="keywordflow">do</span> not <span class="keyword">remove</span> <span class="keyword">this</span> or risk form bot signups--&gt;</div>
+<div class="line"><a name="l01816"></a><span class="lineno"> 1816</span>&#160;                                                &lt;div <span class="keyword">class</span>=<span class="stringliteral">&quot;mc-news&quot;</span> aria-hidden=<span class="stringliteral">&quot;true&quot;</span>&gt;&lt;input type=<span class="stringliteral">&quot;text&quot;</span> name=<span class="stringliteral">&quot;b_6bbb9b6f5827bd842d9640c82_05d85f18ef&quot;</span> tabindex=<span class="stringliteral">&quot;-1&quot;</span> value=<span class="stringliteral">&quot;&quot;</span>&gt;&lt;/div&gt;</div>
+<div class="line"><a name="l01817"></a><span class="lineno"> 1817</span>&#160;                                                &lt;div <span class="keyword">class</span>=<span class="stringliteral">&quot;clear&quot;</span>&gt;&lt;input type=<span class="stringliteral">&quot;submit&quot;</span> value=<span class="stringliteral">&quot;Subscribe&quot;</span> name=<span class="stringliteral">&quot;subscribe&quot;</span> <span class="keywordtype">id</span>=<span class="stringliteral">&quot;mc-embedded-subscribe&quot;</span> <span class="keyword">class</span>=<span class="stringliteral">&quot;button&quot;</span>&gt;&lt;/div&gt;</div>
+<div class="line"><a name="l01818"></a><span class="lineno"> 1818</span>&#160;                                            &lt;/div&gt;</div>
+<div class="line"><a name="l01819"></a><span class="lineno"> 1819</span>&#160;                                        &lt;/form&gt;</div>
+<div class="line"><a name="l01820"></a><span class="lineno"> 1820</span>&#160;                                    &lt;/div&gt;</div>
+<div class="line"><a name="l01821"></a><span class="lineno"> 1821</span>&#160;                                &lt;/div&gt;</div>
+<div class="line"><a name="l01822"></a><span class="lineno"> 1822</span>&#160;                            &lt;/div&gt;</div>
+<div class="line"><a name="l01823"></a><span class="lineno"> 1823</span>&#160;                        &lt;/div&gt;</div>
+<div class="line"><a name="l01824"></a><span class="lineno"> 1824</span>&#160;                    &lt;/div&gt;</div>
+<div class="line"><a name="l01825"></a><span class="lineno"> 1825</span>&#160;                &lt;/div&gt;</div>
+<div class="line"><a name="l01826"></a><span class="lineno"> 1826</span>&#160;            &lt;/div&gt;</div>
+<div class="line"><a name="l01827"></a><span class="lineno"> 1827</span>&#160;            &lt;footer&gt;</div>
+<div class="line"><a name="l01828"></a><span class="lineno"> 1828</span>&#160;                &lt;div <span class="keyword">class</span>=<span class="stringliteral">&quot;footer-top pt-210 pb-98 theme-bg&quot;</span>&gt;</div>
+<div class="line"><a name="l01829"></a><span class="lineno"> 1829</span>&#160;                    &lt;div <span class="keyword">class</span>=<span class="stringliteral">&quot;container&quot;</span>&gt;</div>
+<div class="line"><a name="l01830"></a><span class="lineno"> 1830</span>&#160;                       &lt;div <span class="keyword">class</span>=<span class="stringliteral">&quot;row&quot;</span>&gt;</div>
+<div class="line"><a name="l01831"></a><span class="lineno"> 1831</span>&#160;                            &lt;div <span class="keyword">class</span>=<span class="stringliteral">&quot;col-lg-3 col-md-6 col-12&quot;</span>&gt;</div>
+<div class="line"><a name="l01832"></a><span class="lineno"> 1832</span>&#160;                                &lt;div <span class="keyword">class</span>=<span class="stringliteral">&quot;footer-widget mb-30&quot;</span>&gt;</div>
+<div class="line"><a name="l01833"></a><span class="lineno"> 1833</span>&#160;                                    &lt;div <span class="keyword">class</span>=<span class="stringliteral">&quot;footer-logo&quot;</span>&gt;</div>
+<div class="line"><a name="l01834"></a><span class="lineno"> 1834</span>&#160;                                        &lt;a href=<span class="stringliteral">&quot;index.html&quot;</span>&gt;</div>
+<div class="line"><a name="l01835"></a><span class="lineno"> 1835</span>&#160;                                            &lt;img src=<span class="stringliteral">&quot;assets/img/logo/logo.png&quot;</span> alt=<span class="stringliteral">&quot;&quot;</span>&gt;</div>
+<div class="line"><a name="l01836"></a><span class="lineno"> 1836</span>&#160;                                        &lt;/a&gt;</div>
+<div class="line"><a name="l01837"></a><span class="lineno"> 1837</span>&#160;                                    &lt;/div&gt;</div>
+<div class="line"><a name="l01838"></a><span class="lineno"> 1838</span>&#160;                                    &lt;div <span class="keyword">class</span>=<span class="stringliteral">&quot;footer-about&quot;</span>&gt;</div>
+<div class="line"><a name="l01839"></a><span class="lineno"> 1839</span>&#160;                                        &lt;p&gt;&lt;span&gt;HTTP4&lt;/span&gt; A maior loja de veiculos online &lt;/p&gt;</div>
+<div class="line"><a name="l01840"></a><span class="lineno"> 1840</span>&#160;                                        &lt;div <span class="keyword">class</span>=<span class="stringliteral">&quot;footer-support&quot;</span>&gt;</div>
+<div class="line"><a name="l01841"></a><span class="lineno"> 1841</span>&#160;                                            &lt;h5&gt;Suporte técnico&lt;/h5&gt;</div>
+<div class="line"><a name="l01842"></a><span class="lineno"> 1842</span>&#160;                                            &lt;span&gt; 01245 658 698 (Grátis)&lt;/span&gt;</div>
+<div class="line"><a name="l01843"></a><span class="lineno"> 1843</span>&#160;                                        &lt;/div&gt;</div>
+<div class="line"><a name="l01844"></a><span class="lineno"> 1844</span>&#160;                                    &lt;/div&gt;</div>
+<div class="line"><a name="l01845"></a><span class="lineno"> 1845</span>&#160;                                &lt;/div&gt;</div>
+<div class="line"><a name="l01846"></a><span class="lineno"> 1846</span>&#160;                            &lt;/div&gt;</div>
+<div class="line"><a name="l01847"></a><span class="lineno"> 1847</span>&#160;                            &lt;div <span class="keyword">class</span>=<span class="stringliteral">&quot;col-lg-3 col-md-6 col-12&quot;</span>&gt;</div>
+<div class="line"><a name="l01848"></a><span class="lineno"> 1848</span>&#160;                                &lt;div <span class="keyword">class</span>=<span class="stringliteral">&quot;footer-widget mb-30 pl-60&quot;</span>&gt;</div>
+<div class="line"><a name="l01849"></a><span class="lineno"> 1849</span>&#160;                                    &lt;div <span class="keyword">class</span>=<span class="stringliteral">&quot;footer-widget-title&quot;</span>&gt;</div>
+<div class="line"><a name="l01850"></a><span class="lineno"> 1850</span>&#160;                                        &lt;h3&gt;Hiperligações&lt;/h3&gt;</div>
+<div class="line"><a name="l01851"></a><span class="lineno"> 1851</span>&#160;                                    &lt;/div&gt;</div>
+<div class="line"><a name="l01852"></a><span class="lineno"> 1852</span>&#160;                                    &lt;div <span class="keyword">class</span>=<span class="stringliteral">&quot;quick-links&quot;</span>&gt;</div>
+<div class="line"><a name="l01853"></a><span class="lineno"> 1853</span>&#160;                                        &lt;ul&gt;</div>
+<div class="line"><a name="l01854"></a><span class="lineno"> 1854</span>&#160;                                            &lt;li&gt;&lt;a href=<span class="stringliteral">&quot;about-us.html&quot;</span>&gt;Sobre nós&lt;/a&gt;&lt;/li&gt;</div>
+<div class="line"><a name="l01855"></a><span class="lineno"> 1855</span>&#160;                                            &lt;li&gt;&lt;a href=<span class="stringliteral">&quot;shop.html&quot;</span>&gt;Loja&lt;/a&gt;&lt;/li&gt;</div>
+<div class="line"><a name="l01856"></a><span class="lineno"> 1856</span>&#160;                                            &lt;li&gt;&lt;a href=<span class="stringliteral">&quot;contact.html&quot;</span>&gt;Contactar&lt;/a&gt;&lt;/li&gt;</div>
+<div class="line"><a name="l01857"></a><span class="lineno"> 1857</span>&#160;                                        &lt;/ul&gt;</div>
+<div class="line"><a name="l01858"></a><span class="lineno"> 1858</span>&#160;                                    &lt;/div&gt;</div>
+<div class="line"><a name="l01859"></a><span class="lineno"> 1859</span>&#160;                                &lt;/div&gt;</div>
+<div class="line"><a name="l01860"></a><span class="lineno"> 1860</span>&#160;                            &lt;/div&gt;</div>
+<div class="line"><a name="l01861"></a><span class="lineno"> 1861</span>&#160;                            &lt;div <span class="keyword">class</span>=<span class="stringliteral">&quot;col-lg-3 col-md-6 col-12&quot;</span>&gt;</div>
+<div class="line"><a name="l01862"></a><span class="lineno"> 1862</span>&#160;                                &lt;div <span class="keyword">class</span>=<span class="stringliteral">&quot;footer-widget mb-30&quot;</span>&gt;</div>
+<div class="line"><a name="l01863"></a><span class="lineno"> 1863</span>&#160;                                    &lt;div <span class="keyword">class</span>=<span class="stringliteral">&quot;footer-widget-title&quot;</span>&gt;</div>
+<div class="line"><a name="l01864"></a><span class="lineno"> 1864</span>&#160;                                        &lt;h3&gt;Redes sociais&lt;/h3&gt;</div>
+<div class="line"><a name="l01865"></a><span class="lineno"> 1865</span>&#160;                                    &lt;/div&gt;</div>
+<div class="line"><a name="l01866"></a><span class="lineno"> 1866</span>&#160;                                    &lt;div <span class="keyword">class</span>=<span class="stringliteral">&quot;food-widget-content pr-30&quot;</span>&gt;</div>
+<div class="line"><a name="l01867"></a><span class="lineno"> 1867</span>&#160;                                        &lt;div <span class="keyword">class</span>=<span class="stringliteral">&quot;single-tweet&quot;</span>&gt;</div>
+<div class="line"><a name="l01868"></a><span class="lineno"> 1868</span>&#160;                                            &lt;p&gt;&lt;a href=<span class="stringliteral">&quot;#&quot;</span>&gt;@José,&lt;/a&gt; Acabei de comprar uma mota e estou muito feliz&lt;/p&gt;</div>
+<div class="line"><a name="l01869"></a><span class="lineno"> 1869</span>&#160;                                        &lt;/div&gt;</div>
+<div class="line"><a name="l01870"></a><span class="lineno"> 1870</span>&#160;                                        &lt;div <span class="keyword">class</span>=<span class="stringliteral">&quot;single-tweet&quot;</span>&gt;</div>
+<div class="line"><a name="l01871"></a><span class="lineno"> 1871</span>&#160;                                            &lt;p&gt;&lt;a href=<span class="stringliteral">&quot;#&quot;</span>&gt;@Carlos,&lt;/a&gt; Acabei de comprar um capacete e estou muito contente&lt;/p&gt;</div>
+<div class="line"><a name="l01872"></a><span class="lineno"> 1872</span>&#160;                                        &lt;/div&gt;</div>
+<div class="line"><a name="l01873"></a><span class="lineno"> 1873</span>&#160;                                        &lt;div <span class="keyword">class</span>=<span class="stringliteral">&quot;single-tweet&quot;</span>&gt;</div>
+<div class="line"><a name="l01874"></a><span class="lineno"> 1874</span>&#160;                                            &lt;p&gt;&lt;a href=<span class="stringliteral">&quot;#&quot;</span>&gt;@Afonso,&lt;/a&gt; Tentei ligar para o suporte mas ninguém me atendeu&lt;/p&gt;</div>
+<div class="line"><a name="l01875"></a><span class="lineno"> 1875</span>&#160;                                        &lt;/div&gt;</div>
+<div class="line"><a name="l01876"></a><span class="lineno"> 1876</span>&#160;                                    &lt;/div&gt;</div>
+<div class="line"><a name="l01877"></a><span class="lineno"> 1877</span>&#160;                                &lt;/div&gt;</div>
+<div class="line"><a name="l01878"></a><span class="lineno"> 1878</span>&#160;                            &lt;/div&gt;</div>
+<div class="line"><a name="l01879"></a><span class="lineno"> 1879</span>&#160;                            &lt;div <span class="keyword">class</span>=<span class="stringliteral">&quot;col-lg-3 col-md-6 col-12&quot;</span>&gt;</div>
+<div class="line"><a name="l01880"></a><span class="lineno"> 1880</span>&#160;                                &lt;div <span class="keyword">class</span>=<span class="stringliteral">&quot;footer-widget mb-30&quot;</span>&gt;</div>
+<div class="line"><a name="l01881"></a><span class="lineno"> 1881</span>&#160;                                    &lt;div <span class="keyword">class</span>=<span class="stringliteral">&quot;footer-widget-title&quot;</span>&gt;</div>
+<div class="line"><a name="l01882"></a><span class="lineno"> 1882</span>&#160;                                        &lt;h3&gt;Informações de contacto&lt;/h3&gt;</div>
+<div class="line"><a name="l01883"></a><span class="lineno"> 1883</span>&#160;                                    &lt;/div&gt;</div>
+<div class="line"><a name="l01884"></a><span class="lineno"> 1884</span>&#160;                                    &lt;div <span class="keyword">class</span>=<span class="stringliteral">&quot;food-info-wrapper&quot;</span>&gt;</div>
+<div class="line"><a name="l01885"></a><span class="lineno"> 1885</span>&#160;                                        &lt;div <span class="keyword">class</span>=<span class="stringliteral">&quot;food-address&quot;</span>&gt;</div>
+<div class="line"><a name="l01886"></a><span class="lineno"> 1886</span>&#160;                                            &lt;div <span class="keyword">class</span>=<span class="stringliteral">&quot;food-info-title&quot;</span>&gt;</div>
+<div class="line"><a name="l01887"></a><span class="lineno"> 1887</span>&#160;                                                &lt;span&gt;Morada&lt;/span&gt;</div>
+<div class="line"><a name="l01888"></a><span class="lineno"> 1888</span>&#160;                                            &lt;/div&gt;</div>
+<div class="line"><a name="l01889"></a><span class="lineno"> 1889</span>&#160;                                            &lt;div <span class="keyword">class</span>=<span class="stringliteral">&quot;food-info-content&quot;</span>&gt;</div>
+<div class="line"><a name="l01890"></a><span class="lineno"> 1890</span>&#160;                                                &lt;p&gt;Rua 8, Tavira&lt;/p&gt;</div>
+<div class="line"><a name="l01891"></a><span class="lineno"> 1891</span>&#160;                                            &lt;/div&gt;</div>
+<div class="line"><a name="l01892"></a><span class="lineno"> 1892</span>&#160;                                        &lt;/div&gt;</div>
+<div class="line"><a name="l01893"></a><span class="lineno"> 1893</span>&#160;                                        &lt;div <span class="keyword">class</span>=<span class="stringliteral">&quot;food-address&quot;</span>&gt;</div>
+<div class="line"><a name="l01894"></a><span class="lineno"> 1894</span>&#160;                                            &lt;div <span class="keyword">class</span>=<span class="stringliteral">&quot;food-info-title&quot;</span>&gt;</div>
+<div class="line"><a name="l01895"></a><span class="lineno"> 1895</span>&#160;                                                &lt;span&gt;Telefone&lt;/span&gt;</div>
+<div class="line"><a name="l01896"></a><span class="lineno"> 1896</span>&#160;                                            &lt;/div&gt;</div>
+<div class="line"><a name="l01897"></a><span class="lineno"> 1897</span>&#160;                                            &lt;div <span class="keyword">class</span>=<span class="stringliteral">&quot;food-info-content&quot;</span>&gt;</div>
+<div class="line"><a name="l01898"></a><span class="lineno"> 1898</span>&#160;                                                &lt;p&gt;+090 12568 369 987&lt;/p&gt;</div>
+<div class="line"><a name="l01899"></a><span class="lineno"> 1899</span>&#160;                                            &lt;/div&gt;</div>
+<div class="line"><a name="l01900"></a><span class="lineno"> 1900</span>&#160;                                        &lt;/div&gt;</div>
+<div class="line"><a name="l01901"></a><span class="lineno"> 1901</span>&#160;                                        &lt;div <span class="keyword">class</span>=<span class="stringliteral">&quot;food-address&quot;</span>&gt;</div>
+<div class="line"><a name="l01902"></a><span class="lineno"> 1902</span>&#160;                                            &lt;div <span class="keyword">class</span>=<span class="stringliteral">&quot;food-info-title&quot;</span>&gt;</div>
+<div class="line"><a name="l01903"></a><span class="lineno"> 1903</span>&#160;                                                &lt;span&gt;Email&lt;/span&gt;</div>
+<div class="line"><a name="l01904"></a><span class="lineno"> 1904</span>&#160;                                            &lt;/div&gt;</div>
+<div class="line"><a name="l01905"></a><span class="lineno"> 1905</span>&#160;                                            &lt;div <span class="keyword">class</span>=<span class="stringliteral">&quot;food-info-content&quot;</span>&gt;</div>
+<div class="line"><a name="l01906"></a><span class="lineno"> 1906</span>&#160;                                                &lt;a href=<span class="stringliteral">&quot;#&quot;</span>&gt;info@http404.com&lt;/a&gt;</div>
+<div class="line"><a name="l01907"></a><span class="lineno"> 1907</span>&#160;                                            &lt;/div&gt;</div>
+<div class="line"><a name="l01908"></a><span class="lineno"> 1908</span>&#160;                                        &lt;/div&gt;</div>
+<div class="line"><a name="l01909"></a><span class="lineno"> 1909</span>&#160;                                    &lt;/div&gt;</div>
+<div class="line"><a name="l01910"></a><span class="lineno"> 1910</span>&#160;                                &lt;/div&gt;</div>
+<div class="line"><a name="l01911"></a><span class="lineno"> 1911</span>&#160;                            &lt;/div&gt;</div>
+<div class="line"><a name="l01912"></a><span class="lineno"> 1912</span>&#160;                        &lt;/div&gt;</div>
+<div class="line"><a name="l01913"></a><span class="lineno"> 1913</span>&#160;                    &lt;/div&gt;</div>
+<div class="line"><a name="l01914"></a><span class="lineno"> 1914</span>&#160;                &lt;/div&gt;</div>
+<div class="line"><a name="l01915"></a><span class="lineno"> 1915</span>&#160;            &lt;/footer&gt;</div>
+<div class="line"><a name="l01916"></a><span class="lineno"> 1916</span>&#160;        &lt;/div&gt;</div>
+<div class="line"><a name="l01917"></a><span class="lineno"> 1917</span>&#160;        &lt;!-- all js here --&gt;</div>
+<div class="line"><a name="l01918"></a><span class="lineno"> 1918</span>&#160;        &lt;script src=<span class="stringliteral">&quot;assets/js/vendor/jquery-1.12.0.min.js&quot;</span>&gt;&lt;/script&gt;</div>
+<div class="line"><a name="l01919"></a><span class="lineno"> 1919</span>&#160;        &lt;script src=<span class="stringliteral">&quot;assets/js/popper.js&quot;</span>&gt;&lt;/script&gt;</div>
+<div class="line"><a name="l01920"></a><span class="lineno"> 1920</span>&#160;        &lt;script src=<span class="stringliteral">&quot;assets/js/bootstrap.min.js&quot;</span>&gt;&lt;/script&gt;</div>
+<div class="line"><a name="l01921"></a><span class="lineno"> 1921</span>&#160;        &lt;script src=<span class="stringliteral">&quot;assets/js/isotope.pkgd.min.js&quot;</span>&gt;&lt;/script&gt;</div>
+<div class="line"><a name="l01922"></a><span class="lineno"> 1922</span>&#160;        &lt;script src=<span class="stringliteral">&quot;assets/js/imagesloaded.pkgd.min.js&quot;</span>&gt;&lt;/script&gt;</div>
+<div class="line"><a name="l01923"></a><span class="lineno"> 1923</span>&#160;        &lt;script src=<span class="stringliteral">&quot;assets/js/jquery.counterup.min.js&quot;</span>&gt;&lt;/script&gt;</div>
+<div class="line"><a name="l01924"></a><span class="lineno"> 1924</span>&#160;        &lt;script src=<span class="stringliteral">&quot;assets/js/waypoints.min.js&quot;</span>&gt;&lt;/script&gt;</div>
+<div class="line"><a name="l01925"></a><span class="lineno"> 1925</span>&#160;        &lt;script src=<span class="stringliteral">&quot;assets/js/owl.carousel.min.js&quot;</span>&gt;&lt;/script&gt;</div>
+<div class="line"><a name="l01926"></a><span class="lineno"> 1926</span>&#160;        &lt;script src=<span class="stringliteral">&quot;assets/js/plugins.js&quot;</span>&gt;&lt;/script&gt;</div>
+<div class="line"><a name="l01927"></a><span class="lineno"> 1927</span>&#160;        &lt;script src=<span class="stringliteral">&quot;assets/js/main.js&quot;</span>&gt;&lt;/script&gt;</div>
+<div class="line"><a name="l01928"></a><span class="lineno"> 1928</span>&#160;    &lt;/body&gt;</div>
+<div class="line"><a name="l01929"></a><span class="lineno"> 1929</span>&#160;&lt;/html&gt;</div>
 <div class="ttc" id="alogout_8php_html_a5f545b9684799a00f7a14442205b98e3"><div class="ttname"><a href="logout_8php.html#a5f545b9684799a00f7a14442205b98e3">$_SESSION</a></div><div class="ttdeci">$_SESSION</div><div class="ttdef"><b>Definition:</b> <a href="logout_8php_source.html#l00005">logout.php:5</a></div></div>
 <div class="ttc" id="aproduct-details_8php_html_a5029c4d08bf53127c9182988e34ebac5"><div class="ttname"><a href="product-details_8php.html#a5029c4d08bf53127c9182988e34ebac5">feedback</a></div><div class="ttdeci">feedback($id, $tipo_produto)</div><div class="ttdef"><b>Definition:</b> <a href="product-details_8php_source.html#l00003">product-details.php:3</a></div></div>
 <div class="ttc" id="aproduct-details_8php_html_ad15526db963f0e34576dab4e37e4a4b0"><div class="ttname"><a href="product-details_8php.html#ad15526db963f0e34576dab4e37e4a4b0">$retorno</a></div><div class="ttdeci">$retorno</div><div class="ttdef"><b>Definition:</b> <a href="product-details_8php_source.html#l00204">product-details.php:204</a></div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<h2 class="groupheader">Variáveis</h2>
-<a id="ad15526db963f0e34576dab4e37e4a4b0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad15526db963f0e34576dab4e37e4a4b0">&#9670;&nbsp;</a></span>$retorno</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="download_8php.html#a7b8760bb85b618c76ba715dba4c5210b">if</a> ( $retorno[0]==117) $retorno = <a class="el" href="product-details_8php.html#a5029c4d08bf53127c9182988e34ebac5">feedback</a>(1, &quot;veiculo&quot;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definição na linha <a class="el" href="product-details_8php_source.html#l00204">204</a> do arquivo <a class="el" href="product-details_8php_source.html">product-details.php</a>.</p>
-
-</div>
-</div>
-</div><!-- contents -->
+</div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Gerado por&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
