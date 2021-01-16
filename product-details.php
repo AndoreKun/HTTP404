@@ -204,6 +204,7 @@ return $verificacao;
                                     if ($retorno[0] == 1){
                                         echo $retorno[1];
                                     }?>
+                                </div>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                    <ul>
@@ -306,6 +307,7 @@ return $verificacao;
                                     if ($retorno[0] == 2){
                                         echo $retorno[1];
                                     }?>
+                                </div>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                    <ul>
@@ -409,6 +411,7 @@ return $verificacao;
                                     if ($retorno[0] == 3){
                                         echo $retorno[1];
                                     }?>
+                                </div>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                   <ul>
@@ -511,6 +514,7 @@ return $verificacao;
                                     if ($retorno[0] == 4){
                                         echo $retorno[1];
                                     }?>
+                                </div>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                   <ul>
@@ -579,6 +583,7 @@ return $verificacao;
                                     if ($retorno[0] == 11){
                                         echo $retorno[1];
                                     }?>
+                                </div>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                     <ul>
@@ -648,6 +653,7 @@ return $verificacao;
                                     if ($retorno[0] == 12){
                                         echo $retorno[1];
                                     }?>
+                                </div>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                     <ul>
@@ -715,6 +721,7 @@ return $verificacao;
                                     if ($retorno[0] == 13){
                                         echo $retorno[1];
                                     }?>
+                                </div>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                     <ul>
@@ -784,6 +791,7 @@ return $verificacao;
                                     if ($retorno[0] == 14){
                                         echo $retorno[1];
                                     }?>
+                                </div>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                    <ul>
@@ -856,6 +864,7 @@ return $verificacao;
                                     if ($retorno[0] == 15){
                                         echo $retorno[1];
                                     }?>
+                                </div>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                    <ul>
@@ -924,6 +933,7 @@ return $verificacao;
                                     if ($retorno[0] == 16){
                                         echo $retorno[1];
                                     }?>
+                                </div>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                    <ul>
@@ -992,6 +1002,7 @@ return $verificacao;
                                     if ($retorno[0] == 119){
                                         echo $retorno[1];
                                     }?>
+                                </div>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                    <ul>
@@ -1063,6 +1074,7 @@ return $verificacao;
                                     if ($retorno[0] == 17){
                                         echo $retorno[1];
                                     }?>
+                                </div>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                    <ul>
@@ -1132,6 +1144,7 @@ return $verificacao;
                                     if ($retorno[0] == 18){
                                         echo $retorno[1];
                                     }?>
+                                </div>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                   <ul>
@@ -1205,6 +1218,7 @@ return $verificacao;
                                     if ($retorno[0] == 19){
                                         echo $retorno[1];
                                     }?>
+                                </div>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                   <ul>
@@ -1275,6 +1289,7 @@ return $verificacao;
                                     if ($retorno[0] == 110){
                                         echo $retorno[1];
                                     }?>
+                                </div>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                   <ul>
@@ -1344,6 +1359,7 @@ return $verificacao;
                                     if ($retorno[0] == 112){
                                         echo $retorno[1];
                                     }?>
+                                </div>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                   <ul>
@@ -1414,6 +1430,7 @@ return $verificacao;
                                     if ($retorno[0] == 113){
                                         echo $retorno[1];
                                     }?>
+                                </div>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                   <ul>
@@ -1481,6 +1498,7 @@ return $verificacao;
                                     if ($retorno[0] == 114){
                                         echo $retorno[1];
                                     }?>
+                                </div>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                    <ul>
@@ -1552,6 +1570,7 @@ return $verificacao;
                                     if ($retorno[0] == 115){
                                         echo $retorno[1];
                                     }?>
+                                </div>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                    <ul>
@@ -1623,6 +1642,7 @@ return $verificacao;
                                     if ($retorno[0] == 116){
                                         echo $retorno[1];
                                     }?>
+                                </div>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                   <ul>
@@ -1695,6 +1715,7 @@ return $verificacao;
                                     if ($retorno[0] == 117){
                                         echo $retorno[1];
                                     }?>
+                                </div>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                   <ul>
@@ -1763,6 +1784,7 @@ return $verificacao;
                                     if ($retorno[0] == 118){
                                         echo $retorno[1];
                                     }?>
+                                </div>
                                 <div class="product-share">
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                     <ul>
