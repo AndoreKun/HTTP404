@@ -13,7 +13,7 @@ Descrição do Projeto: Loja virtual de vendas e gerenciamento da loja de veícu
 ```
 ## 1. Mapa do Portal:
 
-![image](https://bitbucket.org/AndoreKun/trabalho_adc/src/release-1.0/readmeimg/001.png)
+![alt text](https://bitbucket.org/AndoreKun/trabalho_adc/src/release-1.0/readmeimg/001.png)
 
 ```
 
