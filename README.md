@@ -13,7 +13,7 @@ Descrição do Projeto: Loja virtual de vendas e gerenciamento da loja de veícu
 ```
 ## 1. Mapa do Portal:
 
-![alt text](https://bitbucket.org/AndoreKun/trabalho_adc/src/release-1.0/readmeimg/001.png)
+![imagem](readmeimg/001.png)
 
 ```
 
@@ -23,31 +23,31 @@ Descrição do Projeto: Loja virtual de vendas e gerenciamento da loja de veícu
 
 Tela com a página principal do portal:
 
-![image](C:\Kleyton\STI\1.1.AmbienteDesen\trabalho_adc\readmeimg\002.png)
+![image](readmeimg/002.png)
 
 *Destaques*
 
 Tela com os detaques das vendas da loja:
 
-![image](C:\Kleyton\STI\1.1.AmbienteDesen\trabalho_adc\readmeimg\003.png)
+![image](readmeimg/003.png)
 
 *Reviews*
 
 Tela com os reviews dos clientes da loja:
 
-![image](C:\Kleyton\STI\1.1.AmbienteDesen\trabalho_adc\readmeimg\004.png)
+![image](readmeimg/004.png)
 
 *Produtos*
 
 Tela com os produtos da loja:
 
-![image](C:\Kleyton\STI\1.1.AmbienteDesen\trabalho_adc\readmeimg\005.png)
+![image](readmeimg/005.png)
 
 *Redes Sociais*
 
 Tela com link das redes socias da loja:
 
-![image](C:\Kleyton\STI\1.1.AmbienteDesen\trabalho_adc\readmeimg\006.png)
+![image](readmeimg/006.png)
 
 ###  Sobre Nós:
 
