@@ -13,7 +13,7 @@ Descrição do Projeto: Loja virtual de vendas e gerenciamento da loja de veícu
 ```
 ## 1. Mapa do Portal:
 
-![image](C:\Kleyton\STI\1.1.AmbienteDesen\trabalho_adc\readmeimg\001.png)
+![image](assets/readmeimg/001.png)
 
 ```
 
