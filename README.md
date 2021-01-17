@@ -13,7 +13,7 @@ Descrição do Projeto: Loja virtual de vendas e gerenciamento da loja de veícu
 ```
 ## 1. Mapa do Portal:
 
-![image](assets/readmeimg/001.png)
+![image](/assets/readmeimg/001.png)
 
 ```
 
