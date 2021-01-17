@@ -53,43 +53,43 @@ Tela com link das redes socias da loja:
 
 Tela com as informações da loja:
 
-![image](C:\Kleyton\STI\1.1.AmbienteDesen\trabalho_adc\readmeimg\007.png)
+![image](readmeimg/007.png)
 
 *Missão e Valores*
 
 Tela com detalhes da Missão e Valores da loja:
 
-![image](C:\Kleyton\STI\1.1.AmbienteDesen\trabalho_adc\readmeimg\008.png)
+![image](readmeimg/008.png)
 
 *Membros*
 
 Tela informações dos membros e colaboradores da loja:
 
-![image](C:\Kleyton\STI\1.1.AmbienteDesen\trabalho_adc\readmeimg\009.png)
+![image](readmeimg/009.png)
 
 *Subscrição*
 
 Tela com espaço para subscrição do clientes no portal:
 
-![image](C:\Kleyton\STI\1.1.AmbienteDesen\trabalho_adc\readmeimg\010.png)
+![image](readmeimg/010.png)
 
 *Suporte Técnico*
 
 Tela com informações e contatos do SUporte Técnico:
 
-![image](C:\Kleyton\STI\1.1.AmbienteDesen\trabalho_adc\readmeimg\011.png)
+![image](readmeimg/011.png)
 
 ###  Loja:
 
 Tela para finalização da compra e checkout dos produtos da loja:
 
-![image](C:\Kleyton\STI\1.1.AmbienteDesen\trabalho_adc\readmeimg\012.png)
+![image](readmeimg/012.png)
 
 ###  Acesso:
 
 Tela para acesso aos Clientes/Interno:
 
-![image](C:\Kleyton\STI\1.1.AmbienteDesen\trabalho_adc\readmeimg\013.png)
+![image](readmeimg/013.png)
 
 ###  Contactos:
 
@@ -97,23 +97,23 @@ Tela para acesso aos Clientes/Interno:
 
 Tela com informação de morada e mapa da loja:
 
-![image](C:\Kleyton\STI\1.1.AmbienteDesen\trabalho_adc\readmeimg\014.png)
+![image](readmeimg/014.png)
 
 *Telefones/Emails*
 
 Tela de acesso ao Fale Conosco - Serviço ao Cliente
 
-![image](C:\Kleyton\STI\1.1.AmbienteDesen\trabalho_adc\readmeimg\015.png)
+![image](readmeimg/015.png)
 
 Contactos, morada, email e telefone da loja:
 
-![image](C:\Kleyton\STI\1.1.AmbienteDesen\trabalho_adc\readmeimg\016.png)
+![image](readmeimg/016.png)
 
 *Meios de Pagamento*
 
 Tela com informações dos meios de pagamentos:
 
-![image](C:\Kleyton\STI\1.1.AmbienteDesen\trabalho_adc\readmeimg\017.png)
+![image](readmeimg/017.png)
 
 
 Aproveite nosso projeto!
