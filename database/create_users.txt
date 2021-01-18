@@ -22,7 +22,7 @@ GRANT SELECT, INSERT ON `adc_http404`.`vendas` TO `vendedores`@`localhost`;
 
 -- Criar usuário e dar privilégios para `admin`@`localhost`
 
-CREATE USER `admin`@`localhost` IDENTIFIED BY `http404#2021%`;
+CREATE USER 'admin'@'localhost' IDENTIFIED BY 'http404#2021%';
 
 GRANT ALL PRIVILEGES ON `adc_http404`.* TO `admin`@`localhost`;
 
