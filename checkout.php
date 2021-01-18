@@ -8,16 +8,22 @@ $artigos = "";
 $veiculos = "";
 $posicao_veiculo = 0;
 $posicao_artigo = 1;
+$produtos_novos = array();
 
-if(isset($_SESSION['produtos_veiculos']['produtos_veiculos']) || isset($_SESSION['produtos_artigos']['produtos_artigos'] )){
-    if(isset($_SESSION['produtos_artigos']['produtos_artigos'])){
-        $artigos = $_SESSION['produtos_artigos']['produtos_artigos'];
+if(isset($_SESSION['produtos_veiculos']) || isset($_SESSION['produtos_artigos'])){
+    if(isset($_SESSION['produtos_artigos'])){
+        $artigos = $_SESSION['produtos_artigos'];
     } 
-    if(isset($_SESSION['produtos_veiculos']['produtos_veiculos'])) {
-        $veiculos = $_SESSION['produtos_veiculos']['produtos_veiculos'];
+    if(isset($_SESSION['produtos_veiculos'])) {
+        $veiculos = $_SESSION['produtos_veiculos'];
     }
-    echo implode($artigos);
-    echo implode($veiculos);
+    if(isset($_SESSION['produtos'])){
+        $prod_novo_tmp = $_SESSION['produtos'];
+        $prod_novo_tmp = $prod_novo_tmp[0];
+        array_push($produtos_novos, $prod_novo_tmp);
+
+    }
+
     if ($veiculos == ""){
         $posicao_artigo = 0;
         array_push($produtos, $artigos); 
@@ -56,7 +62,8 @@ if(isset($_SESSION['produtos_veiculos']['produtos_veiculos']) || isset($_SESSION
         }  
     }
 
-$_SESSION["produtos"]["produtos"] = $produtos;
+
+
 }
 ?>
 <!doctype html>
