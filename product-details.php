@@ -17,6 +17,7 @@ function feedback ($id, $tipo_produto){
         if(isset($_SESSION['id_veiculo']['id_veiculo'])){
             if ($_SESSION['id_veiculo']['id_veiculo'] == $id){
                 $feedback = $_SESSION['feedback']['feedback'];
+                unset($_SESSION['id_veiculo']['id_veiculo']);
             }
         }
     }
@@ -24,6 +25,7 @@ function feedback ($id, $tipo_produto){
         if(isset($_SESSION['id_artigo']['id_artigo'])){
             if ($_SESSION['id_artigo']['id_artigo'] == $id){
                 $feedback = $_SESSION['feedback']['feedback'];
+                unset($_SESSION['id_artigo']['id_artigo']);
             }
         }
     }
@@ -565,13 +567,13 @@ return $verificacao;
                                     Essas rodas forjadas colocam a maior resistência do material na mesma direção da carga operacional, criando uma roda leve e forte.</p>
                                 </div>
                                     <div class="quickview-btn-cart">
-                                    <form method="get" action="carrinho.php">
+                                    <form method="get" action="carrinho_artigos.php">
                                         <input type="hidden" id="id_artigo" name="id_artigo" value="11">
                                         <input type="hidden" id="acao" name="acao" value="adicionar">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#rodasupra">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
-                                    <form method="get" action="carrinho.php">
+                                    <form method="get" action="carrinho_artigos.php">
                                         <input type="hidden" id="id_artigo" name="id_artigo" value="11">
                                         <input type="hidden" id="acao" name="acao" value="remover">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#rodasupra">
@@ -635,13 +637,13 @@ return $verificacao;
                                     aumentar a potência, melhorar a função de dissipação de calor do motor, e garantir um alto desempenho, tornar o seu motor mais potente!</p>
                                 </div>
                                     <div class="quickview-btn-cart">
-                                    <form method="get" action="carrinho.php">
+                                    <form method="get" action="carrinho_artigos.php">
                                         <input type="hidden" id="id_artigo" name="id_artigo" value="12">
                                         <input type="hidden" id="acao" name="acao" value="adicionar">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#radioadorninja">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
-                                    <form method="get" action="carrinho.php">
+                                    <form method="get" action="carrinho_artigos.php">
                                         <input type="hidden" id="id_artigo" name="id_artigo" value="12">
                                         <input type="hidden" id="acao" name="acao" value="remover">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#radioadorninja">
@@ -703,13 +705,13 @@ return $verificacao;
                                     <p>Couro durável, impermeável e flexível de alta qualidade, inclui três suportes de metal removíveis e seis parafusos e porcas.</p>
                                 </div>
                                     <div class="quickview-btn-cart">
-                                    <form method="get" action="carrinho.php">
+                                    <form method="get" action="carrinho_artigos.php">
                                         <input type="hidden" id="id_artigo" name="id_artigo" value="13">
                                         <input type="hidden" id="acao" name="acao" value="adicionar">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#bancomoto">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
-                                    <form method="get" action="carrinho.php">
+                                    <form method="get" action="carrinho_artigos.php">
                                         <input type="hidden" id="id_artigo" name="id_artigo" value="13">
                                         <input type="hidden" id="acao" name="acao" value="remover">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#bancomoto">
@@ -773,13 +775,13 @@ return $verificacao;
                                     Tem um corpo de estilo clássico de rua.</p>
                                 </div>
                                     <div class="quickview-btn-cart">
-                                    <form method="get" action="carrinho.php">
+                                    <form method="get" action="carrinho_artigos.php">
                                         <input type="hidden" id="id_artigo" name="id_artigo" value="14">
                                         <input type="hidden" id="acao" name="acao" value="adicionar">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#farol">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
-                                    <form method="get" action="carrinho.php">
+                                    <form method="get" action="carrinho_artigos.php">
                                         <input type="hidden" id="id_artigo" name="id_artigo" value="14">
                                         <input type="hidden" id="acao" name="acao" value="remover">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#farol">
@@ -846,13 +848,13 @@ return $verificacao;
                                     portanto, ficará no alto do backbone.</p>
                                 </div>
                                     <div class="quickview-btn-cart">
-                                    <form method="get" action="carrinho.php">
+                                    <form method="get" action="carrinho_artigos.php">
                                         <input type="hidden" id="id_artigo" name="id_artigo" value="15">
                                         <input type="hidden" id="acao" name="acao" value="adicionar">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#tanque">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
-                                    <form method="get" action="carrinho.php">
+                                    <form method="get" action="carrinho_artigos.php">
                                         <input type="hidden" id="id_artigo" name="id_artigo" value="15">
                                         <input type="hidden" id="acao" name="acao" value="remover">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#tanque">
@@ -915,13 +917,13 @@ return $verificacao;
                                     O velocímetro é feito de robusta carcaça de ABS galvanizado, totalmente à prova d'água e permite resistir a pequenas colisões</p>
                                 </div>
                                     <div class="quickview-btn-cart">
-                                    <form method="get" action="carrinho.php">
+                                    <form method="get" action="carrinho_artigos.php">
                                         <input type="hidden" id="id_artigo" name="id_artigo" value="16">
                                         <input type="hidden" id="acao" name="acao" value="adicionar">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#velocimetro">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
-                                    <form method="get" action="carrinho.php">
+                                    <form method="get" action="carrinho_artigos.php">
                                         <input type="hidden" id="id_artigo" name="id_artigo" value="16">
                                         <input type="hidden" id="acao" name="acao" value="remover">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#velocimetro">
@@ -984,13 +986,13 @@ return $verificacao;
                                     iluminada para uso noturno.</p>
                                 </div>
                                     <div class="quickview-btn-cart">
-                                    <form method="get" action="carrinho.php">
+                                    <form method="get" action="carrinho_artigos.php">
                                         <input type="hidden" id="id_artigo" name="id_artigo" value="119">
                                         <input type="hidden" id="acao" name="acao" value="adicionar">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#medidor">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
-                                    <form method="get" action="carrinho.php">
+                                    <form method="get" action="carrinho_artigos.php">
                                         <input type="hidden" id="id_artigo" name="id_artigo" value="119">
                                         <input type="hidden" id="acao" name="acao" value="remover">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#medidor">
@@ -1056,13 +1058,13 @@ return $verificacao;
                                     adequado e remover o capacete K77 é fácil graças à correia de liberação rápida.</p>
                                 </div>
                                     <div class="quickview-btn-cart">
-                                    <form method="get" action="carrinho.php">
+                                    <form method="get" action="carrinho_artigos.php">
                                         <input type="hidden" id="id_artigo" name="id_artigo" value="17">
                                         <input type="hidden" id="acao" name="acao" value="adicionar">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#capacete">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
-                                    <form method="get" action="carrinho.php">
+                                    <form method="get" action="carrinho_artigos.php">
                                         <input type="hidden" id="id_artigo" name="id_artigo" value="17">
                                         <input type="hidden" id="acao" name="acao" value="remover">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#capacete">
@@ -1126,13 +1128,13 @@ return $verificacao;
                                     Leve, flexível e ágil para viver a liberdade da estrada.</p>
                                 </div>
                                     <div class="quickview-btn-cart">
-                                    <form method="get" action="carrinho.php">
+                                    <form method="get" action="carrinho_artigos.php">
                                         <input type="hidden" id="id_artigo" name="id_artigo" value="18">
                                         <input type="hidden" id="acao" name="acao" value="adicionar">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#casaco">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
-                                    <form method="get" action="carrinho.php">
+                                    <form method="get" action="carrinho_artigos.php">
                                         <input type="hidden" id="id_artigo" name="id_artigo" value="18">
                                         <input type="hidden" id="acao" name="acao" value="remover">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#casaco">
@@ -1200,13 +1202,13 @@ return $verificacao;
                                     e as fivelas de plástico GH inquebráveis ​​garantem que você não será afastado se sofrer uma queda.</p>
                                 </div>
                                     <div class="quickview-btn-cart">
-                                    <form method="get" action="carrinho.php">
+                                    <form method="get" action="carrinho_artigos.php">
                                         <input type="hidden" id="id_artigo" name="id_artigo" value="19">
                                         <input type="hidden" id="acao" name="acao" value="adicionar">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#botas">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
-                                    <form method="get" action="carrinho.php">
+                                    <form method="get" action="carrinho_artigos.php">
                                         <input type="hidden" id="id_artigo" name="id_artigo" value="19">
                                         <input type="hidden" id="acao" name="acao" value="remover">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#botas">
@@ -1271,13 +1273,13 @@ return $verificacao;
                                     arranhões em qualquer terreno.</p>
                                 </div>
                                     <div class="quickview-btn-cart">
-                                    <form method="get" action="carrinho.php">
+                                    <form method="get" action="carrinho_artigos.php">
                                         <input type="hidden" id="id_artigo" name="id_artigo" value="110">
                                         <input type="hidden" id="acao" name="acao" value="adicionar">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#joelheiras">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
-                                    <form method="get" action="carrinho.php">
+                                    <form method="get" action="carrinho_artigos.php">
                                         <input type="hidden" id="id_artigo" name="id_artigo" value="110">
                                         <input type="hidden" id="acao" name="acao" value="remover">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#joelheiras">
@@ -1341,13 +1343,13 @@ return $verificacao;
                                     com múltiplas entradas e saídas de ar.</p>
                                 </div>
                                     <div class="quickview-btn-cart">
-                                    <form method="get" action="carrinho.php">
+                                    <form method="get" action="carrinho_artigos.php">
                                         <input type="hidden" id="id_artigo" name="id_artigo" value="112">
                                         <input type="hidden" id="acao" name="acao" value="adicionar">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#capacete2">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
-                                    <form method="get" action="carrinho.php">
+                                    <form method="get" action="carrinho_artigos.php">
                                         <input type="hidden" id="id_artigo" name="id_artigo" value="112">
                                         <input type="hidden" id="acao" name="acao" value="remover">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#capacete2">
@@ -1412,13 +1414,13 @@ return $verificacao;
                                     este é absolutamente o presente perfeito para sua família e amigos.</p>
                                 </div>
                                     <div class="quickview-btn-cart">
-                                    <form method="get" action="carrinho.php">
+                                    <form method="get" action="carrinho_artigos.php">
                                         <input type="hidden" id="id_artigo" name="id_artigo" value="113">
                                         <input type="hidden" id="acao" name="acao" value="adicionar">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#cobertos">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
-                                    <form method="get" action="carrinho.php">
+                                    <form method="get" action="carrinho_artigos.php">
                                         <input type="hidden" id="id_artigo" name="id_artigo" value="113">
                                         <input type="hidden" id="acao" name="acao" value="remover">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#cobertos">
@@ -1480,13 +1482,13 @@ return $verificacao;
                                     Inclui um saco para armazenar a capa quando não estiver em uso. Esta capa cabe em carros de até 204 polegadas de comprimento.</p>
                                 </div>
                                     <div class="quickview-btn-cart">
-                                    <form method="get" action="carrinho.php">
+                                    <form method="get" action="carrinho_artigos.php">
                                         <input type="hidden" id="id_artigo" name="id_artigo" value="114">
                                         <input type="hidden" id="acao" name="acao" value="adicionar">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#capa">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
-                                    <form method="get" action="carrinho.php">
+                                    <form method="get" action="carrinho_artigos.php">
                                         <input type="hidden" id="id_artigo" name="id_artigo" value="114">
                                         <input type="hidden" id="acao" name="acao" value="remover">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#capa">
@@ -1552,13 +1554,13 @@ return $verificacao;
                                     garrafas de água, bebidas, livros, revistas, CD, mais bolsos de armazenamento do que outros vendedores. </p>
                                 </div>
                                     <div class="quickview-btn-cart">
-                                    <form method="get" action="carrinho.php">
+                                    <form method="get" action="carrinho_artigos.php">
                                         <input type="hidden" id="id_artigo" name="id_artigo" value="115">
                                         <input type="hidden" id="acao" name="acao" value="adicionar">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#organizador">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
-                                    <form method="get" action="carrinho.php">
+                                    <form method="get" action="carrinho_artigos.php">
                                         <input type="hidden" id="id_artigo" name="id_artigo" value="115">
                                         <input type="hidden" id="acao" name="acao" value="remover">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#organizador">
@@ -1624,13 +1626,13 @@ return $verificacao;
                                     para aprimorar o seu carro.</p>
                                 </div>
                                     <div class="quickview-btn-cart">
-                                    <form method="get" action="carrinho.php">
+                                    <form method="get" action="carrinho_artigos.php">
                                         <input type="hidden" id="id_artigo" name="id_artigo" value="116">
                                         <input type="hidden" id="acao" name="acao" value="adicionar">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#luzes">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
-                                    <form method="get" action="carrinho.php">
+                                    <form method="get" action="carrinho_artigos.php">
                                         <input type="hidden" id="id_artigo" name="id_artigo" value="116">
                                         <input type="hidden" id="acao" name="acao" value="remover">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#luzes">
@@ -1697,13 +1699,13 @@ return $verificacao;
                                     posições. Não há resíduos de adesivo no painel. </p>
                                 </div>
                                     <div class="quickview-btn-cart">
-                                    <form method="get" action="carrinho.php">
+                                    <form method="get" action="carrinho_artigos.php">
                                         <input type="hidden" id="id_artigo" name="id_artigo" value="117">
                                         <input type="hidden" id="acao" name="acao" value="adicionar">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#holder">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
-                                    <form method="get" action="carrinho.php">
+                                    <form method="get" action="carrinho_artigos.php">
                                         <input type="hidden" id="id_artigo" name="id_artigo" value="117">
                                         <input type="hidden" id="acao" name="acao" value="remover">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#holder">
@@ -1766,13 +1768,13 @@ return $verificacao;
                                     adequado para 37-38 cm. Decoração de fibra de carbono </p>
                                 </div>
                                     <div class="quickview-btn-cart">
-                                    <form method="get" action="carrinho.php">
+                                    <form method="get" action="carrinho_artigos.php">
                                         <input type="hidden" id="id_artigo" name="id_artigo" value="118">
                                         <input type="hidden" id="acao" name="acao" value="adicionar">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#capavolante">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
-                                    <form method="get" action="carrinho.php">
+                                    <form method="get" action="carrinho_artigos.php">
                                         <input type="hidden" id="id_artigo" name="id_artigo" value="118">
                                         <input type="hidden" id="acao" name="acao" value="remover">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#capavolante">
