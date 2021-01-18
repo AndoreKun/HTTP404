@@ -54,7 +54,8 @@ if(isset($_SESSION['carrrinho_artigos'])){ //if the cart isn't empty
     $consulta = "";
     $id_produto_artigo = (substr($id_artigo, 1));
     foreach($_SESSION['carrrinho_artigos'] as $id_artigo => $quantity) {
-
+        $quantidade = $quantity;
+    }
         if (isset($_SESSION['id_artigo']['id_artigo'])){
             $consulta = "SELECT nome, preco FROM artigos WHERE IDArtigo = '$id_produto_artigo'";
 
@@ -64,6 +65,7 @@ if(isset($_SESSION['carrrinho_artigos'])){ //if the cart isn't empty
         $pass_users = 'http404#2021%';
         $cargo = "admin";
         include('database/selects_basedados.php');
+        echo "<h1>$quantidade</h1>";
         //Only display the row if there is a product (though there should always be as we have already checked)
         if($dados) {
             foreach($dados as $linha){
@@ -71,13 +73,13 @@ if(isset($_SESSION['carrrinho_artigos'])){ //if the cart isn't empty
                 $nome = $linha['nome'];
                 $preco_artigo = $linha['preco'];
             }                                             
-            $line_cost = $preco_artigo * $quantity; //work out the line cost
-            $total_artigo = $total_artigo + $line_cost; //add to the total cost
-            array_push($produtos_artigos, $nome, $quantity, $total_artigo);
+        $line_cost = $preco_artigo * $quantidade; //work out the line cost
+        $total_artigo = $total_artigo + $line_cost; //add to the total cost
+        array_push($produtos_artigos, $nome, $quantidade, $total_artigo);
         }
 
     $_SESSION['produtos_artigos']['produtos_artigos'] = $produtos_artigos;
-    }
+    
 }   
 echo "<script type='text/javascript'>
 				location.href='$voltar_para'

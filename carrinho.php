@@ -55,7 +55,8 @@ if(isset($_SESSION['carrrinho_veiculos'])){ //if the cart isn't empty
     $consulta = "";
 
     foreach($_SESSION['carrrinho_veiculos'] as $id_veiculo => $quantity) {
-
+        $quantidade = $quantity;
+    }
         if (isset($_SESSION['id_veiculo']['id_veiculo'])){
             $consulta = "SELECT modelo, marca, preco FROM veiculos WHERE IDVeiculo = '$id_veiculo'";
         }
@@ -64,6 +65,7 @@ if(isset($_SESSION['carrrinho_veiculos'])){ //if the cart isn't empty
         $pass_users = 'http404#2021%';
         $cargo = "admin";
         include('database/selects_basedados.php');
+        echo $consulta;
         //Only display the row if there is a product (though there should always be as we have already checked)
         if($dados) {
             foreach($dados as $linha){
@@ -73,13 +75,12 @@ if(isset($_SESSION['carrrinho_veiculos'])){ //if the cart isn't empty
                 $preco_veiculo = $linha['preco'];                                           
 
             }
-            $veiculo_nome = $marca.' '.$modelo;
-            $line_cost = $preco_veiculo * $quantity; //work out the line cost
-            $total_veiculo = $total_veiculo + $line_cost; //add to the total cost
-            array_push($produtos_veiculos, $veiculo_nome, $quantity, $total_veiculo);
+        $veiculo_nome = $marca.' '.$modelo;
+        $line_cost = $preco_veiculo * $quantidade; //work out the line cost
+        $total_veiculo = $total_veiculo + $line_cost; //add to the total cost
+        array_push($produtos_veiculos, $veiculo_nome, $quantidade, $total_veiculo);
         }
     $_SESSION['produtos_veiculos']['produtos_veiculos'] = $produtos_veiculos;
-    }
 }
 echo "<script type='text/javascript'>
 				location.href='$voltar_para'
