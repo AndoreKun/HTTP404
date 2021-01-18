@@ -43,7 +43,7 @@ return $verificacao;
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Favicon -->
         <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
-		
+
 		<!-- all css here -->
         <link rel="stylesheet" href="assets/css/bootstrap.min.css">
         <link rel="stylesheet" href="assets/css/animate.css">
@@ -84,13 +84,13 @@ return $verificacao;
                                                 <ul>
                                                     <li><a href="index.html">PÁGINA INICIAL</a></li>
                                                     <li class="active"><a href="about-us.html">SOBRE NÓS</a></li>
-                                                    <li><a href="checkout.php">Checkout</a>                                                     
+                                                    <li><a href="checkout.php">Checkout</a>
                                                     </li>
                                                     <li><a href="#">ACESSOS</a>
                                                         <ul>
                                                             <li><a href="login.php">Acesso Reservado</a></li>
                                                         </ul>
-                                                    </li>            
+                                                    </li>
                                                     <li><a href="contact.html">Contactos</a></li>
                                                 </ul>
                                             </nav>
@@ -211,7 +211,7 @@ return $verificacao;
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                    <ul>
 										<li class="facebook"><a href="https://www.facebook.com/Http404-104014971631032"><i class="icofont icofont-social-facebook"></i></a></li>
-										<li class="twitter"><a href="https://twitter.com/Http404V"><i class="icofont icofont-social-twitter"></i></a></li> 
+										<li class="twitter"><a href="https://twitter.com/Http404V"><i class="icofont icofont-social-twitter"></i></a></li>
 									</ul>
                                 </div>
                             </div>
@@ -314,8 +314,8 @@ return $verificacao;
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                    <ul>
 										<li class="facebook"><a href="https://www.facebook.com/Http404-104014971631032"><i class="icofont icofont-social-facebook"></i></a></li>
-										<li class="twitter"><a href="https://twitter.com/Http404V"><i class="icofont icofont-social-twitter"></i></a></li> 
-									</ul>		
+										<li class="twitter"><a href="https://twitter.com/Http404V"><i class="icofont icofont-social-twitter"></i></a></li>
+									</ul>
                                 </div>
                             </div>
                         </div>
@@ -418,7 +418,7 @@ return $verificacao;
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                   <ul>
 									<li class="facebook"><a href="https://www.facebook.com/Http404-104014971631032"><i class="icofont icofont-social-facebook"></i></a></li>
-									<li class="twitter"><a href="https://twitter.com/Http404V"><i class="icofont icofont-social-twitter"></i></a></li> 
+									<li class="twitter"><a href="https://twitter.com/Http404V"><i class="icofont icofont-social-twitter"></i></a></li>
 								</ul>
                                 </div>
                             </div>
@@ -521,14 +521,14 @@ return $verificacao;
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                   <ul>
 									<li class="facebook"><a href="https://www.facebook.com/Http404-104014971631032"><i class="icofont icofont-social-facebook"></i></a></li>
-									<li class="twitter"><a href="https://twitter.com/Http404V"><i class="icofont icofont-social-twitter"></i></a></li> 
+									<li class="twitter"><a href="https://twitter.com/Http404V"><i class="icofont icofont-social-twitter"></i></a></li>
 								</ul>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>		
+            </div>
 			<div id=rodasupra class="product-details-area fluid-padding-3 ptb-130">
                 <div class="container-fluid">
                     <div class="row">
@@ -543,7 +543,7 @@ return $verificacao;
                                                 </a>
                                             </div>
                                         </div>
-                                        
+
                                 </div>
                             </div>
                         </div>
@@ -590,14 +590,14 @@ return $verificacao;
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                     <ul>
 										<li class="facebook"><a href="https://www.facebook.com/Http404-104014971631032"><i class="icofont icofont-social-facebook"></i></a></li>
-										<li class="twitter"><a href="https://twitter.com/Http404V"><i class="icofont icofont-social-twitter"></i></a></li> 
+										<li class="twitter"><a href="https://twitter.com/Http404V"><i class="icofont icofont-social-twitter"></i></a></li>
 									</ul>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>	
+            </div>
 			<div id=radioadorninja class="product-details-area fluid-padding-3 ptb-130">
                 <div class="container-fluid">
                     <div class="row">
@@ -612,7 +612,7 @@ return $verificacao;
                                                 </a>
                                             </div>
                                         </div>
-                                        
+
                                 </div>
                             </div>
                         </div>
@@ -660,7 +660,7 @@ return $verificacao;
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                     <ul>
 										<li class="facebook"><a href="https://www.facebook.com/Http404-104014971631032"><i class="icofont icofont-social-facebook"></i></a></li>
-										<li class="twitter"><a href="https://twitter.com/Http404V"><i class="icofont icofont-social-twitter"></i></a></li> 
+										<li class="twitter"><a href="https://twitter.com/Http404V"><i class="icofont icofont-social-twitter"></i></a></li>
 									</ul>
                                 </div>
                             </div>
@@ -682,7 +682,7 @@ return $verificacao;
                                                 </a>
                                             </div>
                                         </div>
-                                        
+
                                 </div>
                             </div>
                         </div>
@@ -728,14 +728,14 @@ return $verificacao;
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                     <ul>
 										<li class="facebook"><a href="https://www.facebook.com/Http404-104014971631032"><i class="icofont icofont-social-facebook"></i></a></li>
-										<li class="twitter"><a href="https://twitter.com/Http404V"><i class="icofont icofont-social-twitter"></i></a></li> 
+										<li class="twitter"><a href="https://twitter.com/Http404V"><i class="icofont icofont-social-twitter"></i></a></li>
 									</ul>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>	
+            </div>
 				<div id=farol class="product-details-area fluid-padding-3 ptb-130">
                 <div class="container-fluid">
                     <div class="row">
@@ -750,7 +750,7 @@ return $verificacao;
                                                 </a>
                                             </div>
                                         </div>
-                                        
+
                                 </div>
                             </div>
                         </div>
@@ -798,7 +798,7 @@ return $verificacao;
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                    <ul>
 										<li class="facebook"><a href="https://www.facebook.com/Http404-104014971631032"><i class="icofont icofont-social-facebook"></i></a></li>
-										<li class="twitter"><a href="https://twitter.com/Http404V"><i class="icofont icofont-social-twitter"></i></a></li> 
+										<li class="twitter"><a href="https://twitter.com/Http404V"><i class="icofont icofont-social-twitter"></i></a></li>
 									</ul>
                                 </div>
                             </div>
@@ -820,7 +820,7 @@ return $verificacao;
                                                 </a>
                                             </div>
                                         </div>
-                                        
+
                                 </div>
                             </div>
                         </div>
@@ -871,7 +871,7 @@ return $verificacao;
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                    <ul>
 										<li class="facebook"><a href="https://www.facebook.com/Http404-104014971631032"><i class="icofont icofont-social-facebook"></i></a></li>
-										<li class="twitter"><a href="https://twitter.com/Http404V"><i class="icofont icofont-social-twitter"></i></a></li> 
+										<li class="twitter"><a href="https://twitter.com/Http404V"><i class="icofont icofont-social-twitter"></i></a></li>
 									</ul>
                                 </div>
                             </div>
@@ -893,7 +893,7 @@ return $verificacao;
                                                 </a>
                                             </div>
                                         </div>
-                                        
+
                                 </div>
                             </div>
                         </div>
@@ -940,7 +940,7 @@ return $verificacao;
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                    <ul>
 										<li class="facebook"><a href="https://www.facebook.com/Http404-104014971631032"><i class="icofont icofont-social-facebook"></i></a></li>
-										<li class="twitter"><a href="https://twitter.com/Http404V"><i class="icofont icofont-social-twitter"></i></a></li> 
+										<li class="twitter"><a href="https://twitter.com/Http404V"><i class="icofont icofont-social-twitter"></i></a></li>
 									</ul>
                                 </div>
                             </div>
@@ -962,7 +962,7 @@ return $verificacao;
                                                 </a>
                                             </div>
                                         </div>
-                                        
+
                                 </div>
                             </div>
                         </div>
@@ -1009,7 +1009,7 @@ return $verificacao;
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                    <ul>
 										<li class="facebook"><a href="https://www.facebook.com/Http404-104014971631032"><i class="icofont icofont-social-facebook"></i></a></li>
-										<li class="twitter"><a href="https://twitter.com/Http404V"><i class="icofont icofont-social-twitter"></i></a></li> 
+										<li class="twitter"><a href="https://twitter.com/Http404V"><i class="icofont icofont-social-twitter"></i></a></li>
 									</ul>
                                 </div>
                             </div>
@@ -1031,7 +1031,7 @@ return $verificacao;
                                                 </a>
                                             </div>
                                         </div>
-                                        
+
                                 </div>
                             </div>
                         </div>
@@ -1081,7 +1081,7 @@ return $verificacao;
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                    <ul>
 										<li class="facebook"><a href="https://www.facebook.com/Http404-104014971631032"><i class="icofont icofont-social-facebook"></i></a></li>
-										<li class="twitter"><a href="https://twitter.com/Http404V"><i class="icofont icofont-social-twitter"></i></a></li> 
+										<li class="twitter"><a href="https://twitter.com/Http404V"><i class="icofont icofont-social-twitter"></i></a></li>
 									</ul>
                                 </div>
                             </div>
@@ -1103,7 +1103,7 @@ return $verificacao;
                                                 </a>
                                             </div>
                                         </div>
-                                        
+
                                 </div>
                             </div>
                         </div>
@@ -1151,7 +1151,7 @@ return $verificacao;
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                   <ul>
 									<li class="facebook"><a href="https://www.facebook.com/Http404-104014971631032"><i class="icofont icofont-social-facebook"></i></a></li>
-									<li class="twitter"><a href="https://twitter.com/Http404V"><i class="icofont icofont-social-twitter"></i></a></li> 
+									<li class="twitter"><a href="https://twitter.com/Http404V"><i class="icofont icofont-social-twitter"></i></a></li>
 								</ul>
                                 </div>
                             </div>
@@ -1173,7 +1173,7 @@ return $verificacao;
                                                 </a>
                                             </div>
                                         </div>
-                                        
+
                                 </div>
                             </div>
                         </div>
@@ -1225,7 +1225,7 @@ return $verificacao;
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                   <ul>
 									<li class="facebook"><a href="https://www.facebook.com/Http404-104014971631032"><i class="icofont icofont-social-facebook"></i></a></li>
-									<li class="twitter"><a href="https://twitter.com/Http404V"><i class="icofont icofont-social-twitter"></i></a></li> 
+									<li class="twitter"><a href="https://twitter.com/Http404V"><i class="icofont icofont-social-twitter"></i></a></li>
 								</ul>
                                 </div>
                             </div>
@@ -1247,7 +1247,7 @@ return $verificacao;
                                                 </a>
                                             </div>
                                         </div>
-                                        
+
                                 </div>
                             </div>
                         </div>
@@ -1296,7 +1296,7 @@ return $verificacao;
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                   <ul>
 										<li class="facebook"><a href="https://www.facebook.com/Http404-104014971631032"><i class="icofont icofont-social-facebook"></i></a></li>
-										<li class="twitter"><a href="https://twitter.com/Http404V"><i class="icofont icofont-social-twitter"></i></a></li> 
+										<li class="twitter"><a href="https://twitter.com/Http404V"><i class="icofont icofont-social-twitter"></i></a></li>
 									</ul>
                                 </div>
                             </div>
@@ -1318,7 +1318,7 @@ return $verificacao;
                                                 </a>
                                             </div>
                                         </div>
-                                        
+
                                 </div>
                             </div>
                         </div>
@@ -1366,7 +1366,7 @@ return $verificacao;
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                   <ul>
 										<li class="facebook"><a href="https://www.facebook.com/Http404-104014971631032"><i class="icofont icofont-social-facebook"></i></a></li>
-										<li class="twitter"><a href="https://twitter.com/Http404V"><i class="icofont icofont-social-twitter"></i></a></li> 
+										<li class="twitter"><a href="https://twitter.com/Http404V"><i class="icofont icofont-social-twitter"></i></a></li>
 									</ul>
                                 </div>
                             </div>
@@ -1388,7 +1388,7 @@ return $verificacao;
                                                 </a>
                                             </div>
                                         </div>
-                                        
+
                                 </div>
                             </div>
                         </div>
@@ -1437,7 +1437,7 @@ return $verificacao;
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                   <ul>
 										<li class="facebook"><a href="https://www.facebook.com/Http404-104014971631032"><i class="icofont icofont-social-facebook"></i></a></li>
-										<li class="twitter"><a href="https://twitter.com/Http404V"><i class="icofont icofont-social-twitter"></i></a></li> 
+										<li class="twitter"><a href="https://twitter.com/Http404V"><i class="icofont icofont-social-twitter"></i></a></li>
 								</ul>
                                 </div>
                             </div>
@@ -1459,7 +1459,7 @@ return $verificacao;
                                                 </a>
                                             </div>
                                         </div>
-                                        
+
                                 </div>
                             </div>
                         </div>
@@ -1505,7 +1505,7 @@ return $verificacao;
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                    <ul>
 										<li class="facebook"><a href="https://www.facebook.com/Http404-104014971631032"><i class="icofont icofont-social-facebook"></i></a></li>
-										<li class="twitter"><a href="https://twitter.com/Http404V"><i class="icofont icofont-social-twitter"></i></a></li> 
+										<li class="twitter"><a href="https://twitter.com/Http404V"><i class="icofont icofont-social-twitter"></i></a></li>
 									</ul>
                                 </div>
                             </div>
@@ -1527,7 +1527,7 @@ return $verificacao;
                                                 </a>
                                             </div>
                                         </div>
-                                        
+
                                 </div>
                             </div>
                         </div>
@@ -1577,7 +1577,7 @@ return $verificacao;
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                    <ul>
 										<li class="facebook"><a href="https://www.facebook.com/Http404-104014971631032"><i class="icofont icofont-social-facebook"></i></a></li>
-										<li class="twitter"><a href="https://twitter.com/Http404V"><i class="icofont icofont-social-twitter"></i></a></li> 
+										<li class="twitter"><a href="https://twitter.com/Http404V"><i class="icofont icofont-social-twitter"></i></a></li>
 									</ul>
                                 </div>
                             </div>
@@ -1599,7 +1599,7 @@ return $verificacao;
                                                 </a>
                                             </div>
                                         </div>
-                                        
+
                                 </div>
                             </div>
                         </div>
@@ -1649,7 +1649,7 @@ return $verificacao;
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                   <ul>
 									<li class="facebook"><a href="https://www.facebook.com/Http404-104014971631032"><i class="icofont icofont-social-facebook"></i></a></li>
-									<li class="twitter"><a href="https://twitter.com/Http404V"><i class="icofont icofont-social-twitter"></i></a></li> 
+									<li class="twitter"><a href="https://twitter.com/Http404V"><i class="icofont icofont-social-twitter"></i></a></li>
 								</ul>
                                 </div>
                             </div>
@@ -1671,7 +1671,7 @@ return $verificacao;
                                                 </a>
                                             </div>
                                         </div>
-                                        
+
                                 </div>
                             </div>
                         </div>
@@ -1722,7 +1722,7 @@ return $verificacao;
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                   <ul>
 										<li class="facebook"><a href="https://www.facebook.com/Http404-104014971631032"><i class="icofont icofont-social-facebook"></i></a></li>
-										<li class="twitter"><a href="https://twitter.com/Http404V"><i class="icofont icofont-social-twitter"></i></a></li> 
+										<li class="twitter"><a href="https://twitter.com/Http404V"><i class="icofont icofont-social-twitter"></i></a></li>
 									</ul>
                                 </div>
                             </div>
@@ -1744,7 +1744,7 @@ return $verificacao;
                                                 </a>
                                             </div>
                                         </div>
-                                        
+
                                 </div>
                             </div>
                         </div>
@@ -1791,7 +1791,7 @@ return $verificacao;
                                     <h5 class="pd-sub-title">Partilhar</h5>
                                     <ul>
 										<li class="facebook"><a href="https://www.facebook.com/Http404-104014971631032"><i class="icofont icofont-social-facebook"></i></a></li>
-										<li class="twitter"><a href="https://twitter.com/Http404V"><i class="icofont icofont-social-twitter"></i></a></li> 
+										<li class="twitter"><a href="https://twitter.com/Http404V"><i class="icofont icofont-social-twitter"></i></a></li>
 									</ul>
                                 </div>
                             </div>
@@ -1803,7 +1803,7 @@ return $verificacao;
                 <div class="container">
                     <div class="newsletter-wrapper-all theme-bg-2">
                         <div class="row">
-                           
+
                             <div class="col-lg-20 col-12 col-md-12">
                                 <div class="newsletter-wrapper text-center">
                                     <div class="newsletter-title">
@@ -1824,7 +1824,7 @@ return $verificacao;
                         </div>
                     </div>
                 </div>
-            </div>	
+            </div>
             <footer>
                 <div class="footer-top pt-210 pb-98 theme-bg">
                     <div class="container">

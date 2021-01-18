@@ -1,45 +1,119 @@
-**Edit a file, create a new file, and clone from Bitbucket in under 2 minutes**
+# **Portal HTTP404**
 
-When you're done, you can delete the content in this README and update the file with details for others getting started with your repository.
+Projeto de Ambientes de Desenvolvimento Colaborativo
 
-*We recommend that you open this README in another tab as you perform the tasks below. You can [watch our video](https://youtu.be/0ocf7u76WSo) for a full demo of all the steps in this tutorial. Open the video in a new tab to avoid leaving Bitbucket.*
+Sistemas e Tecnologia da Informação - Instituto Superior de Engenharia - Universidade do Algarve
 
----
+Nome do Projeto: Loja virtual do Stand HTTP404
 
-## Edit a file
+Descrição do Projeto: Loja virtual de vendas e gerenciamento da loja de veículos  
 
-You’ll start by editing this README file to learn how to edit a file in Bitbucket.
+```
 
-1. Click **Source** on the left side.
-2. Click the README.md link from the list of files.
-3. Click the **Edit** button.
-4. Delete the following text: *Delete this line to make a change to the README from Bitbucket.*
-5. After making your change, click **Commit** and then **Commit** again in the dialog. The commit page will open and you’ll see the change you just made.
-6. Go back to the **Source** page.
+```
+## 1. Mapa do Portal:
 
----
+![imagem](assets/img/readmeimg/001.png)
 
-## Create a file
+```
 
-Next, you’ll add a new file to this repository.
+```
+###  Home:
+*Página Principal*
 
-1. Click the **New file** button at the top of the **Source** page.
-2. Give the file a filename of **contributors.txt**.
-3. Enter your name in the empty file space.
-4. Click **Commit** and then **Commit** again in the dialog.
-5. Go back to the **Source** page.
+Tela com a página principal do portal:
 
-Before you move on, go ahead and explore the repository. You've already seen the **Source** page, but check out the **Commits**, **Branches**, and **Settings** pages.
+![image](assets/img/readmeimg/002.png)
 
----
+*Destaques*
 
-## Clone a repository
+Tela com os detaques das vendas da loja:
 
-Use these steps to clone from SourceTree, our client for using the repository command-line free. Cloning allows you to work on your files locally. If you don't yet have SourceTree, [download and install first](https://www.sourcetreeapp.com/). If you prefer to clone from the command line, see [Clone a repository](https://confluence.atlassian.com/x/4whODQ).
+![image](assets/img/readmeimg/003.png)
 
-1. You’ll see the clone button under the **Source** heading. Click that button.
-2. Now click **Check out in SourceTree**. You may need to create a SourceTree account or log in.
-3. When you see the **Clone New** dialog in SourceTree, update the destination path and name if you’d like to and then click **Clone**.
-4. Open the directory you just created to see your repository’s files.
+*Reviews*
 
-Now that you're more familiar with your Bitbucket repository, go ahead and add a new file locally. You can [push your change back to Bitbucket with SourceTree](https://confluence.atlassian.com/x/iqyBMg), or you can [add, commit,](https://confluence.atlassian.com/x/8QhODQ) and [push from the command line](https://confluence.atlassian.com/x/NQ0zDQ).
+Tela com os reviews dos clientes da loja:
+
+![image](assets/img/readmeimg/004.png)
+
+*Produtos*
+
+Tela com os produtos da loja:
+
+![image](assets/img/readmeimg/005.png)
+
+*Redes Sociais*
+
+Tela com link das redes socias da loja:
+
+![image](assets/img/readmeimg/006.png)
+
+###  Sobre Nós:
+
+Tela com as informações da loja:
+
+![image](assets/img/readmeimg/007.png)
+
+*Missão e Valores*
+
+Tela com detalhes da Missão e Valores da loja:
+
+![image](assets/img/readmeimg/008.png)
+
+*Membros*
+
+Tela informações dos membros e colaboradores da loja:
+
+![image](assets/img/readmeimg/009.png)
+
+*Subscrição*
+
+Tela com espaço para subscrição do clientes no portal:
+
+![image](assets/img/readmeimg/010.png)
+
+*Suporte Técnico*
+
+Tela com informações e contatos do SUporte Técnico:
+
+![image](assets/img/readmeimg/011.png)
+
+###  Loja:
+
+Tela para finalização da compra e checkout dos produtos da loja:
+
+![image](assets/img/readmeimg/012.png)
+
+###  Acesso:
+
+Tela para acesso aos Clientes/Interno:
+
+![image](assets/img/readmeimg/013.png)
+
+###  Contactos:
+
+*Localização*
+
+Tela com informação de morada e mapa da loja:
+
+![image](assets/img/readmeimg/014.png)
+
+*Telefones/Emails*
+
+Tela de acesso ao Fale Conosco - Serviço ao Cliente
+
+![image](assets/img/readmeimg/015.png)
+
+Contactos, morada, email e telefone da loja:
+
+![image](assets/img/readmeimg/016.png)
+
+*Meios de Pagamento*
+
+Tela com informações dos meios de pagamentos:
+
+![image](assets/img/readmeimg/017.png)
+
+
+Aproveite nosso projeto!
