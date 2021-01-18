@@ -1,5 +1,5 @@
 <?php 
-ini_set('display_errors', 1);
+ini_set('display_errors', 0);
 session_start();
 $total = 0;
 $total_artigo = 0;
@@ -65,7 +65,6 @@ if(isset($_SESSION['carrrinho_artigos'])){ //if the cart isn't empty
         $pass_users = 'http404#2021%';
         $cargo = "admin";
         include('database/selects_basedados.php');
-        echo "<h1>$quantidade</h1>";
         //Only display the row if there is a product (though there should always be as we have already checked)
         if($dados) {
             foreach($dados as $linha){
@@ -78,7 +77,7 @@ if(isset($_SESSION['carrrinho_artigos'])){ //if the cart isn't empty
         array_push($produtos_artigos, $nome, $quantidade, $total_artigo);
         }
 
-    $_SESSION['produtos_artigos']['produtos_artigos'] = $produtos_artigos;
+    $_SESSION['produtos_artigos'] = $produtos_artigos;
     
 }   
 echo "<script type='text/javascript'>
