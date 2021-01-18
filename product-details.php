@@ -9,15 +9,15 @@ function feedback ($id, $tipo_produto){
         *@param string $tipo_produto Tipo do produto artigo/veículo
         *@param string $feedback Contém o feedback em html quando um produto é adicionado ou removido do carrinho
         *@return array $verificacao Retorna as variáveis id e feedback
-        *@version 2.1
-        *@since 16 jan 2021
+        *@version 2.1                                                                                                                                                                                                                                                                               
 
     */
     $feedback = "";
-    if($tipo_produto == "veiculo"){
+    if($tipo_produto == "veiculo"){ 
         if(isset($_SESSION['id_veiculo']['id_veiculo'])){
             if ($_SESSION['id_veiculo']['id_veiculo'] == $id){
                 $feedback = $_SESSION['feedback']['feedback'];
+                unset($_SESSION['id_veiculo']['id_veiculo']);
             }
         }
     }
@@ -25,6 +25,7 @@ function feedback ($id, $tipo_produto){
         if(isset($_SESSION['id_artigo']['id_artigo'])){
             if ($_SESSION['id_artigo']['id_artigo'] == $id){
                 $feedback = $_SESSION['feedback']['feedback'];
+                unset($_SESSION['id_artigo']['id_artigo']);
             }
         }
     }
@@ -183,7 +184,7 @@ return $verificacao;
                                 </div>
                                 <div class="product-overview">
                                     <h5 class="pd-sub-title">Resumo do Produto</h5>
-                                    <p> Com consumo médio de 7.2 litros/100km, 0 aos 100 km/h em 7.5 segundos, velocidade máxima de 230 km/h,
+                                    <p> Com consumo médio de 7.2 litros/100km, 0 aos 100 km/h em 7.5 segundos, velocidade máxima de 230 km/h, 
                                     um peso de 1755 kgs, o RC 200t está equipado com um motor em linha de 4 cilindros turbo comprimido, a Gasolina.</p>
                                 </div>
                                     <div class="quickview-btn-cart">
@@ -200,7 +201,7 @@ return $verificacao;
                                             <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                         </form>
                                     <br/>
-                                    <?php
+                                    <?php 
                                     $retorno = feedback(1, "veiculo");
                                     if ($retorno[0] == 1){
                                         echo $retorno[1];
@@ -286,7 +287,7 @@ return $verificacao;
                                 </div>
                                 <div class="product-overview">
                                     <h5 class="pd-sub-title">Resumo do Produto</h5>
-                                    <p> Com consumo médio de 10 litros/100km, 0 aos 100 km/h em 5.9 segundos, velocidade máxima de 230 km/h,
+                                    <p> Com consumo médio de 10 litros/100km, 0 aos 100 km/h em 5.9 segundos, velocidade máxima de 230 km/h, 
                                     um peso de 1684 kgs, o S60 T6 está equipado com Câmbio automático de 8 marchas e Motor a Gasolina.</p>
                                 </div>
                                     <div class="quickview-btn-cart">
@@ -303,7 +304,7 @@ return $verificacao;
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <br/>
-                                    <?php
+                                    <?php 
                                     $retorno = feedback(2, "veiculo");
                                     if ($retorno[0] == 2){
                                         echo $retorno[1];
@@ -390,7 +391,7 @@ return $verificacao;
                                 </div>
                                 <div class="product-overview">
                                     <h5 class="pd-sub-title">Resumo do Produto</h5>
-                                    <p> Com consumo médio de 6 litros/100km, 0 aos 100 km/h em 4.3 segundos, velocidade máxima de 250 km/h,
+                                    <p> Com consumo médio de 6 litros/100km, 0 aos 100 km/h em 4.3 segundos, velocidade máxima de 250 km/h, 
                                     um peso de 1815 kgs, o GR Supra está equipado com Câmbio automático de 8 marchas e Motor em linha de 6 cilindros, a Gasolina.</p>
                                 </div>
                                     <div class="quickview-btn-cart">
@@ -407,7 +408,7 @@ return $verificacao;
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <br/>
-                                    <?php
+                                    <?php 
                                     $retorno = feedback(3, "veiculo");
                                     if ($retorno[0] == 3){
                                         echo $retorno[1];
@@ -493,7 +494,7 @@ return $verificacao;
                                 </div>
                                 <div class="product-overview">
                                     <h5 class="pd-sub-title">Resumo do Produto</h5>
-                                    <p> Com consumo médio de 6 litros/100km, 0 aos 100 km/h em 3 segundos, velocidade máxima de 250 km/h, um peso de 306 kgs,
+                                    <p> Com consumo médio de 6 litros/100km, 0 aos 100 km/h em 3 segundos, velocidade máxima de 250 km/h, um peso de 306 kgs, 
                                     a K 1600 GT está equipada com um motor em linha de 6 cilindros, a Gasolina.</p>
                                 </div>
                                     <div class="quickview-btn-cart">
@@ -510,7 +511,7 @@ return $verificacao;
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <br/>
-                                    <?php
+                                    <?php 
                                     $retorno = feedback(4, "veiculo");
                                     if ($retorno[0] == 4){
                                         echo $retorno[1];
@@ -562,24 +563,24 @@ return $verificacao;
                                 </div>
                                 <div class="product-overview">
                                     <h5 class="pd-sub-title">Resumo do Produto</h5>
-                                    <p> As rodas Performance Machine Forged Aluminum são o carro-chefe de sua linha de rodas e as melhores rodas do mercado atualmente.
+                                    <p> As rodas Performance Machine Forged Aluminum são o carro-chefe de sua linha de rodas e as melhores rodas do mercado atualmente. 
                                     Essas rodas forjadas colocam a maior resistência do material na mesma direção da carga operacional, criando uma roda leve e forte.</p>
                                 </div>
                                     <div class="quickview-btn-cart">
-                                    <form method="get" action="carrinho.php">
+                                    <form method="get" action="carrinho_artigos.php">
                                         <input type="hidden" id="id_artigo" name="id_artigo" value="11">
                                         <input type="hidden" id="acao" name="acao" value="adicionar">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#rodasupra">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
-                                    <form method="get" action="carrinho.php">
+                                    <form method="get" action="carrinho_artigos.php">
                                         <input type="hidden" id="id_artigo" name="id_artigo" value="11">
                                         <input type="hidden" id="acao" name="acao" value="remover">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#rodasupra">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <br/>
-                                    <?php
+                                    <?php 
                                     $retorno = feedback(11, "artigo");
                                     if ($retorno[0] == 11){
                                         echo $retorno[1];
@@ -631,25 +632,25 @@ return $verificacao;
                                 </div>
                                 <div class="product-overview">
                                     <h5 class="pd-sub-title">Resumo do Produto</h5>
-                                    <p> Feito de alumínio de alta qualidade, multicamadas para garantir a dissipação de calor, fabricação profissional, alto desempenho e durável.
-                                    Com o objetivo de fazer seu veículo funcionar com mais eficiência, o resfriador de óleo pode resfriar rapidamente o óleo, reduzir o desgaste do motor,
+                                    <p> Feito de alumínio de alta qualidade, multicamadas para garantir a dissipação de calor, fabricação profissional, alto desempenho e durável. 
+                                    Com o objetivo de fazer seu veículo funcionar com mais eficiência, o resfriador de óleo pode resfriar rapidamente o óleo, reduzir o desgaste do motor, 
                                     aumentar a potência, melhorar a função de dissipação de calor do motor, e garantir um alto desempenho, tornar o seu motor mais potente!</p>
                                 </div>
                                     <div class="quickview-btn-cart">
-                                    <form method="get" action="carrinho.php">
+                                    <form method="get" action="carrinho_artigos.php">
                                         <input type="hidden" id="id_artigo" name="id_artigo" value="12">
                                         <input type="hidden" id="acao" name="acao" value="adicionar">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#radioadorninja">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
-                                    <form method="get" action="carrinho.php">
+                                    <form method="get" action="carrinho_artigos.php">
                                         <input type="hidden" id="id_artigo" name="id_artigo" value="12">
                                         <input type="hidden" id="acao" name="acao" value="remover">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#radioadorninja">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <br/>
-                                    <?php
+                                    <?php 
                                     $retorno = feedback(12, "artigo");
                                     if ($retorno[0] == 12){
                                         echo $retorno[1];
@@ -666,7 +667,7 @@ return $verificacao;
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>	
 			<div id=bancomoto class="product-details-area fluid-padding-3 ptb-130">
                 <div class="container-fluid">
                     <div class="row">
@@ -704,20 +705,20 @@ return $verificacao;
                                     <p>Couro durável, impermeável e flexível de alta qualidade, inclui três suportes de metal removíveis e seis parafusos e porcas.</p>
                                 </div>
                                     <div class="quickview-btn-cart">
-                                    <form method="get" action="carrinho.php">
+                                    <form method="get" action="carrinho_artigos.php">
                                         <input type="hidden" id="id_artigo" name="id_artigo" value="13">
                                         <input type="hidden" id="acao" name="acao" value="adicionar">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#bancomoto">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
-                                    <form method="get" action="carrinho.php">
+                                    <form method="get" action="carrinho_artigos.php">
                                         <input type="hidden" id="id_artigo" name="id_artigo" value="13">
                                         <input type="hidden" id="acao" name="acao" value="remover">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#bancomoto">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <br/>
-                                    <?php
+                                    <?php 
                                     $retorno = feedback(13, "artigo");
                                     if ($retorno[0] == 13){
                                         echo $retorno[1];
@@ -769,25 +770,25 @@ return $verificacao;
                                 </div>
                                 <div class="product-overview">
                                     <h5 class="pd-sub-title">Resumo do Produto</h5>
-                                    <p>O farol Halo tem 5,75 polegadas de diâmetro e pode ser montado na lateral ou na parte inferior do veiculo.
-                                    Tem uma característica HALO quando em uso, LEDs brancos brilham em um anel ao redor da borda do refletor.
+                                    <p>O farol Halo tem 5,75 polegadas de diâmetro e pode ser montado na lateral ou na parte inferior do veiculo. 
+                                    Tem uma característica HALO quando em uso, LEDs brancos brilham em um anel ao redor da borda do refletor. 
                                     Tem um corpo de estilo clássico de rua.</p>
                                 </div>
                                     <div class="quickview-btn-cart">
-                                    <form method="get" action="carrinho.php">
+                                    <form method="get" action="carrinho_artigos.php">
                                         <input type="hidden" id="id_artigo" name="id_artigo" value="14">
                                         <input type="hidden" id="acao" name="acao" value="adicionar">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#farol">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
-                                    <form method="get" action="carrinho.php">
+                                    <form method="get" action="carrinho_artigos.php">
                                         <input type="hidden" id="id_artigo" name="id_artigo" value="14">
                                         <input type="hidden" id="acao" name="acao" value="remover">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#farol">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <br/>
-                                    <?php
+                                    <?php 
                                     $retorno = feedback(14, "artigo");
                                     if ($retorno[0] == 14){
                                         echo $retorno[1];
@@ -839,28 +840,28 @@ return $verificacao;
                                 </div>
                                 <div class="product-overview">
                                     <h5 class="pd-sub-title">Resumo do Produto</h5>
-                                    <p>Este tanque de gasolina estilo Wassell é uma volta às bicicletas de demonstração dos anos sessenta.
-                                    O disco embutido combina perfeitamente com as linhas externas do tanque e é formado durante o processo de
-                                    estampagem. Ao contrário de outros tanques que cortam os painéis e os soldam de volta ao contrário,
-                                    nossas bordas são perfeitamente lisas. Por ser uma peça de um só carimbo, você não terá que se preocupar com
-                                    rachaduras nas costuras de solda ou gastar muito tempo preparando a tinta. Este é um tanque de montagem Frisco,
+                                    <p>Este tanque de gasolina estilo Wassell é uma volta às bicicletas de demonstração dos anos sessenta. 
+                                    O disco embutido combina perfeitamente com as linhas externas do tanque e é formado durante o processo de 
+                                    estampagem. Ao contrário de outros tanques que cortam os painéis e os soldam de volta ao contrário, 
+                                    nossas bordas são perfeitamente lisas. Por ser uma peça de um só carimbo, você não terá que se preocupar com 
+                                    rachaduras nas costuras de solda ou gastar muito tempo preparando a tinta. Este é um tanque de montagem Frisco, 
                                     portanto, ficará no alto do backbone.</p>
                                 </div>
                                     <div class="quickview-btn-cart">
-                                    <form method="get" action="carrinho.php">
+                                    <form method="get" action="carrinho_artigos.php">
                                         <input type="hidden" id="id_artigo" name="id_artigo" value="15">
                                         <input type="hidden" id="acao" name="acao" value="adicionar">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#tanque">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
-                                    <form method="get" action="carrinho.php">
+                                    <form method="get" action="carrinho_artigos.php">
                                         <input type="hidden" id="id_artigo" name="id_artigo" value="15">
                                         <input type="hidden" id="acao" name="acao" value="remover">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#tanque">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <br/>
-                                    <?php
+                                    <?php 
                                     $retorno = feedback(15, "artigo");
                                     if ($retorno[0] == 15){
                                         echo $retorno[1];
@@ -912,24 +913,24 @@ return $verificacao;
                                 </div>
                                 <div class="product-overview">
                                     <h5 class="pd-sub-title">Resumo do Produto</h5>
-                                    <p>Este é um velocímetro digital LCD, que pode indicar sua velocidade com precisão, e com isso aumentar sua segurança rodoviária.
+                                    <p>Este é um velocímetro digital LCD, que pode indicar sua velocidade com precisão, e com isso aumentar sua segurança rodoviária. 
                                     O velocímetro é feito de robusta carcaça de ABS galvanizado, totalmente à prova d'água e permite resistir a pequenas colisões</p>
                                 </div>
                                     <div class="quickview-btn-cart">
-                                    <form method="get" action="carrinho.php">
+                                    <form method="get" action="carrinho_artigos.php">
                                         <input type="hidden" id="id_artigo" name="id_artigo" value="16">
                                         <input type="hidden" id="acao" name="acao" value="adicionar">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#velocimetro">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
-                                    <form method="get" action="carrinho.php">
+                                    <form method="get" action="carrinho_artigos.php">
                                         <input type="hidden" id="id_artigo" name="id_artigo" value="16">
                                         <input type="hidden" id="acao" name="acao" value="remover">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#velocimetro">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <br/>
-                                    <?php
+                                    <?php 
                                     $retorno = feedback(16, "artigo");
                                     if ($retorno[0] == 16){
                                         echo $retorno[1];
@@ -981,24 +982,24 @@ return $verificacao;
                                 </div>
                                 <div class="product-overview">
                                     <h5 class="pd-sub-title">Resumo do Produto</h5>
-                                    <p>Medidor elétrico de nível do tanque de combustível Racetech. 52 mm de diâmetro, face preta, moldura preta,
+                                    <p>Medidor elétrico de nível do tanque de combustível Racetech. 52 mm de diâmetro, face preta, moldura preta, 
                                     iluminada para uso noturno.</p>
                                 </div>
                                     <div class="quickview-btn-cart">
-                                    <form method="get" action="carrinho.php">
+                                    <form method="get" action="carrinho_artigos.php">
                                         <input type="hidden" id="id_artigo" name="id_artigo" value="119">
                                         <input type="hidden" id="acao" name="acao" value="adicionar">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#medidor">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
-                                    <form method="get" action="carrinho.php">
+                                    <form method="get" action="carrinho_artigos.php">
                                         <input type="hidden" id="id_artigo" name="id_artigo" value="119">
                                         <input type="hidden" id="acao" name="acao" value="remover">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#medidor">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <br/>
-                                    <?php
+                                    <?php 
                                     $retorno = feedback(119, "artigo");
                                     if ($retorno[0] == 119){
                                         echo $retorno[1];
@@ -1051,26 +1052,26 @@ return $verificacao;
                                 <div class="product-overview">
                                     <h5 class="pd-sub-title">Resumo do Produto</h5>
                                     <p>O capacete full face Typhoon K77 oferece um capacete leve para uso diário repleto de recursos e projetado para o conforto do viajante.
-                                    Com ventilação ajustável e robusta, revestimento anti-umidade e canalização do fluxo de ar interno,
-                                    o K77 é perfeito para andar em climas quentes ou frios. Um protetor facial anti-riscos e resistente a impactos vem instalado com suportes
+                                    Com ventilação ajustável e robusta, revestimento anti-umidade e canalização do fluxo de ar interno, 
+                                    o K77 é perfeito para andar em climas quentes ou frios. Um protetor facial anti-riscos e resistente a impactos vem instalado com suportes 
                                     de troca rápida. Um defletor de respiração removível ajuda a reduzir a condensação e a manter o capacete fresco. Garantir um ajuste
                                     adequado e remover o capacete K77 é fácil graças à correia de liberação rápida.</p>
                                 </div>
                                     <div class="quickview-btn-cart">
-                                    <form method="get" action="carrinho.php">
+                                    <form method="get" action="carrinho_artigos.php">
                                         <input type="hidden" id="id_artigo" name="id_artigo" value="17">
                                         <input type="hidden" id="acao" name="acao" value="adicionar">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#capacete">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
-                                    <form method="get" action="carrinho.php">
+                                    <form method="get" action="carrinho_artigos.php">
                                         <input type="hidden" id="id_artigo" name="id_artigo" value="17">
                                         <input type="hidden" id="acao" name="acao" value="remover">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#capacete">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <br/>
-                                    <?php
+                                    <?php 
                                     $retorno = feedback(17, "veiculo");
                                     if ($retorno[0] == 17){
                                         echo $retorno[1];
@@ -1122,25 +1123,25 @@ return $verificacao;
                                 </div>
                                 <div class="product-overview">
                                     <h5 class="pd-sub-title">Resumo do Produto</h5>
-                                    <p>Couro resistente com entradas de ar e zonas de resfriamento perfuradas mantém o clima corporal da melhor forma.
-                                    Já o tecido S1 e as zonas elásticas Microelastic 2.0 em versões dedicadas para homens e mulheres garantem um ajuste perfeito.
+                                    <p>Couro resistente com entradas de ar e zonas de resfriamento perfuradas mantém o clima corporal da melhor forma. 
+                                    Já o tecido S1 e as zonas elásticas Microelastic 2.0 em versões dedicadas para homens e mulheres garantem um ajuste perfeito. 
                                     Leve, flexível e ágil para viver a liberdade da estrada.</p>
                                 </div>
                                     <div class="quickview-btn-cart">
-                                    <form method="get" action="carrinho.php">
+                                    <form method="get" action="carrinho_artigos.php">
                                         <input type="hidden" id="id_artigo" name="id_artigo" value="18">
                                         <input type="hidden" id="acao" name="acao" value="adicionar">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#casaco">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
-                                    <form method="get" action="carrinho.php">
+                                    <form method="get" action="carrinho_artigos.php">
                                         <input type="hidden" id="id_artigo" name="id_artigo" value="18">
                                         <input type="hidden" id="acao" name="acao" value="remover">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#casaco">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <br/>
-                                    <?php
+                                    <?php 
                                     $retorno = feedback(18, "artigo");
                                     if ($retorno[0] == 18){
                                         echo $retorno[1];
@@ -1192,29 +1193,29 @@ return $verificacao;
                                 </div>
                                 <div class="product-overview">
                                     <h5 class="pd-sub-title">Resumo do Produto</h5>
-                                    <p>Projetadas especificamente para pilotos ADV, as Botas de Aventura Forma combinam o conforto e a
-                                    flexibilidade de uma bota de estrada com os recursos de proteção e altura total de botas off-road.
+                                    <p>Projetadas especificamente para pilotos ADV, as Botas de Aventura Forma combinam o conforto e a 
+                                    flexibilidade de uma bota de estrada com os recursos de proteção e altura total de botas off-road. 
                                     Equipadas com acabamento em couro vintage e forro à prova d'água / respirável drytex, as botas Adventure
-                                    mantêm seus pés secos sem limitar a amplitude de movimento. A sola de dupla densidade oferece excelente
-                                    aderência à bicicleta e oferece aos pilotos uma superfície confortável e aderente para caminhar quando
+                                    mantêm seus pés secos sem limitar a amplitude de movimento. A sola de dupla densidade oferece excelente 
+                                    aderência à bicicleta e oferece aos pilotos uma superfície confortável e aderente para caminhar quando 
                                     descem da bicicleta. Os reforços e inserções de TPU integrados fornecem proteção contra lesões por impacto
                                     e as fivelas de plástico GH inquebráveis ​​garantem que você não será afastado se sofrer uma queda.</p>
                                 </div>
                                     <div class="quickview-btn-cart">
-                                    <form method="get" action="carrinho.php">
+                                    <form method="get" action="carrinho_artigos.php">
                                         <input type="hidden" id="id_artigo" name="id_artigo" value="19">
                                         <input type="hidden" id="acao" name="acao" value="adicionar">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#botas">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
-                                    <form method="get" action="carrinho.php">
+                                    <form method="get" action="carrinho_artigos.php">
                                         <input type="hidden" id="id_artigo" name="id_artigo" value="19">
                                         <input type="hidden" id="acao" name="acao" value="remover">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#botas">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <br/>
-                                    <?php
+                                    <?php 
                                     $retorno = feedback(19, "artigo");
                                     if ($retorno[0] == 19){
                                         echo $retorno[1];
@@ -1266,26 +1267,26 @@ return $verificacao;
                                 </div>
                                 <div class="product-overview">
                                     <h5 class="pd-sub-title">Resumo do Produto</h5>
-                                    <p>Design para conforto e segurança e proteção profissional da marca Herobier,
-                                    ergonomicamente projetado para máxima mobilidade. Proteção ultra alta resistência: acolchoamento de espuma
-                                    EVA durável amortece seus joelhos por horas a fio. Um escudo espesso de poliéster protege contra cortes ou
+                                    <p>Design para conforto e segurança e proteção profissional da marca Herobier, 
+                                    ergonomicamente projetado para máxima mobilidade. Proteção ultra alta resistência: acolchoamento de espuma 
+                                    EVA durável amortece seus joelhos por horas a fio. Um escudo espesso de poliéster protege contra cortes ou 
                                     arranhões em qualquer terreno.</p>
                                 </div>
                                     <div class="quickview-btn-cart">
-                                    <form method="get" action="carrinho.php">
+                                    <form method="get" action="carrinho_artigos.php">
                                         <input type="hidden" id="id_artigo" name="id_artigo" value="110">
                                         <input type="hidden" id="acao" name="acao" value="adicionar">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#joelheiras">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
-                                    <form method="get" action="carrinho.php">
+                                    <form method="get" action="carrinho_artigos.php">
                                         <input type="hidden" id="id_artigo" name="id_artigo" value="110">
                                         <input type="hidden" id="acao" name="acao" value="remover">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#joelheiras">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <br/>
-                                    <?php
+                                    <?php 
                                     $retorno = feedback(110, "artigo");
                                     if ($retorno[0] == 110){
                                         echo $retorno[1];
@@ -1337,25 +1338,25 @@ return $verificacao;
                                 </div>
                                 <div class="product-overview">
                                     <h5 class="pd-sub-title">Resumo do Produto</h5>
-                                    <p>Capacete LS2 MX436 Pioneer Evo Titanio. Capacete extremamente versátil concebido para ser usado em qualquer
+                                    <p>Capacete LS2 MX436 Pioneer Evo Titanio. Capacete extremamente versátil concebido para ser usado em qualquer 
                                     terreno e em qualquer circunstância. Dispõe de visor solar integrado e de uma boa ventilação,
                                     com múltiplas entradas e saídas de ar.</p>
                                 </div>
                                     <div class="quickview-btn-cart">
-                                    <form method="get" action="carrinho.php">
+                                    <form method="get" action="carrinho_artigos.php">
                                         <input type="hidden" id="id_artigo" name="id_artigo" value="112">
                                         <input type="hidden" id="acao" name="acao" value="adicionar">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#capacete2">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
-                                    <form method="get" action="carrinho.php">
+                                    <form method="get" action="carrinho_artigos.php">
                                         <input type="hidden" id="id_artigo" name="id_artigo" value="112">
                                         <input type="hidden" id="acao" name="acao" value="remover">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#capacete2">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <br/>
-                                    <?php
+                                    <?php 
                                     $retorno = feedback(112, "artigo");
                                     if ($retorno[0] == 112){
                                         echo $retorno[1];
@@ -1406,27 +1407,27 @@ return $verificacao;
                                 </div>
                                 <div class="product-overview">
                                     <h5 class="pd-sub-title">Resumo do Produto</h5>
-                                    <p>12 Peças fáceis de instalar com tema de girassol. Inclui 1 capa de volante em girassol, 2 capas de assento dianteiro de carro,
-                                    1 capa de console central em girassol, 2 bases para copos de girassóis para carro, 2 anéis de girassóis diferentes,
-                                    2 ambientadores de girassol para carros e 2 bases para copos de carro.
-                                    Todos os 12 acessórios estarão em uma linda caixa de presente azul,
+                                    <p>12 Peças fáceis de instalar com tema de girassol. Inclui 1 capa de volante em girassol, 2 capas de assento dianteiro de carro, 
+                                    1 capa de console central em girassol, 2 bases para copos de girassóis para carro, 2 anéis de girassóis diferentes, 
+                                    2 ambientadores de girassol para carros e 2 bases para copos de carro. 
+                                    Todos os 12 acessórios estarão em uma linda caixa de presente azul, 
                                     este é absolutamente o presente perfeito para sua família e amigos.</p>
                                 </div>
                                     <div class="quickview-btn-cart">
-                                    <form method="get" action="carrinho.php">
+                                    <form method="get" action="carrinho_artigos.php">
                                         <input type="hidden" id="id_artigo" name="id_artigo" value="113">
                                         <input type="hidden" id="acao" name="acao" value="adicionar">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#cobertos">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
-                                    <form method="get" action="carrinho.php">
+                                    <form method="get" action="carrinho_artigos.php">
                                         <input type="hidden" id="id_artigo" name="id_artigo" value="113">
                                         <input type="hidden" id="acao" name="acao" value="remover">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#cobertos">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <br/>
-                                    <?php
+                                    <?php 
                                     $retorno = feedback(113, "artigo");
                                     if ($retorno[0] == 113){
                                         echo $retorno[1];
@@ -1476,25 +1477,25 @@ return $verificacao;
                                 </div>
                                 <div class="product-overview">
                                     <h5 class="pd-sub-title">Resumo do Produto</h5>
-                                    <p> Capa de carro feita de material grosso e durável com uma parte inferior macia semelhante a lã.
-                                    Protege contra cortes, arranhões, sujeira e outros elementos externos, costuras seladas garantem desempenho à prova de água.
+                                    <p> Capa de carro feita de material grosso e durável com uma parte inferior macia semelhante a lã. 
+                                    Protege contra cortes, arranhões, sujeira e outros elementos externos, costuras seladas garantem desempenho à prova de água. 
                                     Inclui um saco para armazenar a capa quando não estiver em uso. Esta capa cabe em carros de até 204 polegadas de comprimento.</p>
                                 </div>
                                     <div class="quickview-btn-cart">
-                                    <form method="get" action="carrinho.php">
+                                    <form method="get" action="carrinho_artigos.php">
                                         <input type="hidden" id="id_artigo" name="id_artigo" value="114">
                                         <input type="hidden" id="acao" name="acao" value="adicionar">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#capa">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
-                                    <form method="get" action="carrinho.php">
+                                    <form method="get" action="carrinho_artigos.php">
                                         <input type="hidden" id="id_artigo" name="id_artigo" value="114">
                                         <input type="hidden" id="acao" name="acao" value="remover">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#capa">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <br/>
-                                    <?php
+                                    <?php 
                                     $retorno = feedback(114, "artigo");
                                     if ($retorno[0] == 114){
                                         echo $retorno[1];
@@ -1546,27 +1547,27 @@ return $verificacao;
                                 </div>
                                 <div class="product-overview">
                                     <h5 class="pd-sub-title">Resumo do Produto</h5>
-                                    <p>Organizador de carro grande: tamanho perfeito de 24 x 16 para todos os tipos de veículos,
-                                    correias superiores e inferiores ajustáveis ​​que permanecem ocultas e fora do caminho para que o passageiro dianteiro
-                                    e o motorista não as sintam. Tecido resistente à água e lavável à máquina para fácil manutenção, 9 Bolsos no banco traseiro
-                                    de armazenamento: vários compartimentos de armazenamento para armazenamento prático de lanches, brinquedos infantis,
+                                    <p>Organizador de carro grande: tamanho perfeito de 24 x 16 para todos os tipos de veículos, 
+                                    correias superiores e inferiores ajustáveis ​​que permanecem ocultas e fora do caminho para que o passageiro dianteiro 
+                                    e o motorista não as sintam. Tecido resistente à água e lavável à máquina para fácil manutenção, 9 Bolsos no banco traseiro 
+                                    de armazenamento: vários compartimentos de armazenamento para armazenamento prático de lanches, brinquedos infantis, 
                                     garrafas de água, bebidas, livros, revistas, CD, mais bolsos de armazenamento do que outros vendedores. </p>
                                 </div>
                                     <div class="quickview-btn-cart">
-                                    <form method="get" action="carrinho.php">
+                                    <form method="get" action="carrinho_artigos.php">
                                         <input type="hidden" id="id_artigo" name="id_artigo" value="115">
                                         <input type="hidden" id="acao" name="acao" value="adicionar">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#organizador">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
-                                    <form method="get" action="carrinho.php">
+                                    <form method="get" action="carrinho_artigos.php">
                                         <input type="hidden" id="id_artigo" name="id_artigo" value="115">
                                         <input type="hidden" id="acao" name="acao" value="remover">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#organizador">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <br/>
-                                    <?php
+                                    <?php 
                                     $retorno = feedback(115, "artigo");
                                     if ($retorno[0] == 115){
                                         echo $retorno[1];
@@ -1621,24 +1622,24 @@ return $verificacao;
 									<p>Design de 2 linhas: possui 2 linhas conectando 4 luzes de faixa, fios longos e
                                     adequados para qualquer modelo de carro. Existem 2 métodos de controle: por meio do aplicativo ou através do controlador
                                     Govee Home, que controla as luzes através de um sensor avançado: com um microfone embutido
-                                    a faixa de luzes muda de cor de acordo com o ritmo da música. Luzes Multi-cores: personalize as cores que deseja
+                                    a faixa de luzes muda de cor de acordo com o ritmo da música. Luzes Multi-cores: personalize as cores que deseja 
                                     para aprimorar o seu carro.</p>
                                 </div>
                                     <div class="quickview-btn-cart">
-                                    <form method="get" action="carrinho.php">
+                                    <form method="get" action="carrinho_artigos.php">
                                         <input type="hidden" id="id_artigo" name="id_artigo" value="116">
                                         <input type="hidden" id="acao" name="acao" value="adicionar">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#luzes">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
-                                    <form method="get" action="carrinho.php">
+                                    <form method="get" action="carrinho_artigos.php">
                                         <input type="hidden" id="id_artigo" name="id_artigo" value="116">
                                         <input type="hidden" id="acao" name="acao" value="remover">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#luzes">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <br/>
-                                    <?php
+                                    <?php 
                                     $retorno = feedback(116, "artigo");
                                     if ($retorno[0] == 116){
                                         echo $retorno[1];
@@ -1690,28 +1691,28 @@ return $verificacao;
                                 </div>
                                 <div class="product-overview">
                                     <h5 class="pd-sub-title">Resumo do Produto</h5>
-									<p>As duas metades do suporte são conectadas por um mecanismo de mola.
-                                    o smartphone fica preso na abertura do suporte entre duas almofadas
-                                    de borracha fina, design extremamente simples. O revestimento externo de plástico sólido
+									<p>As duas metades do suporte são conectadas por um mecanismo de mola. 
+                                    o smartphone fica preso na abertura do suporte entre duas almofadas 
+                                    de borracha fina, design extremamente simples. O revestimento externo de plástico sólido 
                                     fecha e depois fica plano no suporte. Suporte universal para de qualquer tipo de dispositivo entre
-                                    3,5 a 5,5 polegadas. Também pode ser usado por diferentes motoristas de carro em diferentes
+                                    3,5 a 5,5 polegadas. Também pode ser usado por diferentes motoristas de carro em diferentes 
                                     posições. Não há resíduos de adesivo no painel. </p>
                                 </div>
                                     <div class="quickview-btn-cart">
-                                    <form method="get" action="carrinho.php">
+                                    <form method="get" action="carrinho_artigos.php">
                                         <input type="hidden" id="id_artigo" name="id_artigo" value="117">
                                         <input type="hidden" id="acao" name="acao" value="adicionar">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#holder">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
-                                    <form method="get" action="carrinho.php">
+                                    <form method="get" action="carrinho_artigos.php">
                                         <input type="hidden" id="id_artigo" name="id_artigo" value="117">
                                         <input type="hidden" id="acao" name="acao" value="remover">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#holder">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <br/>
-                                    <?php
+                                    <?php 
                                     $retorno = feedback(117, "artigo");
                                     if ($retorno[0] == 117){
                                         echo $retorno[1];
@@ -1763,24 +1764,24 @@ return $verificacao;
                                 </div>
                                 <div class="product-overview">
                                     <h5 class="pd-sub-title">Resumo do Produto</h5>
-									<p>Tampa do volante do carro respirável antiderrapante de couro para volante,
+									<p>Tampa do volante do carro respirável antiderrapante de couro para volante, 
                                     adequado para 37-38 cm. Decoração de fibra de carbono </p>
                                 </div>
                                     <div class="quickview-btn-cart">
-                                    <form method="get" action="carrinho.php">
+                                    <form method="get" action="carrinho_artigos.php">
                                         <input type="hidden" id="id_artigo" name="id_artigo" value="118">
                                         <input type="hidden" id="acao" name="acao" value="adicionar">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#capavolante">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
-                                    <form method="get" action="carrinho.php">
+                                    <form method="get" action="carrinho_artigos.php">
                                         <input type="hidden" id="id_artigo" name="id_artigo" value="118">
                                         <input type="hidden" id="acao" name="acao" value="remover">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#capavolante">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <br/>
-                                    <?php
+                                    <?php 
                                     $retorno = feedback(118, "artigo");
                                     if ($retorno[0] == 118){
                                         echo $retorno[1];
