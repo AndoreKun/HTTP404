@@ -17,7 +17,7 @@ function feedback ($id, $tipo_produto){
         if(isset($_SESSION['id_veiculo']['id_veiculo'])){
             if ($_SESSION['id_veiculo']['id_veiculo'] == $id){
                 $feedback = $_SESSION['feedback']['feedback'];
-                unset($_SESSION['id_veiculo']['id_veiculo']);
+                
             }
         }
     }
@@ -25,7 +25,7 @@ function feedback ($id, $tipo_produto){
         if(isset($_SESSION['id_artigo']['id_artigo'])){
             if ($_SESSION['id_artigo']['id_artigo'] == $id){
                 $feedback = $_SESSION['feedback']['feedback'];
-                unset($_SESSION['id_artigo']['id_artigo']);
+                
             }
         }
     }
