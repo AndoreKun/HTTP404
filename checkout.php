@@ -1,7 +1,7 @@
 <?php 
 
 session_start();
-$produtos = array();
+
 $total_valor_produtos = 0;
 $num_produtos_artigos = 0;
 $num_produtos_veiculos = 0;
@@ -9,104 +9,139 @@ $artigos = "";
 $veiculos = "";
 $posicao_veiculo = 0;
 $posicao_artigo = 1;
-$prod_veiculos_antigos = array();
 $pos_nome_veiculo = 0;
 $adicionar_posicoes = 0;
+$veiculo_nome = "";
+$line_cost = 0;
+$total_veiculo = 0; 
+$total_artigo = 0;
+$tipo_produto = "";
+
 
 if(isset($_SESSION['produtos_veiculos']) || isset($_SESSION['produtos_artigos'])){
+    
+
     if(isset($_SESSION['produtos_artigos'])){
-        $artigos = $_SESSION['produtos_artigos'];
+        $id_artigo = $_SESSION['id_artigo']['id_artigo'];
+        $id_artigo = $id_artigo[0];
+        $acao_artigo = $_SESSION['produtos_artigos'];
+        $tipo_produto = "artigo";
     } 
-    if(isset($_SESSION['produtos_veiculos'])) {
-        $veiculos = $_SESSION['produtos_veiculos'];
+    if(isset($_SESSION['produtos_veiculos'])){
+        $id_veiculo =  $_SESSION['id_veiculo']['id_veiculo'];
+        $id_veiculo = $id_veiculo[0];
+        $acao_veiculo = $_SESSION['produtos_veiculos'];
+        $tipo_produto = "veiculo";
+    }
+    if(isset($_SESSION['produtos_veiculos']) && isset($_SESSION['produtos_artigos'])){
+        $tipo_produto = "artigo_&_veiculo";
+        
     }
 
-    if ($veiculos == ""){
-
-        if(isset($_SESSION['produtos']['produtos'])){
-            $produtos_antigos = $_SESSION['produtos']['produtos'];
-            
+    
+    $produtos = array();
+    $prod_veiculos_antigos = array();
+    if($tipo_produto == "veiculo" || $tipo_produto == "artigo_&_veiculo"){
+    
+        foreach($_SESSION['carrinho_veiculos'] as $id_veiculo => $quantity) {
+            $quantidade = $quantity;
         }
-
-        $posicao_artigo = 0;
-        array_push($produtos, $artigos); 
-        $num_produtos_artigos = count($produtos[$posicao_artigo]) / 3;
-        $pos_preco = 2;
-        for($preco_artigos = 0; $num_produtos_artigos > $preco_artigos; $preco_artigos++){  
-            $total_valor_produtos += $produtos[$posicao_artigo][$pos_preco]; 
-            $pos_preco += 3; 
-        }     
-    } elseif($artigos == ""){
-
         
-        $posicao_veiculo = 0;
-        array_push($produtos, $veiculos);
-        
-        if(isset($_SESSION['prod_veiculos_antigos'])){
-            
-            $num_veiculos_antigos = count($_SESSION['prod_veiculos_antigos']);
+        if($acao = "adicionar"){
+            $quantidade += 1;
+        }
+        if($acao = "remover")
+            $quantidade -= 1;
+        $consulta = "SELECT modelo, marca, preco FROM veiculos WHERE IDVeiculo = '$id_veiculo'";
+        $pass_users = 'http404#2021%';
+        $cargo = "admin";
+        include('database/selects_basedados.php');
+        // Only display the row if there is a product (though there should always be as we have already checked)
+        if($dados) {
+            foreach($dados as $linha){
 
-            for($num_veiculos = 0; $num_veiculos_antigos > $num_veiculos; $num_veiculos++){
-                
-                if($produtos[$posicao_veiculo][$pos_nome_veiculo] != $_SESSION['prod_veiculos_antigos'][$pos_nome_veiculo]){
-                    array_push($produtos[$posicao_veiculo], $_SESSION['prod_veiculos_antigos'][$num_veiculos]);
-                    $adicionar_posicoes + 1;
-                     
-                }
-                if($adicionar_posicoes == 3){
-                    $pos_nome_veiculo + 3;
-                    $adicionar_posicoes = 0;
-                } 
-                            
+                $modelo = $linha['modelo'];
+                $marca = $linha['marca'];
+                $preco_veiculo = $linha['preco'];                                           
+
             }
-            $prod_veiculos_antigos = $produtos;
-            while($prod_veiculos_antigos[0] != $produtos[0][0] ){
-                $prod_veiculos_antigos = $prod_veiculos_antigos[0];
-            } 
-            $_SESSION['prod_veiculos_antigos'] = $prod_veiculos_antigos;
-        
-        } else { 
-            $prod_veiculos_antigos = $produtos;
-            while($prod_veiculos_antigos[0] != $produtos[0][0] ){
-                $prod_veiculos_antigos = $prod_veiculos_antigos[0];
-            } 
-            $_SESSION['prod_veiculos_antigos'] = $prod_veiculos_antigos;
         }
-        $_SESSION['produtos']['produtos'] = $produtos;
-        $num_produtos_veiculos = count($produtos[$posicao_veiculo]) / 3;
-
-
-        $pos_preco = 2;
-        // Calcula o valor total da compra
-        for($preco_veiculos = 0; $num_produtos_veiculos > $preco_veiculos; $preco_veiculos++){  
-            $total_valor_produtos += $produtos[$posicao_veiculo][$pos_preco];  
-            $pos_preco += 3; 
-        }
-    } else {
         
-           
-
         
-        $posicao_veiculo = 0;
-        $posicao_artigo = 1;
-        array_push($produtos, $veiculos, $artigos);
-        $num_produtos_artigos = count($produtos[$posicao_artigo]) / 3;
-        $num_produtos_veiculos = count($produtos[$posicao_veiculo]) / 3;
-        $pos_preco = 2;
-        // Calcula o valor total da compra
-        for($preco_veiculos = 0; $num_produtos_veiculos > $preco_veiculos; $preco_veiculos++){  
-            $total_valor_produtos += $produtos[$posicao_veiculo][$pos_preco];  
-            $pos_preco += 3;
+        $veiculo_nome = $marca.' '.$modelo;
+        $line_cost = $preco_veiculo * $quantidade; //work out the line cost
+        $total_veiculo = $total_veiculo + $line_cost; //add to the total cost
+        $sem_produtos = TRUE;
+        if(isset($_SESSION['produtos']['produtos'])){
+            $produtos = $_SESSION['produtos']['produtos'];
+            $num_produtos = count($produtos);
+            
+            for($produtos_repetidos = 0; $num_produtos > $produtos_repetidos; $produtos_repetidos++){
+                
+                if($veiculo_nome == $produtos[$produtos_repetidos]){
+                    
+                    $produtos[$produtos_repetidos] = $veiculo_nome;
+                    $produtos[$produtos_repetidos + 1] = $quantidade;
+                    $produtos[$produtos_repetidos + 2] = $total_veiculo;
+                    $sem_produtos = FALSE;
+                    break;        
+                }
+            }
         }
-        $pos_preco = 2;
-        for($preco_artigos = 0; $num_produtos_artigos > $preco_artigos; $preco_artigos++){  
-            $total_valor_produtos += $produtos[$posicao_artigo][$pos_preco]; 
-            $pos_preco += 3; 
-        }  
+        if($sem_produtos == TRUE){
+            array_push($produtos, $veiculo_nome, $quantidade, $total_veiculo);   
+        }
     }
+    if($tipo_produto == "artigo" || $tipo_produto == "artigo_&_veiculo"){
+        foreach($_SESSION['carrinho_artigos'] as $id_artigo => $quantity) {
+            $quantidade = $quantity;
+        }
+        if($acao = "adicionar"){
+            $quantidade += 1;
+        }
+        if($acao = "remover")
+            $quantidade -= 1;
+        $id_artigo = (substr($id_artigo, 1));
+        $consulta = "SELECT nome, preco FROM artigos WHERE IDArtigo = '$id_artigo'";
+        $pass_users = 'http404#2021%';
+        $cargo = "admin";
+        include('database/selects_basedados.php');
+        // Only display the row if there is a product (though there should always be as we have already checked)
+        if($dados) {
+            foreach($dados as $linha){
 
+                $nome = $linha['nome'];
+                $preco_artigo = $linha['preco'];                                           
 
-
+            }
+        }
+        
+        $line_cost = $preco_artigo * $quantidade; //work out the line cost
+        $total_artigo = $total_artigo + $line_cost; //add to the total cost
+        $sem_produtos = TRUE;
+        if(isset($_SESSION['produtos']['produtos'])){
+            $produtos = $_SESSION['produtos']['produtos'];
+            $num_produtos = count($produtos);
+            
+            for($produtos_repetidos = 0; $num_produtos > $produtos_repetidos; $produtos_repetidos++){
+                
+                if($nome == $produtos[$produtos_repetidos]){
+                    
+                    $produtos[$produtos_repetidos] = $nome;
+                    $produtos[$produtos_repetidos + 1] = $quantidade;
+                    $produtos[$produtos_repetidos + 2] = $total_artigo;
+                    $sem_produtos = FALSE;
+                    break;        
+                }
+            }
+        }
+        if($sem_produtos == TRUE){
+            array_push($produtos, $nome, $quantidade, $total_artigo);   
+        }
+    }
+    unset($_SESSION['produtos_veiculos']);
+    unset($_SESSION['produtos_artigos']);
+    $_SESSION['produtos']['produtos'] = $produtos;
 }
 ?>
 <!doctype html>
@@ -293,28 +328,36 @@ if(isset($_SESSION['produtos_veiculos']) || isset($_SESSION['produtos_artigos'])
                         <div class="col-lg-6 col-md-12 col-12" style="text-align: center;">
                             <div class="your-order">
                                 <h3>A SUA ENCOMENDA</h3>
-                                <?php if(isset($_SESSION["produtos"]["produtos"])){?>
+                                <?php if(isset($_SESSION['produtos']['produtos'])){?>
                                 <div class="your-order-table table-responsive" >
                                     <table>
                                     <?php
+                                    $produtos = $_SESSION['produtos']['produtos'];
                                     $nomeproduto = 0; 
                                     $qntdproduto = 1;
                                     $precoproduto = 2;
+                                    $num_produtos_veiculos = count($produtos) / 3;
+                                    $pos_preco = 2;                                                                   
+                                    // Calcula o valor total da compra
+                                    for($preco_veiculos = 0; $num_produtos_veiculos > $preco_veiculos; $preco_veiculos++){  
+                                        $total_valor_produtos += $produtos[$pos_preco];  
+                                        $pos_preco += 3; 
+                                    }
                                     for($num_linhas = 0; $num_produtos_veiculos > $num_linhas; $num_linhas++) {
                                         ?>
                                         <thead>
                                             <tr class="cart_item">
                                                 <td id="teste" class="product-name">
                                                 <label>Nome:</label>
-                                                    <?php echo $produtos[$posicao_veiculo][$nomeproduto]; ?>   
+                                                    <?php echo $produtos[$nomeproduto]; ?>   
                                                 </td>
                                                 <td>             
                                                 <label>Quantidade:</label>
-                                                    <strong><?php echo "X".$produtos[$posicao_veiculo][$qntdproduto];?></strong>
+                                                    <strong><?php echo "X".$produtos[$qntdproduto];?></strong>
                                                 </td>
                                                 <td class="product-total">
                                                     <label>Preço:</label>
-                                                    <span class="amount"><?php echo $produtos[$posicao_veiculo][$precoproduto];?>€</span>
+                                                    <span class="amount"><?php echo $produtos[$precoproduto];?>€</span>
                                                 </td>
                                             </tr>
                                         </thead>
@@ -323,33 +366,7 @@ if(isset($_SESSION['produtos_veiculos']) || isset($_SESSION['produtos_artigos'])
                                         $qntdproduto += 3;
                                         $precoproduto += 3;
                                         }
-                                    $nomeproduto = 0; 
-                                    $qntdproduto = 1;
-                                    $precoproduto = 2;
-                                    for($num_linhas = 0; $num_produtos_artigos > $num_linhas; $num_linhas++) {
-                                        ?>
-                                        <thead>                          
-                                            <tr class="cart_item">
-                                                <td id="teste" class="product-name">
-                                                <label>Nome:</label>
-                                                    <?php echo $produtos[$posicao_artigo][$nomeproduto]; ?>   
-                                                </td>
-                                                <td>
-                                                <label>Quantidade:</label>
-                                                    <strong><?php echo "X".$produtos[$posicao_artigo][$qntdproduto];?></strong>
-                                                </td>
-                                                <td class="product-total">
-                                                    <label>Preço:</label>
-                                                    <span class="amount"><?php echo $produtos[$posicao_artigo][$precoproduto];?>€</span>
-                                                </td>
-                                    <?php 
-                                        $nomeproduto += 3; 
-                                        $qntdproduto += 3;
-                                        $precoproduto += 3;
-                                        } 
-                                        ?> 
-                                            </tr>
-                                        </thead>
+                                    ?>
                                         <tfoot>
                                             <tr class="order-total">
                                                 <th>Total</th>
