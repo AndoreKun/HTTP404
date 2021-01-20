@@ -43,7 +43,7 @@ if(isset($_GET['mudar_carrinho'])){
         break;
 
         case "limpar":
-            unset($_SESSION['produtos']['produtos']);
+            unset($_SESSION["produtos"]["produtos"]);
             unset($_SESSION['carrinho_veiculos']);
             unset($_SESSION['carrrinho_artigos']);
             session_destroy(); //unset the whole cart, i.e. empty the cart.

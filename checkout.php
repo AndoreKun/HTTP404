@@ -1,4 +1,5 @@
 <?php 
+
 session_start();
 $produtos = array();
 $total_valor_produtos = 0;
@@ -8,7 +9,9 @@ $artigos = "";
 $veiculos = "";
 $posicao_veiculo = 0;
 $posicao_artigo = 1;
-$produtos_antigos = array();
+$prod_veiculos_antigos = array();
+$pos_nome_veiculo = 0;
+
 
 if(isset($_SESSION['produtos_veiculos']) || isset($_SESSION['produtos_artigos'])){
     if(isset($_SESSION['produtos_artigos'])){
@@ -22,7 +25,7 @@ if(isset($_SESSION['produtos_veiculos']) || isset($_SESSION['produtos_artigos'])
 
         if(isset($_SESSION['produtos']['produtos'])){
             $produtos_antigos = $_SESSION['produtos']['produtos'];
-            echo $produtos_antigos[0][0];
+            
         }
 
         $posicao_artigo = 0;
@@ -35,18 +38,37 @@ if(isset($_SESSION['produtos_veiculos']) || isset($_SESSION['produtos_artigos'])
         }     
     } elseif($artigos == ""){
 
-        if(isset($_SESSION['produtos']['produtos'])){
-            $prod_veiculos_antigos = $_SESSION['produtos']['produtos'];
-            ;
-            
-            echo $prod_veiculos_antigos[0][0];
-           
-        } 
-        
         
         $posicao_veiculo = 0;
         array_push($produtos, $veiculos);
+        
+        
+        if(isset($_SESSION['prod_veiculos_antigos'])){
+            
+            $num_veiculos_antigos = count($_SESSION['prod_veiculos_antigos']);
+
+            for($num_veiculos = 0; $num_veiculos_antigos > $num_veiculos; $num_veiculos++){
+                
+                if($produtos[$posicao_veiculo][$pos_nome_veiculo] != $_SESSION['prod_veiculos_antigos'][$pos_nome_veiculo]){
+                    array_push($produtos[$posicao_veiculo], $_SESSION['prod_veiculos_antigos'][$num_veiculos]);
+                    
+                }
+                                
+            }
+        
+        } else {
+            $prod_veiculos_antigos = $produtos;
+            while($prod_veiculos_antigos[0] != $produtos[0][0] ){
+                $prod_veiculos_antigos = $prod_veiculos_antigos[0];
+            } 
+            $_SESSION['prod_veiculos_antigos'] = $prod_veiculos_antigos;
+            
+            
+        }
+        $_SESSION['produtos']['produtos'] = $produtos;
         $num_produtos_veiculos = count($produtos[$posicao_veiculo]) / 3;
+
+
         $pos_preco = 2;
         // Calcula o valor total da compra
         for($preco_veiculos = 0; $num_produtos_veiculos > $preco_veiculos; $preco_veiculos++){  
@@ -54,17 +76,10 @@ if(isset($_SESSION['produtos_veiculos']) || isset($_SESSION['produtos_artigos'])
             $pos_preco += 3; 
         }
     } else {
-        if(isset($_SESSION['produtos']['produtos'])){
-            $prod_veiculos_antigos = $_SESSION['produtos']['produtos'];
-            if($_SESSION['produtos']['produtos'][0] == $prod_veiculos_antigos[0]){
-                echo "yES";
-            }           
-            echo implode($_SESSION['produtos']['produtos'][0]);
-            echo implode($prod_veiculos_antigos[0]);                  
-            
+        
            
 
-        } 
+        
         $posicao_veiculo = 0;
         $posicao_artigo = 1;
         array_push($produtos, $veiculos, $artigos);
@@ -83,7 +98,6 @@ if(isset($_SESSION['produtos_veiculos']) || isset($_SESSION['produtos_artigos'])
         }  
     }
 
-$_SESSION['produtos']['produtos'] = $produtos;
 
 
 }

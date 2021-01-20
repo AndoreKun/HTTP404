@@ -4,6 +4,7 @@ session_start();
 $total = 0;
 $total_artigo = 0;
 $produtos_artigos = array();
+$adicionar_artigo = FALSE;
 
 if(isset($_GET['mudar_carrinho'])){
 
@@ -19,7 +20,7 @@ if(isset($_GET['mudar_carrinho'])){
 
         case "adicionar":
             $_SESSION['carrrinho_artigos'][$id_artigo]++; //add one to the quantity of the product with id $product_id
-
+            $adicionar_artigo = TRUE;
             $_SESSION['feedback']['feedback'] = "<div style='text-align: center'>
                             <h4>Produto Adicionado ao Carrinho!</h4><br/>
                             <a href='checkout.php#carrinho'>
@@ -30,6 +31,7 @@ if(isset($_GET['mudar_carrinho'])){
 
         case "remover":
             $_SESSION['carrrinho_artigos'][$id_artigo]--; //remove one from the quantity of the product with id $product_id
+            $adicionar_artigo = TRUE;
             $_SESSION['feedback']['feedback'] = "<div style='text-align: center'>
                             <h4>Produto Removido do Carrinho!</h4><br/>
                             <a href='checkout.php#carrinho'>
@@ -42,6 +44,7 @@ if(isset($_GET['mudar_carrinho'])){
         case "limpar":
             unset($_SESSION['produtos']['produtos']);
             unset($_SESSION['carrinho_veiculos']);
+            unset($_SESSION['prod_veiculos_antigos']);
             unset($_SESSION['carrrinho_artigos']);
             session_destroy(); //unset the whole cart, i.e. empty the cart.
         break;
@@ -49,7 +52,7 @@ if(isset($_GET['mudar_carrinho'])){
 }
 
 
-if(isset($_SESSION['carrrinho_artigos'])){ //if the cart isn't empty
+if($adicionar_artigo == TRUE){ //if the cart isn't empty
     //iterate through the cart, the $product_id is the key and $quantity is the value
     $consulta = "";
     $id_produto_artigo = (substr($id_artigo, 1));
