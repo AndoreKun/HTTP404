@@ -11,7 +11,7 @@ $posicao_veiculo = 0;
 $posicao_artigo = 1;
 $prod_veiculos_antigos = array();
 $pos_nome_veiculo = 0;
-
+$adicionar_posicoes = 0;
 
 if(isset($_SESSION['produtos_veiculos']) || isset($_SESSION['produtos_artigos'])){
     if(isset($_SESSION['produtos_artigos'])){
@@ -42,7 +42,6 @@ if(isset($_SESSION['produtos_veiculos']) || isset($_SESSION['produtos_artigos'])
         $posicao_veiculo = 0;
         array_push($produtos, $veiculos);
         
-        
         if(isset($_SESSION['prod_veiculos_antigos'])){
             
             $num_veiculos_antigos = count($_SESSION['prod_veiculos_antigos']);
@@ -51,19 +50,27 @@ if(isset($_SESSION['produtos_veiculos']) || isset($_SESSION['produtos_artigos'])
                 
                 if($produtos[$posicao_veiculo][$pos_nome_veiculo] != $_SESSION['prod_veiculos_antigos'][$pos_nome_veiculo]){
                     array_push($produtos[$posicao_veiculo], $_SESSION['prod_veiculos_antigos'][$num_veiculos]);
-                    
+                    $adicionar_posicoes + 1;
+                     
                 }
-                                
+                if($adicionar_posicoes == 3){
+                    $pos_nome_veiculo + 3;
+                    $adicionar_posicoes = 0;
+                } 
+                            
             }
-        
-        } else {
             $prod_veiculos_antigos = $produtos;
             while($prod_veiculos_antigos[0] != $produtos[0][0] ){
                 $prod_veiculos_antigos = $prod_veiculos_antigos[0];
             } 
             $_SESSION['prod_veiculos_antigos'] = $prod_veiculos_antigos;
-            
-            
+        
+        } else { 
+            $prod_veiculos_antigos = $produtos;
+            while($prod_veiculos_antigos[0] != $produtos[0][0] ){
+                $prod_veiculos_antigos = $prod_veiculos_antigos[0];
+            } 
+            $_SESSION['prod_veiculos_antigos'] = $prod_veiculos_antigos;
         }
         $_SESSION['produtos']['produtos'] = $produtos;
         $num_produtos_veiculos = count($produtos[$posicao_veiculo]) / 3;
