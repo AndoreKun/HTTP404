@@ -14,6 +14,7 @@ if(isset($_GET['mudar_carrinho'])){
     $action = $_GET['acao']; 
     // Página para redirecionar 
     $voltar_para = $_GET['voltar_para'];
+    $_SESSION['voltar_para'] = $voltar_para;
     $id_veiculo = "";
     if(isset($_GET['id_veiculo'])){
         $id_veiculo = $_GET['id_veiculo']; 
@@ -36,14 +37,19 @@ if(isset($_GET['mudar_carrinho'])){
                             </a>
                         </div>";
             // Abilita o botão de remover um veículo do carrinho, logo que um foi adicionado
-            $_SESSION['abilitar_remover'][$id_veiculo] = '<form method="get" action="carrinho.php">
-                                                        <input type="hidden" id="id_veiculo" name="id_veiculo" value="1">
-                                                        <input type="hidden" id="acao" name="acao" value="remover">
-                                                        <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#lexus">
-                                                        <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
-                                                    </form>';
+            $_SESSION['abilitar_remover_veiculos'][$id_veiculo] = "<form method='get' action='carrinho.php'>
+                                                        <input type='hidden' id='id_veiculo' name='id_veiculo' value='$id_veiculo'>
+                                                        <input type='hidden' id='acao' name='acao' value='remover'>
+                                                        <input type='hidden' id='voltar_para' name='voltar_para' value='$voltar_para'>
+                                                        <input class='btn-style cr-btn' name='mudar_carrinho' value='Remover do Carrinho' type='submit' style='cursor: pointer'></input>
+                                                    </form>";
+            // Redireciona para a página de atualização do carrinho para que o usuário não precise de recarregar checkout manualmente toda vez que adicionar um produto
+            echo "<script type='text/javascript'>
+            location.href='atualiza_carrinho.php'
+            </script>";
+            
             break;
-
+            
         case "remover":
             // Remove um para o veiculo com o id definido acima
             $_SESSION['carrinho_veiculos'][$id_veiculo]--; 
@@ -59,8 +65,11 @@ if(isset($_GET['mudar_carrinho'])){
             // e desabilita o botão de remover, logo que o número de veiculos no carrinho é zero
             if($_SESSION['carrinho_veiculos'][$id_veiculo] == 0) {
                 unset($_SESSION['carrinho_veiculos'][$id_veiculo]);
-                unset($_SESSION['abilitar_remover_veiculo'][$id_veiculo]);
+                unset($_SESSION['abilitar_remover_veiculos'][$id_veiculo]);
             }
+            echo "<script type='text/javascript'>
+            location.href='atualiza_carrinho.php'
+            </script>";
             break;
 
         case "limpar":
@@ -75,7 +84,7 @@ if(isset($_GET['mudar_carrinho'])){
     }       
 }
 
-// Redirecionamento
+// Redirecionamento para checkout quando o carrinho for limpo
 echo "<script type='text/javascript'>
 				location.href='$voltar_para'
              </script>";	
