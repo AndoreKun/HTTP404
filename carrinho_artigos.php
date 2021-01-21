@@ -1,85 +1,86 @@
 <?php 
+// Desabilita a demonstração de erros, para que não haja a possibilidade de aparecer erros para o usuário final
 ini_set('display_errors', 0);
 session_start();
 $total = 0;
 $total_artigo = 0;
 $produtos_artigos = array();
+// Página com mesma função similar a carrinho.php, mas voltada para os artigos em vez dos veiculos
 
+// Informações enviadas ao adicionar/remover um veiculos em product-details.php ou limpar a list em checkout
 if(isset($_GET['mudar_carrinho'])){
-
-    $action = $_GET['acao']; //the action from the URL
+    // Ação a ser realizada 
+    $action = $_GET['acao'];
+    // Página para redirecionar  
     $voltar_para = $_GET['voltar_para'];
+    $_SESSION['voltar_para'] = $voltar_para;
     $id_artigo = "";
     if(isset($_GET['id_artigo'])){
-        $id_artigo = $_GET['id_artigo']; //the product id from the URL
+        $id_artigo = $_GET['id_artigo']; 
         $_SESSION['id_artigo']['id_artigo'] = $id_artigo;
     }
 
-    switch($action) { //decide what to do
+    // Decide o que será feito apartir da ação enviada
+    switch($action) { 
 
         case "adicionar":
-            $_SESSION['carrrinho_artigos'][$id_artigo]++; //add one to the quantity of the product with id $product_id
-
+            // Adiciona um para o veiculo com o id definido acima
+            $_SESSION['carrinho_artigos'][$id_artigo]++;
+            // Define um valor para produtos veiculos para confirmar que um produto foi adicionado
+            $_SESSION['produtos_artigos'] = "adicionar";    
+            // Define o feedback a ser dado após o veiculo ser adicionado ao carrinho(Função em Feedback em produt-details.php)
             $_SESSION['feedback']['feedback'] = "<div style='text-align: center'>
                             <h4>Produto Adicionado ao Carrinho!</h4><br/>
                             <a href='checkout.php#carrinho'>
                             <input class='btn-style cr-btn' value='Ver Carrinho' type='button' style='cursor: pointer;'></input>
                             </a>
                         </div>";
-        break;
-
+            // Abilita o botão de remover um veículo do carrinho, logo que um foi adicionado
+            $_SESSION['abilitar_remover_artigos'][$id_artigo] = "<form method='get' action='carrinho_artigos.php'>
+                                                    <input type='hidden' id='id_artigo' name='id_artigo' value='$id_artigo'>
+                                                    <input type='hidden' id='acao' name='acao' value='remover'>
+                                                    <input type='hidden' id='voltar_para' name='voltar_para' value='$voltar_para'>
+                                                    <input class='btn-style cr-btn' name='mudar_carrinho' value='Remover do Carrinho' type='submit' style='cursor: pointer'></input>
+                                                </form>";
+            // Redireciona para a página de atualização do carrinho para que o usuário não precise de recarregar checkout manualmente toda vez que adicionar um produto
+            echo "<script type='text/javascript'>
+            location.href='atualiza_carrinho.php'
+            </script>";
+            break;
         case "remover":
-            $_SESSION['carrrinho_artigos'][$id_artigo]--; //remove one from the quantity of the product with id $product_id
+            // Remove um para o veiculo com o id definido acima
+            $_SESSION['carrinho_artigos'][$id_artigo]--;
+            // Define um valor para produtos veiculos para confirmar em checkout.php que um produto foi removido
+            $_SESSION['produtos_artigos'] = "remover";
             $_SESSION['feedback']['feedback'] = "<div style='text-align: center'>
                             <h4>Produto Removido do Carrinho!</h4><br/>
                             <a href='checkout.php#carrinho'>
                             <input class='btn-style cr-btn' value='Ver Carrinho' type='button' style='cursor: pointer;'></input>
                             </a>
                         </div>";
-            if($_SESSION['carrrinho_artigos'][$id_artigo] == 0) unset($_SESSION['carrrinho_artigos'][$id_artigo]); //if the quantity is zero, remove it completely (using the 'unset' function) - otherwise is will show zero, then -1, -2 etc when the user keeps removing items.
+            // Caso o número for zero(0 veículos com aquele id no carrinho), remove a variável, logo que se continuasse iria mostrar valores como -1,-2 nmo carrinho,
+            // e desabilita o botão de remover, logo que o número de veiculos no carrinho é zero
+            if($_SESSION['carrinho_artigos'][$id_artigo] == 0) {
+                unset($_SESSION['carrinho_artigos'][$id_artigo]);
+                unset($_SESSION['abilitar_remover_artigos'][$id_artigo]);
+            }
+            echo "<script type='text/javascript'>
+            location.href='atualiza_carrinho.php'
+            </script>";
         break;
 
         case "limpar":
-            unset($_SESSION["produtos"]["produtos"]);
+            // Limpa todas as variáveis de forma que o carrinho fique sem nenhum artigo/veiculo
+            unset($_SESSION['produtos']['produtos']);
             unset($_SESSION['carrinho_veiculos']);
-            unset($_SESSION['carrrinho_artigos']);
-            session_destroy(); //unset the whole cart, i.e. empty the cart.
-        break;
+            unset($_SESSION['prod_veiculos_antigos']);
+            unset($_SESSION['carrinho_artigos']);
+            // Destrói a sessão, e com isso os arrays associativos session
+            session_destroy(); 
+            break;
     }       
 }
-
-
-if(isset($_SESSION['carrrinho_artigos'])){ //if the cart isn't empty
-    //iterate through the cart, the $product_id is the key and $quantity is the value
-    $consulta = "";
-    $id_produto_artigo = (substr($id_artigo, 1));
-    foreach($_SESSION['carrrinho_artigos'] as $id_artigo => $quantity) {
-        $quantidade = $quantity;
-    }
-        if (isset($_SESSION['id_artigo']['id_artigo'])){
-            $consulta = "SELECT nome, preco FROM artigos WHERE IDArtigo = '$id_produto_artigo'";
-
-        }
-        //get the name, description and price from the database - this will depend on your database implementation.
-        //use sprintf to make sure that $product_id is inserted into the query as a number - to prevent SQL injection
-        $pass_users = 'http404#2021%';
-        $cargo = "admin";
-        include('database/selects_basedados.php');
-        //Only display the row if there is a product (though there should always be as we have already checked)
-        if($dados) {
-            foreach($dados as $linha){
-
-                $nome = $linha['nome'];
-                $preco_artigo = $linha['preco'];
-            }                                             
-        $line_cost = $preco_artigo * $quantidade; //work out the line cost
-        $total_artigo = $total_artigo + $line_cost; //add to the total cost
-        array_push($produtos_artigos, $nome, $quantidade, $total_artigo);
-        }
-
-    $_SESSION['produtos_artigos'] = $produtos_artigos;
-    
-}   
+// Redirecionamento para checkout quando o carrinho for limpo
 echo "<script type='text/javascript'>
 				location.href='$voltar_para'
                </script>";	

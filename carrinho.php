@@ -1,98 +1,90 @@
 <?php 
+// Desabilita a demonstração de erros, para que não haja a possibilidade de aparecer erros para o usuário final
 ini_set('display_errors', 0);
 session_start();
 $total = 0;
 $produtos_veiculos = array();
 $total_veiculo = 0;
+// Página que controla informação sobre os veiculos nos carrinhos para ser redirecionada para o checkout
 
+
+// Informações enviadad ao adicionar/remover um veiculos em product-details.php ou limpar a list em checkout
 if(isset($_GET['mudar_carrinho'])){
-
-    $action = $_GET['acao']; //the action from the URL
+    // Ação a ser realizada 
+    $action = $_GET['acao']; 
+    // Página para redirecionar 
     $voltar_para = $_GET['voltar_para'];
+    $_SESSION['voltar_para'] = $voltar_para;
     $id_veiculo = "";
-    
-
     if(isset($_GET['id_veiculo'])){
-        $id_veiculo = $_GET['id_veiculo']; //the product id from the URL
+        $id_veiculo = $_GET['id_veiculo']; 
         $_SESSION['id_veiculo']['id_veiculo'] = $id_veiculo;
+        
     }
 
-
-    switch($action) { //decide what to do
-
+    // Decide o que será feito apartir da ação enviada
+    switch($action) { 
         case "adicionar":
-            $_SESSION['carrrinho_veiculos'][$id_veiculo]++; //add one to the quantity of the product with id $product_id
-            
+            // Adiciona um para o veiculo com o id definido acima
+            $_SESSION['carrinho_veiculos'][$id_veiculo]++;
+            // Define um valor para produtos veiculos para confirmar que um produto foi adicionado
+            $_SESSION['produtos_veiculos'] = "adicionar";
+            // Define o feedback a ser dado após o veiculo ser adicionado ao carrinho(Função em Feedback em produt-details.php)
             $_SESSION['feedback']['feedback'] = "<div style='text-align: center'>
                             <h4>Produto Adicionado ao Carrinho!</h4><br/>
                             <a href='checkout.php#carrinho'>
                             <input class='btn-style cr-btn' value='Ver Carrinho' type='button' style='cursor: pointer;'></input>
                             </a>
                         </div>";
-        break;
-
+            // Abilita o botão de remover um veículo do carrinho, logo que um foi adicionado
+            $_SESSION['abilitar_remover_veiculos'][$id_veiculo] = "<form method='get' action='carrinho.php'>
+                                                        <input type='hidden' id='id_veiculo' name='id_veiculo' value='$id_veiculo'>
+                                                        <input type='hidden' id='acao' name='acao' value='remover'>
+                                                        <input type='hidden' id='voltar_para' name='voltar_para' value='$voltar_para'>
+                                                        <input class='btn-style cr-btn' name='mudar_carrinho' value='Remover do Carrinho' type='submit' style='cursor: pointer'></input>
+                                                    </form>";
+            // Redireciona para a página de atualização do carrinho para que o usuário não precise de recarregar checkout manualmente toda vez que adicionar um produto
+            echo "<script type='text/javascript'>
+            location.href='atualiza_carrinho.php'
+            </script>";
+            
+            break;
+            
         case "remover":
-            $_SESSION['carrrinho_veiculos'][$id_veiculo]--; //remove one from the quantity of the product with id $product_id
+            // Remove um para o veiculo com o id definido acima
+            $_SESSION['carrinho_veiculos'][$id_veiculo]--; 
+            // Define um valor para produtos veiculos para confirmar em checkout.php que um produto foi removido
+            $_SESSION['produtos_veiculos'] = "remover";
             $_SESSION['feedback']['feedback'] = "<div style='text-align: center'>
                             <h4>Produto Removido do Carrinho!</h4><br/>
                             <a href='checkout.php#carrinho'>
                             <input class='btn-style cr-btn' value='Ver Carrinho' type='button' style='cursor: pointer;'></input>
                             </a>
                         </div>";
-            if($_SESSION['carrrinho_veiculos'][$id_veiculo] == 0) unset($_SESSION['carrrinho_veiculos'][$id_veiculo]); //if the quantity is zero, remove it completely (using the 'unset' function) - otherwise is will show zero, then -1, -2 etc when the user keeps removing items.
-        break;
+            // Caso o número for zero(0 veículos com aquele id no carrinho), remove a variável, logo que se continuasse iria mostrar valores como -1,-2 nmo carrinho,
+            // e desabilita o botão de remover, logo que o número de veiculos no carrinho é zero
+            if($_SESSION['carrinho_veiculos'][$id_veiculo] == 0) {
+                unset($_SESSION['carrinho_veiculos'][$id_veiculo]);
+                unset($_SESSION['abilitar_remover_veiculos'][$id_veiculo]);
+            }
+            echo "<script type='text/javascript'>
+            location.href='atualiza_carrinho.php'
+            </script>";
+            break;
 
         case "limpar":
-            unset($_SESSION["produtos"]["produtos"]);
+            // Limpa todas as variáveis de forma que o carrinho fique sem nenhum artigo/veiculo
+            unset($_SESSION['produtos']['produtos']);
             unset($_SESSION['carrinho_veiculos']);
             unset($_SESSION['carrrinho_artigos']);
-            session_destroy(); //unset the whole cart, i.e. empty the cart.
-            echo "<script type='text/javascript'>
-				location.href='$voltar_para'
-             </script>";
-        break;
+            unset($_SESSION['prod_veiculos_antigos']);
+            // Destrói a sessão, e com isso os arrays associativos session
+            session_destroy(); 
+            break;
     }       
 }
 
-
-if(isset($_SESSION['carrrinho_veiculos'])){ //if the cart isn't empty
-    //iterate through the cart, the $product_id is the key and $quantity is the value
-    $consulta = "";
-
-
-    $veiculo_atual = $id_veiculo;
-    foreach($_SESSION['carrrinho_veiculos'] as $id_veiculo => $quantity) {
-        $quantidade = $quantity;
-    }
-
-
-    $id_veiculo = $veiculo_atual;
-
-        if (isset($_SESSION['id_veiculo']['id_veiculo'])){
-            $consulta = "SELECT modelo, marca, preco FROM veiculos WHERE IDVeiculo = '$id_veiculo'";
-        }
-        $pass_users = 'http404#2021%';
-        $cargo = "admin";
-        include('database/selects_basedados.php');
-        // Only display the row if there is a product (though there should always be as we have already checked)
-        if($dados) {
-            foreach($dados as $linha){
-
-                $modelo = $linha['modelo'];
-                $marca = $linha['marca'];
-                $preco_veiculo = $linha['preco'];                                           
-
-            }
-        
-        $veiculo_nome = $marca.' '.$modelo;
-        $line_cost = $preco_veiculo * $quantidade; //work out the line cost
-        $total_veiculo = $total_veiculo + $line_cost; //add to the total cost
-        array_push($produtos_veiculos, $veiculo_nome, $quantidade, $total_veiculo);
-        }
-
-        $_SESSION['produtos_veiculos'] = $produtos_veiculos;
-    }   
-    
+// Redirecionamento para checkout quando o carrinho for limpo
 echo "<script type='text/javascript'>
 				location.href='$voltar_para'
              </script>";	
