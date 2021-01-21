@@ -1,4 +1,7 @@
-<?php session_start(); 
+<?php 
+// Desabilita a demonstração de erros, para que não haja a possibilidade de aparecer erros para o usuário final
+ini_set('display_errors', 0);
+session_start(); 
 $botao_remover_veiculo = "";
 function feedback ($id, $tipo_produto){
     /**

@@ -1,6 +1,5 @@
 <?php 
-// Desabilita a demonstração de erros, logo que apareciam erros de variáveis dentro de if's que não estavam definidadas fora do mesmo
-// durante o redirecionamento para outras páginas
+// Desabilita a demonstração de erros, para que não haja a possibilidade de aparecer erros para o usuário final
 ini_set('display_errors', 0);
 session_start();
 $total = 0;

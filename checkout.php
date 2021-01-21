@@ -1,5 +1,6 @@
 <?php 
-
+// Desabilita a demonstração de erros, para que não haja a possibilidade de aparecer erros para o usuário final
+ini_set('display_errors', 0);
 session_start();
 
 // Definição de variáveis
@@ -17,7 +18,7 @@ if(isset($_SESSION['produtos_veiculos']) || isset($_SESSION['produtos_artigos'])
     // Se um artigo foi adicionado ao carrinho, define as variáveis do mesmo
     if(isset($_SESSION['produtos_artigos'])){
         $id_artigo = $_SESSION['id_artigo']['id_artigo'];
-        $id_artigo = $id_artigo[0];
+
         $acao_artigo = $_SESSION['produtos_artigos'];
         $tipo_produto = "artigo";
     } 
@@ -28,8 +29,6 @@ if(isset($_SESSION['produtos_veiculos']) || isset($_SESSION['produtos_artigos'])
         $acao_veiculo = $_SESSION['produtos_veiculos'];
         $tipo_produto = "veiculo";
     }
-    
-
     
     $produtos = array();
     $prod_veiculos_antigos = array();
@@ -83,12 +82,18 @@ if(isset($_SESSION['produtos_veiculos']) || isset($_SESSION['produtos_artigos'])
             if($sem_produtos == TRUE){
                 array_push($produtos, $veiculo_nome, $quantidade_veiculo, $total_veiculo);   
             }
+        } else {
+            $produtos = $_SESSION['produtos']['produtos'];
+        
         }
     }
+    echo $_SESSION['carrinho_artigos'][$id_artigo];
     // Caso um artigo tiver sido adicionado, repete o mesmo processo que o dos veículos
     if($tipo_produto == "artigo"){
+        
         // Condição que não permite que sejam definidos produtos que não tenham sido adicionados em carrinho.php(ou que foram removidos)
         if(isset($_SESSION['carrinho_artigos'][$id_artigo])){
+            
             // Quantidade é definida em carrinho_artigos.php
             $quantidade_artigo = $_SESSION['carrinho_artigos'][$id_artigo];
             $id_artigo = (substr($id_artigo, 1));
@@ -108,7 +113,7 @@ if(isset($_SESSION['produtos_veiculos']) || isset($_SESSION['produtos_artigos'])
                 }
             }
             // Define o preço por artigo
-            $line_cost = $preco_artigo * $quantidade; 
+            $line_cost = $preco_artigo * $quantidade_artigo; 
             // Adiciona ao valor total
             $total_artigo = $total_artigo + $line_cost; 
             $sem_produtos = TRUE;
