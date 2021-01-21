@@ -1,5 +1,5 @@
 <?php session_start(); 
-
+$botao_remover_veiculo = "";
 function feedback ($id, $tipo_produto){
     /**
         *Funcao feedback que retorna uma mensagem quando um produto/artigo é adicionado/removido do carrinho e cria um botão para permitir
@@ -9,7 +9,7 @@ function feedback ($id, $tipo_produto){
         *@param string $tipo_produto Tipo do produto artigo/veículo
         *@param string $feedback Contém o feedback em html quando um produto é adicionado ou removido do carrinho
         *@return array $verificacao Retorna as variáveis id e feedback
-        *@version 2.1                                                                                                                                                                                                                                                                               
+        *@version 2.2                                                                                                                                                                                                                                                                               
 
     */
     $feedback = "";
@@ -29,7 +29,11 @@ function feedback ($id, $tipo_produto){
             }
         }
     }
-$verificacao = array($id, $feedback);
+    $botao_remover_veiculo = "";
+    if(isset($_SESSION['abilitar_remover'][$id])){
+        $botao_remover_veiculo = $_SESSION['abilitar_remover'][$id];
+    }
+$verificacao = array($id, $feedback, $botao_remover_veiculo);
 return $verificacao;
 }
 ?>
@@ -194,15 +198,11 @@ return $verificacao;
                                             <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#lexus">
                                             <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                         </form>
-                                        <form method="get" action="carrinho.php">
-                                            <input type="hidden" id="id_veiculo" name="id_veiculo" value="1">
-                                            <input type="hidden" id="acao" name="acao" value="remover">
-                                            <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#lexus">
-                                            <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
-                                        </form>
+                                    
                                     <br/>
                                     <?php 
                                     $retorno = feedback(1, "veiculo");
+                                    echo $retorno[2];
                                     if ($retorno[0] == 1){
                                         echo $retorno[1];
                                     }?>
