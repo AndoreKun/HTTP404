@@ -2,146 +2,150 @@
 
 session_start();
 
+// Definição de variáveis
 $total_valor_produtos = 0;
-$num_produtos_artigos = 0;
-$num_produtos_veiculos = 0;
-$artigos = "";
-$veiculos = "";
-$posicao_veiculo = 0;
-$posicao_artigo = 1;
-$pos_nome_veiculo = 0;
-$adicionar_posicoes = 0;
+$num_produtos_total = 0;
 $veiculo_nome = "";
 $line_cost = 0;
 $total_veiculo = 0; 
 $total_artigo = 0;
 $tipo_produto = "";
 
-
+// Apenas inicia o processo de um veiculo/artigo tiver sido adicionado ao carrinho através da loja
 if(isset($_SESSION['produtos_veiculos']) || isset($_SESSION['produtos_artigos'])){
     
-
+    // Se um artigo foi adicionado ao carrinho, define as variáveis do mesmo
     if(isset($_SESSION['produtos_artigos'])){
         $id_artigo = $_SESSION['id_artigo']['id_artigo'];
         $id_artigo = $id_artigo[0];
         $acao_artigo = $_SESSION['produtos_artigos'];
         $tipo_produto = "artigo";
     } 
+    // Se um veiculo foi adicionado ao carrinho, define as variáveis do mesmo
     if(isset($_SESSION['produtos_veiculos'])){
         $id_veiculo =  $_SESSION['id_veiculo']['id_veiculo'];
         $id_veiculo = $id_veiculo[0];
         $acao_veiculo = $_SESSION['produtos_veiculos'];
         $tipo_produto = "veiculo";
     }
-    if(isset($_SESSION['produtos_veiculos']) && isset($_SESSION['produtos_artigos'])){
-        $tipo_produto = "artigo_&_veiculo";
-        
-    }
+    
 
     
     $produtos = array();
     $prod_veiculos_antigos = array();
-    if($tipo_produto == "veiculo" || $tipo_produto == "artigo_&_veiculo"){
-    
-        foreach($_SESSION['carrinho_veiculos'] as $id_veiculo => $quantity) {
-            $quantidade = $quantity;
-        }
-        
-        if($acao = "adicionar"){
-            $quantidade += 1;
-        }
-        if($acao = "remover")
-            $quantidade -= 1;
-        $consulta = "SELECT modelo, marca, preco FROM veiculos WHERE IDVeiculo = '$id_veiculo'";
-        $pass_users = 'http404#2021%';
-        $cargo = "admin";
-        include('database/selects_basedados.php');
-        // Only display the row if there is a product (though there should always be as we have already checked)
-        if($dados) {
-            foreach($dados as $linha){
+    if($tipo_produto == "veiculo"){
 
-                $modelo = $linha['modelo'];
-                $marca = $linha['marca'];
-                $preco_veiculo = $linha['preco'];                                           
+        // Condição que não permite que sejam definidos produtos que não tenham sido adicionados em carrinho.php(ou que foram removidos)
+        if(isset($_SESSION['carrinho_veiculos'][$id_veiculo])){ 
+            // Quantidade é definida em carrinho.php
+            $quantidade_veiculo = $_SESSION['carrinho_veiculos'][$id_veiculo];       
+            // Define o query da consulta e chama o ficheiro para conectar à base de dados
+            $consulta = "SELECT modelo, marca, preco FROM veiculos WHERE IDVeiculo = '$id_veiculo'";
+            $pass_users = 'http404#2021%';
+            $cargo = "admin";
+            include('database/selects_basedados.php');
+            // Ciclo que extrai para variáveis o resultado da consulta
 
-            }
-        }
-        
-        
-        $veiculo_nome = $marca.' '.$modelo;
-        $line_cost = $preco_veiculo * $quantidade; //work out the line cost
-        $total_veiculo = $total_veiculo + $line_cost; //add to the total cost
-        $sem_produtos = TRUE;
-        if(isset($_SESSION['produtos']['produtos'])){
-            $produtos = $_SESSION['produtos']['produtos'];
-            $num_produtos = count($produtos);
-            
-            for($produtos_repetidos = 0; $num_produtos > $produtos_repetidos; $produtos_repetidos++){
-                
-                if($veiculo_nome == $produtos[$produtos_repetidos]){
-                    
-                    $produtos[$produtos_repetidos] = $veiculo_nome;
-                    $produtos[$produtos_repetidos + 1] = $quantidade;
-                    $produtos[$produtos_repetidos + 2] = $total_veiculo;
-                    $sem_produtos = FALSE;
-                    break;        
+            if($dados) {
+                foreach($dados as $linha){
+                    $modelo = $linha['modelo'];
+                    $marca = $linha['marca'];
+                    $preco_veiculo = $linha['preco'];                                           
                 }
             }
-        }
-        if($sem_produtos == TRUE){
-            array_push($produtos, $veiculo_nome, $quantidade, $total_veiculo);   
-        }
-    }
-    if($tipo_produto == "artigo" || $tipo_produto == "artigo_&_veiculo"){
-        foreach($_SESSION['carrinho_artigos'] as $id_artigo => $quantity) {
-            $quantidade = $quantity;
-        }
-        if($acao = "adicionar"){
-            $quantidade += 1;
-        }
-        if($acao = "remover")
-            $quantidade -= 1;
-        $id_artigo = (substr($id_artigo, 1));
-        $consulta = "SELECT nome, preco FROM artigos WHERE IDArtigo = '$id_artigo'";
-        $pass_users = 'http404#2021%';
-        $cargo = "admin";
-        include('database/selects_basedados.php');
-        // Only display the row if there is a product (though there should always be as we have already checked)
-        if($dados) {
-            foreach($dados as $linha){
 
-                $nome = $linha['nome'];
-                $preco_artigo = $linha['preco'];                                           
+            // Define as variáveis finais
+            $veiculo_nome = $marca.' '.$modelo;
+            // Define o preço por veiculo
+            $line_cost = $preco_veiculo * $quantidade_veiculo; 
+            // Adiciona ao valor total
+            $total_veiculo = $total_veiculo + $line_cost; 
+            $sem_produtos = TRUE;
+            // Caso já existam produtos no carrinho, se o novo produto for igual a um dos que já existem, redefine as posições do produto para o novo
 
-            }
-        }
-        
-        $line_cost = $preco_artigo * $quantidade; //work out the line cost
-        $total_artigo = $total_artigo + $line_cost; //add to the total cost
-        $sem_produtos = TRUE;
-        if(isset($_SESSION['produtos']['produtos'])){
-            $produtos = $_SESSION['produtos']['produtos'];
-            $num_produtos = count($produtos);
-            
-            for($produtos_repetidos = 0; $num_produtos > $produtos_repetidos; $produtos_repetidos++){
+            if(isset($_SESSION['produtos']['produtos'])){
+                $produtos = $_SESSION['produtos']['produtos'];
                 
-                if($nome == $produtos[$produtos_repetidos]){
+                $num_produtos = count($produtos);
+                for($produtos_repetidos = 0; $num_produtos > $produtos_repetidos; $produtos_repetidos++){
                     
-                    $produtos[$produtos_repetidos] = $nome;
-                    $produtos[$produtos_repetidos + 1] = $quantidade;
-                    $produtos[$produtos_repetidos + 2] = $total_artigo;
-                    $sem_produtos = FALSE;
-                    break;        
+                    if($veiculo_nome == $produtos[$produtos_repetidos]){
+                        
+                        $produtos[$produtos_repetidos] = $veiculo_nome;
+                        $produtos[$produtos_repetidos + 1] = $quantidade_veiculo;
+                        $produtos[$produtos_repetidos + 2] = $total_veiculo;
+                        $sem_produtos = FALSE;
+                        break;        
+                    }
                 }
             }
-        }
-        if($sem_produtos == TRUE){
-            array_push($produtos, $nome, $quantidade, $total_artigo);   
+            // Caso não haja produtos, empurra os valores para o array dos produtos
+            if($sem_produtos == TRUE){
+                array_push($produtos, $veiculo_nome, $quantidade_veiculo, $total_veiculo);   
+            }
         }
     }
+    // Caso um artigo tiver sido adicionado, repete o mesmo processo que o dos veículos
+    if($tipo_produto == "artigo"){
+        // Condição que não permite que sejam definidos produtos que não tenham sido adicionados em carrinho.php(ou que foram removidos)
+        if(isset($_SESSION['carrinho_artigos'][$id_artigo])){
+            // Quantidade é definida em carrinho_artigos.php
+            $quantidade_artigo = $_SESSION['carrinho_artigos'][$id_artigo];
+            $id_artigo = (substr($id_artigo, 1));
+            // Conexão à base de dados
+            $consulta = "SELECT nome, preco FROM artigos WHERE IDArtigo = '$id_artigo'";
+            $pass_users = 'http404#2021%';
+            $cargo = "admin";
+            include('database/selects_basedados.php');
+
+            // Ciclo para extrair resultado
+            if($dados) {
+                foreach($dados as $linha){
+
+                    $nome = $linha['nome'];
+                    $preco_artigo = $linha['preco'];                                           
+
+                }
+            }
+            // Define o preço por artigo
+            $line_cost = $preco_artigo * $quantidade; 
+            // Adiciona ao valor total
+            $total_artigo = $total_artigo + $line_cost; 
+            $sem_produtos = TRUE;
+            // Caso já existam produtos no carrinho, se o novo produto for igual a um dos que já existem, redefine as posições do produto para o novo
+            if(isset($_SESSION['produtos']['produtos'])){
+                $produtos = $_SESSION['produtos']['produtos'];
+                $num_produtos = count($produtos);
+                
+                for($produtos_repetidos = 0; $num_produtos > $produtos_repetidos; $produtos_repetidos++){
+                    
+                    if($nome == $produtos[$produtos_repetidos]){
+                        
+                        $produtos[$produtos_repetidos] = $nome;
+                        $produtos[$produtos_repetidos + 1] = $quantidade_artigo;
+                        $produtos[$produtos_repetidos + 2] = $total_artigo;
+                        $sem_produtos = FALSE;
+                        break;
+                    }
+                }
+            }
+            // Caso não haja produtos, empurra os valores para o array dos produtos
+            if($sem_produtos == TRUE){
+                array_push($produtos, $nome, $quantidade_artigo, $total_artigo);   
+            }
+        }
+    }
+    // Transforma o array associativo session de todos os produtos para não permitir que o processo acima seja repetida apenas ao recarregar da página
     unset($_SESSION['produtos_veiculos']);
     unset($_SESSION['produtos_artigos']);
-    $_SESSION['produtos']['produtos'] = $produtos;
+    // Guarda os produtos todos no array associativo
+    if(isset($produtos)){
+        $_SESSION['produtos']['produtos'] = $produtos;
+    }
+    // Caso o count de produtos seja igual a zero, significa que não há produtos, logo remove o array associativo dos produtos
+    if(count($produtos) == 0){
+        unset($_SESSION['produtos']['produtos']);
+    }
 }
 ?>
 <!doctype html>
@@ -155,7 +159,7 @@ if(isset($_SESSION['produtos_veiculos']) || isset($_SESSION['produtos_artigos'])
         <!-- Favicon -->
         <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
 		
-		<!-- all css here -->
+		<!-- css -->
         <link rel="stylesheet" href="assets/css/bootstrap.min.css">
         <link rel="stylesheet" href="assets/css/animate.css">
         <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
@@ -225,7 +229,7 @@ if(isset($_SESSION['produtos_veiculos']) || isset($_SESSION['produtos_artigos'])
                     </div>
                 </div>
             </div>
-            <!-- checkout-area start -->
+            <!-- Inicio da área do checkout -->
             <div class="checkout-area pt-130 pb-100">
                 <div class="container">
                     <div class="row">
@@ -332,18 +336,20 @@ if(isset($_SESSION['produtos_veiculos']) || isset($_SESSION['produtos_artigos'])
                                 <div class="your-order-table table-responsive" >
                                     <table>
                                     <?php
+                                    // Caso estejam definidos produtos no carrinho, guarda os produtos no array produtos
                                     $produtos = $_SESSION['produtos']['produtos'];
                                     $nomeproduto = 0; 
                                     $qntdproduto = 1;
                                     $precoproduto = 2;
-                                    $num_produtos_veiculos = count($produtos) / 3;
+                                    $num_produtos_total = count($produtos) / 3;
                                     $pos_preco = 2;                                                                   
                                     // Calcula o valor total da compra
-                                    for($preco_veiculos = 0; $num_produtos_veiculos > $preco_veiculos; $preco_veiculos++){  
+                                    for($preco_veiculos = 0; $num_produtos_total > $preco_veiculos; $preco_veiculos++){  
                                         $total_valor_produtos += $produtos[$pos_preco];  
-                                        $pos_preco += 3; 
+                                        $pos_preco += 3;
+                                    // Apresenta todos os produtos para o cliente 
                                     }
-                                    for($num_linhas = 0; $num_produtos_veiculos > $num_linhas; $num_linhas++) {
+                                    for($num_linhas = 0; $num_produtos_total > $num_linhas; $num_linhas++) {
                                         ?>
                                         <thead>
                                             <tr class="cart_item">
@@ -362,6 +368,8 @@ if(isset($_SESSION['produtos_veiculos']) || isset($_SESSION['produtos_artigos'])
                                             </tr>
                                         </thead>
                                     <?php 
+                                        // Adiciona mais três ao fim de cada ciclo para que aos posições corretas do produtos sejam apresentadas,
+                                        // ex.: nome do produto 1 está na posição 0, enquanto o nome do produto 2 está na posição 3
                                         $nomeproduto += 3; 
                                         $qntdproduto += 3;
                                         $precoproduto += 3;
@@ -400,7 +408,7 @@ if(isset($_SESSION['produtos_veiculos']) || isset($_SESSION['produtos_artigos'])
                     </div>
                 </div>
             </div>
-            <!-- checkout-area end -->	
+            <!-- Fim da área do checkout -->	
             <div class="newsletter-area">
                 <div class="container">
                     <div class="newsletter-wrapper-all theme-bg-2">
@@ -533,7 +541,7 @@ if(isset($_SESSION['produtos_veiculos']) || isset($_SESSION['produtos_artigos'])
                 </div>
             </footer>
         </div>	
-		<!-- all js here -->
+		<!-- javascripts -->
         <script src="assets/js/vendor/jquery-1.12.0.min.js"></script>
         <script src="assets/js/popper.js"></script>
         <script src="assets/js/bootstrap.min.js"></script>
