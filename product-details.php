@@ -1,10 +1,15 @@
-<?php session_start(); 
+/** Pagína dos detalhes dos produtos
+* @author Grupo HTTP404
+* @version 2.1
+* @since 21 jan 2021
+**/
+<?php session_start();
 
 function feedback ($id, $tipo_produto){
     /**
         *Funcao feedback que retorna uma mensagem quando um produto/artigo é adicionado/removido do carrinho e cria um botão para permitir
         *o redirecionamento para a página que contém o carrinho
-        *@author André Pereira
+        *@author Grupo HTTP404
         *@param int $id Número de Identificação do produto/veiculo, utilizado para mostrar a mensagem apenas naquele produto/artigo
         *@param string $tipo_produto Tipo do produto artigo/veículo
         *@param string $feedback Contém o feedback em html quando um produto é adicionado ou removido do carrinho
@@ -12,7 +17,10 @@ function feedback ($id, $tipo_produto){
         *@version 2.1                                                                                                                                                                                                                                                                               
 
     */
+
+    /**$tipo_produto: Tipo do veículo. **/
     $feedback = "";
+    /**$feedback: Verifica o identificador e o tipo do produto. **/
     if($tipo_produto == "veiculo"){ 
         if(isset($_SESSION['id_veiculo']['id_veiculo'])){
             if ($_SESSION['id_veiculo']['id_veiculo'] == $id){
@@ -21,6 +29,7 @@ function feedback ($id, $tipo_produto){
             }
         }
     }
+    /**$tipo_produto: Tipo do artigo. **/
     if($tipo_produto == "artigo"){
         if(isset($_SESSION['id_artigo']['id_artigo'])){
             if ($_SESSION['id_artigo']['id_artigo'] == $id){
@@ -41,10 +50,10 @@ return $verificacao;
         <title>Loja Virtual</title>
         <meta name="description" content="Live Preview Of Oswan eCommerce HTML5 Template">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- Favicon -->
+        <!-- Favicon - ícones favoritos-->
         <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
 
-		<!-- all css here -->
+		<!-- Chamada de todos os css -->
         <link rel="stylesheet" href="assets/css/bootstrap.min.css">
         <link rel="stylesheet" href="assets/css/animate.css">
         <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
@@ -60,6 +69,7 @@ return $verificacao;
         <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
     </head>
     <body>
+     <!-- Cabeçalho embrulhado -->
         <div class="wrapper">
             <header>
                 <div class="header-area transparent-bar ptb-55">
@@ -102,6 +112,7 @@ return $verificacao;
                     </div>
                 </div>
             </header>
+             <!-- localização do usuário na página -->
             <div class="breadcrumb-area pt-255 pb-170" style="background-image: url(assets/img/banner/bannersupra.jpg)">
                 <div class="container-fluid">
                     <div class="breadcrumb-content text-center">
@@ -115,6 +126,7 @@ return $verificacao;
                     </div>
                 </div>
             </div>
+             <!-- Detalhes dos veiculo 1-->
             <div id=lexus class="product-details-area fluid-padding-3 ptb-130">
                 <div class="container-fluid">
                     <div class="row">
@@ -169,6 +181,7 @@ return $verificacao;
                             </div>
                         </div>
                         <div class="col-lg-6">
+                            <!-- Informacoes do veiculo 1-->
                             <div class="product-details-content">
                                 <h2>Lexus RC 200t</h2>
                                 <div class="quick-view-rating">
@@ -219,6 +232,7 @@ return $verificacao;
                     </div>
                 </div>
             </div>
+             <!-- Detalhes do veiculo 2-->
             <div id=volvo class="product-details-area fluid-padding-3 ptb-130">
                 <div class="container-fluid">
                     <div class="row">
@@ -273,6 +287,7 @@ return $verificacao;
                             </div>
                         </div>
                         <div class="col-lg-6">
+                            <!-- Informacoes do veiculo 2-->
                             <div class="product-details-content">
                                 <h2>Volvo S60 T6 AWD R-Design Platinum 2017 </h2>
                                 <div class="quick-view-rating">
@@ -322,6 +337,7 @@ return $verificacao;
                     </div>
                 </div>
             </div>
+            <!-- Detalhes do veiculo 3-->
             <div id=supra class="product-details-area fluid-padding-3 ptb-130">
                 <div class="container-fluid">
                     <div class="row">
@@ -376,6 +392,7 @@ return $verificacao;
                             </div>
                         </div>
                         <div class="col-lg-6">
+                            <!-- Informacoes do veiuclo 3-->
                             <div class="product-details-content">
                                 <h2>Toyota GR Supra </h2>
                                 <div class="quick-view-rating">
@@ -426,6 +443,7 @@ return $verificacao;
                     </div>
                 </div>
             </div>
+            <!-- Detalhes do veiculo 4-->
             <div id=motobmw class="product-details-area fluid-padding-3 ptb-130">
                 <div class="container-fluid">
                     <div class="row">
@@ -480,6 +498,7 @@ return $verificacao;
                             </div>
                         </div>
                         <div class="col-lg-6">
+                            <!-- Informacoes do veiculo 4-->
                             <div class="product-details-content">
                                 <h2> BMW K 1600 GT </h2>
                                 <div class="quick-view-rating">
@@ -529,6 +548,7 @@ return $verificacao;
                     </div>
                 </div>
             </div>
+            <!-- Detalhes do produto 1-->
 			<div id=rodasupra class="product-details-area fluid-padding-3 ptb-130">
                 <div class="container-fluid">
                     <div class="row">
@@ -549,6 +569,7 @@ return $verificacao;
                         </div>
 						</div>
                         <div class="col-lg-6">
+                            <!-- Informacoes do produto 1-->
                             <div class="product-details-content">
                                 <h2> Performance Machine Supra Real Wheel </h2>
                                 <div class="quick-view-rating">
@@ -598,6 +619,7 @@ return $verificacao;
                     </div>
                 </div>
             </div>
+            <!-- Detalhes do produto 2-->
 			<div id=radioadorninja class="product-details-area fluid-padding-3 ptb-130">
                 <div class="container-fluid">
                     <div class="row">
@@ -618,6 +640,7 @@ return $verificacao;
                         </div>
 						</div>
                         <div class="col-lg-6">
+                            <!-- Informacoes do produto 2-->
                             <div class="product-details-content">
                                 <h2> Motorcycle Radiator Cooler For Kawasaki Ninja </h2>
                                 <div class="quick-view-rating">
@@ -667,7 +690,8 @@ return $verificacao;
                         </div>
                     </div>
                 </div>
-            </div>	
+            </div>
+            <!-- Detalhes do produto 3-->
 			<div id=bancomoto class="product-details-area fluid-padding-3 ptb-130">
                 <div class="container-fluid">
                     <div class="row">
@@ -688,6 +712,7 @@ return $verificacao;
                         </div>
 						</div>
                         <div class="col-lg-6">
+                            <!-- Informacoes do produto 3-->
                             <div class="product-details-content">
                                 <h2> Universal Motorcycle Retro Diamond Flat Style Seat </h2>
                                 <div class="quick-view-rating">
@@ -736,6 +761,7 @@ return $verificacao;
                     </div>
                 </div>
             </div>
+                <!-- Detalhes do produto 4-->
 				<div id=farol class="product-details-area fluid-padding-3 ptb-130">
                 <div class="container-fluid">
                     <div class="row">
@@ -756,6 +782,7 @@ return $verificacao;
                         </div>
 						</div>
                         <div class="col-lg-6">
+                            <!-- Informacoes do produto 4-->
                             <div class="product-details-content">
                                 <h2> Halo Motorcycle Headlight </h2>
                                 <div class="quick-view-rating">
@@ -806,6 +833,7 @@ return $verificacao;
                     </div>
                 </div>
             </div>
+            <!-- Detalhes do produto 5-->
 			<div id=tanque class="product-details-area fluid-padding-3 ptb-130">
                 <div class="container-fluid">
                     <div class="row">
@@ -826,6 +854,7 @@ return $verificacao;
                         </div>
 						</div>
                         <div class="col-lg-6">
+                            <!-- Informacoes do produto 5-->
                             <div class="product-details-content">
                                 <h2>Dished Wassell Peanut Motorcycle Gas Tank </h2>
                                 <div class="quick-view-rating">
@@ -879,6 +908,7 @@ return $verificacao;
                     </div>
                 </div>
             </div>
+            <!-- Detalhes do produto 6-->
 			<div id=velocimetro class="product-details-area fluid-padding-3 ptb-130">
                 <div class="container-fluid">
                     <div class="row">
@@ -899,6 +929,7 @@ return $verificacao;
                         </div>
 						</div>
                         <div class="col-lg-6">
+                            <!-- Informacoes do produto 6-->
                             <div class="product-details-content">
                                 <h2>Fydun Motorcycle Speedometer</h2>
                                 <div class="quick-view-rating">
@@ -914,7 +945,7 @@ return $verificacao;
                                 <div class="product-overview">
                                     <h5 class="pd-sub-title">Resumo do Produto</h5>
                                     <p>Este é um velocímetro digital LCD, que pode indicar sua velocidade com precisão, e com isso aumentar sua segurança rodoviária. 
-                                    O velocímetro é feito de robusta carcaça de ABS galvanizado, totalmente à prova d'água e permite resistir a pequenas colisões</p>
+                                    O velocímetro é feito de robusta carcaça de ABS galvanizado, totalmente à prova dágua e permite resistir a pequenas colisões</p>
                                 </div>
                                     <div class="quickview-btn-cart">
                                     <form method="get" action="carrinho_artigos.php">
@@ -948,6 +979,7 @@ return $verificacao;
                     </div>
                 </div>
             </div>
+            <!-- Detalhes do produto 7-->
 			<div id=medidor class="product-details-area fluid-padding-3 ptb-130">
                 <div class="container-fluid">
                     <div class="row">
@@ -968,6 +1000,7 @@ return $verificacao;
                         </div>
 						</div>
                         <div class="col-lg-6">
+                            <!-- Informacoes do produto 7-->
                             <div class="product-details-content">
                                 <h2>Racetech Fuel Level Gauge</h2>
                                 <div class="quick-view-rating">
@@ -1017,6 +1050,7 @@ return $verificacao;
                     </div>
                 </div>
             </div>
+            <!-- Detalhes do produto 8-->
 			<div id=capacete class="product-details-area fluid-padding-3 ptb-130">
                 <div class="container-fluid">
                     <div class="row">
@@ -1037,6 +1071,7 @@ return $verificacao;
                         </div>
 						</div>
                         <div class="col-lg-6">
+                            <!-- Informacoes do produto 8-->
                             <div class="product-details-content">
                                 <h2>Adult Full Face Matto Blue Helmet</h2>
                                 <div class="quick-view-rating">
@@ -1089,6 +1124,7 @@ return $verificacao;
                     </div>
                 </div>
             </div>
+            <!-- Detalhes do produto 9-->
 			<div id=casaco class="product-details-area fluid-padding-3 ptb-130">
                 <div class="container-fluid">
                     <div class="row">
@@ -1109,6 +1145,7 @@ return $verificacao;
                         </div>
 						</div>
                         <div class="col-lg-6">
+                            <!-- Informacoes do produto 9-->
                             <div class="product-details-content">
                                 <h2>Racing 3 Leather Jacket</h2>
                                 <div class="quick-view-rating">
@@ -1159,6 +1196,7 @@ return $verificacao;
                     </div>
                 </div>
             </div>
+            <!-- Detalhes do produto 10-->
 			<div id=botas class="product-details-area fluid-padding-3 ptb-130">
                 <div class="container-fluid">
                     <div class="row">
@@ -1179,6 +1217,7 @@ return $verificacao;
                         </div>
 						</div>
                         <div class="col-lg-6">
+                            <!-- Informacoes do produto 10-->
                             <div class="product-details-content">
                                 <h2>FORMA Adventure Off-Road Motorcycle Boots</h2>
                                 <div class="quick-view-rating">
@@ -1195,7 +1234,7 @@ return $verificacao;
                                     <h5 class="pd-sub-title">Resumo do Produto</h5>
                                     <p>Projetadas especificamente para pilotos ADV, as Botas de Aventura Forma combinam o conforto e a 
                                     flexibilidade de uma bota de estrada com os recursos de proteção e altura total de botas off-road. 
-                                    Equipadas com acabamento em couro vintage e forro à prova d'água / respirável drytex, as botas Adventure
+                                    Equipadas com acabamento em couro vintage e forro à prova dágua / respirável drytex, as botas Adventure
                                     mantêm seus pés secos sem limitar a amplitude de movimento. A sola de dupla densidade oferece excelente 
                                     aderência à bicicleta e oferece aos pilotos uma superfície confortável e aderente para caminhar quando 
                                     descem da bicicleta. Os reforços e inserções de TPU integrados fornecem proteção contra lesões por impacto
@@ -1233,6 +1272,7 @@ return $verificacao;
                     </div>
                 </div>
             </div>
+            <!-- Detalhes do produto 11-->
 			<div id=joelheiras class="product-details-area fluid-padding-3 ptb-130">
                 <div class="container-fluid">
                     <div class="row">
@@ -1253,6 +1293,7 @@ return $verificacao;
                         </div>
 						</div>
                         <div class="col-lg-6">
+                            <!-- Informacoes do produto 11-->
                             <div class="product-details-content">
                                 <h2>HEROBIKER Motorcycle Knee Pads</h2>
                                 <div class="quick-view-rating">
@@ -1304,6 +1345,7 @@ return $verificacao;
                     </div>
                 </div>
             </div>
+            <!-- Detalhes do produto 11-->
 			<div id=capacete2 class="product-details-area fluid-padding-3 ptb-130">
                 <div class="container-fluid">
                     <div class="row">
@@ -1324,6 +1366,7 @@ return $verificacao;
                         </div>
 						</div>
                         <div class="col-lg-6">
+                            <!-- Informacoes do produto 11-->
                             <div class="product-details-content">
                                 <h2>LS2 Helmets Full Face Blaze Adventure Motorcycle Helmet, Matte Titanium 436B-103</h2>
                                 <div class="quick-view-rating">
@@ -1374,6 +1417,7 @@ return $verificacao;
                     </div>
                 </div>
             </div>
+            <!-- Detalhes do produto 12-->
 			<div id=cobertos class="product-details-area fluid-padding-3 ptb-130">
                 <div class="container-fluid">
                     <div class="row">
@@ -1394,6 +1438,7 @@ return $verificacao;
                         </div>
 						</div>
                         <div class="col-lg-6">
+                            <!-- Informacoes do produto 12-->
                             <div class="product-details-content">
                                 <h2>SUNFLOWER CAR</h2>
                                 <div class="quick-view-rating">
@@ -1445,6 +1490,7 @@ return $verificacao;
                     </div>
                 </div>
             </div>
+            <!-- Detalhes do produto 13-->
 			<div id=capa class="product-details-area fluid-padding-3 ptb-130">
                 <div class="container-fluid">
                     <div class="row">
@@ -1465,6 +1511,7 @@ return $verificacao;
                         </div>
 						</div>
                         <div class="col-lg-6">
+                            <!-- Informacoes do produto 13-->
                             <div class="product-details-content">
                                 <h2>Waterproof Car Cover - Large Sedan</h2>
                                 <div class="quick-view-rating">
@@ -1513,6 +1560,7 @@ return $verificacao;
                     </div>
                 </div>
             </div>
+            <!-- Detalhes do produto 14-->
 			<div id=organizador class="product-details-area fluid-padding-3 ptb-130">
                 <div class="container-fluid">
                     <div class="row">
@@ -1533,6 +1581,7 @@ return $verificacao;
                         </div>
 						</div>
                         <div class="col-lg-6">
+                            <!-- Informacoes do produto 14-->
                             <div class="product-details-content">
                                 <h2>Organizador de itens</h2>
                                 <div class="quick-view-rating">
@@ -1585,6 +1634,7 @@ return $verificacao;
                     </div>
                 </div>
             </div>
+            <!-- Detalhes do produto 15-->
 			<div id=luzes class="product-details-area fluid-padding-3 ptb-130">
                 <div class="container-fluid">
                     <div class="row">
@@ -1605,6 +1655,7 @@ return $verificacao;
                         </div>
 						</div>
                         <div class="col-lg-6">
+                            <!-- Informacoes do produto 15-->
                             <div class="product-details-content">
                                 <h2> Govee luzes interiores para carro </h2>
                                 <div class="quick-view-rating">
@@ -1657,6 +1708,7 @@ return $verificacao;
                     </div>
                 </div>
             </div>
+            <!-- Detalhes do produto 16-->
 			<div id=holder class="product-details-area fluid-padding-3 ptb-130">
                 <div class="container-fluid">
                     <div class="row">
@@ -1677,6 +1729,7 @@ return $verificacao;
                         </div>
 						</div>
                         <div class="col-lg-6">
+                            <!-- Informacoes do produto 16-->
                             <div class="product-details-content">
                                 <h2>PhoneHolder</h2>
                                 <div class="quick-view-rating">
@@ -1730,6 +1783,7 @@ return $verificacao;
                     </div>
                 </div>
             </div>
+            <!-- Detalhes do produto 17-->
 			<div id=capavolante class="product-details-area fluid-padding-3 ptb-130">
                 <div class="container-fluid">
                     <div class="row">
@@ -1750,6 +1804,7 @@ return $verificacao;
                         </div>
 						</div>
                         <div class="col-lg-6">
+                            <!-- Informacoes do produto 17-->
                             <div class="product-details-content">
                                 <h2>Capa para volante</h2>
                                 <div class="quick-view-rating">
@@ -1799,6 +1854,7 @@ return $verificacao;
                     </div>
                 </div>
             </div>
+            <!-- Subscrição dos clientes -->
             <div class="newsletter-area">
                 <div class="container">
                     <div class="newsletter-wrapper-all theme-bg-2">
@@ -1825,6 +1881,7 @@ return $verificacao;
                     </div>
                 </div>
             </div>
+            <!-- Inicio do Rodapé -->
             <footer>
                 <div class="footer-top pt-210 pb-98 theme-bg">
                     <div class="container">
@@ -1915,7 +1972,7 @@ return $verificacao;
                 </div>
             </footer>
         </div>
-		<!-- all js here -->
+		<!-- Chamada de todos os js -->
         <script src="assets/js/vendor/jquery-1.12.0.min.js"></script>
         <script src="assets/js/popper.js"></script>
         <script src="assets/js/bootstrap.min.js"></script>
