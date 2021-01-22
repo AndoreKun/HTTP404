@@ -1,7 +1,7 @@
 /** Pagína do carrinho
-*  @author André Pereira
-*  @version 2.5
-*  @since 21 jan 2021
+* @author Grupo HTTP404
+* @version 2.5
+* @since 21 jan 2021
 **/
 <?php
 ini_set('display_errors', 0);
@@ -23,10 +23,10 @@ if(isset($_GET['mudar_carrinho'])){
     }
 
 
-    switch($action) { /** switch($action): Decide o que fazer. **/
+    switch($action) { /**switch($action): Decide o que fazer. **/
 
         case "adicionar":
-            $_SESSION['carrrinho_veiculos'][$id_veiculo]++; /** case "adicionar": Adiciona um na quantidade de produto com id $product_id . **/
+            $_SESSION['carrrinho_veiculos'][$id_veiculo]++; /**case "adicionar": Adiciona um na quantidade de produto com id $product_id . **/
 
             $_SESSION['feedback']['feedback'] = "<div style='text-align: center'>
                             <h4>Produto Adicionado ao Carrinho!</h4><br/>
@@ -37,21 +37,21 @@ if(isset($_GET['mudar_carrinho'])){
         break;
 
         case "remover":
-            $_SESSION['carrrinho_veiculos'][$id_veiculo]--; /** Remove um a partir da quantidade de produto com id $product_id .**/
+            $_SESSION['carrrinho_veiculos'][$id_veiculo]--; /**case "remover": Remove um a partir da quantidade de produto com id $product_id .**/
             $_SESSION['feedback']['feedback'] = "<div style='text-align: center'>
                             <h4>Produto Removido do Carrinho!</h4><br/>
                             <a href='checkout.php#carrinho'>
                             <input class='btn-style cr-btn' value='Ver Carrinho' type='button' style='cursor: pointer;'></input>
                             </a>
                         </div>";
-            if($_SESSION['carrrinho_veiculos'][$id_veiculo] == 0) unset($_SESSION['carrrinho_veiculos'][$id_veiculo]); /** Se a quantidade é zero, remove completamente (usando a função 'unset'), caso contrário mostra 0, -1, -2, etc. Enquanto o usuário continua a remover os itens.**/
+            if($_SESSION['carrrinho_veiculos'][$id_veiculo] == 0) unset($_SESSION['carrrinho_veiculos'][$id_veiculo]); /** unset($_SESSION: Se a quantidade é zero, remove completamente (usando a função 'unset'), caso contrário mostra 0, -1, -2, etc. Enquanto o usuário continua a remover os itens.**/
         break;
 
         case "limpar":
             unset($_SESSION["produtos"]["produtos"]);
             unset($_SESSION['carrinho_veiculos']);
             unset($_SESSION['carrrinho_artigos']);
-            session_destroy(); /** Limpa o carrinho inteiro, exemplo: esvazia o carrinho.**/
+            session_destroy(); /**case "limpar": Limpa o carrinho inteiro, exemplo: esvazia o carrinho.**/
             echo "<script type='text/javascript'>
 				location.href='$voltar_para'
              </script>";
@@ -60,7 +60,7 @@ if(isset($_GET['mudar_carrinho'])){
 }
 
 
-if(isset($_SESSION['carrrinho_veiculos'])){ /** Se o carriho não está vazio. **/
+if(isset($_SESSION['carrrinho_veiculos'])){ /**carrrinho_veiculos: Se o carriho não está vazio. **/
     /** Repete através do carrinho. O $product_id é a chave, e $quantity é o valor.**/
     $consulta = "";
 
@@ -79,7 +79,7 @@ if(isset($_SESSION['carrrinho_veiculos'])){ /** Se o carriho não está vazio. *
         $pass_users = 'http404#2021%';
         $cargo = "admin";
         include('database/selects_basedados.php');
-        /** Mostra a linha, se conter um produto (embora deva haver sempre, como já verificamos).*//
+        /**$veiculo_atual: Mostra a linha, se contem um produto (embora deva haver sempre, como já verificamos).*//
         if($dados) {
             foreach($dados as $linha){
 
@@ -90,8 +90,8 @@ if(isset($_SESSION['carrrinho_veiculos'])){ /** Se o carriho não está vazio. *
             }
         
         $veiculo_nome = $marca.' '.$modelo;
-        $line_cost = $preco_veiculo * $quantidade; /**Calcular o custo da linha.**/
-        $total_veiculo = $total_veiculo + $line_cost; /**Adiciona ao custo total.**/
+        $line_cost = $preco_veiculo * $quantidade; /**$line_cost: Calcular o custo da linha.**/
+        $total_veiculo = $total_veiculo + $line_cost; /**$total_veiculo: Adiciona ao custo total.**/
         array_push($produtos_veiculos, $veiculo_nome, $quantidade, $total_veiculo);
         }
 
