@@ -1,5 +1,6 @@
 <?php 
 session_start();
+/** produtos comprados **/
 $produtos = array();
 $total_valor_produtos = 0;
 $num_produtos_artigos = 0;
