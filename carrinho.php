@@ -79,7 +79,7 @@ if(isset($_SESSION['carrrinho_veiculos'])){ /**carrrinho_veiculos: Se o carriho 
         $pass_users = 'http404#2021%';
         $cargo = "admin";
         include('database/selects_basedados.php');
-        /**$veiculo_atual: Mostra a linha, se contem um produto (embora deva haver sempre, como já verificamos).*//
+        /**$veiculo_atual: Mostra a linha, se contem um produto (embora deva haver sempre).*//
         if($dados) {
             foreach($dados as $linha){
 
