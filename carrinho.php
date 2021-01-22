@@ -7,8 +7,11 @@
 ini_set('display_errors', 0);
 session_start();
 $total = 0;
+/**Quantidade total.**/
 $produtos_veiculos = array();
+/**Veiculos comprados.**/
 $total_veiculo = 0;
+/**Total custo da compra.**/
 
 if(isset($_GET['mudar_carrinho'])){
 
@@ -90,7 +93,7 @@ if(isset($_SESSION['carrrinho_veiculos'])){ /**carrrinho_veiculos: Se o carriho 
             }
         
         $veiculo_nome = $marca.' '.$modelo;
-        $line_cost = $preco_veiculo * $quantidade; /**$line_cost: Calcular o custo da linha.**/
+        $line_cost = $preco_veiculo * $quantidade; /**$line_cost: Calcular o custo.**/
         $total_veiculo = $total_veiculo + $line_cost; /**$total_veiculo: Adiciona ao custo total.**/
         array_push($produtos_veiculos, $veiculo_nome, $quantidade, $total_veiculo);
         }

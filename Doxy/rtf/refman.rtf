@@ -108,7 +108,7 @@
 {\info 
 {\title {\comment Portal Http404 }Portal Http404}
 {\comment Gerado por doxygen1.9.1.}
-{\creatim \yr2021\mo1\dy22\hr0\min47\sec56}
+{\creatim \yr2021\mo1\dy22\hr1\min55\sec50}
 }\pard\plain 
 \sectd\pgnlcrm
 {\footer \s29\widctlpar\tqc\tx4320\tqr\tx8640\qr\adjustright \fs20\cgrid {\chpgn}}
@@ -745,9 +745,10 @@ $produtos_veiculos = array()}}
 {\bkmkend AAAAAAAAAB}
 {
 \pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
-\par
-{
-Defini\'E7\'E3o na linha 9 do arquivo carrinho.php.}\par
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+Quantidade total. \par
+}{
+Defini\'E7\'E3o na linha 11 do arquivo carrinho.php.}\par
 }
 {\xe \v $total\:carrinho.php}
 {\xe \v carrinho.php\:$total}
@@ -761,7 +762,7 @@ $total = 0}}
 \pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
 \par
 {
-Defini\'E7\'E3o na linha 8 do arquivo carrinho.php.}\par
+Defini\'E7\'E3o na linha 9 do arquivo carrinho.php.}\par
 }
 {\xe \v $total_veiculo\:carrinho.php}
 {\xe \v carrinho.php\:$total_veiculo}
@@ -773,9 +774,10 @@ $total_veiculo = 0}}
 {\bkmkend AAAAAAAAAD}
 {
 \pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
-\par
-{
-Defini\'E7\'E3o na linha 10 do arquivo carrinho.php.}\par
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+Veiculos comprados. \par
+}{
+Defini\'E7\'E3o na linha 13 do arquivo carrinho.php.}\par
 }
 {\xe \v if\:carrinho.php}
 {\xe \v carrinho.php\:if}
@@ -788,22 +790,22 @@ if (isset( $_SESSION[ 'carrrinho_veiculos']) ) = {\b feedback}(2, "veiculo")}}
 {
 \pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
 {\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
-\par
+Total custo da compra. \par
 }{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
 A\'E7\'E3o a partir da URL.\par
 isset$_GET: Produto a partir da URL.\par
 switch($action): Decide o que fazer.\par
 case "adicionar": Adiciona um na quantidade de produto com id $product_id .\par
-Remove um a partir da quantidade de produto com id $product_id .\par
-Se a quantidade \'E9 zero, remove completamente (usando a fun\'E7\'E3o 'unset'), caso contr\'E1rio mostra 0, -1, -2, etc. Enquanto o usu\'E1rio continua a remover os itens.\par
-Limpa o carrinho inteiro, exemplo: esvazia o carrinho.\par
-Se o carriho n\'E3o est\'E1 vazio.\par
+case "remover": Remove um a partir da quantidade de produto com id $product_id .\par
+unset($_SESSION: Se a quantidade \'E9 zero, remove completamente (usando a fun\'E7\'E3o 'unset'), caso contr\'E1rio mostra 0, -1, -2, etc. Enquanto o usu\'E1rio continua a remover os itens.\par
+case "limpar": Limpa o carrinho inteiro, exemplo: esvazia o carrinho.\par
+carrrinho_veiculos: Se o carriho n\'E3o est\'E1 vazio.\par
 Repete atrav\'E9s do carrinho. O $product_id \'E9 a chave, e $quantity \'E9 o valor.\par
-Mostra a linha, se conter um produto (embora deva haver sempre, como j\'E1 verificamos).\par
-Calcular o custo da linha.\par
-Adiciona ao custo total.\par
+$veiculo_atual: Mostra a linha, se contem um produto (embora deva haver sempre).\par
+$line_cost: Calcular o custo.\par
+$total_veiculo: Adiciona ao custo total.\par
 }{
-Defini\'E7\'E3o na linha 62 do arquivo carrinho.php.}\par
+Defini\'E7\'E3o na linha 66 do arquivo carrinho.php.}\par
 }
 \par \pard\plain 
 
@@ -843,9 +845,10 @@ $produtos_artigos = array()}}
 {\bkmkend AAAAAAAAAG}
 {
 \pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
-\par
-{
-Defini\'E7\'E3o na linha 6 do arquivo carrinho_artigos.php.}\par
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+Total custo da compra. \par
+}{
+Defini\'E7\'E3o na linha 13 do arquivo carrinho_artigos.php.}\par
 }
 {\xe \v $total\:carrinho_artigos.php}
 {\xe \v carrinho_artigos.php\:$total}
@@ -859,7 +862,7 @@ $total = 0}}
 \pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
 \par
 {
-Defini\'E7\'E3o na linha 4 do arquivo carrinho_artigos.php.}\par
+Defini\'E7\'E3o na linha 9 do arquivo carrinho_artigos.php.}\par
 }
 {\xe \v $total_artigo\:carrinho_artigos.php}
 {\xe \v carrinho_artigos.php\:$total_artigo}
@@ -871,9 +874,10 @@ $total_artigo = 0}}
 {\bkmkend AAAAAAAAAI}
 {
 \pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
-\par
-{
-Defini\'E7\'E3o na linha 5 do arquivo carrinho_artigos.php.}\par
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+Quantidade total. \par
+}{
+Defini\'E7\'E3o na linha 11 do arquivo carrinho_artigos.php.}\par
 }
 {\xe \v if\:carrinho_artigos.php}
 {\xe \v carrinho_artigos.php\:if}
@@ -885,9 +889,25 @@ if (isset( $_GET[ 'mudar_carrinho'])) if(isset($_SESSION['carrrinho_artigos'])) 
 {\bkmkend AAAAAAAAAJ}
 {
 \pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
-\par
-{
-Defini\'E7\'E3o na linha 52 do arquivo carrinho_artigos.php.}\par
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+Produtos comprados. \par
+}{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+A\'E7\'E3o a partir da URL.\par
+isset$_GET: Produto a partir da URL.\par
+switch($action): Decide o que fazer.\par
+case "adicionar": Adiciona um na quantidade de produto com id $product_id .\par
+case "remover": Remove um a partir da quantidade de produto com id $product_id .\par
+unset($_SESSION: Se a quantidade \'E9 zero, remove completamente (usando a fun\'E7\'E3o 'unset'), caso contr\'E1rio mostra 0, -1, -2, etc. Enquanto o usu\'E1rio continua a remover os itens.\par
+case "limpar": Limpa o carrinho inteiro, exemplo: esvazia o carrinho.\par
+carrrinho_artigos: Se o carriho n\'E3o est\'E1 vazio.\par
+Repete atrav\'E9s do carrinho. O $product_id \'E9 a chave, e $quantity \'E9 o valor.\par
+Pega o nome, a descri\'E7\'E3o e o pre\'E7o no banco de dados.\par
+Usa sprintf para se certificar de que $ product_id \'E9 inserido na consulta como um n\'FAmero - para evitar uso de SQL.\par
+Exibe a linha apenas se houver um produto (embora deva sempre haver).\par
+$line_cost: Calcular o custo da compra.\par
+$total_artigo: Adiciona ao custo total.\par
+}{
+Defini\'E7\'E3o na linha 60 do arquivo carrinho_artigos.php.}\par
 }
 \par \pard\plain 
 

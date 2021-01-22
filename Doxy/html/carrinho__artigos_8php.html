@@ -98,8 +98,9 @@ Variáveis</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Total custo da compra. </p>
 
-<p class="definition">Definição na linha <a class="el" href="carrinho__artigos_8php_source.html#l00006">6</a> do arquivo <a class="el" href="carrinho__artigos_8php_source.html">carrinho_artigos.php</a>.</p>
+<p class="definition">Definição na linha <a class="el" href="carrinho__artigos_8php_source.html#l00013">13</a> do arquivo <a class="el" href="carrinho__artigos_8php_source.html">carrinho_artigos.php</a>.</p>
 
 </div>
 </div>
@@ -115,7 +116,7 @@ Variáveis</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definição na linha <a class="el" href="carrinho__artigos_8php_source.html#l00004">4</a> do arquivo <a class="el" href="carrinho__artigos_8php_source.html">carrinho_artigos.php</a>.</p>
+<p class="definition">Definição na linha <a class="el" href="carrinho__artigos_8php_source.html#l00009">9</a> do arquivo <a class="el" href="carrinho__artigos_8php_source.html">carrinho_artigos.php</a>.</p>
 
 </div>
 </div>
@@ -130,8 +131,9 @@ Variáveis</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Quantidade total. </p>
 
-<p class="definition">Definição na linha <a class="el" href="carrinho__artigos_8php_source.html#l00005">5</a> do arquivo <a class="el" href="carrinho__artigos_8php_source.html">carrinho_artigos.php</a>.</p>
+<p class="definition">Definição na linha <a class="el" href="carrinho__artigos_8php_source.html#l00011">11</a> do arquivo <a class="el" href="carrinho__artigos_8php_source.html">carrinho_artigos.php</a>.</p>
 
 </div>
 </div>
@@ -150,8 +152,23 @@ Variáveis</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Produtos comprados. </p>
+<p>Ação a partir da URL.</p>
+<p>isset$_GET: Produto a partir da URL.</p>
+<p>switch($action): Decide o que fazer.</p>
+<p>case "adicionar": Adiciona um na quantidade de produto com id $product_id .</p>
+<p>case "remover": Remove um a partir da quantidade de produto com id $product_id .</p>
+<p>unset($_SESSION: Se a quantidade é zero, remove completamente (usando a função 'unset'), caso contrário mostra 0, -1, -2, etc. Enquanto o usuário continua a remover os itens.</p>
+<p>case "limpar": Limpa o carrinho inteiro, exemplo: esvazia o carrinho.</p>
+<p>carrrinho_artigos: Se o carriho não está vazio.</p>
+<p>Repete através do carrinho. O $product_id é a chave, e $quantity é o valor.</p>
+<p>Pega o nome, a descrição e o preço no banco de dados.</p>
+<p>Usa sprintf para se certificar de que $ product_id é inserido na consulta como um número - para evitar uso de SQL.</p>
+<p>Exibe a linha apenas se houver um produto (embora deva sempre haver).</p>
+<p>$line_cost: Calcular o custo da compra.</p>
+<p>$total_artigo: Adiciona ao custo total.</p>
 
-<p class="definition">Definição na linha <a class="el" href="carrinho__artigos_8php_source.html#l00052">52</a> do arquivo <a class="el" href="carrinho__artigos_8php_source.html">carrinho_artigos.php</a>.</p>
+<p class="definition">Definição na linha <a class="el" href="carrinho__artigos_8php_source.html#l00060">60</a> do arquivo <a class="el" href="carrinho__artigos_8php_source.html">carrinho_artigos.php</a>.</p>
 
 </div>
 </div>

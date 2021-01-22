@@ -1,4 +1,4 @@
-/** Pagína do carrinho
+/** Pagína do carrinho de artigos
 * @author Grupo HTTP404
 * @version 1.0
 * @since 21 jan 2021
@@ -7,8 +7,11 @@
 ini_set('display_errors', 0);
 session_start();
 $total = 0;
+/**Quantidade total.**/
 $total_artigo = 0;
+/**Total custo da compra.**/
 $produtos_artigos = array();
+/**Produtos comprados.**/
 
 if(isset($_GET['mudar_carrinho'])){
 
@@ -77,7 +80,7 @@ if(isset($_SESSION['carrrinho_artigos'])){ /**carrrinho_artigos: Se o carriho n�
                 $nome = $linha['nome'];
                 $preco_artigo = $linha['preco'];
             }                                             
-        $line_cost = $preco_artigo * $quantidade; /**$line_cost: Calcular o custo da linha.**/
+        $line_cost = $preco_artigo * $quantidade; /**$line_cost: Calcular o custo da compra.**/
         $total_artigo = $total_artigo + $line_cost; /**$total_artigo: Adiciona ao custo total.**/
         array_push($produtos_artigos, $nome, $quantidade, $total_artigo);
         }

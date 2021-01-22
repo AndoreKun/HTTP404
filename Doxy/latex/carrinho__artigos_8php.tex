@@ -20,9 +20,9 @@ if(isset(\$\+\_\+\+GET\mbox{[}\textquotesingle{}mudar\+\_\+carrinho\textquotesin
 \doxysubsubsection{\texorpdfstring{\$produtos\_artigos}{$produtos\_artigos}}
 {\footnotesize\ttfamily \$produtos\+\_\+artigos = array()}
 
+Total custo da compra. 
 
-
-Definição na linha 6 do arquivo carrinho\+\_\+artigos.\+php.
+Definição na linha 13 do arquivo carrinho\+\_\+artigos.\+php.
 
 \mbox{\Hypertarget{carrinho__artigos_8php_a241b818f48030b628685b2e5119c5624}\label{carrinho__artigos_8php_a241b818f48030b628685b2e5119c5624}} 
 \index{carrinho\_artigos.php@{carrinho\_artigos.php}!\$total@{\$total}}
@@ -32,7 +32,7 @@ Definição na linha 6 do arquivo carrinho\+\_\+artigos.\+php.
 
 
 
-Definição na linha 4 do arquivo carrinho\+\_\+artigos.\+php.
+Definição na linha 9 do arquivo carrinho\+\_\+artigos.\+php.
 
 \mbox{\Hypertarget{carrinho__artigos_8php_aa227703fbe30ccdcfc01fac87b500c46}\label{carrinho__artigos_8php_aa227703fbe30ccdcfc01fac87b500c46}} 
 \index{carrinho\_artigos.php@{carrinho\_artigos.php}!\$total\_artigo@{\$total\_artigo}}
@@ -40,9 +40,9 @@ Definição na linha 4 do arquivo carrinho\+\_\+artigos.\+php.
 \doxysubsubsection{\texorpdfstring{\$total\_artigo}{$total\_artigo}}
 {\footnotesize\ttfamily \$total\+\_\+artigo = 0}
 
+Quantidade total. 
 
-
-Definição na linha 5 do arquivo carrinho\+\_\+artigos.\+php.
+Definição na linha 11 do arquivo carrinho\+\_\+artigos.\+php.
 
 \mbox{\Hypertarget{carrinho__artigos_8php_a8de5f06ea184243256c642e360128830}\label{carrinho__artigos_8php_a8de5f06ea184243256c642e360128830}} 
 \index{carrinho\_artigos.php@{carrinho\_artigos.php}!if@{if}}
@@ -50,7 +50,33 @@ Definição na linha 5 do arquivo carrinho\+\_\+artigos.\+php.
 \doxysubsubsection{\texorpdfstring{if}{if}}
 {\footnotesize\ttfamily if (isset( \$\+\_\+\+GET\mbox{[} \textquotesingle{}mudar\+\_\+carrinho\textquotesingle{}\mbox{]})) if(isset(\$\+\_\+\+SESSION\mbox{[}\textquotesingle{}carrrinho\+\_\+artigos\textquotesingle{}\mbox{]})) (\begin{DoxyParamCaption}\item[{isset( \$\+\_\+\+SESSION\mbox{[} \textquotesingle{}carrrinho\+\_\+artigos\textquotesingle{}\mbox{]})}]{ }\end{DoxyParamCaption})}
 
+Produtos comprados. Ação a partir da URL.
 
+isset\$\+\_\+\+GET\+: Produto a partir da URL.
 
-Definição na linha 52 do arquivo carrinho\+\_\+artigos.\+php.
+switch(\$action)\+: Decide o que fazer.
+
+case \char`\"{}adicionar\char`\"{}\+: Adiciona um na quantidade de produto com id \$product\+\_\+id .
+
+case \char`\"{}remover\char`\"{}\+: Remove um a partir da quantidade de produto com id \$product\+\_\+id .
+
+unset(\$\+\_\+\+SESSION\+: Se a quantidade é zero, remove completamente (usando a função \textquotesingle{}unset\textquotesingle{}), caso contrário mostra 0, -\/1, -\/2, etc. Enquanto o usuário continua a remover os itens.
+
+case \char`\"{}limpar\char`\"{}\+: Limpa o carrinho inteiro, exemplo\+: esvazia o carrinho.
+
+carrrinho\+\_\+artigos\+: Se o carriho não está vazio.
+
+Repete através do carrinho. O \$product\+\_\+id é a chave, e \$quantity é o valor.
+
+Pega o nome, a descrição e o preço no banco de dados.
+
+Usa sprintf para se certificar de que \$ product\+\_\+id é inserido na consulta como um número -\/ para evitar uso de SQL.
+
+Exibe a linha apenas se houver um produto (embora deva sempre haver).
+
+\$line\+\_\+cost\+: Calcular o custo da compra.
+
+\$total\+\_\+artigo\+: Adiciona ao custo total.
+
+Definição na linha 60 do arquivo carrinho\+\_\+artigos.\+php.
 
