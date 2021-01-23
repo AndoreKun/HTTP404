@@ -1,12 +1,12 @@
 <?php
 /** 
-* Página do Checkout - Permit comprar produtos e limpar o carrinho
+* Página do Checkout - Permit comprar produtos e limpar o carrinho.
 * @author Grupo HTTP404
 * @version 4.0
 * @since 26 dez 2020
 */ 
 session_start();
-/** Total do Valor dos produtos */
+/** Total do Valor dos produtos. **/
 $total_valor_produtos = 0;
 // Desabilita a demonstração de erros, para que não haja a possibilidade de aparecer erros para o usuário final
 ini_set('display_errors', 0);
@@ -22,7 +22,7 @@ ini_set('display_errors', 0);
         <!-- Favicon -->
         <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
 		
-		<!-- css -->
+		<!-- Chama todos os css -->
         <link rel="stylesheet" href="assets/css/bootstrap.min.css">
         <link rel="stylesheet" href="assets/css/animate.css">
         <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
@@ -38,6 +38,7 @@ ini_set('display_errors', 0);
     </head>
     <body>
         <div class="wrapper">
+         <!-- Inicio do Cabeçalho -->
             <header>
                 <div class="header-area transparent-bar ptb-55">
                     <div class="container">
@@ -196,32 +197,32 @@ ini_set('display_errors', 0);
                             <div class="your-order">
                                 <h3>A SUA ENCOMENDA</h3>
                                 <?php 
-                                /** Caso esteja definido algum produto no array, imprime-os ao na secção de encomendas, senão imprime ao usuário que não existem produtos no carrinho */
+                                /** Caso esteja definido algum produto no array, imprime-os ao na secção de encomendas, senão imprime ao usuário que não existem produtos no carrinho. **/
                                 if(isset($_SESSION['produtos']['produtos'])){?>
                                 <div class="your-order-table table-responsive" >
                                     <table>
                                     <?php
-                                    /** $produtos: Array com todos os produtos do Carrinho */
+                                    /** $produtos: Array com todos os produtos do Carrinho. **/
                                     $produtos = $_SESSION['produtos']['produtos'];
-                                    /** $nomeproduto: Posição do nome dos produtos no array */
+                                    /** $nomeproduto: Posição do nome dos produtos no array. **/
                                     $nomeproduto = 0; 
-                                    /** $qntdproduto: Posição da quantidade dos produtos no array */
+                                    /** $qntdproduto: Posição da quantidade dos produtos no array. **/
                                     $qntdproduto = 1;
-                                    /** $precoproduto: Posição do preço dos produtos no array */
+                                    /** $precoproduto: Posição do preço dos produtos no array. **/
                                     $precoproduto = 2;
-                                    /** $num_produtos_total: Número total de produtos */
+                                    /** $num_produtos_total: Número total de produtos. **/
                                     // Divide por 3 logo que cada produto possui ocupa 3 posições do array: 9 posições / 3 = 3 Produtos
                                     $num_produtos_total = count($produtos) / 3;
-                                    /** $pos_preco: Posição do preço no array do produtos */
+                                    /** $pos_preco: Posição do preço no array do produtos. **/
                                     $pos_preco = 2;                                                                   
-                                    /** for($preco_veiculos = 0; $num_produtos_total > $preco_veiculos; $preco_veiculos++): Calcula o valor total da compra */
+                                    /** for($preco_veiculos = 0; $num_produtos_total > $preco_veiculos; $preco_veiculos++): Calcula o valor total da compra. **/
                                     for($preco_veiculos = 0; $num_produtos_total > $preco_veiculos; $preco_veiculos++){
-                                        /** $total_valor_produtos: Valor Total dos produtos */  
+                                        /** $total_valor_produtos: Valor Total dos produtos. **/
                                         $total_valor_produtos += $produtos[$pos_preco];
                                         // Adiciona mais três logo que cada preço de produto está a 3 posições a frente de outro  
                                         $pos_preco += 3;
                                     }
-                                    /** for($num_linhas = 0; $num_produtos_total > $num_linhas; $num_linhas++): Ciclo que apresenta todos os produtos para o cliente */
+                                    /** for($num_linhas = 0; $num_produtos_total > $num_linhas; $num_linhas++): Ciclo que apresenta todos os produtos para o cliente. **/
                                     for($num_linhas = 0; $num_produtos_total > $num_linhas; $num_linhas++) {
                                         ?>
                                         <thead>
@@ -308,6 +309,7 @@ ini_set('display_errors', 0);
                     </div>
                 </div>
             </div>
+            <!-- Inicio do Rodape -->
             <footer>
                 <div class="footer-top pt-210 pb-98 theme-bg">
                     <div class="container">
@@ -414,7 +416,7 @@ ini_set('display_errors', 0);
                 </div>
             </footer>
         </div>	
-		<!-- javascripts -->
+		<!-- Chamada dos js -->
         <script src="assets/js/vendor/jquery-1.12.0.min.js"></script>
         <script src="assets/js/popper.js"></script>
         <script src="assets/js/bootstrap.min.js"></script>
