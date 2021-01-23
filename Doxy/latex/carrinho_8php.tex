@@ -1,20 +1,78 @@
-\hypertarget{carrinho_8php}{}\doxysection{Referência do Arquivo carrinho.\+php}
-\label{carrinho_8php}\index{carrinho.php@{carrinho.php}}
+\hypertarget{carrinho_8php}{}\doxysection{Referência do Arquivo C\+:/\+Kleyton/\+STI/1.1.Ambiente\+Desen/trabalho\+\_\+adc/carrinho.php}
+\label{carrinho_8php}\index{C:/Kleyton/STI/1.1.AmbienteDesen/trabalho\_adc/carrinho.php@{C:/Kleyton/STI/1.1.AmbienteDesen/trabalho\_adc/carrinho.php}}
 \doxysubsection*{Variáveis}
 \begin{DoxyCompactItemize}
 \item 
-if(isset(\$\+\_\+\+GET\mbox{[}\textquotesingle{}mudar\+\_\+carrinho\textquotesingle{}\mbox{]})) \mbox{\hyperlink{carrinho_8php_a4cdb6b6068cad39027f276ecce7721d3}{if}} (isset( \$\+\_\+\+SESSION\mbox{[} \textquotesingle{}cart\textquotesingle{}\mbox{]})) = \mbox{\hyperlink{product-details_8php_a5029c4d08bf53127c9182988e34ebac5}{feedback}}(2, \char`\"{}veiculo\char`\"{})
+\mbox{\hyperlink{carrinho_8php_a241b818f48030b628685b2e5119c5624}{\$total}} = 0
+\item 
+\mbox{\hyperlink{carrinho_8php_a06bb4b9ea14ba6903db0957d807e9653}{\$produtos\+\_\+veiculos}} = array()
+\item 
+\mbox{\hyperlink{carrinho_8php_a3c587448d0951a4c3b7d9f2252158a25}{\$total\+\_\+veiculo}} = 0
+\item 
+if(isset(\$\+\_\+\+GET\mbox{[}\textquotesingle{}mudar\+\_\+carrinho\textquotesingle{}\mbox{]})) \mbox{\hyperlink{carrinho_8php_a201434cbe2c7f1af31cc19a4b7e3911b}{if}} (isset( \$\+\_\+\+SESSION\mbox{[} \textquotesingle{}carrrinho\+\_\+veiculos\textquotesingle{}\mbox{]})) = \mbox{\hyperlink{product-details_8php_a5029c4d08bf53127c9182988e34ebac5}{feedback}}(2, \char`\"{}veiculo\char`\"{})
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Variáveis}
-\mbox{\Hypertarget{carrinho_8php_a4cdb6b6068cad39027f276ecce7721d3}\label{carrinho_8php_a4cdb6b6068cad39027f276ecce7721d3}} 
+\mbox{\Hypertarget{carrinho_8php_a06bb4b9ea14ba6903db0957d807e9653}\label{carrinho_8php_a06bb4b9ea14ba6903db0957d807e9653}} 
+\index{carrinho.php@{carrinho.php}!\$produtos\_veiculos@{\$produtos\_veiculos}}
+\index{\$produtos\_veiculos@{\$produtos\_veiculos}!carrinho.php@{carrinho.php}}
+\doxysubsubsection{\texorpdfstring{\$produtos\_veiculos}{$produtos\_veiculos}}
+{\footnotesize\ttfamily \$produtos\+\_\+veiculos = array()}
+
+Quantidade total. 
+
+Definição na linha 11 do arquivo carrinho.\+php.
+
+\mbox{\Hypertarget{carrinho_8php_a241b818f48030b628685b2e5119c5624}\label{carrinho_8php_a241b818f48030b628685b2e5119c5624}} 
+\index{carrinho.php@{carrinho.php}!\$total@{\$total}}
+\index{\$total@{\$total}!carrinho.php@{carrinho.php}}
+\doxysubsubsection{\texorpdfstring{\$total}{$total}}
+{\footnotesize\ttfamily \$total = 0}
+
+
+
+Definição na linha 9 do arquivo carrinho.\+php.
+
+\mbox{\Hypertarget{carrinho_8php_a3c587448d0951a4c3b7d9f2252158a25}\label{carrinho_8php_a3c587448d0951a4c3b7d9f2252158a25}} 
+\index{carrinho.php@{carrinho.php}!\$total\_veiculo@{\$total\_veiculo}}
+\index{\$total\_veiculo@{\$total\_veiculo}!carrinho.php@{carrinho.php}}
+\doxysubsubsection{\texorpdfstring{\$total\_veiculo}{$total\_veiculo}}
+{\footnotesize\ttfamily \$total\+\_\+veiculo = 0}
+
+Veiculos comprados. 
+
+Definição na linha 13 do arquivo carrinho.\+php.
+
+\mbox{\Hypertarget{carrinho_8php_a201434cbe2c7f1af31cc19a4b7e3911b}\label{carrinho_8php_a201434cbe2c7f1af31cc19a4b7e3911b}} 
 \index{carrinho.php@{carrinho.php}!if@{if}}
 \index{if@{if}!carrinho.php@{carrinho.php}}
 \doxysubsubsection{\texorpdfstring{if}{if}}
-{\footnotesize\ttfamily if (\begin{DoxyParamCaption}\item[{isset( \$\+\_\+\+SESSION\mbox{[} \textquotesingle{}cart\textquotesingle{}\mbox{]})}]{ }\end{DoxyParamCaption}) = \mbox{\hyperlink{product-details_8php_a5029c4d08bf53127c9182988e34ebac5}{feedback}}(2, \char`\"{}veiculo\char`\"{})}
+{\footnotesize\ttfamily if (\begin{DoxyParamCaption}\item[{isset( \$\+\_\+\+SESSION\mbox{[} \textquotesingle{}carrrinho\+\_\+veiculos\textquotesingle{}\mbox{]})}]{ }\end{DoxyParamCaption}) = \mbox{\hyperlink{product-details_8php_a5029c4d08bf53127c9182988e34ebac5}{feedback}}(2, \char`\"{}veiculo\char`\"{})}
 
+Total custo da compra. Ação a partir da URL.
 
+isset\$\+\_\+\+GET\+: Produto a partir da URL.
 
-Definição na linha 54 do arquivo carrinho.\+php.
+switch(\$action)\+: Decide o que fazer.
+
+case \char`\"{}adicionar\char`\"{}\+: Adiciona um na quantidade de produto com id \$product\+\_\+id .
+
+case \char`\"{}remover\char`\"{}\+: Remove um a partir da quantidade de produto com id \$product\+\_\+id .
+
+unset(\$\+\_\+\+SESSION\+: Se a quantidade é zero, remove completamente (usando a função \textquotesingle{}unset\textquotesingle{}), caso contrário mostra 0, -\/1, -\/2, etc. Enquanto o usuário continua a remover os itens.
+
+case \char`\"{}limpar\char`\"{}\+: Limpa o carrinho inteiro, exemplo\+: esvazia o carrinho.
+
+carrrinho\+\_\+veiculos\+: Se o carriho não está vazio.
+
+Repete através do carrinho. O \$product\+\_\+id é a chave, e \$quantity é o valor.
+
+\$veiculo\+\_\+atual\+: Mostra a linha, se contem um produto (embora deva haver sempre).
+
+\$line\+\_\+cost\+: Calcular o custo.
+
+\$total\+\_\+veiculo\+: Adiciona ao custo total.
+
+Definição na linha 66 do arquivo carrinho.\+php.
 

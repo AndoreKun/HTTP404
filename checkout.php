@@ -1,5 +1,11 @@
 <?php
+/** Página do Checkout - Permit comprar produtos e limpar o carrinho
+* @author Grupo HTTP404
+* @version 4.0
+* @since 26 dez 2020
+**/ 
 session_start();
+/** Total do Valor dos produtos */
 $total_valor_produtos = 0;
 ?>
 <!doctype html>
@@ -186,23 +192,33 @@ $total_valor_produtos = 0;
                         <div class="col-lg-6 col-md-12 col-12" style="text-align: center;">
                             <div class="your-order">
                                 <h3>A SUA ENCOMENDA</h3>
-                                <?php if(isset($_SESSION['produtos']['produtos'])){?>
+                                <?php 
+                                /** Caso esteja definido algum produto no array, imprime-os ao na secção de encomendas, senão imprime ao usuário que não existem produtos no carrinho */
+                                if(isset($_SESSION['produtos']['produtos'])){?>
                                 <div class="your-order-table table-responsive" >
                                     <table>
                                     <?php
-                                    // Caso estejam definidos produtos no carrinho, guarda os produtos no array produtos
+                                    /** $produtos: Array com todos os produtos do Carrinho */
                                     $produtos = $_SESSION['produtos']['produtos'];
+                                    /** $nomeproduto: Posição do nome dos produtos no array */
                                     $nomeproduto = 0; 
+                                    /** $qntdproduto: Posição da quantidade dos produtos no array */
                                     $qntdproduto = 1;
+                                    /** $precoproduto: Posição do preço dos produtos no array */
                                     $precoproduto = 2;
+                                    /** $num_produtos_total: Número total de produtos */
+                                    // Divide por 3 logo que cada produto possui ocupa 3 posições do array: 9 posições / 3 = 3 Produtos
                                     $num_produtos_total = count($produtos) / 3;
+                                    /** $pos_preco: Posição do preço no array do produtos */
                                     $pos_preco = 2;                                                                   
-                                    // Calcula o valor total da compra
-                                    for($preco_veiculos = 0; $num_produtos_total > $preco_veiculos; $preco_veiculos++){  
-                                        $total_valor_produtos += $produtos[$pos_preco];  
+                                    /** for($preco_veiculos = 0; $num_produtos_total > $preco_veiculos; $preco_veiculos++): Calcula o valor total da compra */
+                                    for($preco_veiculos = 0; $num_produtos_total > $preco_veiculos; $preco_veiculos++){
+                                        /** $total_valor_produtos: Valor Total dos produtos */  
+                                        $total_valor_produtos += $produtos[$pos_preco];
+                                        // Adiciona mais três logo que cada preço de produto está a 3 posições a frente de outro  
                                         $pos_preco += 3;
-                                    // Apresenta todos os produtos para o cliente 
                                     }
+                                    /** for($num_linhas = 0; $num_produtos_total > $num_linhas; $num_linhas++): Ciclo que apresenta todos os produtos para o cliente */
                                     for($num_linhas = 0; $num_produtos_total > $num_linhas; $num_linhas++) {
                                         ?>
                                         <thead>
@@ -232,11 +248,7 @@ $total_valor_produtos = 0;
                                         <tfoot>
                                             <tr class="order-total">
                                                 <th>Total</th>
-<<<<<<< HEAD
-                                                <td><strong><span class="amount">0.00€</span></strong>
-=======
                                                 <td><strong><span class="amount"><?php echo $total_valor_produtos;?>€</span></strong>
->>>>>>> development
                                                 </td>
                                             </tr>								
                                         </tfoot>
