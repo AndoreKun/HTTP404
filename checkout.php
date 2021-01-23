@@ -1,12 +1,15 @@
 <?php
-/** Página do Checkout - Permit comprar produtos e limpar o carrinho
+/** 
+* Página do Checkout - Permit comprar produtos e limpar o carrinho
 * @author Grupo HTTP404
 * @version 4.0
 * @since 26 dez 2020
-**/ 
+*/ 
 session_start();
 /** Total do Valor dos produtos */
 $total_valor_produtos = 0;
+// Desabilita a demonstração de erros, para que não haja a possibilidade de aparecer erros para o usuário final
+ini_set('display_errors', 0);
 ?>
 <!doctype html>
 <html class="no-js" lang="zxx">

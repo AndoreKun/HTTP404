@@ -1,3 +1,11 @@
+<?php
+/**
+*Pagina para login de funcionários, tem a função de redirecionar os utilizadores para sua area (vendedores, técnicos, patrão)
+*@author Grupo HTTP404
+*@version 2.0
+*@since 26 dez 2020
+**/
+?>
 <!DOCTYPE HTML>
 <html class="no-js" lang="zxx">
 <head>
@@ -81,29 +89,33 @@
 </body>
 </html>
 <?php
+/** Define a ação a ser feita através do formulário de login*/
 $action = isset($_POST['acao']) ? trim($_POST['acao']) : '';
-	if(isset($action) && $action != ""){ 
-		
-		switch($action){
-			case 'logar':
-				//requerimos nossa classe de autenticação passando os valores dos inputs como parâmetros
-				require_once('class/Autentica.class.php');
-				//instancio a classse para podermos usar o método nela contida
-				$Autentica = new Autentica();
-				//setamos 
-				$Autentica->email	= $_POST['email'];
-				$Autentica->pass	= $_POST['pass'];
-				//chamamos nosso método						
-				if($Autentica->Validar_Usuario()){
-                    echo  "<script type='text/javascript'>
-                                location.href='reservado.php'
-                            </script>"; 
-				  }else{
-				   echo  "<script type='text/javascript'>
-                            alert('ATEN\u00c7\u00c4O, Login ou Senha inv\u00e1lidos...');location.href='login.php'
-						</script>"; 
-				  }
-			break;
-		}	
-	}
+/** Caso ação esteja definida e não seja uma string vazia, faz o login do funcionário e o redireciona */
+if(isset($action) && $action != ""){ 
+    
+    switch($action){
+        case 'logar':
+            /** require_once('class/Autentica.class.php'): requerimos nossa classe de autenticação passando os valores dos inputs como parâmetros */
+            require_once('class/Autentica.class.php');
+            /** $Autentica = new Autentica(): instancio a classse para podermos usar o método nela contida */
+            $Autentica = new Autentica();
+            /** $Autentica->email	= $_POST['email']: Definimos o email do funcionário */
+            $Autentica->email	= $_POST['email'];
+            /** $Autentica->pass	= $_POST['pass']: Definimos a palavra passe do funcionário */
+            $Autentica->pass	= $_POST['pass'];
+            /** if($Autentica->Validar_Usuario()): chama o método para verificar o funcionário, caso ele seja verificado, redireciona para a página reservados
+            * senão imprime que as informações de login estão erradas */					
+            if($Autentica->Validar_Usuario()){
+                echo  "<script type='text/javascript'>
+                            location.href='reservado.php'
+                        </script>"; 
+                }else{
+                echo  "<script type='text/javascript'>
+                        alert('ATEN\u00c7\u00c4O, Login ou Senha inv\u00e1lidos...');location.href='login.php'
+                    </script>"; 
+                }
+        break;
+    }	
+}
 ?>

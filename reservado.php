@@ -1,29 +1,44 @@
 <?php
-	//starta a sessão
-    session_start();
-	ob_start();
-	//resgata os valores das session em variaveis
-	$id_users = isset($_SESSION['id_users']) ? $_SESSION['id_users']: "";	
-	$nome_user = isset($_SESSION['nome']) ? $_SESSION['nome']: "";
-	$email_users = isset($_SESSION['email']) ? $_SESSION['email']: "";	
-	$pass_users = isset($_SESSION['pass']) ? $_SESSION['pass']: "";
-    $logado = isset($_SESSION['logado']) ? $_SESSION['logado']: "N";
-    $cargo = isset($_SESSION['cargo']) ? $_SESSION['cargo']: "";	
-	//verificamos se a var logado contem o valor (S) OU (N), se conter N quer dizer que a pessoa não fez o login corretamente
-	//que no caso satisfará nossa condição no if e a pessoa sera redirecionada para a tela de login novamente
-	if ($logado == "N" || $id_users == ""){	    
-		echo  "<script type='text/javascript'>
-					location.href='login.php'
-				</script>";	
-        exit();
-    }
-    if ($cargo == "vendedores"){
-        echo  "<script type='text/javascript'>
-                    location.href='vendedores.php'
-                </script>";	
-        exit();
-    }
-    setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
+/** 
+ * Página dos funcionários reservada apenas para o patrão e admins, outros funcionários são imediatamente redirecionados
+ * @author Grupo HTTP 404
+ * @version 1.3
+ * @since 26 dez 2020
+ */
+// Inicia a sessão
+session_start();
+ob_start();
+// Desabilita a demonstração de erros, para que não haja a possibilidade de aparecer erros para o usuário final
+ini_set('display_errors', 0);
+/** Resgata o ID do funcionário logado em uma variável através do valor da session*/
+$id_users = isset($_SESSION['id_users']) ? $_SESSION['id_users']: "";
+/** Resgata o Nome do funcionário logado em uma variável através do valor da session*/
+$nome_user = isset($_SESSION['nome']) ? $_SESSION['nome']: "";
+/** Resgata o Email do funcionário logado em uma variável através do valor da session*/
+$email_users = isset($_SESSION['email']) ? $_SESSION['email']: "";
+/** Resgata a palavra passe do funcionário logado em uma variável através do valor da session*/
+$pass_users = isset($_SESSION['pass']) ? $_SESSION['pass']: "";
+/** Resgata o estado de login do funcionário em uma variável através do valor da session*/
+$logado = isset($_SESSION['logado']) ? $_SESSION['logado']: "N";
+/** Resgata o Cargo do funcionário logado em uma variável através do valor da session*/
+$cargo = isset($_SESSION['cargo']) ? $_SESSION['cargo']: "";	
+/** verifica se a var logado contem o valor (S) OU (N), se conter N quer dizer que a pessoa não fez o login corretamente
+* que no caso satisfará nossa condição no if e a pessoa sera redirecionada para a tela de login novamente */
+if ($logado == "N" || $id_users == ""){	    
+    echo  "<script type='text/javascript'>
+                location.href='login.php'
+            </script>";	
+    exit();
+}
+/** Caso o cargo for de vendedor, redireciona-o para a sua página */
+if ($cargo == "vendedores"){
+    echo  "<script type='text/javascript'>
+                location.href='vendedores.php'
+            </script>";	
+    exit();
+}
+// Define o Local e lingua, para as funções strftime e strtotime funcionarem bem na página
+setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
 ?>
 <!DOCTYPE HTML>
 <html class="no-js" lang="zxx">
@@ -92,13 +107,20 @@
         <input style="cursor: pointer; width:300px; margin:4px;" name="submit" type="submit" value="submit" class="btn-style cr-btn"></input>
     </form>
     <?php 
+    /** Caso o formulário tiver sido submetido, imprime a informação desejada */
     if(isset($_POST['submit']) || isset($_POST['submit'])){
+        /** $ver_dados: Variável que define a ação a ser tomada, Caso for "vertodos", mostra os dados de vendas de veiculos e artigos no total, 
+        * Caso for "mesatual", mostra os dados de vendas e veiculos apenas do mês selecionado/atual
+        */
         $ver_dados = $_POST['vendaveiculos'];
         switch($ver_dados){
             case 'vertodos':
+                // Query da base de dados
                 $consulta = 'SELECT * from vendas';
+                // Chama o ficheiro de conexão à base de dados
                 include "database/selects_basedados.php";      
                 ?>
+                <!-- Imprime os resultado obtidos em uma tabela !-->
                 <div class="container">
                 <br/>
                 <br/>
@@ -116,7 +138,9 @@
                             </tr>
                         <tbody>
                             <?php 
+                            /** $vendas: Número total do valor de vendas */
                             $vendas = 0;
+                            // Ciclo para definir variáveis com resultado do consulta
                             foreach($dados as $linha) { ?>
                             <tr>
                                 <td><?php echo $linha ['IDVenda']; ?></td>
@@ -143,17 +167,22 @@
                             ?>
                         </td>
                     </table>
+                    <!-- Chama o ficheiro download.php para fazer o download dos dados selecionados em formato excel !-->
                     <button onclick="location.href='database/download.php?consulta=<?php echo $consulta ?>&valorextra=<?php echo $vendas?>&nomevalorextra=<?php echo $nomevalorextra?>&adicionarvalor=S'" 
                     name="downloadfile" value="Exportar Para Excel" class="btn btn-success" style="cursor: pointer; width:300px; float:right; margin-top:-40px">Exportar Para Excel</button>
                 </div>
                 <?php
                 break;
             case 'mesatual':
+                /** $mes: Mês selecionado através de um formulário, se for "mestual" mostra os dados do mes atual, se for "novembro2020" mostra os dados se novembro de 2020, e assim continua */
                 $mes = $_POST['elemento'];
                 switch($mes){
                     case "mesatual":
+                        /** $consultatmp: Consulta temporária, será atualizada de acordo com o mês que estiver na variável $mes */
                         $consultatmp = 'SELECT * from vendas WHERE YEAR(DataVenda) = YEAR(CURRENT_DATE()) AND MONTH(DataVenda) = MONTH(CURRENT_DATE())';
+                        /** $dataatual: Define a data atual com a função strftime e strtotime do php */
                         $dataatual = strftime('%B de %Y', strtotime('today'));
+                        /** $titulotabela: Titulo da tabela que será apresentada(Preenchida com dados do resultado da consulta) */
                         $titulotabela = "Valor Total de Vendas($dataatual)"; 
                         break;
                     case "novembro2020":
@@ -171,8 +200,10 @@
                 }
                 $consulta = $consultatmp;
                 $nomevalorextra = $titulotabela;
+                // Chamda ficheiro de conexão à base de dados
                 include "database/selects_basedados.php";      
                 ?>
+                <!-- Imprime os resultado obtidos em uma tabela !-->
                 <div class="container">
                 <br/>
                 <br/>
@@ -224,8 +255,7 @@
             }       
         }
 ?>
-
+<!-- Javascript !-->
 <script src="assets/js/mostraselecao.js"></script>
-
 </body>
 </html>
