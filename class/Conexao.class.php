@@ -1,7 +1,13 @@
-<?php    
+<?php 
+/** 
+ * Página que faz a conexão com a base de dados de forma segura para confirmar o login
+ * @author Grupo HTTP 404
+ * @version 1.0
+ * @since 24 dez 2020
+ */	   
 	class Conexao {
 		private $data = array();
-		//variavel da classe Base
+		/** variavel da classe Base */
 		protected $pdo = null;
 		
 		public function __set($name, $value){
@@ -21,20 +27,30 @@
 				E_USER_NOTICE);
 			return null;
 		}
-		//metodo que retorna a variavel $pdo
+		/** metodo que retorna a variavel $pdo */
 		public function getPdo() {
 			return $this->pdo;
 		}
 
-		//metodo construtor da classe
 		function __construct($pdo = null) {
+			/** 
+			 * Método que controi a classe
+			 * @author Grupo HTTP 404
+			 * @version 1.0
+			 * @since 24 dez 2020
+			 */
 			$this->pdo = $pdo;
 			if ($this->pdo == null)
 				$this->conectar();
 		}
 
-		//metodo que conecta com o banco de dados
 		public function conectar() {
+			/** 
+			 * Método que conecta com a base de de dados
+			 * @author Grupo HTTP 404
+			 * @version 1.0
+			 * @since 24 dez 2020
+			 */
 			try{
 				$this->pdo = new PDO("mysql:host=localhost;dbname=adc_http404",
 								"admin",
@@ -46,12 +62,23 @@
 			}
 		}
 
-		//metodo que desconecta
 		public function desconectar() {
+			/**
+			 * Método que desconecta com a base de dados
+			 * @author Grupo HTTP 404
+			 * @version 1.0
+			 * @since 24 dez 2020
+			 */
 			$this->pdo = null;
 		}
 		
 		public function select($sql){
+			/**
+			 * Função pública que faz o select da base de dados
+			 * @author Grupo HTTP 404
+			 * @version 1.0
+			 * @since 24 dez 2020
+			 */
 			$stmt = $this->pdo->prepare($sql);
 			$stmt->execute();
 			return $stmt->fetchAll(PDO::FETCH_ASSOC);

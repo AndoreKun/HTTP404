@@ -2,8 +2,8 @@
 /** 
  * Página dos funcionários reservada apenas para a vendedores, outros funcionários são imediatamente redirecionados
  * @author Grupo HTTP 404
- * @version 1.3
- * @since 26 dez 2020
+ * @version 1.5
+ * @since 1 jan 2021
  */
 //starta a sessão
 session_start();
@@ -118,35 +118,50 @@ setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
     </form>
     </div>
     <?php 
-    /** Caso o formulário estiver sido submetido, e faz o insert desejado */
+    /** Caso o formulário estiver sido submetido, faz o insert desejado */
     if(isset($_POST['submit'])){
+        /** $insertpronto: Verdadeiro quando estiver definido qual é o insert a ser feito */
         $insertpronto = false;
+        /** $clienteselecionado: Cliente Selecionado no formulário, obtido través do método POST */
         $clienteselecionado = $_POST['cliente'];
+        // Remove os 9 primeiros carateres do cliente, logo que na seleção em HTML o nome do cliente buscado da base de dados é selecionado em conjunto de seu NIF(ID)
+        // Para uma fácil localização do cliente
         $clienteselecionado = substr($clienteselecionado, 0, 9);
         $insertpronto = true;
+        /** Caso não tenha sido selecionado um cliente, define $insertpronto como falso */
         if ($clienteselecionado == ""){
             $insertpronto = false;
         }
+        /** $veiculoselecionado: Veiculo Selecionado no formulário, obtido através do método POST */
         $veiculoselecionado = $_POST['veiculo'];
+        // retira o id do veiculo e guarda na mesma variável
         $veiculoselecionado = substr($veiculoselecionado, 0, 1);
+        /** $artigoselecionado: Artigo Selecionado no formulário, obtido através do método POST */
         $artigoselecionado = $_POST['artigo'];
         $artigoselecionado = substr($artigoselecionado, 0, 1);
-
+        /** Caso não tenha sido selecionado um veiculo e um artigo, define $insertpronto como falso */
         if($veiculoselecionado == "" and $artigoselecionado == ""){
             $insertpronto = false;
         }
-        // Caso o insert estiver pronto(Se um cliente e um veiculo e/ou um artigo estiverem selecionados)
+        /** Caso o insert estiver pronto(Se um cliente e um veiculo e/ou um artigo estiverem selecionados), Cria o insert para a base de dados. 
+         * caso não esteja pronto, imprime que faltam valores para inserir a venda
+        */
         if ($insertpronto == true){
             if ($veiculoselecionado == "" and $artigoselecionado != ""){
+                /** $consulta: Consulta para a base de dados, para calcular o valor da vendas a ser enviado a selects_basedados.php para realizar a consulta*/
                 $consulta = "SELECT preco from artigos WHERE IDArtigo = '$artigoselecionado'";
+                // inclui o script de conexão e consulta
                 include('database/selects_basedados.php');
+                // Define a variável com o resultado da consulta
                 foreach($dados as $linha){
                     $valordavenda = $linha['preco'];
                 }
+                /** $insert: Query do Insert a ser enviado para inserts_basedados.php para realizar o insert na base de dados */
                 $insert = "INSERT INTO vendas(IDNIF_Cliente, IDArtigo, ValorVenda, IDFuncionario) VALUES ('$clienteselecionado', '$artigoselecionado', '$valordavenda', '$id_users')";
-
+                // inclui o script de conexão e insert
                 include('database/inserts_basedados.php');
             }
+            // Mesmo processo para artigos
             if ($artigoselecionado == "" and $veiculoselecionado != ""){
                 $consulta = "SELECT preco from veiculos WHERE IDVeiculo = '$veiculoselecionado'";
                 include('database/selects_basedados.php');
@@ -155,6 +170,7 @@ setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
                 }
                 $insert = "INSERT INTO vendas(IDNIF_Cliente, IDVeiculo, ValorVenda, IDFuncionario) VALUES ('$clienteselecionado', '$veiculoselecionado', '$valordavenda', '$id_users')";
                 include('database/inserts_basedados.php');
+            // E para artigos e veículos
             }else{
                 $consulta = "SELECT SUM(artigos.preco + veiculos.preco) AS preco from artigos, veiculos WHERE IDArtigo = '$artigoselecionado' AND IDVeiculo = '$veiculoselecionado'";
                 include('database/selects_basedados.php');
@@ -282,11 +298,12 @@ setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
 </div>
 <?php 
 
-// Atualizar um Cliente
-
+/** Atualiza um Cliente na base de dados */
 if(isset($_POST['atualizarcliente'])){
     $nif_nome_cliente = $_POST['updt_cliente_nif'];
+    // Remove o nome do cliente e guarda o nif
     $updt_nif_cliente = substr($nif_nome_cliente, 0, 9);
+    // remove o nif e guarda o nome do cliente
     $updt_nome = substr($nif_nome_cliente, 12);
     $updt_email = $_POST['updt_email_cliente'];
     $updt_telemovel = $_POST['updt_telemovel_cliente'];
@@ -294,6 +311,7 @@ if(isset($_POST['atualizarcliente'])){
     $updt_morada = $_POST['updt_morada_cliente'];
     $updt_codpostal = $_POST['updt_codpostal_cliente'];
     $updt_localidade = $_POST['updt_localidade_cliente'];
+    // Sequência para testar quais campos estão nulos para criar o update na base de dados
     if($updt_email == ""){
         $email_insert = "";
     } else {
@@ -329,24 +347,30 @@ if(isset($_POST['atualizarcliente'])){
     } else {
         $localidade_insert = ",Localidade='$updt_localidade'";
     }
+    // Mesmo método de conexão e insert usado acima 
     $insert = "UPDATE clientes SET Nome='$updt_nome'$email_insert$telemovel_insert$email_insert$pais_insert$morada_insert$codpostal_insert$localidade_insert 
     WHERE IDNIF_Cliente=$updt_nif_cliente";
+    /** $acao: Acão a ser realizada em inserts_basedeados.php("Insert", "Update" ou "Delete") */
     $acao = 'update';
+    /** $imagem: A imagem que o utilizador fez o upload, que caso exista, serám convertida para binário e inserida na base de dados  */
     $imagem = $_FILES['image']['tmp_name'];
     if($imagem){
+        // Tranforma a imagem em string binário para inserir na base de dados
         $foto_do_cliente = file_get_contents($imagem);
         $update_foto = "UPDATE clientes SET Foto=? WHERE IDNIF_Cliente=$updt_nif_cliente";
         $adicionar_foto = TRUE;
     } else {
         $adicionar_foto = FALSE;
     }
+    // Inclui script de insert na base de dados
     include('database/inserts_basedados.php');
     }
 
-// Remover um Cliente
-
+/** Remove um Cliente da base de dados */
 if(isset($_POST['removercliente'])){
+    /** $rm_nif_cliente: NIF do cliente a ser removido */
     $rm_nif_cliente = $_POST['rm_cliente_nif'];
+    // remove o nome do cliente e guarda seu nif
     $rm_nif_cliente = substr($rm_nif_cliente, 0, 9);
     $acao = 'delete';
     $insert = "DELETE FROM clientes WHERE IDNIF_Cliente='$rm_nif_cliente'";
@@ -354,8 +378,7 @@ if(isset($_POST['removercliente'])){
     include('database/inserts_basedados.php');
     } 
 
-// Adicionar um novo Cliente
-
+/** Adicionar um novo Cliente na base de dados*/
 if(isset($_POST['criarcliente'])){
     $nif_cliente = $_POST['nif_cliente'];
     $nome = $_POST['nome_cliente'];
@@ -366,8 +389,11 @@ if(isset($_POST['criarcliente'])){
     $codpostal = $_POST['codpostal_cliente'];
     $localidade = $_POST['localidade_cliente'];
     $consulta = 'SELECT IDNIF_Cliente FROM clientes';
+    // Inclui script de select
     include("database/selects_basedados.php");
+    /** $clientenovo: Verdadeiro se o cliente não existe na base de dado, e falso se existe */
     $clientenovo = FALSE;
+    /** foreach($dados as $linha): Ciclo testa se o cliente já existe na base de dados ou não */
     foreach($dados as $linha){
         if($nif_cliente == $linha['IDNIF_Cliente']){
             ?><h5 style="color: red">Este cliente já existe na base de dados!</h5> <?php
@@ -376,6 +402,7 @@ if(isset($_POST['criarcliente'])){
             $clientenovo = TRUE;
         }
     }
+    /** if($clientenovo == TRUE): Se o Cliente for Novo, prepara o query do insert na base de dados */
     if($clientenovo == TRUE){
         $insert = "INSERT INTO clientes(IDNIF_Cliente, Nome, Email, Telemovel, Pais, Morada, Cod_Postal, Localidade) 
         VALUES ('$nif_cliente', '$nome', '$email', '$telemovel', '$pais', '$morada', '$codpostal', '$localidade')";
@@ -388,6 +415,7 @@ if(isset($_POST['criarcliente'])){
         } else {
             $adicionar_foto = FALSE;
         }
+        // inclui script de insert na base de dados
         include('database/inserts_basedados.php');
         }
     }
@@ -526,8 +554,7 @@ if(isset($_POST['criarcliente'])){
 </div>
 <?php 
 
-// Atualizar um Veiculo
-
+/** Atualiza um Veiculo, utiliza o mesmo método de atualizar clientes */
 if(isset($_POST['atualizarveiculo'])){
     $marca_modelo_veiculo = $_POST['id_veiculo'];
     $id_veiculo = substr($marca_modelo_veiculo, 0, 1);
@@ -567,8 +594,7 @@ if(isset($_POST['atualizarveiculo'])){
     include('database/inserts_basedados.php');
     }
 }
-// Remover um Veiculo
-
+/** Remove um Veiculo, utiliza o mesmo método de remover clientes */
 if(isset($_POST['removerveiculo'])){
     $rm_veiculo = $_POST['rm_veiculo'];
     $rm_id_veiculo = substr($rm_veiculo, 0, 1);
@@ -578,8 +604,7 @@ if(isset($_POST['removerveiculo'])){
     include('database/inserts_basedados.php');
     } 
 
-// Adicionar um novo Veiculo
-
+/** Adicionar um novo Veiculo, utiliza o mesmo método de adicionar clientes */
 if(isset($_POST['criarveiculo'])){
     $modelo_veiculo = $_POST['modelo_veiculo'];
     $marca_veiculo = $_POST['marca_veiculo'];

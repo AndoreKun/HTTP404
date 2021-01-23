@@ -5,7 +5,7 @@
 * @since 25 jan 2021
 **/  
 // Desabilita a demonstração de erros, para que não haja a possibilidade de aparecer erros para o usuário final
-ini_set('display_errors', 1);
+ini_set('display_errors', 0);
 session_start();
 // Definição de variáveis
 /** Valor Total de Produtos */
