@@ -23,7 +23,7 @@
 \doxysubsubsection{\texorpdfstring{feedback()}{feedback()}}
 {\footnotesize\ttfamily feedback (\begin{DoxyParamCaption}\item[{}]{\$id,  }\item[{}]{\$tipo\+\_\+produto }\end{DoxyParamCaption})}
 
-Funcao feedback que retorna uma mensagem quando um produto/artigo é adicionado/removido do carrinho e cria um botão para permitir o redirecionamento para a página que contém o carrinho, também permite adicionar um botão para remover um veículo/artigo \begin{DoxyAuthor}{Autor}
+Funcao feedback que retorna uma mensagem quando um produto/artigo é adicionado/removido do carrinho e cria um botão para permitir o redirecionamento para a página que contém o carrinho, também permite adicionar um botão para remover um veículo/artigo. \begin{DoxyAuthor}{Autor}
 Grupo HTTP404 
 \end{DoxyAuthor}
 
@@ -46,21 +46,22 @@ array \$verificacao Retorna as variáveis id, feedback, e os botões (Definidos 
 2.\+3 ~\newline
 
 \end{DoxyVersion}
-\$\+\_\+\+SESSION\mbox{[}\textquotesingle{}id\+\_\+veiculo\textquotesingle{}\mbox{]}\mbox{[}\textquotesingle{}id\+\_\+veiculo\textquotesingle{}\mbox{]}\+: Array associativo com todos os ID\textquotesingle{}s de veiculos
+\$\+\_\+\+SESSION\mbox{[}\textquotesingle{}id\+\_\+veiculo\textquotesingle{}\mbox{]}\mbox{[}\textquotesingle{}id\+\_\+veiculo\textquotesingle{}\mbox{]}\+: Array associativo com todos os ID\textquotesingle{}s de veiculos.
 
-\$\+\_\+\+SESSION\mbox{[}\textquotesingle{}feedback\textquotesingle{}\mbox{]}\mbox{[}\textquotesingle{}feedback\textquotesingle{}\mbox{]}\+: Array associativo com o feedback (mensagem)
+\$\+\_\+\+SESSION\mbox{[}\textquotesingle{}feedback\textquotesingle{}\mbox{]}\mbox{[}\textquotesingle{}feedback\textquotesingle{}\mbox{]}\+: Array associativo com o feedback (mensagem).
 
-\$\+\_\+\+SESSION\mbox{[}\textquotesingle{}id\+\_\+artigo\textquotesingle{}\mbox{]}\mbox{[}\textquotesingle{}id\+\_\+artigo\textquotesingle{}\mbox{]}\+: Array associativo com todos os ID\textquotesingle{}s de artigos
+\$\+\_\+\+SESSION\mbox{[}\textquotesingle{}id\+\_\+artigo\textquotesingle{}\mbox{]}\mbox{[}\textquotesingle{}id\+\_\+artigo\textquotesingle{}\mbox{]}\+: Array associativo com todos os ID\textquotesingle{}s de artigos.
 
-if(isset(\$\+\_\+\+SESSION\mbox{[}\textquotesingle{}abilitar\+\_\+remover\+\_\+veiculos\textquotesingle{}\mbox{]}\mbox{[}\$id\mbox{]}))\+: Verifica se o array associativo no id enviado à função existe, se sim, define o botão
+if(isset(\$\+\_\+\+SESSION\mbox{[}\textquotesingle{}abilitar\+\_\+remover\+\_\+veiculos\textquotesingle{}\mbox{]}\mbox{[}\$id\mbox{]}))\+: Verifica se o array associativo no id enviado à função existe, se sim, define o botão.
 
-if(isset(\$\+\_\+\+SESSION\mbox{[}\textquotesingle{}abilitar\+\_\+remover\+\_\+artigos\textquotesingle{}\mbox{]}\mbox{[}\$id\mbox{]}))\+: Verifica se o array associativo no id enviado à função existe, se sim, define o botão
+if(isset(\$\+\_\+\+SESSION\mbox{[}\textquotesingle{}abilitar\+\_\+remover\+\_\+artigos\textquotesingle{}\mbox{]}\mbox{[}\$id\mbox{]}))\+: Verifica se o array associativo no id enviado à função existe, se sim, define o botão.
 
 Definição na linha 13 do arquivo product-\/details.\+php.
 
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{13                                       \{}
+\DoxyCodeLine{14 }
 \DoxyCodeLine{28     \$feedback = \textcolor{stringliteral}{"{}"{}};}
 \DoxyCodeLine{29     \textcolor{keywordflow}{if}(\mbox{\hyperlink{atualiza__carrinho_8php_a67031208a98bec0eeb17b5dfebb469e4}{\$tipo\_produto}} == \textcolor{stringliteral}{"{}veiculo"{}})\{ }
 \DoxyCodeLine{31         \textcolor{keywordflow}{if}(isset(\mbox{\hyperlink{logout_8php_a5f545b9684799a00f7a14442205b98e3}{\$\_SESSION}}[\textcolor{stringliteral}{'id\_veiculo'}][\textcolor{stringliteral}{'id\_veiculo'}]))\{}

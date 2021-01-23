@@ -108,7 +108,7 @@
 {\info 
 {\title {\comment Portal Http404 }Portal Http404}
 {\comment Gerado por doxygen1.9.1.}
-{\creatim \yr2021\mo1\dy23\hr20\min36\sec53}
+{\creatim \yr2021\mo1\dy23\hr20\min39\sec2}
 }\pard\plain 
 \sectd\pgnlcrm
 {\footer \s29\widctlpar\tqc\tx4320\tqr\tx8640\qr\adjustright \fs20\cgrid {\chpgn}}
@@ -1706,7 +1706,7 @@ feedback (  {\i $id},   {\i $tipo_produto})}}
 {\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
 \par
 }{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
-Funcao feedback que retorna uma mensagem quando um produto/artigo \'E9 adicionado/removido do carrinho e cria um bot\'E3o para permitir o redirecionamento para a p\'E1gina que cont\'E9m o carrinho, tamb\'E9m permite adicionar um bot\'E3o para remover um ve\'EDculo/artigo \par
+Funcao feedback que retorna uma mensagem quando um produto/artigo \'E9 adicionado/removido do carrinho e cria um bot\'E3o para permitir o redirecionamento para a p\'E1gina que cont\'E9m o carrinho, tamb\'E9m permite adicionar um bot\'E3o para remover um ve\'EDculo/artigo. \par
 {{\s5\sb90\sa30\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
 Autor\par}\pard\plain \s82\li720\widctlpar\ql\adjustright \fs20\cgrid {\s17 \sa60 \sb30
 Grupo HTTP404 \par
@@ -1754,15 +1754,16 @@ array $verificacao Retorna as vari\'E1veis id, feedback, e os bot\'F5es (Definid
 }}{{\s5\sb90\sa30\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
 Vers\'E3o\par}\pard\plain \s82\li720\widctlpar\ql\adjustright \fs20\cgrid {\s17 \sa60 \sb30
 2.3 \par
-}}$_SESSION['id_veiculo']['id_veiculo']: Array associativo com todos os ID's de veiculos\par
-$_SESSION['feedback']['feedback']: Array associativo com o feedback (mensagem)\par
-$_SESSION['id_artigo']['id_artigo']: Array associativo com todos os ID's de artigos\par
-if(isset($_SESSION['abilitar_remover_veiculos'][$id])): Verifica se o array associativo no id enviado \'E0 fun\'E7\'E3o existe, se sim, define o bot\'E3o\par
-if(isset($_SESSION['abilitar_remover_artigos'][$id])): Verifica se o array associativo no id enviado \'E0 fun\'E7\'E3o existe, se sim, define o bot\'E3o\par
+}}$_SESSION['id_veiculo']['id_veiculo']: Array associativo com todos os ID's de veiculos.\par
+$_SESSION['feedback']['feedback']: Array associativo com o feedback (mensagem).\par
+$_SESSION['id_artigo']['id_artigo']: Array associativo com todos os ID's de artigos.\par
+if(isset($_SESSION['abilitar_remover_veiculos'][$id])): Verifica se o array associativo no id enviado \'E0 fun\'E7\'E3o existe, se sim, define o bot\'E3o.\par
+if(isset($_SESSION['abilitar_remover_artigos'][$id])): Verifica se o array associativo no id enviado \'E0 fun\'E7\'E3o existe, se sim, define o bot\'E3o.\par
 }{
 Defini\'E7\'E3o na linha 13 do arquivo product-details.php.}\par
 {
 \pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 13                                       \{\par
+14 \par
 28     $feedback = {\cf22 ""};\par
 29     {\cf19 if}($tipo_produto == {\cf22 "veiculo"})\{ \par
 31         {\cf19 if}(isset($_SESSION[{\cf22 'id_veiculo'}][{\cf22 'id_veiculo'}]))\{\par

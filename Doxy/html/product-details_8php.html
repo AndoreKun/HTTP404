@@ -116,7 +116,7 @@ Variáveis</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Funcao feedback que retorna uma mensagem quando um produto/artigo é adicionado/removido do carrinho e cria um botão para permitir o redirecionamento para a página que contém o carrinho, também permite adicionar um botão para remover um veículo/artigo </p><dl class="section author"><dt>Autor</dt><dd>Grupo HTTP404 </dd></dl>
+<p>Funcao feedback que retorna uma mensagem quando um produto/artigo é adicionado/removido do carrinho e cria um botão para permitir o redirecionamento para a página que contém o carrinho, também permite adicionar um botão para remover um veículo/artigo. </p><dl class="section author"><dt>Autor</dt><dd>Grupo HTTP404 </dd></dl>
 <dl class="params"><dt>Parâmetros</dt><dd>
   <table class="params">
     <tr><td class="paramtype">int</td><td class="paramname">$id</td><td>Número de Identificação do produto/veiculo, utilizado para mostrar a mensagem apenas naquele produto/artigo </td></tr>
@@ -130,14 +130,15 @@ Variáveis</h2></td></tr>
 <dl class="section return"><dt>Retorna</dt><dd>array $verificacao Retorna as variáveis id, feedback, e os botões (Definidos ou não) </dd></dl>
 <dl class="section version"><dt>Versão</dt><dd>2.3 <br  />
 </dd></dl>
-<p>$_SESSION['id_veiculo']['id_veiculo']: Array associativo com todos os ID's de veiculos</p>
-<p>$_SESSION['feedback']['feedback']: Array associativo com o feedback (mensagem)</p>
-<p>$_SESSION['id_artigo']['id_artigo']: Array associativo com todos os ID's de artigos</p>
-<p>if(isset($_SESSION['abilitar_remover_veiculos'][$id])): Verifica se o array associativo no id enviado à função existe, se sim, define o botão</p>
-<p>if(isset($_SESSION['abilitar_remover_artigos'][$id])): Verifica se o array associativo no id enviado à função existe, se sim, define o botão</p>
+<p>$_SESSION['id_veiculo']['id_veiculo']: Array associativo com todos os ID's de veiculos.</p>
+<p>$_SESSION['feedback']['feedback']: Array associativo com o feedback (mensagem).</p>
+<p>$_SESSION['id_artigo']['id_artigo']: Array associativo com todos os ID's de artigos.</p>
+<p>if(isset($_SESSION['abilitar_remover_veiculos'][$id])): Verifica se o array associativo no id enviado à função existe, se sim, define o botão.</p>
+<p>if(isset($_SESSION['abilitar_remover_artigos'][$id])): Verifica se o array associativo no id enviado à função existe, se sim, define o botão.</p>
 
 <p class="definition">Definição na linha <a class="el" href="product-details_8php_source.html#l00013">13</a> do arquivo <a class="el" href="product-details_8php_source.html">product-details.php</a>.</p>
 <div class="fragment"><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;                                      {</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    $feedback = <span class="stringliteral">&quot;&quot;</span>;</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordflow">if</span>(<a class="code" href="atualiza__carrinho_8php.html#a67031208a98bec0eeb17b5dfebb469e4">$tipo_produto</a> == <span class="stringliteral">&quot;veiculo&quot;</span>){ </div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="keywordflow">if</span>(isset(<a class="code" href="logout_8php.html#a5f545b9684799a00f7a14442205b98e3">$_SESSION</a>[<span class="stringliteral">&#39;id_veiculo&#39;</span>][<span class="stringliteral">&#39;id_veiculo&#39;</span>])){</div>

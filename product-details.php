@@ -1,5 +1,5 @@
 <?php
-/** Página dos detalhes dos produtos - Permite Adicionar e Remover produtos no carrinho
+/** Página dos detalhes dos produtos - Permite Adicionar e Remover produtos no carrinho.
 * @author Grupo HTTP404
 * @version 3.1
 * @since 26 dez 2020
@@ -11,9 +11,9 @@ session_start();
 $botao_remover_veiculo = "";
 $voltar_para = $_SESSION['voltar_para'];
 function feedback ($id, $tipo_produto){
-    /**
-        *Funcao feedback que retorna uma mensagem quando um produto/artigo é adicionado/removido do carrinho e cria um botão para permitir
-        *o redirecionamento para a página que contém o carrinho, também permite adicionar um botão para remover um veículo/artigo
+
+    /** Funcao feedback que retorna uma mensagem quando um produto/artigo é adicionado/removido do carrinho e cria um botão para permitir
+        *o redirecionamento para a página que contém o carrinho, também permite adicionar um botão para remover um veículo/artigo.
         *@author Grupo HTTP404
         *@param int $id Número de Identificação do produto/veiculo, utilizado para mostrar a mensagem apenas naquele produto/artigo
         *@param string $tipo_produto Tipo do produto artigo/veículo
@@ -23,21 +23,21 @@ function feedback ($id, $tipo_produto){
         *@return array $verificacao Retorna as variáveis id, feedback, e os botões (Definidos ou não)
         *@version 2.3                                                                                                                                                                                                                                                                               
 
-    */
+    **/
 
     $feedback = "";
     if($tipo_produto == "veiculo"){ 
-        /** $_SESSION['id_veiculo']['id_veiculo']: Array associativo com todos os ID's de veiculos */
+        /** $_SESSION['id_veiculo']['id_veiculo']: Array associativo com todos os ID's de veiculos. **/
         if(isset($_SESSION['id_veiculo']['id_veiculo'])){
             if ($_SESSION['id_veiculo']['id_veiculo'] == $id){
-                /** $_SESSION['feedback']['feedback']: Array associativo com o feedback (mensagem) */
+                /** $_SESSION['feedback']['feedback']: Array associativo com o feedback (mensagem). **/
                 $feedback = $_SESSION['feedback']['feedback'];
                 
             }
         }
     }
     if($tipo_produto == "artigo"){
-        /** $_SESSION['id_artigo']['id_artigo']: Array associativo com todos os ID's de artigos */
+        /** $_SESSION['id_artigo']['id_artigo']: Array associativo com todos os ID's de artigos. **/
         if(isset($_SESSION['id_artigo']['id_artigo'])){
             if ($_SESSION['id_artigo']['id_artigo'] == $id){
                 $feedback = $_SESSION['feedback']['feedback'];
@@ -47,11 +47,11 @@ function feedback ($id, $tipo_produto){
     }
     $botao_remover_veiculo = "";
     $botao_remover_artigo = "";
-    /** if(isset($_SESSION['abilitar_remover_veiculos'][$id])): Verifica se o array associativo no id enviado à função existe, se sim, define o botão */ 
+    /** if(isset($_SESSION['abilitar_remover_veiculos'][$id])): Verifica se o array associativo no id enviado à função existe, se sim, define o botão. **/
     if(isset($_SESSION['abilitar_remover_veiculos'][$id])){
         $botao_remover_veiculo = $_SESSION['abilitar_remover_veiculos'][$id];
     }
-    /** if(isset($_SESSION['abilitar_remover_artigos'][$id])): Verifica se o array associativo no id enviado à função existe, se sim, define o botão */ 
+    /** if(isset($_SESSION['abilitar_remover_artigos'][$id])): Verifica se o array associativo no id enviado à função existe, se sim, define o botão. **/
     if(isset($_SESSION['abilitar_remover_artigos'][$id])){
         $botao_remover_artigo = $_SESSION['abilitar_remover_artigos'][$id];
     }
