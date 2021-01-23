@@ -1,23 +1,32 @@
 <?php
-	//starta a sessão
-    session_start();
-	ob_start();
-	//resgata os valores das session em variaveis
-	$id_users = isset($_SESSION['id_users']) ? $_SESSION['id_users']: "";	
-	$nome_user = isset($_SESSION['nome']) ? $_SESSION['nome']: "";
-	$email_users = isset($_SESSION['email']) ? $_SESSION['email']: "";	
-	$pass_users = isset($_SESSION['pass']) ? $_SESSION['pass']: "";
-    $logado = isset($_SESSION['logado']) ? $_SESSION['logado']: "N";
-    $cargo = isset($_SESSION['cargo']) ? $_SESSION['cargo']: "";	
-	//verificamos se a var logado contem o valor (S) OU (N), se conter N quer dizer que a pessoa não fez o login corretamente
-	//que no caso satisfará nossa condição no if e a pessoa sera redirecionada para a tela de login novamente
-	if ($logado == "N" || $id_users == ""){	    
-		echo  "<script type='text/javascript'>
-					location.href='login.php'
-				</script>";	
-        exit();
-    }
-    setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
+/** 
+ * Página dos funcionários reservada apenas para a vendedores, outros funcionários são imediatamente redirecionados
+ * @author Grupo HTTP 404
+ * @version 1.3
+ * @since 26 dez 2020
+ */
+//starta a sessão
+session_start();
+ob_start();
+// Desabilita a demonstração de erros, para que não haja a possibilidade de aparecer erros para o usuário final
+ini_set('display_errors', 0);
+//resgata os valores das session em variaveis
+$id_users = isset($_SESSION['id_users']) ? $_SESSION['id_users']: "";	
+$nome_user = isset($_SESSION['nome']) ? $_SESSION['nome']: "";
+$email_users = isset($_SESSION['email']) ? $_SESSION['email']: "";	
+$pass_users = isset($_SESSION['pass']) ? $_SESSION['pass']: "";
+$logado = isset($_SESSION['logado']) ? $_SESSION['logado']: "N";
+$cargo = isset($_SESSION['cargo']) ? $_SESSION['cargo']: "";	
+//verificamos se a var logado contem o valor (S) OU (N), se conter N quer dizer que a pessoa não fez o login corretamente
+//que no caso satisfará nossa condição no if e a pessoa sera redirecionada para a tela de login novamente
+if ($logado == "N" || $id_users == ""){	    
+    echo  "<script type='text/javascript'>
+                location.href='login.php'
+            </script>";	
+    exit();
+}
+// Define o Local e lingua, para as funções strftime e strtotime funcionarem bem na página
+setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
 ?>
 <!DOCTYPE HTML>
 <html class="no-js" lang="zxx">
@@ -27,10 +36,9 @@
     <title>HTTP 404</title>
     <meta name="description" content="HTTP 404 - O melhor site de vendas de veículos">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Favicon -->
+    <!-- Favicon - ícones de visualização.-->
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
-    
-    <!-- all css here -->
+    <!-- Todos os css -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/animate.css">
     <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
@@ -47,6 +55,7 @@
 </head>
 <body>
     <div class="wrapper">
+    <!-- Cabeçalho da Pagina -->
     <div class="col-lg-4 col-md-4 col-4">
         <div class="logo-small-device">
             <a href="index.html"><img alt="" src="assets/img/logo/logo.png"></a>
@@ -71,10 +80,12 @@
         <h1>Olá, <?php echo $nome_user;?>!</h1>
         <button style="cursor: pointer" id="sair" value="Sair" class="btn-style cr-btn" onclick="location.href ='logout.php';">Sair</button>
     </div>
+    <!-- Área de vendas, permite inserir uma nova venda na base de dados!-->
     <form action="" method="post">
         <label for="actions"><h2>Registar venda de Veículos/Artigos</h2></label><br/> 
         <div id="registarvenda" name="registarvenda" style="width:300px; margin:4px;">
                 <h5>Cliente: </h5>
+                <!-- Conexão à base de dados para mostrar os clientes em uma lista !-->
                 <select name="cliente">
                     <option selected name= "" value="">Selecione uma opção...</option>
                     <?php $consulta = "SELECT CONCAT(IDNIF_Cliente, ' - ', Nome) AS clientes FROM clientes";
@@ -84,6 +95,7 @@
                     <?php } ?>
                 </select>
                 <h5>Veículo:</h5>
+                <!-- Conexão à base de dados para mostrar os veiculos em uma lista !-->
                 <select name="veiculo" style="width:300px; margin:4px;">
                     <option selected name= "" value="">Selecione uma opção...</option>
                     <?php $consulta = "SELECT CONCAT(IDVeiculo, ' - ', marca, ' ', modelo) AS veiculos FROM veiculos WHERE Em_stock='Sim'";
@@ -93,6 +105,7 @@
                     <?php } ?>
                 </select>
                 <h5>Artigo:</h5>
+                <!-- Conexão à base de dados para mostrar os artigos em uma lista!-->
                 <select name="artigo" style="width:300px; margin:4px;">
                     <option selected name= "" value="">Selecione uma opção...</option>
                     <?php $consulta = "SELECT CONCAT(IDArtigo, ' - ', Nome) AS artigos FROM artigos WHERE Em_stock='Sim'";
@@ -105,6 +118,7 @@
     </form>
     </div>
     <?php 
+    /** Caso o formulário estiver sido submetido, e faz o insert desejado */
     if(isset($_POST['submit'])){
         $insertpronto = false;
         $clienteselecionado = $_POST['cliente'];
@@ -113,7 +127,6 @@
         if ($clienteselecionado == ""){
             $insertpronto = false;
         }
-
         $veiculoselecionado = $_POST['veiculo'];
         $veiculoselecionado = substr($veiculoselecionado, 0, 1);
         $artigoselecionado = $_POST['artigo'];
@@ -122,7 +135,7 @@
         if($veiculoselecionado == "" and $artigoselecionado == ""){
             $insertpronto = false;
         }
-
+        // Caso o insert estiver pronto(Se um cliente e um veiculo e/ou um artigo estiverem selecionados)
         if ($insertpronto == true){
             if ($veiculoselecionado == "" and $artigoselecionado != ""){
                 $consulta = "SELECT preco from artigos WHERE IDArtigo = '$artigoselecionado'";
