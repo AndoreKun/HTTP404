@@ -96,23 +96,23 @@ Variáveis</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Informações enviadas ao adicionar/remover um veiculos em <a class="el" href="product-details_8php.html">product-details.php</a> ou limpar a list em checkout Redirecionamento para checkout quando o carrinho for limpo </p>
-<p>Ação a ser realizada</p>
-<p>Página para redirecionar</p>
-<p>$id_artigo = $_GET['id_artigo']: define o id do artigo enviado por product_details.php</p>
-<p>$_SESSION['id_artigo']['id_artigo'] = $id_artigo: Guarda no array para a função feedback em product_details.php receber</p>
-<p>switch($action): Decide o que será feito apartir da ação enviada</p>
-<p>case "adicionar": Adicionar um produto ao carrinho e habilita o botão "Remover Produto" em product_details</p>
-<p>$_SESSION['carrinho_veiculos'][$id_artigo]++: Adiciona um para o veiculo com o id definido</p>
-<p>$_SESSION['produtos_veiculos'] = "adicionar": Define um valor para produtos veiculos para confirmar que um produto foi adicionado</p>
-<p>$_SESSION['feedback']['feedback']: Define o feedback a ser dado após o veiculo ser adicionado ao carrinho(Função em Feedback em produt-details.php)</p>
-<p>$_SESSION['abilitar_remover_artigos'][$id_veiculo]: Abilita o botão de remover um veículo do carrinho, logo que um foi adicionado</p>
-<p>echo "&lt;script type='text/javascript'&gt;location.href='atualiza_carrinho.php'&lt;/script&gt;": Redireciona para a página de atualização do carrinho para que o usuário não precise de recarregar checkout manualmente toda vez que adicionar um produto</p>
-<p>case "remover": Remove um artigo do carrinho</p>
-<p>$_SESSION['carrinho_artigos'][$id_artigo]&ndash;: Remove um para o veiculo com o id definido acima</p>
-<p>$_SESSION['produtos_artigos'] = "remover": Define um valor para produtos veiculos para confirmar em <a class="el" href="checkout_8php.html">checkout.php</a> que um produto foi removido</p>
-<p>if($_SESSION['carrinho_veiculos'][$id_veiculo] == 0: Desabilita botão de remover e o retira o produto do carrinho caso o mesmo for zero</p>
-<p>case "limpar": Limpa o carrinho e destroí a sessão</p>
+<p>Informações enviadas ao adicionar/remover um veiculos em <a class="el" href="product-details_8php.html">product-details.php</a> ou limpar a list em checkout. Redirecionamento para checkout quando o carrinho for limpo. </p>
+<p>Ação a ser realizada.</p>
+<p>Página para redirecionar.</p>
+<p>$id_artigo = $_GET['id_artigo']: define o id do artigo enviado por product_details.php.</p>
+<p>$_SESSION['id_artigo']['id_artigo'] = $id_artigo: Guarda no array para a função feedback em product_details.php receber.</p>
+<p>switch($action): Decide o que será feito apartir da ação enviada.</p>
+<p>case "adicionar": Adicionar um produto ao carrinho e habilita o botão "Remover Produto" em product_details.</p>
+<p>$_SESSION['carrinho_veiculos'][$id_artigo]++: Adiciona um para o veiculo com o id definido.</p>
+<p>$_SESSION['produtos_veiculos'] = "adicionar": Define um valor para produtos veiculos para confirmar que um produto foi adicionado.</p>
+<p>$_SESSION['feedback']['feedback']: Define o feedback a ser dado após o veiculo ser adicionado ao carrinho(Função em Feedback em produt-details.php).</p>
+<p>$_SESSION['abilitar_remover_artigos'][$id_veiculo]: Abilita o botão de remover um veículo do carrinho, logo que um foi adicionado.</p>
+<p>echo "&lt;script type='text/javascript'&gt;location.href='atualiza_carrinho.php'&lt;/script&gt;": Redireciona para a página de atualização do carrinho para que o usuário não precise de recarregar checkout manualmente toda vez que adicionar um produto.</p>
+<p>case "remover": Remove um artigo do carrinho.</p>
+<p>$_SESSION['carrinho_artigos'][$id_artigo]&ndash;: Remove um para o veiculo com o id definido acima.</p>
+<p>$_SESSION['produtos_artigos'] = "remover": Define um valor para produtos veiculos para confirmar em <a class="el" href="checkout_8php.html">checkout.php</a> que um produto foi removido.</p>
+<p>if($_SESSION['carrinho_veiculos'][$id_veiculo] == 0: Desabilita botão de remover e o retira o produto do carrinho caso o mesmo for zero.</p>
+<p>case "limpar": Limpa o carrinho e destroí a sessão.</p>
 
 <p class="definition">Definição na linha <a class="el" href="carrinho_8php_source.html#l00012">12</a> do arquivo <a class="el" href="carrinho_8php_source.html">carrinho.php</a>.</p>
 
