@@ -1,10 +1,9 @@
+<?php session_start();
 /** Pagína dos detalhes dos produtos
 * @author Grupo HTTP404
-* @version 2.1
-* @since 21 jan 2021
+* @version 3.1
+* @since 26 dez 2020
 **/
-<?php session_start();
-
 function feedback ($id, $tipo_produto){
     /**
         *Funcao feedback que retorna uma mensagem quando um produto/artigo é adicionado/removido do carrinho e cria um botão para permitir
