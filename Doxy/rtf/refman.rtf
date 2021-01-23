@@ -108,7 +108,7 @@
 {\info 
 {\title {\comment Portal Http404 }Portal Http404}
 {\comment Gerado por doxygen1.9.1.}
-{\creatim \yr2021\mo1\dy23\hr20\min20\sec35}
+{\creatim \yr2021\mo1\dy23\hr20\min23\sec57}
 }\pard\plain 
 \sectd\pgnlcrm
 {\footer \s29\widctlpar\tqc\tx4320\tqr\tx8640\qr\adjustright \fs20\cgrid {\chpgn}}
@@ -1025,24 +1025,24 @@ if(isset($_GET['mudar_carrinho'])) (isset( $_GET[ 'mudar_carrinho']) )}}
 {
 \pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
 {\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
-Informa\'E7\'F5es enviadas ao adicionar/remover um veiculos em {\b product-details.php} ou limpar a list em checkout Redirecionamento para checkout quando o carrinho for limpo \par
+Informa\'E7\'F5es enviadas ao adicionar/remover um veiculos em {\b product-details.php} ou limpar a list em checkout. Redirecionamento para checkout quando o carrinho for limpo. \par
 }{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
-$action:A\'E7\'E3o a ser realizada\par
-$voltar_para: P\'E1gina para redirecionar\par
-$id_artigo = $_GET['id_artigo']: define o id do artigo enviado por product_details.php\par
-$_SESSION['id_artigo']['id_artigo'] = $id_artigo: Guarda no array para a fun\'E7\'E3o feedback em product_details.php receber\par
-switch($action): Decide o que ser\'E1 feito apartir da a\'E7\'E3o enviada\par
-case "adicionar": Adicionar um produto ao carrinho e habilita o bot\'E3o "Remover Produto" em product_details\par
-$_SESSION['carrinho_artigos'][$id_artigo]++: Adiciona um para o veiculo com o id definido\par
-$_SESSION['produtos_artigos'] = "adicionar": Define um valor para produtos veiculos para confirmar que um produto foi adicionado\par
-$_SESSION['feedback']['feedback']: Define o feedback a ser dado ap\'F3s o veiculo ser adicionado ao carrinho(Fun\'E7\'E3o em Feedback em produt-details.php)\par
-$_SESSION['abilitar_remover_artigos'][$id_artigo]: Abilita o bot\'E3o de remover um ve\'EDculo do carrinho, logo que um foi adicionado\par
-echo "<script type='text/javascript'>location.href='atualiza_carrinho.php'</script>": Redireciona para a p\'E1gina de atualiza\'E7\'E3o do carrinho para que o usu\'E1rio n\'E3o precise de recarregar checkout manualmente toda vez que adicionar um produto\par
-case "remover": Remove um artigo do carrinho\par
-$_SESSION['carrinho_artigos'][$id_artigo]\'96: Remove um para o veiculo com o id definido acima\par
-$_SESSION['produtos_artigos'] = "remover": Define um valor para produtos veiculos para confirmar em {\b checkout.php} que um produto foi removido\par
-if($_SESSION['carrinho_artigos'][$id_artigo] == 0: Desabilita bot\'E3o de remover e o retira o produto do carrinho caso o mesmo for zero\par
-case "limpar": Limpa o carrinho e destro\'ED a sess\'E3o\par
+$action:A\'E7\'E3o a ser realizada.\par
+$voltar_para: P\'E1gina para redirecionar.\par
+$id_artigo = $_GET['id_artigo']: define o id do artigo enviado por product_details.php .\par
+$_SESSION['id_artigo']['id_artigo'] = $id_artigo: Guarda no array para a fun\'E7\'E3o feedback em product_details.php receber.\par
+switch($action): Decide o que ser\'E1 feito apartir da a\'E7\'E3o enviada.\par
+case "adicionar": Adicionar um produto ao carrinho e habilita o bot\'E3o "Remover Produto" em product_details.\par
+$_SESSION['carrinho_artigos'][$id_artigo]++: Adiciona um para o veiculo com o id definido.\par
+$_SESSION['produtos_artigos'] = "adicionar": Define um valor para produtos veiculos para confirmar que um produto foi adicionado.\par
+$_SESSION['feedback']['feedback']: Define o feedback a ser dado ap\'F3s o veiculo ser adicionado ao carrinho(Fun\'E7\'E3o em Feedback em produt-details.php).\par
+$_SESSION['abilitar_remover_artigos'][$id_artigo]: Abilita o bot\'E3o de remover um ve\'EDculo do carrinho, logo que um foi adicionado.\par
+echo "<script type='text/javascript'>location.href='atualiza_carrinho.php'</script>": Redireciona para a p\'E1gina de atualiza\'E7\'E3o do carrinho para que o usu\'E1rio n\'E3o precise de recarregar checkout manualmente toda vez que adicionar um produto.\par
+case "remover": Remove um artigo do carrinho.\par
+$_SESSION['carrinho_artigos'][$id_artigo]\'96: Remove um para o veiculo com o id definido acima.\par
+$_SESSION['produtos_artigos'] = "remover": Define um valor para produtos veiculos para confirmar em {\b checkout.php} que um produto foi removido.\par
+if($_SESSION['carrinho_artigos'][$id_artigo] == 0: Desabilita bot\'E3o de remover e o retira o produto do carrinho caso o mesmo for zero.\par
+case "limpar": Limpa o carrinho e destro\'ED a sess\'E3o.\par
 }{
 Defini\'E7\'E3o na linha 12 do arquivo carrinho_artigos.php.}\par
 }
