@@ -1,10 +1,9 @@
 <?php
-/** 
- * Página do logout, quando é chamada faz o logout do funcionário e destrói a sessão e todos os dados
+/** Página do logout, quando é chamada faz o logout do funcionário e destrói a sessão e todos os dados.
  * @author Grupo HTTP 404
  * @version 1.2
  * @since 2 jan 2021
- */
+ **/
 //inicia a sessao e destroi todos os dados gravados em cache e assim como todo os produtos do carrinho e valores em SESSION
 session_start();
 ob_start();
