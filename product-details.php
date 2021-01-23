@@ -1,9 +1,10 @@
-<?php session_start();
-/** Pagína dos detalhes dos produtos - Permite Adicionar e Remover produtos no carrinho
+<?php
+/** Página dos detalhes dos produtos - Permite Adicionar e Remover produtos no carrinho
 * @author Grupo HTTP404
 * @version 3.1
 * @since 26 dez 2020
 **/ 
+session_start();
 // Desabilita a demonstração de erros, para que não haja a possibilidade de aparecer erros para o usuário final
 ini_set('display_errors', 0);
 session_start(); 

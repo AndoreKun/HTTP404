@@ -1,4 +1,9 @@
 <?php
+/** Página do Checkout - Permit comprar produtos e limpar o carrinho
+* @author Grupo HTTP404
+* @version 4.0
+* @since 26 dez 2020
+**/ 
 session_start();
 /** Total do Valor dos produtos */
 $total_valor_produtos = 0;
