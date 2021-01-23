@@ -3,11 +3,11 @@
  * @author Grupo HTTP 404
  * @version 1.3
  * @since 26 dez 2020
- */
-// Inicia a sessão
+ **/
+/** Inicia a sessão. **/
 session_start();
 ob_start();
-// Desabilita a demonstração de erros, para que não haja a possibilidade de aparecer erros para o usuário final
+/** Desabilita a demonstração de erros, para que não haja a possibilidade de aparecer erros para o usuário final. **/
 ini_set('display_errors', 0);
 /** Resgata o ID do funcionário logado em uma variável através do valor da session. **/
 $id_users = isset($_SESSION['id_users']) ? $_SESSION['id_users']: "";

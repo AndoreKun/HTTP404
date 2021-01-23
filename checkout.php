@@ -4,11 +4,12 @@
 * @author Grupo HTTP404
 * @version 4.0
 * @since 26 dez 2020
-*/ 
+**/
+/** Inicia a sessão. **/
 session_start();
 /** Total do Valor dos produtos. **/
 $total_valor_produtos = 0;
-// Desabilita a demonstração de erros, para que não haja a possibilidade de aparecer erros para o usuário final
+/** Desabilita a demonstração de erros, para que não haja a possibilidade de aparecer erros para o usuário final. **/
 ini_set('display_errors', 0);
 ?>
 <!doctype html>
@@ -19,7 +20,7 @@ ini_set('display_errors', 0);
         <title>Checkout</title>
         <meta name="description" content="Live Preview Of Oswan eCommerce HTML5 Template">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- Favicon -->
+        <!-- Favicon - icones favoritos -->
         <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
 		
 		<!-- Chama todos os css -->
