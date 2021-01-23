@@ -1,71 +1,7 @@
-<?php 
+<?php
 session_start();
-/** produtos comprados **/
-$produtos = array();
+/** Total do Valor dos produtos */
 $total_valor_produtos = 0;
-$num_produtos_artigos = 0;
-$num_produtos_veiculos = 0;
-$artigos = "";
-$veiculos = "";
-$posicao_veiculo = 0;
-$posicao_artigo = 1;
-$produtos_novos = array();
-
-if(isset($_SESSION['produtos_veiculos']) || isset($_SESSION['produtos_artigos'])){
-    if(isset($_SESSION['produtos_artigos'])){
-        $artigos = $_SESSION['produtos_artigos'];
-    } 
-    if(isset($_SESSION['produtos_veiculos'])) {
-        $veiculos = $_SESSION['produtos_veiculos'];
-    }
-    if(isset($_SESSION['produtos'])){
-        $prod_novo_tmp = $_SESSION['produtos'];
-        $prod_novo_tmp = $prod_novo_tmp[0];
-        array_push($produtos_novos, $prod_novo_tmp);
-
-    }
-
-    if ($veiculos == ""){
-        $posicao_artigo = 0;
-        array_push($produtos, $artigos); 
-        $num_produtos_artigos = count($produtos[$posicao_artigo]) / 3;
-        $pos_preco = 2;
-        for($preco_artigos = 0; $num_produtos_artigos > $preco_artigos; $preco_artigos++){  
-            $total_valor_produtos += $produtos[$posicao_artigo][$pos_preco]; 
-            $pos_preco += 3; 
-        }     
-    } elseif($artigos == ""){
-        $posicao_veiculo = 0;
-        array_push($produtos, $veiculos);
-        $num_produtos_veiculos = count($produtos[$posicao_veiculo]) / 3;
-        $pos_preco = 2;
-        // Calcula o valor total da compra
-        for($preco_veiculos = 0; $num_produtos_veiculos > $preco_veiculos; $preco_veiculos++){  
-            $total_valor_produtos += $produtos[$posicao_veiculo][$pos_preco];  
-            $pos_preco += 3; 
-        }
-    } else {
-        $posicao_veiculo = 0;
-        $posicao_artigo = 1;
-        array_push($produtos, $veiculos, $artigos);
-        $num_produtos_artigos = count($produtos[$posicao_artigo]) / 3;
-        $num_produtos_veiculos = count($produtos[$posicao_veiculo]) / 3;
-        $pos_preco = 2;
-        // Calcula o valor total da compra
-        for($preco_veiculos = 0; $num_produtos_veiculos > $preco_veiculos; $preco_veiculos++){  
-            $total_valor_produtos += $produtos[$posicao_veiculo][$pos_preco];  
-            $pos_preco += 3;
-        }
-        $pos_preco = 2;
-        for($preco_artigos = 0; $num_produtos_artigos > $preco_artigos; $preco_artigos++){  
-            $total_valor_produtos += $produtos[$posicao_artigo][$pos_preco]; 
-            $pos_preco += 3; 
-        }  
-    }
-
-
-
-}
 ?>
 <!doctype html>
 <html class="no-js" lang="zxx">
@@ -78,7 +14,7 @@ if(isset($_SESSION['produtos_veiculos']) || isset($_SESSION['produtos_artigos'])
         <!-- Favicon -->
         <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
 		
-		<!-- all css here -->
+		<!-- css -->
         <link rel="stylesheet" href="assets/css/bootstrap.min.css">
         <link rel="stylesheet" href="assets/css/animate.css">
         <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
@@ -148,7 +84,7 @@ if(isset($_SESSION['produtos_veiculos']) || isset($_SESSION['produtos_artigos'])
                     </div>
                 </div>
             </div>
-            <!-- checkout-area start -->
+            <!-- Inicio da área do checkout -->
             <div class="checkout-area pt-130 pb-100">
                 <div class="container">
                     <div class="row">
@@ -251,71 +187,63 @@ if(isset($_SESSION['produtos_veiculos']) || isset($_SESSION['produtos_artigos'])
                         <div class="col-lg-6 col-md-12 col-12" style="text-align: center;">
                             <div class="your-order">
                                 <h3>A SUA ENCOMENDA</h3>
-                                <?php if(isset($_SESSION["produtos"]["produtos"])){?>
+                                <?php 
+                                /** Caso esteja definido algum produto no array, imprime-os ao na secção de encomendas, senão imprime ao usuário que não existem produtos no carrinho */
+                                if(isset($_SESSION['produtos']['produtos'])){?>
                                 <div class="your-order-table table-responsive" >
                                     <table>
                                     <?php
+                                    /** $produtos: Array com todos os produtos do Carrinho */
+                                    $produtos = $_SESSION['produtos']['produtos'];
+                                    /** $nomeproduto: Posição do nome dos produtos no array */
                                     $nomeproduto = 0; 
+                                    /** $qntdproduto: Posição da quantidade dos produtos no array */
                                     $qntdproduto = 1;
+                                    /** $precoproduto: Posição do preço dos produtos no array */
                                     $precoproduto = 2;
-                                    for($num_linhas = 0; $num_produtos_veiculos > $num_linhas; $num_linhas++) {
+                                    /** $num_produtos_total: Número total de produtos */
+                                    // Divide por 3 logo que cada produto possui ocupa 3 posições do array: 9 posições / 3 = 3 Produtos
+                                    $num_produtos_total = count($produtos) / 3;
+                                    /** $pos_preco: Posição do preço no array do produtos */
+                                    $pos_preco = 2;                                                                   
+                                    /** for($preco_veiculos = 0; $num_produtos_total > $preco_veiculos; $preco_veiculos++): Calcula o valor total da compra */
+                                    for($preco_veiculos = 0; $num_produtos_total > $preco_veiculos; $preco_veiculos++){
+                                        /** $total_valor_produtos: Valor Total dos produtos */  
+                                        $total_valor_produtos += $produtos[$pos_preco];
+                                        // Adiciona mais três logo que cada preço de produto está a 3 posições a frente de outro  
+                                        $pos_preco += 3;
+                                    }
+                                    /** for($num_linhas = 0; $num_produtos_total > $num_linhas; $num_linhas++): Ciclo que apresenta todos os produtos para o cliente */
+                                    for($num_linhas = 0; $num_produtos_total > $num_linhas; $num_linhas++) {
                                         ?>
                                         <thead>
                                             <tr class="cart_item">
                                                 <td id="teste" class="product-name">
                                                 <label>Nome:</label>
-                                                    <?php echo $produtos[$posicao_veiculo][$nomeproduto]; ?>   
+                                                    <?php echo $produtos[$nomeproduto]; ?>   
                                                 </td>
                                                 <td>             
                                                 <label>Quantidade:</label>
-                                                    <strong><?php echo "X".$produtos[$posicao_veiculo][$qntdproduto];?></strong>
+                                                    <strong><?php echo "X".$produtos[$qntdproduto];?></strong>
                                                 </td>
                                                 <td class="product-total">
                                                     <label>Preço:</label>
-                                                    <span class="amount"><?php echo $produtos[$posicao_veiculo][$precoproduto];?>€</span>
+                                                    <span class="amount"><?php echo $produtos[$precoproduto];?>€</span>
                                                 </td>
                                             </tr>
                                         </thead>
                                     <?php 
+                                        // Adiciona mais três ao fim de cada ciclo para que aos posições corretas do produtos sejam apresentadas,
+                                        // ex.: nome do produto 1 está na posição 0, enquanto o nome do produto 2 está na posição 3
                                         $nomeproduto += 3; 
                                         $qntdproduto += 3;
                                         $precoproduto += 3;
                                         }
-                                    $nomeproduto = 0; 
-                                    $qntdproduto = 1;
-                                    $precoproduto = 2;
-                                    for($num_linhas = 0; $num_produtos_artigos > $num_linhas; $num_linhas++) {
-                                        ?>
-                                        <thead>                          
-                                            <tr class="cart_item">
-                                                <td id="teste" class="product-name">
-                                                <label>Nome:</label>
-                                                    <?php echo $produtos[$posicao_artigo][$nomeproduto]; ?>   
-                                                </td>
-                                                <td>
-                                                <label>Quantidade:</label>
-                                                    <strong><?php echo "X".$produtos[$posicao_artigo][$qntdproduto];?></strong>
-                                                </td>
-                                                <td class="product-total">
-                                                    <label>Preço:</label>
-                                                    <span class="amount"><?php echo $produtos[$posicao_artigo][$precoproduto];?>€</span>
-                                                </td>
-                                    <?php 
-                                        $nomeproduto += 3; 
-                                        $qntdproduto += 3;
-                                        $precoproduto += 3;
-                                        } 
-                                        ?> 
-                                            </tr>
-                                        </thead>
+                                    ?>
                                         <tfoot>
                                             <tr class="order-total">
                                                 <th>Total</th>
-<<<<<<< HEAD
-                                                <td><strong><span class="amount">0.00€</span></strong>
-=======
                                                 <td><strong><span class="amount"><?php echo $total_valor_produtos;?>€</span></strong>
->>>>>>> development
                                                 </td>
                                             </tr>								
                                         </tfoot>
@@ -345,7 +273,7 @@ if(isset($_SESSION['produtos_veiculos']) || isset($_SESSION['produtos_artigos'])
                     </div>
                 </div>
             </div>
-            <!-- checkout-area end -->	
+            <!-- Fim da área do checkout -->	
             <div class="newsletter-area">
                 <div class="container">
                     <div class="newsletter-wrapper-all theme-bg-2">
@@ -478,7 +406,7 @@ if(isset($_SESSION['produtos_veiculos']) || isset($_SESSION['produtos_artigos'])
                 </div>
             </footer>
         </div>	
-		<!-- all js here -->
+		<!-- javascripts -->
         <script src="assets/js/vendor/jquery-1.12.0.min.js"></script>
         <script src="assets/js/popper.js"></script>
         <script src="assets/js/bootstrap.min.js"></script>

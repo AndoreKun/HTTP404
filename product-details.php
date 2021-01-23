@@ -1,43 +1,62 @@
 <?php session_start();
-/** Pagína dos detalhes dos produtos
+/** Pagína dos detalhes dos produtos - Permite Adicionar e Remover produtos no carrinho
 * @author Grupo HTTP404
 * @version 3.1
 * @since 26 dez 2020
-**/
+**/ 
+// Desabilita a demonstração de erros, para que não haja a possibilidade de aparecer erros para o usuário final
+ini_set('display_errors', 0);
+session_start(); 
+$botao_remover_veiculo = "";
+$voltar_para = $_SESSION['voltar_para'];
 function feedback ($id, $tipo_produto){
     /**
         *Funcao feedback que retorna uma mensagem quando um produto/artigo é adicionado/removido do carrinho e cria um botão para permitir
-        *o redirecionamento para a página que contém o carrinho
+        *o redirecionamento para a página que contém o carrinho, também permite adicionar um botão para remover um veículo/artigo
         *@author Grupo HTTP404
         *@param int $id Número de Identificação do produto/veiculo, utilizado para mostrar a mensagem apenas naquele produto/artigo
         *@param string $tipo_produto Tipo do produto artigo/veículo
         *@param string $feedback Contém o feedback em html quando um produto é adicionado ou removido do carrinho
-        *@return array $verificacao Retorna as variáveis id e feedback
-        *@version 2.1                                                                                                                                                                                                                                                                               
+        *@param string $botao_remover_veiculo Botão para remover veículos, em html
+        *@param string $botao_remover_artigo Botão para remover artigos, em html
+        *@return array $verificacao Retorna as variáveis id, feedback, e os botões (Definidos ou não)
+        *@version 2.3                                                                                                                                                                                                                                                                               
 
     */
 
-    /**$tipo_produto: Tipo do veículo. **/
     $feedback = "";
-    /**$feedback: Verifica o identificador e o tipo do produto. **/
     if($tipo_produto == "veiculo"){ 
+        /** $_SESSION['id_veiculo']['id_veiculo']: Array associativo com todos os ID's de veiculos */
         if(isset($_SESSION['id_veiculo']['id_veiculo'])){
             if ($_SESSION['id_veiculo']['id_veiculo'] == $id){
+                /** $_SESSION['feedback']['feedback']: Array associativo com o feedback (mensagem) */
                 $feedback = $_SESSION['feedback']['feedback'];
-                unset($_SESSION['id_veiculo']['id_veiculo']);
+                
             }
         }
     }
-    /**$tipo_produto: Tipo do artigo. **/
     if($tipo_produto == "artigo"){
+        /** $_SESSION['id_artigo']['id_artigo']: Array associativo com todos os ID's de artigos */
         if(isset($_SESSION['id_artigo']['id_artigo'])){
             if ($_SESSION['id_artigo']['id_artigo'] == $id){
                 $feedback = $_SESSION['feedback']['feedback'];
-                unset($_SESSION['id_artigo']['id_artigo']);
+                
             }
         }
     }
-$verificacao = array($id, $feedback);
+    $botao_remover_veiculo = "";
+    $botao_remover_artigo = "";
+    /** if(isset($_SESSION['abilitar_remover_veiculos'][$id])): Verifica se o array associativo no id enviado à função existe, se sim, define o botão */ 
+    if(isset($_SESSION['abilitar_remover_veiculos'][$id])){
+        $botao_remover_veiculo = $_SESSION['abilitar_remover_veiculos'][$id];
+    }
+    /** if(isset($_SESSION['abilitar_remover_artigos'][$id])): Verifica se o array associativo no id enviado à função existe, se sim, define o botão */ 
+    if(isset($_SESSION['abilitar_remover_artigos'][$id])){
+        $botao_remover_artigo = $_SESSION['abilitar_remover_artigos'][$id];
+    }
+
+    
+$verificacao = array($id, $feedback, $botao_remover_veiculo, $botao_remover_artigo);
 return $verificacao;
 }
 ?>
@@ -206,15 +225,14 @@ return $verificacao;
                                             <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#lexus">
                                             <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                         </form>
-                                        <form method="get" action="carrinho.php">
-                                            <input type="hidden" id="id_veiculo" name="id_veiculo" value="1">
-                                            <input type="hidden" id="acao" name="acao" value="remover">
-                                            <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#lexus">
-                                            <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
-                                        </form>
-                                    <br/>
                                     <?php 
+                                    /** Chama a função feedback e envia o id do veiculo/artigo que está sendo adicionado, assim como o tipo de produto */
                                     $retorno = feedback(1, "veiculo");
+                                    /** A função Retorna o botão de remover caso o produto existir no carrinho */
+                                    echo $retorno[2];
+                                    /** Espaço para alinhar texto e botões */
+                                    echo "<br/>";
+                                    /**Se o id que foi enviado for igual ao id do veiculo que foi mandado, imprime uma mensagem(produtoa adicionado/removido do carrinho) */
                                     if ($retorno[0] == 1){
                                         echo $retorno[1];
                                     }?>
@@ -311,15 +329,10 @@ return $verificacao;
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#volvo">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
-                                    <form method="get" action="carrinho.php">
-                                        <input type="hidden" id="id_veiculo" name="id_veiculo" value="2">
-                                        <input type="hidden" id="acao" name="acao" value="remover">
-                                        <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#volvo">
-                                        <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
-                                    </form>
-                                    <br/>
                                     <?php 
                                     $retorno = feedback(2, "veiculo");
+                                    echo $retorno[2];
+                                    echo "<br/>";
                                     if ($retorno[0] == 2){
                                         echo $retorno[1];
                                     }?>
@@ -417,15 +430,10 @@ return $verificacao;
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#supra">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
-                                    <form method="get" action="carrinho.php">
-                                        <input type="hidden" id="id_veiculo" name="id_veiculo" value="3">
-                                        <input type="hidden" id="acao" name="acao" value="remover">
-                                        <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#supra">
-                                        <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
-                                    </form>
-                                    <br/>
                                     <?php 
                                     $retorno = feedback(3, "veiculo");
+                                    echo $retorno[2];
+                                    echo "<br/>";
                                     if ($retorno[0] == 3){
                                         echo $retorno[1];
                                     }?>
@@ -522,15 +530,10 @@ return $verificacao;
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#motobmw">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
-                                    <form method="get" action="carrinho.php">
-                                        <input type="hidden" id="id_veiculo" name="id_veiculo" value="4">
-                                        <input type="hidden" id="acao" name="acao" value="remover">
-                                        <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#motobmw">
-                                        <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
-                                    </form>
-                                    <br/>
                                     <?php 
                                     $retorno = feedback(4, "veiculo");
+                                    echo $retorno[2];
+                                    echo "<br/>";
                                     if ($retorno[0] == 4){
                                         echo $retorno[1];
                                     }?>
@@ -588,21 +591,16 @@ return $verificacao;
                                 </div>
                                     <div class="quickview-btn-cart">
                                     <form method="get" action="carrinho_artigos.php">
-                                        <input type="hidden" id="id_artigo" name="id_artigo" value="11">
+                                        <input type="hidden" id="id_artigo" name="id_artigo" value="1">
                                         <input type="hidden" id="acao" name="acao" value="adicionar">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#rodasupra">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
-                                    <form method="get" action="carrinho_artigos.php">
-                                        <input type="hidden" id="id_artigo" name="id_artigo" value="11">
-                                        <input type="hidden" id="acao" name="acao" value="remover">
-                                        <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#rodasupra">
-                                        <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
-                                    </form>
-                                    <br/>
                                     <?php 
-                                    $retorno = feedback(11, "artigo");
-                                    if ($retorno[0] == 11){
+                                    $retorno = feedback(1, "artigo");
+                                    echo $retorno[3];
+                                    echo "<br/>";
+                                    if ($retorno[0] == 1){
                                         echo $retorno[1];
                                     }?>
                                 </div>
@@ -660,21 +658,16 @@ return $verificacao;
                                 </div>
                                     <div class="quickview-btn-cart">
                                     <form method="get" action="carrinho_artigos.php">
-                                        <input type="hidden" id="id_artigo" name="id_artigo" value="12">
+                                        <input type="hidden" id="id_artigo" name="id_artigo" value="2">
                                         <input type="hidden" id="acao" name="acao" value="adicionar">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#radioadorninja">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
-                                    <form method="get" action="carrinho_artigos.php">
-                                        <input type="hidden" id="id_artigo" name="id_artigo" value="12">
-                                        <input type="hidden" id="acao" name="acao" value="remover">
-                                        <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#radioadorninja">
-                                        <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
-                                    </form>
-                                    <br/>
                                     <?php 
-                                    $retorno = feedback(12, "artigo");
-                                    if ($retorno[0] == 12){
+                                    $retorno = feedback(2, "artigo");
+                                    echo $retorno[3];
+                                    echo "<br/>";
+                                    if ($retorno[0] == 2){
                                         echo $retorno[1];
                                     }?>
                                 </div>
@@ -730,21 +723,16 @@ return $verificacao;
                                 </div>
                                     <div class="quickview-btn-cart">
                                     <form method="get" action="carrinho_artigos.php">
-                                        <input type="hidden" id="id_artigo" name="id_artigo" value="13">
+                                        <input type="hidden" id="id_artigo" name="id_artigo" value="3">
                                         <input type="hidden" id="acao" name="acao" value="adicionar">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#bancomoto">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
-                                    <form method="get" action="carrinho_artigos.php">
-                                        <input type="hidden" id="id_artigo" name="id_artigo" value="13">
-                                        <input type="hidden" id="acao" name="acao" value="remover">
-                                        <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#bancomoto">
-                                        <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
-                                    </form>
-                                    <br/>
                                     <?php 
-                                    $retorno = feedback(13, "artigo");
-                                    if ($retorno[0] == 13){
+                                    $retorno = feedback(3, "artigo");
+                                    echo $retorno[3];
+                                    echo "<br/>";
+                                    if ($retorno[0] == 3){
                                         echo $retorno[1];
                                     }?>
                                 </div>
@@ -802,21 +790,16 @@ return $verificacao;
                                 </div>
                                     <div class="quickview-btn-cart">
                                     <form method="get" action="carrinho_artigos.php">
-                                        <input type="hidden" id="id_artigo" name="id_artigo" value="14">
+                                        <input type="hidden" id="id_artigo" name="id_artigo" value="4">
                                         <input type="hidden" id="acao" name="acao" value="adicionar">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#farol">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
-                                    <form method="get" action="carrinho_artigos.php">
-                                        <input type="hidden" id="id_artigo" name="id_artigo" value="14">
-                                        <input type="hidden" id="acao" name="acao" value="remover">
-                                        <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#farol">
-                                        <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
-                                    </form>
-                                    <br/>
                                     <?php 
-                                    $retorno = feedback(14, "artigo");
-                                    if ($retorno[0] == 14){
+                                    $retorno = feedback(4, "artigo");
+                                    echo $retorno[3];
+                                    echo "<br/>";
+                                    if ($retorno[0] == 4){
                                         echo $retorno[1];
                                     }?>
                                 </div>
@@ -877,21 +860,16 @@ return $verificacao;
                                 </div>
                                     <div class="quickview-btn-cart">
                                     <form method="get" action="carrinho_artigos.php">
-                                        <input type="hidden" id="id_artigo" name="id_artigo" value="15">
+                                        <input type="hidden" id="id_artigo" name="id_artigo" value="5">
                                         <input type="hidden" id="acao" name="acao" value="adicionar">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#tanque">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
-                                    <form method="get" action="carrinho_artigos.php">
-                                        <input type="hidden" id="id_artigo" name="id_artigo" value="15">
-                                        <input type="hidden" id="acao" name="acao" value="remover">
-                                        <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#tanque">
-                                        <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
-                                    </form>
-                                    <br/>
                                     <?php 
-                                    $retorno = feedback(15, "artigo");
-                                    if ($retorno[0] == 15){
+                                    $retorno = feedback(5, "artigo");
+                                    echo $retorno[3];
+                                    echo "<br/>";
+                                    if ($retorno[0] == 5){
                                         echo $retorno[1];
                                     }?>
                                 </div>
@@ -948,21 +926,16 @@ return $verificacao;
                                 </div>
                                     <div class="quickview-btn-cart">
                                     <form method="get" action="carrinho_artigos.php">
-                                        <input type="hidden" id="id_artigo" name="id_artigo" value="16">
+                                        <input type="hidden" id="id_artigo" name="id_artigo" value="6">
                                         <input type="hidden" id="acao" name="acao" value="adicionar">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#velocimetro">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
-                                    <form method="get" action="carrinho_artigos.php">
-                                        <input type="hidden" id="id_artigo" name="id_artigo" value="16">
-                                        <input type="hidden" id="acao" name="acao" value="remover">
-                                        <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#velocimetro">
-                                        <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
-                                    </form>
-                                    <br/>
                                     <?php 
-                                    $retorno = feedback(16, "artigo");
-                                    if ($retorno[0] == 16){
+                                    $retorno = feedback(6, "artigo");
+                                    echo $retorno[3];
+                                    echo "<br/>";
+                                    if ($retorno[0] == 6){
                                         echo $retorno[1];
                                     }?>
                                 </div>
@@ -1019,21 +992,16 @@ return $verificacao;
                                 </div>
                                     <div class="quickview-btn-cart">
                                     <form method="get" action="carrinho_artigos.php">
-                                        <input type="hidden" id="id_artigo" name="id_artigo" value="119">
+                                        <input type="hidden" id="id_artigo" name="id_artigo" value="19">
                                         <input type="hidden" id="acao" name="acao" value="adicionar">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#medidor">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
-                                    <form method="get" action="carrinho_artigos.php">
-                                        <input type="hidden" id="id_artigo" name="id_artigo" value="119">
-                                        <input type="hidden" id="acao" name="acao" value="remover">
-                                        <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#medidor">
-                                        <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
-                                    </form>
-                                    <br/>
                                     <?php 
-                                    $retorno = feedback(119, "artigo");
-                                    if ($retorno[0] == 119){
+                                    $retorno = feedback(19, "artigo");
+                                    echo $retorno[3];
+                                    echo "<br/>";
+                                    if ($retorno[0] == 19){
                                         echo $retorno[1];
                                     }?>
                                 </div>
@@ -1093,21 +1061,16 @@ return $verificacao;
                                 </div>
                                     <div class="quickview-btn-cart">
                                     <form method="get" action="carrinho_artigos.php">
-                                        <input type="hidden" id="id_artigo" name="id_artigo" value="17">
+                                        <input type="hidden" id="id_artigo" name="id_artigo" value="7">
                                         <input type="hidden" id="acao" name="acao" value="adicionar">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#capacete">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
-                                    <form method="get" action="carrinho_artigos.php">
-                                        <input type="hidden" id="id_artigo" name="id_artigo" value="17">
-                                        <input type="hidden" id="acao" name="acao" value="remover">
-                                        <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#capacete">
-                                        <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
-                                    </form>
-                                    <br/>
                                     <?php 
-                                    $retorno = feedback(17, "veiculo");
-                                    if ($retorno[0] == 17){
+                                    $retorno = feedback(7, "veiculo");
+                                    echo $retorno[3];
+                                    echo "<br/>";
+                                    if ($retorno[0] == 7){
                                         echo $retorno[1];
                                     }?>
                                 </div>
@@ -1165,21 +1128,16 @@ return $verificacao;
                                 </div>
                                     <div class="quickview-btn-cart">
                                     <form method="get" action="carrinho_artigos.php">
-                                        <input type="hidden" id="id_artigo" name="id_artigo" value="18">
+                                        <input type="hidden" id="id_artigo" name="id_artigo" value="8">
                                         <input type="hidden" id="acao" name="acao" value="adicionar">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#casaco">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
-                                    <form method="get" action="carrinho_artigos.php">
-                                        <input type="hidden" id="id_artigo" name="id_artigo" value="18">
-                                        <input type="hidden" id="acao" name="acao" value="remover">
-                                        <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#casaco">
-                                        <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
-                                    </form>
-                                    <br/>
                                     <?php 
-                                    $retorno = feedback(18, "artigo");
-                                    if ($retorno[0] == 18){
+                                    $retorno = feedback(8, "artigo");
+                                    echo $retorno[3];
+                                    echo "<br/>";
+                                    if ($retorno[0] == 8){
                                         echo $retorno[1];
                                     }?>
                                 </div>
@@ -1241,21 +1199,16 @@ return $verificacao;
                                 </div>
                                     <div class="quickview-btn-cart">
                                     <form method="get" action="carrinho_artigos.php">
-                                        <input type="hidden" id="id_artigo" name="id_artigo" value="19">
+                                        <input type="hidden" id="id_artigo" name="id_artigo" value="9">
                                         <input type="hidden" id="acao" name="acao" value="adicionar">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#botas">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
-                                    <form method="get" action="carrinho_artigos.php">
-                                        <input type="hidden" id="id_artigo" name="id_artigo" value="19">
-                                        <input type="hidden" id="acao" name="acao" value="remover">
-                                        <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#botas">
-                                        <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
-                                    </form>
-                                    <br/>
                                     <?php 
-                                    $retorno = feedback(19, "artigo");
-                                    if ($retorno[0] == 19){
+                                    $retorno = feedback(9, "artigo");
+                                    echo $retorno[3];
+                                    echo "<br/>";
+                                    if ($retorno[0] == 9){
                                         echo $retorno[1];
                                     }?>
                                 </div>
@@ -1314,21 +1267,16 @@ return $verificacao;
                                 </div>
                                     <div class="quickview-btn-cart">
                                     <form method="get" action="carrinho_artigos.php">
-                                        <input type="hidden" id="id_artigo" name="id_artigo" value="110">
+                                        <input type="hidden" id="id_artigo" name="id_artigo" value="10">
                                         <input type="hidden" id="acao" name="acao" value="adicionar">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#joelheiras">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
-                                    <form method="get" action="carrinho_artigos.php">
-                                        <input type="hidden" id="id_artigo" name="id_artigo" value="110">
-                                        <input type="hidden" id="acao" name="acao" value="remover">
-                                        <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#joelheiras">
-                                        <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
-                                    </form>
-                                    <br/>
                                     <?php 
-                                    $retorno = feedback(110, "artigo");
-                                    if ($retorno[0] == 110){
+                                    $retorno = feedback(10, "artigo");
+                                    echo $retorno[3];
+                                    echo "<br/>";
+                                    if ($retorno[0] == 10){
                                         echo $retorno[1];
                                     }?>
                                 </div>
@@ -1386,21 +1334,16 @@ return $verificacao;
                                 </div>
                                     <div class="quickview-btn-cart">
                                     <form method="get" action="carrinho_artigos.php">
-                                        <input type="hidden" id="id_artigo" name="id_artigo" value="112">
+                                        <input type="hidden" id="id_artigo" name="id_artigo" value="12">
                                         <input type="hidden" id="acao" name="acao" value="adicionar">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#capacete2">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
-                                    <form method="get" action="carrinho_artigos.php">
-                                        <input type="hidden" id="id_artigo" name="id_artigo" value="112">
-                                        <input type="hidden" id="acao" name="acao" value="remover">
-                                        <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#capacete2">
-                                        <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
-                                    </form>
-                                    <br/>
                                     <?php 
-                                    $retorno = feedback(112, "artigo");
-                                    if ($retorno[0] == 112){
+                                    $retorno = feedback(12, "artigo");
+                                    echo $retorno[3];
+                                    echo "<br/>";
+                                    if ($retorno[0] == 12){
                                         echo $retorno[1];
                                     }?>
                                 </div>
@@ -1459,21 +1402,16 @@ return $verificacao;
                                 </div>
                                     <div class="quickview-btn-cart">
                                     <form method="get" action="carrinho_artigos.php">
-                                        <input type="hidden" id="id_artigo" name="id_artigo" value="113">
+                                        <input type="hidden" id="id_artigo" name="id_artigo" value="13">
                                         <input type="hidden" id="acao" name="acao" value="adicionar">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#cobertos">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
-                                    <form method="get" action="carrinho_artigos.php">
-                                        <input type="hidden" id="id_artigo" name="id_artigo" value="113">
-                                        <input type="hidden" id="acao" name="acao" value="remover">
-                                        <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#cobertos">
-                                        <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
-                                    </form>
-                                    <br/>
                                     <?php 
-                                    $retorno = feedback(113, "artigo");
-                                    if ($retorno[0] == 113){
+                                    $retorno = feedback(13, "artigo");
+                                    echo $retorno[3];
+                                    echo "<br/>";
+                                    if ($retorno[0] == 13){
                                         echo $retorno[1];
                                     }?>
                                 </div>
@@ -1529,21 +1467,16 @@ return $verificacao;
                                 </div>
                                     <div class="quickview-btn-cart">
                                     <form method="get" action="carrinho_artigos.php">
-                                        <input type="hidden" id="id_artigo" name="id_artigo" value="114">
+                                        <input type="hidden" id="id_artigo" name="id_artigo" value="14">
                                         <input type="hidden" id="acao" name="acao" value="adicionar">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#capa">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
-                                    <form method="get" action="carrinho_artigos.php">
-                                        <input type="hidden" id="id_artigo" name="id_artigo" value="114">
-                                        <input type="hidden" id="acao" name="acao" value="remover">
-                                        <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#capa">
-                                        <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
-                                    </form>
-                                    <br/>
                                     <?php 
-                                    $retorno = feedback(114, "artigo");
-                                    if ($retorno[0] == 114){
+                                    $retorno = feedback(14, "artigo");
+                                    echo $retorno[3];
+                                    echo "<br/>";
+                                    if ($retorno[0] == 14){
                                         echo $retorno[1];
                                     }?>
                                 </div>
@@ -1603,21 +1536,16 @@ return $verificacao;
                                 </div>
                                     <div class="quickview-btn-cart">
                                     <form method="get" action="carrinho_artigos.php">
-                                        <input type="hidden" id="id_artigo" name="id_artigo" value="115">
+                                        <input type="hidden" id="id_artigo" name="id_artigo" value="15">
                                         <input type="hidden" id="acao" name="acao" value="adicionar">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#organizador">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
-                                    <form method="get" action="carrinho_artigos.php">
-                                        <input type="hidden" id="id_artigo" name="id_artigo" value="115">
-                                        <input type="hidden" id="acao" name="acao" value="remover">
-                                        <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#organizador">
-                                        <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
-                                    </form>
-                                    <br/>
                                     <?php 
-                                    $retorno = feedback(115, "artigo");
-                                    if ($retorno[0] == 115){
+                                    $retorno = feedback(15, "artigo");
+                                    echo $retorno[3];
+                                    echo "<br/>";
+                                    if ($retorno[0] == 15){
                                         echo $retorno[1];
                                     }?>
                                 </div>
@@ -1677,21 +1605,16 @@ return $verificacao;
                                 </div>
                                     <div class="quickview-btn-cart">
                                     <form method="get" action="carrinho_artigos.php">
-                                        <input type="hidden" id="id_artigo" name="id_artigo" value="116">
+                                        <input type="hidden" id="id_artigo" name="id_artigo" value="16">
                                         <input type="hidden" id="acao" name="acao" value="adicionar">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#luzes">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
-                                    <form method="get" action="carrinho_artigos.php">
-                                        <input type="hidden" id="id_artigo" name="id_artigo" value="116">
-                                        <input type="hidden" id="acao" name="acao" value="remover">
-                                        <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#luzes">
-                                        <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
-                                    </form>
-                                    <br/>
                                     <?php 
-                                    $retorno = feedback(116, "artigo");
-                                    if ($retorno[0] == 116){
+                                    $retorno = feedback(16, "artigo");
+                                    echo $retorno[3];
+                                    echo "<br/>";
+                                    if ($retorno[0] == 16){
                                         echo $retorno[1];
                                     }?>
                                 </div>
@@ -1752,21 +1675,16 @@ return $verificacao;
                                 </div>
                                     <div class="quickview-btn-cart">
                                     <form method="get" action="carrinho_artigos.php">
-                                        <input type="hidden" id="id_artigo" name="id_artigo" value="117">
+                                        <input type="hidden" id="id_artigo" name="id_artigo" value="17">
                                         <input type="hidden" id="acao" name="acao" value="adicionar">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#holder">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
-                                    <form method="get" action="carrinho_artigos.php">
-                                        <input type="hidden" id="id_artigo" name="id_artigo" value="117">
-                                        <input type="hidden" id="acao" name="acao" value="remover">
-                                        <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#holder">
-                                        <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
-                                    </form>
-                                    <br/>
                                     <?php 
-                                    $retorno = feedback(117, "artigo");
-                                    if ($retorno[0] == 117){
+                                    $retorno = feedback(17, "artigo");
+                                    echo $retorno[3];
+                                    echo "<br/>";
+                                    if ($retorno[0] == 17){
                                         echo $retorno[1];
                                     }?>
                                 </div>
@@ -1823,21 +1741,16 @@ return $verificacao;
                                 </div>
                                     <div class="quickview-btn-cart">
                                     <form method="get" action="carrinho_artigos.php">
-                                        <input type="hidden" id="id_artigo" name="id_artigo" value="118">
+                                        <input type="hidden" id="id_artigo" name="id_artigo" value="18">
                                         <input type="hidden" id="acao" name="acao" value="adicionar">
                                         <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#capavolante">
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
-                                    <form method="get" action="carrinho_artigos.php">
-                                        <input type="hidden" id="id_artigo" name="id_artigo" value="118">
-                                        <input type="hidden" id="acao" name="acao" value="remover">
-                                        <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#capavolante">
-                                        <input class="btn-style cr-btn" name="mudar_carrinho" value="Remover do Carrinho" type="submit" style="cursor: pointer"></input>
-                                    </form>
-                                    <br/>
                                     <?php 
-                                    $retorno = feedback(118, "artigo");
-                                    if ($retorno[0] == 118){
+                                    $retorno = feedback(18, "artigo");
+                                    echo $retorno[3];
+                                    echo "<br/>";
+                                    if ($retorno[0] == 18){
                                         echo $retorno[1];
                                     }?>
                                 </div>
