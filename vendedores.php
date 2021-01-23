@@ -1,31 +1,31 @@
 <?php
-/** 
- * Página dos funcionários reservada apenas para a vendedores, outros funcionários são imediatamente redirecionados
+/** Página dos funcionários reservada apenas para a vendedores, outros funcionários são imediatamente redirecionados.
  * @author Grupo HTTP 404
  * @version 1.3
  * @since 26 dez 2020
- */
-//starta a sessão
+ **/
+/** Inicia a sessão. **/
 session_start();
 ob_start();
-// Desabilita a demonstração de erros, para que não haja a possibilidade de aparecer erros para o usuário final
+/** Desabilita a demonstração de erros, para que não haja a possibilidade de aparecer erros para o usuário final. **/
 ini_set('display_errors', 0);
-//resgata os valores das session em variaveis
+/** Resgata os valores das session em variaveis. **/
 $id_users = isset($_SESSION['id_users']) ? $_SESSION['id_users']: "";	
 $nome_user = isset($_SESSION['nome']) ? $_SESSION['nome']: "";
 $email_users = isset($_SESSION['email']) ? $_SESSION['email']: "";	
 $pass_users = isset($_SESSION['pass']) ? $_SESSION['pass']: "";
 $logado = isset($_SESSION['logado']) ? $_SESSION['logado']: "N";
-$cargo = isset($_SESSION['cargo']) ? $_SESSION['cargo']: "";	
-//verificamos se a var logado contem o valor (S) OU (N), se conter N quer dizer que a pessoa não fez o login corretamente
-//que no caso satisfará nossa condição no if e a pessoa sera redirecionada para a tela de login novamente
+$cargo = isset($_SESSION['cargo']) ? $_SESSION['cargo']: "";
+
+/** $logado: Verificamos se a var logado contem o valor (S) OU (N), se conter N quer dizer que a pessoa não fez o login corretamente
+*que no caso satisfará nossa condição no if e a pessoa sera redirecionada para a tela de login novamente. **/
 if ($logado == "N" || $id_users == ""){	    
     echo  "<script type='text/javascript'>
                 location.href='login.php'
             </script>";	
     exit();
 }
-// Define o Local e lingua, para as funções strftime e strtotime funcionarem bem na página
+/** setlocale: Define o Local e lingua, para as funções strftime e strtotime funcionarem bem na página. **/
 setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
 ?>
 <!DOCTYPE HTML>
@@ -118,7 +118,7 @@ setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
     </form>
     </div>
     <?php 
-    /** Caso o formulário estiver sido submetido, e faz o insert desejado */
+    /** isset($_POST['submit']: Caso o formulário estiver sido submetido, e faz o insert desejado. **/
     if(isset($_POST['submit'])){
         $insertpronto = false;
         $clienteselecionado = $_POST['cliente'];
@@ -135,7 +135,7 @@ setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
         if($veiculoselecionado == "" and $artigoselecionado == ""){
             $insertpronto = false;
         }
-        // Caso o insert estiver pronto(Se um cliente e um veiculo e/ou um artigo estiverem selecionados)
+        /** $insertpronto == true: Caso o insert estiver pronto(Se um cliente e um veiculo e/ou um artigo estiverem selecionados). **/
         if ($insertpronto == true){
             if ($veiculoselecionado == "" and $artigoselecionado != ""){
                 $consulta = "SELECT preco from artigos WHERE IDArtigo = '$artigoselecionado'";
@@ -169,7 +169,7 @@ setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
         }
     }
     
-// Opcoes de clientes - adicionar/remover/atualizar
+/** Opções de clientes - adicionar/remover/atualizar **/
 ?>
 <label for="actions"><h2>Opções de Clientes</h2></label><br/>
 <select name="clientes" id="clientes" style="width:300px; margin:4px;" onchange="admSelectCheck(this, true);">
@@ -282,7 +282,7 @@ setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
 </div>
 <?php 
 
-// Atualizar um Cliente
+/** isset($_POST['atualizarcliente']: Atualizar um Cliente **/
 
 if(isset($_POST['atualizarcliente'])){
     $nif_nome_cliente = $_POST['updt_cliente_nif'];
@@ -343,7 +343,7 @@ if(isset($_POST['atualizarcliente'])){
     include('database/inserts_basedados.php');
     }
 
-// Remover um Cliente
+/** isset($_POST['removercliente']: Remover um Cliente **/
 
 if(isset($_POST['removercliente'])){
     $rm_nif_cliente = $_POST['rm_cliente_nif'];
@@ -354,7 +354,7 @@ if(isset($_POST['removercliente'])){
     include('database/inserts_basedados.php');
     } 
 
-// Adicionar um novo Cliente
+/** isset($_POST['criarcliente']: Adicionar um novo Cliente **/
 
 if(isset($_POST['criarcliente'])){
     $nif_cliente = $_POST['nif_cliente'];
@@ -391,7 +391,7 @@ if(isset($_POST['criarcliente'])){
         include('database/inserts_basedados.php');
         }
     }
-// opcoes de veiculos e artigos: adicionar/remover/atualizar
+/** Opções de veículos e artigos: adicionar/remover/atualizar **/
 ?>
 <br/><br/>
 <label for="actions"><h2>Opções de Veículos</h2></label><br/>
@@ -526,7 +526,7 @@ if(isset($_POST['criarcliente'])){
 </div>
 <?php 
 
-// Atualizar um Veiculo
+/** isset($_POST['atualizarveiculo']: Atualizar um Veiculo **/
 
 if(isset($_POST['atualizarveiculo'])){
     $marca_modelo_veiculo = $_POST['id_veiculo'];
@@ -567,7 +567,7 @@ if(isset($_POST['atualizarveiculo'])){
     include('database/inserts_basedados.php');
     }
 }
-// Remover um Veiculo
+/** isset($_POST['removerveiculo']: Remover um Veiculo **/
 
 if(isset($_POST['removerveiculo'])){
     $rm_veiculo = $_POST['rm_veiculo'];
@@ -578,7 +578,7 @@ if(isset($_POST['removerveiculo'])){
     include('database/inserts_basedados.php');
     } 
 
-// Adicionar um novo Veiculo
+/** isset($_POST['criarveiculo']: Adicionar um novo Veiculo **/
 
 if(isset($_POST['criarveiculo'])){
     $modelo_veiculo = $_POST['modelo_veiculo'];

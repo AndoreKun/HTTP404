@@ -1,6 +1,5 @@
 <?php
-/** 
- * Página dos funcionários reservada apenas para o patrão e admins, outros funcionários são imediatamente redirecionados
+/** Página dos funcionários reservada apenas para o patrão e admins, outros funcionários são imediatamente redirecionados.
  * @author Grupo HTTP 404
  * @version 1.3
  * @since 26 dez 2020
@@ -10,27 +9,27 @@ session_start();
 ob_start();
 // Desabilita a demonstração de erros, para que não haja a possibilidade de aparecer erros para o usuário final
 ini_set('display_errors', 0);
-/** Resgata o ID do funcionário logado em uma variável através do valor da session*/
+/** Resgata o ID do funcionário logado em uma variável através do valor da session. **/
 $id_users = isset($_SESSION['id_users']) ? $_SESSION['id_users']: "";
-/** Resgata o Nome do funcionário logado em uma variável através do valor da session*/
+/** Resgata o Nome do funcionário logado em uma variável através do valor da session. **/
 $nome_user = isset($_SESSION['nome']) ? $_SESSION['nome']: "";
-/** Resgata o Email do funcionário logado em uma variável através do valor da session*/
+/** Resgata o Email do funcionário logado em uma variável através do valor da session. **/
 $email_users = isset($_SESSION['email']) ? $_SESSION['email']: "";
-/** Resgata a palavra passe do funcionário logado em uma variável através do valor da session*/
+/** Resgata a palavra passe do funcionário logado em uma variável através do valor da session. **/
 $pass_users = isset($_SESSION['pass']) ? $_SESSION['pass']: "";
-/** Resgata o estado de login do funcionário em uma variável através do valor da session*/
+/** Resgata o estado de login do funcionário em uma variável através do valor da session. **/
 $logado = isset($_SESSION['logado']) ? $_SESSION['logado']: "N";
-/** Resgata o Cargo do funcionário logado em uma variável através do valor da session*/
+/** Resgata o Cargo do funcionário logado em uma variável através do valor da session. **/
 $cargo = isset($_SESSION['cargo']) ? $_SESSION['cargo']: "";	
 /** verifica se a var logado contem o valor (S) OU (N), se conter N quer dizer que a pessoa não fez o login corretamente
-* que no caso satisfará nossa condição no if e a pessoa sera redirecionada para a tela de login novamente */
+* que no caso satisfará nossa condição no if e a pessoa sera redirecionada para a tela de login novamente. **/
 if ($logado == "N" || $id_users == ""){	    
     echo  "<script type='text/javascript'>
                 location.href='login.php'
             </script>";	
     exit();
 }
-/** Caso o cargo for de vendedor, redireciona-o para a sua página */
+/** Caso o cargo for de vendedor, redireciona-o para a sua página. **/
 if ($cargo == "vendedores"){
     echo  "<script type='text/javascript'>
                 location.href='vendedores.php'
@@ -48,10 +47,10 @@ setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
     <title>HTTP 404</title>
     <meta name="description" content="HTTP 404 - O melhor site de vendas de veículos">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Favicon -->
+    <!-- Favicon - icones favoritos -->
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
     
-    <!-- all css here -->
+    <!-- Chamda de todos os css -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/animate.css">
     <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
@@ -107,11 +106,10 @@ setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
         <input style="cursor: pointer; width:300px; margin:4px;" name="submit" type="submit" value="submit" class="btn-style cr-btn"></input>
     </form>
     <?php 
-    /** Caso o formulário tiver sido submetido, imprime a informação desejada */
+    /** Caso o formulário tiver sido submetido, imprime a informação desejada. **/
     if(isset($_POST['submit']) || isset($_POST['submit'])){
         /** $ver_dados: Variável que define a ação a ser tomada, Caso for "vertodos", mostra os dados de vendas de veiculos e artigos no total, 
-        * Caso for "mesatual", mostra os dados de vendas e veiculos apenas do mês selecionado/atual
-        */
+        * Caso for "mesatual", mostra os dados de vendas e veiculos apenas do mês selecionado/atual. **/
         $ver_dados = $_POST['vendaveiculos'];
         switch($ver_dados){
             case 'vertodos':
@@ -138,7 +136,7 @@ setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
                             </tr>
                         <tbody>
                             <?php 
-                            /** $vendas: Número total do valor de vendas */
+                            /** $vendas: Número total do valor de vendas. **/
                             $vendas = 0;
                             // Ciclo para definir variáveis com resultado do consulta
                             foreach($dados as $linha) { ?>
@@ -174,15 +172,15 @@ setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
                 <?php
                 break;
             case 'mesatual':
-                /** $mes: Mês selecionado através de um formulário, se for "mestual" mostra os dados do mes atual, se for "novembro2020" mostra os dados se novembro de 2020, e assim continua */
+                /** $mes: Mês selecionado através de um formulário, se for "mestual" mostra os dados do mes atual, se for "novembro2020" mostra os dados se novembro de 2020, e assim continua. **/
                 $mes = $_POST['elemento'];
                 switch($mes){
                     case "mesatual":
-                        /** $consultatmp: Consulta temporária, será atualizada de acordo com o mês que estiver na variável $mes */
+                        /** $consultatmp: Consulta temporária, será atualizada de acordo com o mês que estiver na variável $mes. **/
                         $consultatmp = 'SELECT * from vendas WHERE YEAR(DataVenda) = YEAR(CURRENT_DATE()) AND MONTH(DataVenda) = MONTH(CURRENT_DATE())';
-                        /** $dataatual: Define a data atual com a função strftime e strtotime do php */
+                        /** $dataatual: Define a data atual com a função strftime e strtotime do php. **/
                         $dataatual = strftime('%B de %Y', strtotime('today'));
-                        /** $titulotabela: Titulo da tabela que será apresentada(Preenchida com dados do resultado da consulta) */
+                        /** $titulotabela: Titulo da tabela que será apresentada(Preenchida com dados do resultado da consulta). **/
                         $titulotabela = "Valor Total de Vendas($dataatual)"; 
                         break;
                     case "novembro2020":
@@ -255,7 +253,7 @@ setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
             }       
         }
 ?>
-<!-- Javascript !-->
+<!-- Chamada do js !-->
 <script src="assets/js/mostraselecao.js"></script>
 </body>
 </html>
