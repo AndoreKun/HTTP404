@@ -2,7 +2,7 @@
 /** 
 * Página do Checkout - Permit comprar produtos e limpar o carrinho.
 * @author Grupo HTTP404
-* @version 4.0
+* @version 4.1
 * @since 26 dez 2020
 **/
 /** Inicia a sessão. **/

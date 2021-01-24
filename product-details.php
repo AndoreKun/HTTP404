@@ -1,7 +1,7 @@
 <?php
 /** Página dos detalhes dos produtos - Permite Adicionar e Remover produtos no carrinho.
 * @author Grupo HTTP404
-* @version 3.1
+* @version 3.2
 * @since 26 dez 2020
 **/ 
 session_start();

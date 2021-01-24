@@ -1,7 +1,7 @@
 <?php
 /** Página dos funcionários reservada apenas para o patrão e admins, outros funcionários são imediatamente redirecionados.
  * @author Grupo HTTP 404
- * @version 1.3
+ * @version 4.3
  * @since 26 dez 2020
  **/
 /** Inicia a sessão. **/

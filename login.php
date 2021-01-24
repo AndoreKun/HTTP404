@@ -2,8 +2,8 @@
 /**
 *Pagina para login de funcionários, tem a função de redirecionar os utilizadores para sua area (vendedores, técnicos, patrão).
 *@author Grupo HTTP404
-*@version 2.0
-*@since 26 dez 2020
+*@version 3.1
+*@since 24 dez 2020
 **/
 ?>
 <!DOCTYPE HTML>

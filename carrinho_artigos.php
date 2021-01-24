@@ -1,7 +1,7 @@
 <?php
 /** Página com mesma função similar a carrinho.php, mas voltada para os artigos em vez dos veiculos.
 * @author Grupo HTTP404
-* @version 1.2
+* @version 2.0
 * @since 18 jan 2021
 */
 // Desabilita a demonstração de erros, para que não haja a possibilidade de aparecer erros para o usuário final

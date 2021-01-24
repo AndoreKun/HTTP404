@@ -1,4 +1,10 @@
-<?php	
+<?php
+/** 
+ * Página que Autentica o login dos funcionários
+ * @author Grupo HTTP 404
+ * @version 1.1
+ * @since 24 dez 2020
+ */	
 require_once('Conexao.class.php');
 	
 class Autentica extends Conexao{
@@ -27,18 +33,25 @@ class Autentica extends Conexao{
 	}
 		
 		public function Validar_Usuario(){
-			//instancio minha classe conex�o que foi herdada
+			/** 
+			 * Função Que valida o login de um usuário
+			 * @author Grupo HTTP 404
+			 * @version 1.1
+			 * @since 24 dez 2020
+			 * @param $pdo instancia da classe conexao que foi herdada 
+			 * @param $resultado Resultado da consulta
+			 */
 			$pdo = new Conexao(); 
-			//chamamos nosso m�todo select da classe conex�o que nos retornar� um conjunto de dados
+			//chamada do metodo select da classe conexao que nos retornara um conjunto de dados
 			$resultado = $pdo->select("SELECT * FROM users WHERE email = '".$this->email."' AND pass = '".$this->pass."'");
 			//desconectamos
 			$pdo->desconectar();
-			//agora vamos resgatar os valores obtidos pelo nosso m�todo atrav�s do foreach
+			//agora vamos resgatar os valores obtidos pelo nosso metodo atraves do foreach
 			//verificamos se houve registros dentro de nossa var se sim entra no if
 			if(count($resultado)){
 				foreach ($resultado as $res) {
-					//come�amos nossa sess�o para podermos usar os dados do usuario em nossa aplica��o atrav�s de
-					//session, na qual podemos usar para controle de verificar se o user est� logado ou n�o, mostrar o nome do user na tela e etc.
+					//comecamos nossa sessao para podermos usar os dados do usuario em nossa aplicacao atraves de
+					//session, na qual podemos usar para controle de verificar se o user esta logado ou nao, mostrar o nome do user na tela e etc.
 					session_start();
 					ob_start();
 					//setamos as session com os valores obtido da tabela

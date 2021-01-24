@@ -14,10 +14,12 @@
 
 
 -- Dumping database structure for adc_http404
-CREATE DATABASE IF NOT EXISTS `adc_http404` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+DROP DATABASE IF EXISTS `adc_http404`;
+CREATE DATABASE IF NOT EXISTS `adc_http404` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `adc_http404`;
 
 -- Dumping structure for table adc_http404.artigos
+DROP TABLE IF EXISTS `artigos`;
 CREATE TABLE IF NOT EXISTS `artigos` (
   `IDArtigo` int NOT NULL AUTO_INCREMENT,
   `nome` varchar(80) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
@@ -27,10 +29,9 @@ CREATE TABLE IF NOT EXISTS `artigos` (
   `em_stock` char(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `quantidade_stock` int NOT NULL,
   PRIMARY KEY (`IDArtigo`)
-) ENGINE=InnoDB AUTO_INCREMENT=113 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Dumping data for table adc_http404.artigos: ~12 rows (approximately)
-DELETE FROM `artigos`;
+-- Dumping data for table adc_http404.artigos: ~18 rows (approximately)
 /*!40000 ALTER TABLE `artigos` DISABLE KEYS */;
 INSERT INTO `artigos` (`IDArtigo`, `nome`, `descricao`, `tipo_artigo`, `preco`, `em_stock`, `quantidade_stock`) VALUES
 	(1, 'Performance Machine Supra Real Wheel', 'Rodas para mota', 'Peças', 1399, 'Sim', 10),
@@ -55,6 +56,7 @@ INSERT INTO `artigos` (`IDArtigo`, `nome`, `descricao`, `tipo_artigo`, `preco`, 
 /*!40000 ALTER TABLE `artigos` ENABLE KEYS */;
 
 -- Dumping structure for table adc_http404.clientes
+DROP TABLE IF EXISTS `clientes`;
 CREATE TABLE IF NOT EXISTS `clientes` (
   `IDNIF_Cliente` char(9) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `Nome` varchar(60) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
@@ -68,8 +70,7 @@ CREATE TABLE IF NOT EXISTS `clientes` (
   PRIMARY KEY (`IDNIF_Cliente`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Clientes que se registaram através do checkout na loja online ou numa loja física';
 
--- Dumping data for table adc_http404.clientes: ~8 rows (approximately)
-DELETE FROM `clientes`;
+-- Dumping data for table adc_http404.clientes: ~9 rows (approximately)
 /*!40000 ALTER TABLE `clientes` DISABLE KEYS */;
 INSERT INTO `clientes` (`IDNIF_Cliente`, `Nome`, `Email`, `Telemovel`, `Pais`, `Morada`, `Cod_Postal`, `Localidade`, `Foto`) VALUES
 	('001910931', 'Inês Francisco', 'inesff@gmail.com', '009894120', 'Portugal', 'Rua dos 8 cavaleiros, Casa Nº2', '3500-004', 'Viseu', NULL),
@@ -83,6 +84,7 @@ INSERT INTO `clientes` (`IDNIF_Cliente`, `Nome`, `Email`, `Telemovel`, `Pais`, `
 /*!40000 ALTER TABLE `clientes` ENABLE KEYS */;
 
 -- Dumping structure for table adc_http404.interessados
+DROP TABLE IF EXISTS `interessados`;
 CREATE TABLE IF NOT EXISTS `interessados` (
   `IDInteressado` int NOT NULL AUTO_INCREMENT,
   `Email` varchar(80) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
@@ -90,7 +92,6 @@ CREATE TABLE IF NOT EXISTS `interessados` (
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='"Semi-clientes" que apenas colocaram seu email no site';
 
 -- Dumping data for table adc_http404.interessados: ~5 rows (approximately)
-DELETE FROM `interessados`;
 /*!40000 ALTER TABLE `interessados` DISABLE KEYS */;
 INSERT INTO `interessados` (`IDInteressado`, `Email`) VALUES
 	(1, 'jacobalexender@thisemailsdoesnotexist.com'),
@@ -101,6 +102,7 @@ INSERT INTO `interessados` (`IDInteressado`, `Email`) VALUES
 /*!40000 ALTER TABLE `interessados` ENABLE KEYS */;
 
 -- Dumping structure for table adc_http404.users
+DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
   `id_users` int NOT NULL AUTO_INCREMENT,
   `nome` varchar(200) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
@@ -108,10 +110,9 @@ CREATE TABLE IF NOT EXISTS `users` (
   `pass` varchar(200) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `cargo` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id_users`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Dumping data for table adc_http404.users: ~6 rows (approximately)
-DELETE FROM `users`;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id_users`, `nome`, `email`, `pass`, `cargo`) VALUES
 	(1, 'André Pereira', 'andorelouise@gmail.com', 'http404#2021%', 'admin'),
@@ -119,10 +120,13 @@ INSERT INTO `users` (`id_users`, `nome`, `email`, `pass`, `cargo`) VALUES
 	(3, 'José Garcia', 'a70658@ualg.pt', 'http404#2021%', 'admin'),
 	(4, 'Kleyton Trovão', 'a69258@ualg.pt', 'http404#2021%', 'admin'),
 	(5, 'Matombina Lopes', 'patraoml@http404.com', 'patrao&%2021', 'patrao'),
-	(6, 'Lisdália Guerreiro', 'lguerreiro@http404.com', 'vendedores$2021*', 'vendedores');
+	(6, 'Lisdália Guerreiro', 'lguerreiro@http404.com', 'vendedores$2021*', 'vendedores'),
+	(7, 'Josefina Almirante', 'jalmirante@http404.com', 'vendedores$2021*', 'vendedores'),
+	(8, 'Aurélio Silva', 'amendoncasilva@http404.com', 'tecnicos#€2021', 'tecnicos');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 -- Dumping structure for table adc_http404.veiculos
+DROP TABLE IF EXISTS `veiculos`;
 CREATE TABLE IF NOT EXISTS `veiculos` (
   `IDVeiculo` int NOT NULL AUTO_INCREMENT,
   `modelo` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
@@ -142,7 +146,6 @@ CREATE TABLE IF NOT EXISTS `veiculos` (
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Dumping data for table adc_http404.veiculos: ~6 rows (approximately)
-DELETE FROM `veiculos`;
 /*!40000 ALTER TABLE `veiculos` DISABLE KEYS */;
 INSERT INTO `veiculos` (`IDVeiculo`, `modelo`, `marca`, `preco`, `tipoveiculo`, `estadoveiculo`, `velocidademaxima`, `peso`, `consumomedio`, `cambio`, `combustivel`, `em_stock`, `quantidade_stock`, `pronto_adicionar_stand`) VALUES
 	(1, 'RC 200t', 'Lexus', 50000, 'Carro', 'Novo', '230 km/h', 1755, ' 7.2 litros/100km', 'Automatico', 'Gasolina', 'Sim', 1, 'Sim'),
@@ -154,6 +157,7 @@ INSERT INTO `veiculos` (`IDVeiculo`, `modelo`, `marca`, `preco`, `tipoveiculo`, 
 /*!40000 ALTER TABLE `veiculos` ENABLE KEYS */;
 
 -- Dumping structure for table adc_http404.vendas
+DROP TABLE IF EXISTS `vendas`;
 CREATE TABLE IF NOT EXISTS `vendas` (
   `IDVenda` int NOT NULL AUTO_INCREMENT,
   `IDNIF_Cliente` char(9) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
@@ -174,7 +178,6 @@ CREATE TABLE IF NOT EXISTS `vendas` (
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Dumping data for table adc_http404.vendas: ~7 rows (approximately)
-DELETE FROM `vendas`;
 /*!40000 ALTER TABLE `vendas` DISABLE KEYS */;
 INSERT INTO `vendas` (`IDVenda`, `IDNIF_Cliente`, `IDVeiculo`, `IDArtigo`, `ValorVenda`, `DataVenda`, `IDFuncionario`) VALUES
 	(1, '999999999', 3, NULL, 66000, '2020-11-21 18:32:31', 6),

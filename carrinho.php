@@ -1,7 +1,7 @@
 <?php
 /** Página que controla informação sobre os veiculos nos carrinhos para ser redirecionada para o checkout.
 * @author Grupo HTTP404
-* @version 2.6
+* @version 3.3
 * @since 4 jan 2021
 **/
 // Desabilita a demonstração de erros, para que não haja a possibilidade de aparecer erros para o usuário final

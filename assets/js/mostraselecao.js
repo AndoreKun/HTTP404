@@ -6,8 +6,8 @@ function admSelectCheck(nameSelect, adicionarvalores)
     * Ao definir adicionarvalores como TRUE, adicione "opcao2" para uma segunda seleção e "elemento2" para o segundo elemento, e por fim
     * "opcao3" e "elemento3" para a ultima seleção e elemento.
     * @author Grupo HTTP 404
-    * @version 1.0
-    * @since 6 jan 2021
+    * @version 2.0
+    * @since 1 jan 2021
     * @param {string} nameSelect Seleção(<select>) a ser lido (Para esse valor pode utilizar $this na seleção em seu html)
     * @param {boolean} adicionarvalores Define se pretende ler mais formulários/seleções, se verdadeiro permite ler mais 2 seleções
     * @param {string} admOptionValue id do formulário/seleção 
@@ -58,7 +58,7 @@ function admSelectCheck2(nameSelect, adicionarvalores)
     * "opcao6" e "elemento6" para a ultima seleção e elemento.
     * @author Grupo HTTP 404
     * @version 1.0
-    * @since 6 jan 2021
+    * @since 4 jan 2021
     * @param {string} nameSelect Seleção(<select>) a ser lido (Para esse valor pode utilizar $this na seleção em seu html)
     * @param {boolean} adicionarvalores Define se pretende ler mais formulários/seleções, se verdadeiro permite ler mais 2 seleções
     * @param {string} admOptionValue id do formulário/seleção 
@@ -110,7 +110,7 @@ function admSelectCheck3(nameSelect, adicionarvalores)
     * "opcao9" e "elemento9" para a ultima seleção e elemento.
     * @author Grupo HTTP 404
     * @version 1.0
-    * @since 6 jan 2021
+    * @since 4 jan 2021
     * @param {string} nameSelect Seleção(<select>) a ser lido (Para esse valor pode utilizar $this na seleção em seu html)
     * @param {boolean} adicionarvalores Define se pretende ler mais formulários/seleções, se verdadeiro permite ler mais 2 seleções
     * @param {string} admOptionValue id do formulário/seleção 
