@@ -2,10 +2,12 @@
 /** 
  * Página dos funcionários reservada apenas para a vendedores, outros funcionários são imediatamente redirecionados
  * @author Grupo HTTP 404
- * @version 1.5
+ * @version 3.0
  * @since 1 jan 2021
  */
-//starta a sessão
+// Desabilita a demonstração de erros, para que não haja a possibilidade de aparecer erros para o usuário final
+ini_set('display_errors', 0);
+// Inicia a sessão
 session_start();
 ob_start();
 // Desabilita a demonstração de erros, para que não haja a possibilidade de aparecer erros para o usuário final
@@ -27,6 +29,7 @@ if ($logado == "N" || $id_users == ""){
 }
 // Define o Local e lingua, para as funções strftime e strtotime funcionarem bem na página
 setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
+
 ?>
 <!DOCTYPE HTML>
 <html class="no-js" lang="zxx">
@@ -81,12 +84,12 @@ setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
         <button style="cursor: pointer" id="sair" value="Sair" class="btn-style cr-btn" onclick="location.href ='logout.php';">Sair</button>
     </div>
     <!-- Área de vendas, permite inserir uma nova venda na base de dados!-->
-    <form action="" method="post">
+    <form action="vendedores_procedimentos.php" method="post">
         <label for="actions"><h2>Registar venda de Veículos/Artigos</h2></label><br/> 
         <div id="registarvenda" name="registarvenda" style="width:300px; margin:4px;">
                 <h5>Cliente: </h5>
                 <!-- Conexão à base de dados para mostrar os clientes em uma lista !-->
-                <select name="cliente">
+                <select name="cliente" required>
                     <option selected name= "" value="">Selecione uma opção...</option>
                     <?php $consulta = "SELECT CONCAT(IDNIF_Cliente, ' - ', Nome) AS clientes FROM clientes";
                     include('database/selects_basedados.php');
@@ -117,76 +120,16 @@ setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
             <input style="cursor: pointer; width:300px; margin:4px;" name="submit" type="submit" value="submit" class="btn-style cr-btn"></input>
     </form>
     </div>
-    <?php 
-    /** Caso o formulário estiver sido submetido, faz o insert desejado */
-    if(isset($_POST['submit'])){
-        /** $insertpronto: Verdadeiro quando estiver definido qual é o insert a ser feito */
-        $insertpronto = false;
-        /** $clienteselecionado: Cliente Selecionado no formulário, obtido través do método POST */
-        $clienteselecionado = $_POST['cliente'];
-        // Remove os 9 primeiros carateres do cliente, logo que na seleção em HTML o nome do cliente buscado da base de dados é selecionado em conjunto de seu NIF(ID)
-        // Para uma fácil localização do cliente
-        $clienteselecionado = substr($clienteselecionado, 0, 9);
-        $insertpronto = true;
-        /** Caso não tenha sido selecionado um cliente, define $insertpronto como falso */
-        if ($clienteselecionado == ""){
-            $insertpronto = false;
-        }
-        /** $veiculoselecionado: Veiculo Selecionado no formulário, obtido através do método POST */
-        $veiculoselecionado = $_POST['veiculo'];
-        // retira o id do veiculo e guarda na mesma variável
-        $veiculoselecionado = substr($veiculoselecionado, 0, 1);
-        /** $artigoselecionado: Artigo Selecionado no formulário, obtido através do método POST */
-        $artigoselecionado = $_POST['artigo'];
-        $artigoselecionado = substr($artigoselecionado, 0, 1);
-        /** Caso não tenha sido selecionado um veiculo e um artigo, define $insertpronto como falso */
-        if($veiculoselecionado == "" and $artigoselecionado == ""){
-            $insertpronto = false;
-        }
-        /** Caso o insert estiver pronto(Se um cliente e um veiculo e/ou um artigo estiverem selecionados), Cria o insert para a base de dados. 
-         * caso não esteja pronto, imprime que faltam valores para inserir a venda
-        */
-        if ($insertpronto == true){
-            if ($veiculoselecionado == "" and $artigoselecionado != ""){
-                /** $consulta: Consulta para a base de dados, para calcular o valor da vendas a ser enviado a selects_basedados.php para realizar a consulta*/
-                $consulta = "SELECT preco from artigos WHERE IDArtigo = '$artigoselecionado'";
-                // inclui o script de conexão e consulta
-                include('database/selects_basedados.php');
-                // Define a variável com o resultado da consulta
-                foreach($dados as $linha){
-                    $valordavenda = $linha['preco'];
-                }
-                /** $insert: Query do Insert a ser enviado para inserts_basedados.php para realizar o insert na base de dados */
-                $insert = "INSERT INTO vendas(IDNIF_Cliente, IDArtigo, ValorVenda, IDFuncionario) VALUES ('$clienteselecionado', '$artigoselecionado', '$valordavenda', '$id_users')";
-                // inclui o script de conexão e insert
-                include('database/inserts_basedados.php');
-            }
-            // Mesmo processo para artigos
-            if ($artigoselecionado == "" and $veiculoselecionado != ""){
-                $consulta = "SELECT preco from veiculos WHERE IDVeiculo = '$veiculoselecionado'";
-                include('database/selects_basedados.php');
-                foreach($dados as $linha){
-                    $valordavenda = $linha['preco'];
-                }
-                $insert = "INSERT INTO vendas(IDNIF_Cliente, IDVeiculo, ValorVenda, IDFuncionario) VALUES ('$clienteselecionado', '$veiculoselecionado', '$valordavenda', '$id_users')";
-                include('database/inserts_basedados.php');
-            // E para artigos e veículos
-            }else{
-                $consulta = "SELECT SUM(artigos.preco + veiculos.preco) AS preco from artigos, veiculos WHERE IDArtigo = '$artigoselecionado' AND IDVeiculo = '$veiculoselecionado'";
-                include('database/selects_basedados.php');
-                foreach($dados as $linha){
-                    $valordavenda = $linha['preco'];
-                }
-                $insert = "INSERT INTO vendas(IDNIF_Cliente, IDVeiculo, IDArtigo, ValorVenda, IDFuncionario) VALUES ('$clienteselecionado', '$veiculoselecionado', '$artigoselecionado', '$valordavenda', '$id_users')";
-                include('database/inserts_basedados.php');
-            }
-        }else{
-            ?><h5 style="color:red">Valores em falta!</h5><?php
+    <?php
+    /** Feedback definido em inserts_basedados.php, resultado de um insert/update/remove da base de dados */
+    if(isset($_SESSION['feedback_insert'])){
+        if($_SESSION['registar_vendas'] == "S"){ 
+            echo $_SESSION['feedback_insert'];
+            unset($_SESSION['feedback_insert']);
         }
     }
-    
-// Opcoes de clientes - adicionar/remover/atualizar
-?>
+    ?>
+<!-- Formulários para clientes(Adicionar/Remover/Atualizar) !-->
 <label for="actions"><h2>Opções de Clientes</h2></label><br/>
 <select name="clientes" id="clientes" style="width:300px; margin:4px;" onchange="admSelectCheck(this, true);">
     <option selected id="" name="" value="">Selecione uma opcao...</option>
@@ -195,7 +138,7 @@ setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
     <option id="opcao3" value="atcliente">Atualizar dados de um cliente</option>
 </select>
 <div id="elemento" name="elemento" style="display: none">
-    <form id="nvcliente" name="nvcliente" action="" method="post" enctype="multipart/form-data"><form>
+    <form id="nvcliente" name="nvcliente" action="vendedores_procedimentos.php" method="post" enctype="multipart/form-data"><form>
         <div style="width:300px; margin:4px; float:left;">
             <h5>NIF do Cliente: <span style="color: red" >*</span></h5>
             <input name="nif_cliente" value="" minlength="9" maxlength="9" required/>
@@ -231,13 +174,13 @@ setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
         <div style="width:300px;">
             <h5>Foto do cliente:<h5>
                 <input type="file" name="image" onclick="" style="background-color: white; border:hidden; margin:-3%;"/>
-            <br/><br/>
+            <br/>
         </div>   
         <input style="cursor: pointer; width:300px; margin:4px;" name="criarcliente" type="submit" value="submit" class="btn-style cr-btn"/>
     </form>
 </div>
 <div id="elemento2" name="elemento2" style="display: none">
-    <form id="removercliente" name="removercliente" action="" method="post">
+    <form id="removercliente" name="removercliente" action="vendedores_procedimentos.php" method="post">
         <div style="width:300px; margin:4px;">
             <h5>NIF do Cliente: <span style="color: red" >*</span></h5>
             <select name="rm_cliente_nif" required>
@@ -253,7 +196,7 @@ setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
     </form>
 </div>
 <div id="elemento3" name="elemento3" style="display: none">
-    <form id="update_cliente" name="update_cliente" action="" method="post" enctype="multipart/form-data"><form>
+    <form id="update_cliente" name="update_cliente" action="vendedores_procedimentos.php" method="post" enctype="multipart/form-data"><form>
         <div style="width:300px; margin:4px; float:left;">
             <h5>NIF do Cliente: <span style="color: red" >*</span></h5>
             <select name="updt_cliente_nif" required>
@@ -296,131 +239,16 @@ setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
         <input style="cursor: pointer; width:300px; margin:4px;" name="atualizarcliente" type="submit" value="submit" class="btn-style cr-btn"/>
     </form>
 </div>
-<?php 
-
-/** Atualiza um Cliente na base de dados */
-if(isset($_POST['atualizarcliente'])){
-    $nif_nome_cliente = $_POST['updt_cliente_nif'];
-    // Remove o nome do cliente e guarda o nif
-    $updt_nif_cliente = substr($nif_nome_cliente, 0, 9);
-    // remove o nif e guarda o nome do cliente
-    $updt_nome = substr($nif_nome_cliente, 12);
-    $updt_email = $_POST['updt_email_cliente'];
-    $updt_telemovel = $_POST['updt_telemovel_cliente'];
-    $updt_pais = $_POST['updt_pais_cliente'];
-    $updt_morada = $_POST['updt_morada_cliente'];
-    $updt_codpostal = $_POST['updt_codpostal_cliente'];
-    $updt_localidade = $_POST['updt_localidade_cliente'];
-    // Sequência para testar quais campos estão nulos para criar o update na base de dados
-    if($updt_email == ""){
-        $email_insert = "";
-    } else {
-        $email_insert = ",Email='$updt_email'";
-    }
-    if($updt_email == ""){
-        $email_insert = "";
-    } else {
-        $email_insert = ",Email='$updt_email'";
-    }
-    if($updt_telemovel == ""){
-        $telemovel_insert = "";
-    } else {
-        $telemovel_insert = ",Telemovel='$updt_telemovel'";
-    }
-    if($updt_pais == ""){
-        $pais_insert = "";
-    } else { 
-        $pais_insert = ",Pais='$updt_pais'";
-    }
-    if($updt_morada == ""){
-        $morada_insert = "";
-    } else { 
-        $morada_insert = ",Morada='$updt_morada'";
-    }
-    if($updt_codpostal == ""){
-        $codpostal_insert = "";
-    } else {
-        $codpostal_insert = ",Cod_Postal='$updt_codpostal'";
-    }
-    if($updt_localidade == ""){
-        $localidade_insert = "";
-    } else {
-        $localidade_insert = ",Localidade='$updt_localidade'";
-    }
-    // Mesmo método de conexão e insert usado acima 
-    $insert = "UPDATE clientes SET Nome='$updt_nome'$email_insert$telemovel_insert$email_insert$pais_insert$morada_insert$codpostal_insert$localidade_insert 
-    WHERE IDNIF_Cliente=$updt_nif_cliente";
-    /** $acao: Acão a ser realizada em inserts_basedeados.php("Insert", "Update" ou "Delete") */
-    $acao = 'update';
-    /** $imagem: A imagem que o utilizador fez o upload, que caso exista, serám convertida para binário e inserida na base de dados  */
-    $imagem = $_FILES['image']['tmp_name'];
-    if($imagem){
-        // Tranforma a imagem em string binário para inserir na base de dados
-        $foto_do_cliente = file_get_contents($imagem);
-        $update_foto = "UPDATE clientes SET Foto=? WHERE IDNIF_Cliente=$updt_nif_cliente";
-        $adicionar_foto = TRUE;
-    } else {
-        $adicionar_foto = FALSE;
-    }
-    // Inclui script de insert na base de dados
-    include('database/inserts_basedados.php');
-    }
-
-/** Remove um Cliente da base de dados */
-if(isset($_POST['removercliente'])){
-    /** $rm_nif_cliente: NIF do cliente a ser removido */
-    $rm_nif_cliente = $_POST['rm_cliente_nif'];
-    // remove o nome do cliente e guarda seu nif
-    $rm_nif_cliente = substr($rm_nif_cliente, 0, 9);
-    $acao = 'delete';
-    $insert = "DELETE FROM clientes WHERE IDNIF_Cliente='$rm_nif_cliente'";
-    $adicionar_foto = FALSE;
-    include('database/inserts_basedados.php');
-    } 
-
-/** Adicionar um novo Cliente na base de dados*/
-if(isset($_POST['criarcliente'])){
-    $nif_cliente = $_POST['nif_cliente'];
-    $nome = $_POST['nome_cliente'];
-    $email = $_POST['email_cliente'];
-    $telemovel = $_POST['telemovel_cliente'];
-    $pais = $_POST['pais_cliente'];
-    $morada = $_POST['morada_cliente'];
-    $codpostal = $_POST['codpostal_cliente'];
-    $localidade = $_POST['localidade_cliente'];
-    $consulta = 'SELECT IDNIF_Cliente FROM clientes';
-    // Inclui script de select
-    include("database/selects_basedados.php");
-    /** $clientenovo: Verdadeiro se o cliente não existe na base de dado, e falso se existe */
-    $clientenovo = FALSE;
-    /** foreach($dados as $linha): Ciclo testa se o cliente já existe na base de dados ou não */
-    foreach($dados as $linha){
-        if($nif_cliente == $linha['IDNIF_Cliente']){
-            ?><h5 style="color: red">Este cliente já existe na base de dados!</h5> <?php
-            $clientenovo = FALSE;
-        }else{
-            $clientenovo = TRUE;
+<?php
+    /** Feedback definido em inserts_basedados.php, resultado de um insert/update/remove da base de dados */
+    if(isset($_SESSION['feedback_insert'])){
+        if($_SESSION['clientes'] == "S"){ 
+            echo $_SESSION['feedback_insert'];
+            unset($_SESSION['feedback_insert']);
         }
     }
-    /** if($clientenovo == TRUE): Se o Cliente for Novo, prepara o query do insert na base de dados */
-    if($clientenovo == TRUE){
-        $insert = "INSERT INTO clientes(IDNIF_Cliente, Nome, Email, Telemovel, Pais, Morada, Cod_Postal, Localidade) 
-        VALUES ('$nif_cliente', '$nome', '$email', '$telemovel', '$pais', '$morada', '$codpostal', '$localidade')";
-        $acao = 'insert';
-        $imagem = $_FILES['image']['tmp_name'];
-        if($imagem){
-            $foto_do_cliente = file_get_contents($imagem);
-            $update_foto = "UPDATE clientes SET Foto=? WHERE IDNIF_Cliente=$nif_cliente";
-            $adicionar_foto = TRUE;
-        } else {
-            $adicionar_foto = FALSE;
-        }
-        // inclui script de insert na base de dados
-        include('database/inserts_basedados.php');
-        }
-    }
-// opcoes de veiculos e artigos: adicionar/remover/atualizar
-?>
+    ?>
+<!-- Formulários para veículos(Adicionar/Remover/Atualizar)!-->
 <br/><br/>
 <label for="actions"><h2>Opções de Veículos</h2></label><br/>
 <select name="veiculos" id="veiculos" style="width:300px; margin:4px;" onchange="admSelectCheck2(this, true);">
@@ -430,7 +258,7 @@ if(isset($_POST['criarcliente'])){
     <option id="opcao6" value="at_veiculo">Atualizar dados de um veículo</option>
 </select>
 <div id="elemento4" name="elemento_veiculos" style="display: none">
-    <form id="nvcliente" name="nvcliente" action="" method="post">
+    <form id="nv_veiculo" name="nv_veiculo" action="vendedores_procedimentos.php" method="post">
         <div style="width:300px; margin:4px; float:left;">
             <h5>Modelo do Veículo: <span style="color: red" >*</span></h5>
             <input name="modelo_veiculo" value="" minlength="1" required/>
@@ -444,12 +272,22 @@ if(isset($_POST['criarcliente'])){
             <input name="preco_veiculo" value="" minlength="1" required/>
         </div>
         <div style="width:300px; margin:4px; float:left;">
-            <h5>Tipo do Veículo (Carro/Moto): <span style="color: red" >*</span><h5>
-            <input name="tipo_veiculo" value="" minlength="1"  required/>
+            <h5>Tipo do Veículo: <span style="color: red" >*</span><h5>
+            <select name="tipo_veiculo" required>
+                <option value="" selected>Selecione Uma Opção</option>
+                <option value="Carro">Carro</option>
+                <option value="Moto">Moto</option>
+                <option value="Scooter">Scooter</option>
+            </select>
         </div>
         <div style="width:300px; margin:4px; float:left;">
             <h5>Estado do Veículo: <span style="color: red">*</span><h5>
-            <input name="estado_veiculo" value="" minlength="1" required/>
+            <select name="estado_veiculo" required>
+                <option value="" selected>Selecione Uma Opção</option>
+                <option value="Novo">Novo</option>
+                <option value="Semi-Novo">Semi-Novo</option>
+                <option value="Usado">Usado</option>
+            </select>
         </div>
         <div style="width:300px; margin:4px; float:left;">
             <h5>Velocidade Máxima: <span style="color: red" >*</span><h5>
@@ -465,7 +303,12 @@ if(isset($_POST['criarcliente'])){
         </div>
         <div style="width:300px; margin:4px; float:left;">
             <h5>Tipo de Câmbio do Veículo: <span style="color: red" >*</span><h5>
-            <input name="cambio_veiculo" value="" minlength="3" required/>
+            <select name="cambio_veiculo" required>
+                <option value="" selected>Selecione Uma Opção</option>
+                <option value="Automatico">Automatico</option>
+                <option value="Semi-Automatico">Semi-Automático</option>
+                <option value="Manual">Manual</option>
+            </select>
         </div>
         <div style="width:300px; margin:4px; float:left;">
             <h5>Tipo de Combustível do Veículo: <span style="color: red" >*</span><h5>
@@ -482,18 +325,19 @@ if(isset($_POST['criarcliente'])){
             <h5>Quantidade em Stock: <span style="color: red" >*</span><h5>
             <input name="quantidade_stock" value="" minlength="1" required/>
         </div>
-        <div style="width:300px; margin:4px; float:left;" >
+        <div style="width:300px; margin:4px;" >
             <h5>Pronto Para Adicionar ao Stock: <span style="color: red" >*</span><h5>
             <select name="pronto_stock_veiculo" required>
                 <option value="Sim" selected>Sim</option>
                 <option value="Nao">Não</option>
             </select>
+            <br/>
         </div>
-        <input style="cursor: pointer; width:300px; margin:4px;" name="criarveiculo" type="submit" value="submit" class="btn-style cr-btn"/>
+        <input style="cursor: pointer; width:300px; margin:4px; " name="criarveiculo" type="submit" value="submit" class="btn-style cr-btn"/>
     </form>
 </div>
 <div id="elemento5" name="remover_veiculo" style="display: none">
-    <form id="removerveiculo" name="removercliente" action="" method="post">
+    <form id="removerveiculo" name="removerveiculo" action="vendedores_procedimentos.php" method="post">
         <div style="width:300px; margin:4px;">
             <h5>ID do Veículo: <span style="color: red" >*</span></h5>
             <select name="rm_veiculo" required>
@@ -509,7 +353,7 @@ if(isset($_POST['criarcliente'])){
     </form>
 </div>
 <div id="elemento6" name="atualizar_veiculo" style="display: none">
-    <form id="update_cliente" name="atualizar_veiculo" action="" method="post" >
+    <form id="update_veiculo" name="atualizar_veiculo" action="vendedores_procedimentos.php" method="post" >
         <div style="width:300px; margin:4px; float:left;">
             <h5>ID do Veículo: <span style="color: red" >*</span></h5>
             <select name="id_veiculo" required>
@@ -527,7 +371,12 @@ if(isset($_POST['criarcliente'])){
         </div>
         <div style="width:300px; margin:4px; float:left;">
             <h5>Estado do Veículo:<h5>
-            <input name="estado_veiculo" value="" minlength="1"/>
+            <select name="estado_veiculo" required>
+                <option value="" selected>Selecione Uma Opção</option>
+                <option value="Novo">Novo</option>
+                <option value="Semi-Novo">Semi-Novo</option>
+                <option value="Usado">Usado</option>
+            </select>
         </div>
         <div style="width:300px; margin:4px; float:left;">
             <h5>Em Stock:<h5>
@@ -552,81 +401,127 @@ if(isset($_POST['criarcliente'])){
         </div>
     </form>
 </div>
-<?php 
-
-/** Atualiza um Veiculo, utiliza o mesmo método de atualizar clientes */
-if(isset($_POST['atualizarveiculo'])){
-    $marca_modelo_veiculo = $_POST['id_veiculo'];
-    $id_veiculo = substr($marca_modelo_veiculo, 0, 1);
-    $updt_preco = $_POST['preco_veiculo'];
-    $updt_estado = $_POST['estado_veiculo'];
-    $updt_stock = $_POST['stock_veiculo'];
-    $updt_quantidade_stock = $_POST['quantidade_veiculo'];
-    $updt_pronto_stock = $_POST['pronto_stock_veiculo'];
-    if($updt_preco == ""){
-        $preco_insert = "";
-    } else {
-        $preco_insert = ",preco='$updt_preco'";
+<?php
+    /** Feedback definido em inserts_basedados.php, resultado de um insert/update/remove da base de dados */
+    if(isset($_SESSION['feedback_insert'])){
+        if($_SESSION['veiculos'] == "S"){ 
+            echo $_SESSION['feedback_insert'];
+            unset($_SESSION['feedback_insert']);
+        }
     }
-    if($updt_estado == ""){
-        $estado_insert = "";
-    } else {
-        $estado_insert = ",estadoveiculo='$updt_estado'";
+    ?>
+<!-- Formulários para Artigos(Adicionar/Remover/Atualizar)!-->
+<br/><br/>
+<label for="actions"><h2>Opções de Artigos</h2></label><br/>
+<select name="artigos" id="artigos" style="width:300px; margin:4px;" onchange="admSelectCheck3(this, true);">
+    <option selected id="" name="" value="">Selecione uma opcao...</option>
+    <option id="opcao7" value="artigos">Adicionar novo Artigo</option>
+    <option id="opcao8" value="rm_artigo">Remover Artigo</option>
+    <option id="opcao9" value="at_artigo">Atualizar dados de um Artigo</option>
+</select>
+<div id="elemento7" name="elemento_artigos" style="display: none">
+    <form id="nvartigo" name="nvartigo" action="vendedores_procedimentos.php" method="post">
+        <div style="width:300px; margin:4px; float:left;">
+            <h5>Nome do Artigo: <span style="color: red" >*</span><h5>
+            <input name="nome_artigo" value="" minlength="1" required/>
+        </div>
+        <div style="width:300px; margin:4px; float:left;">
+            <h5>Descricao do Artigo: <span style="color: red">*</span><h5>
+            <input name="desc_artigo" value="" minlength="1" required/>
+        </div>
+        <div style="width:300px; margin:4px; float:left;">
+            <h5>Preço do Artigo: <span style="color: red" >*</span><h5>
+            <input name="preco_artigo" value="" minlength="1" required/>
+        </div>
+        <div style="width:300px; margin:4px; float:left;">
+            <h5>Tipo do Artigo: <span style="color: red" >*</span><h5>
+            <select name="tipo_artigo" required>
+                <option value="" selected>Selecione Uma Opção</option>
+                <option value="Peças">Peças</option>
+                <option value="Acessorios">Acessorios</option>
+            </select>
+        </div>
+        <div style="width:300px; margin:4px; float:left;">
+            <h5>Em Stock: <span style="color: red" >*</span><h5>
+            <select name="stock_artigo" required>
+                <option value="Sim" selected>Sim</option>
+                <option value="Nao">Não</option>
+            </select>
+        </div>
+        <div style="width:300px; margin:4px; float:left;">
+            <h5>Quantidade em Stock: <span style="color: red" >*</span><h5>
+            <input name="quantidade_stock_artigo" value="" minlength="1" required/>
+        </div>
+        <div style="width:300px; margin:4px;">
+            <input style="cursor: pointer;" name="criarartigo" type="submit" value="submit" class="btn-style cr-btn"/>
+        </div>
+    </form>
+</div>
+<div id="elemento8" name="remover_veiculo" style="display: none">
+    <form id="removerartigo" name="removerartigo" action="vendedores_procedimentos.php" method="post">
+        <div style="width:300px; margin:4px;">
+            <h5>ID do Artigo: <span style="color: red" >*</span></h5>
+            <select name="rm_artigo" required>
+                <option selected name= "" value="">Selecione uma opção...</option>
+                <?php $consulta = "SELECT CONCAT(IDArtigo, ' - ', nome) AS artigo FROM artigos";
+                include('database/selects_basedados.php');
+                foreach($dados as $linha){ ?>
+                <option name="rm_artigo" value="<?php echo $linha['artigo'];?>"><?php echo $linha['artigo'];?></option>
+                <?php } ?>
+            </select>
+        </div>
+        <input style="cursor: pointer; width:300px; margin:4px;" name="removerartigo" type="submit" value="submit" class="btn-style cr-btn"/>
+    </form>
+</div>
+<div id="elemento9" name="atualizar_artigo" style="display: none">
+    <form id="atualizar_artigo" name="atualizar_artigo" action="vendedores_procedimentos.php" method="post" >
+        <div style="width:300px; margin:4px; float:left;">
+            <h5>ID do Artigo: <span style="color: red" >*</span></h5>
+            <select name="updt_id_artigo" required>
+                <option selected name= "" value="">Selecione uma opção...</option>
+                <?php $consulta = "SELECT CONCAT(IDArtigo, ' - ', nome) AS artigo FROM artigos";
+                include('database/selects_basedados.php');
+                foreach($dados as $linha){ ?>
+                <option name="id_artigo" value="<?php echo $linha['artigo'];?>"><?php echo $linha['artigo'];?></option>
+                <?php } ?>
+            </select>
+        </div>
+        <div style="width:300px; margin:4px; float:left;">
+            <h5>Nome do Artigo: <span style="color: red" >*</span><h5>
+            <input name="updt_nome_artigo" value="" minlength="1" required/>
+        </div>
+        <div style="width:300px; margin:4px; float:left;">
+            <h5>Descricao do Artigo: <span style="color: red">*</span><h5>
+            <input name="updt_descricao_veiculo" value="" minlength="1" required/>
+        </div>
+        <div style="width:300px; margin:4px; float:left;">
+            <h5>Preço do Artigo: <span style="color: red" >*</span><h5>
+            <input name="updt_preco_veiculo" value="" minlength="1" required/>
+        </div>
+        <div style="width:300px; margin:4px; float:left;">
+            <h5>Em Stock: <span style="color: red" >*</span><h5>
+            <select name="updt_stock_veiculo" required>
+                <option value="Sim" selected>Sim</option>
+                <option value="Nao">Não</option>
+            </select>
+        </div>
+        <div style="width:300px; margin:4px; float:left;">
+            <h5>Quantidade em Stock: <span style="color: red" >*</span><h5>
+            <input name="updt_quantidade_stock_artigos" value="" minlength="1" required/>
+        </div>
+        <div style="width:300px; margin:4px;">
+            <input style="cursor: pointer;" name="atualizarartigo" type="submit" value="submit" class="btn-style cr-btn"/>
+        </div>
+    </form>
+</div>
+<?php
+    /** Feedback definido em inserts_basedados.php, resultado de um insert/update/remove da base de dados */
+    if(isset($_SESSION['feedback_insert'])){
+        if($_SESSION['artigos'] == "S"){ 
+            echo $_SESSION['feedback_insert'];
+            unset($_SESSION['feedback_insert']);
+        }
     }
-    if($updt_stock == ""){
-        $stock_insert = "";
-    } else {
-        $stock_insert = ",em_stock='$updt_stock'";
-    }
-    if($updt_quantidade_stock == ""){
-        $quantidade_insert = "";
-    } else { 
-        $quantidade_insert = ",quantidade_stock='$updt_quantidade_stock'";
-    }
-    if($updt_pronto_stock == ""){
-        $pronto_insert = "";
-    } else { 
-        $pronto = ",pronto_adicionar_stock='$updt_pronto_stock'";
-    $insert = "UPDATE veiculos SET $updt_preco$updt_estado$updt_stock$updt_quantidade_stock$updt_pronto_stock
-    WHERE IDNIF_Cliente=$id_veiculo";
-    $acao = 'update';
-    $adicionar_foto == TRUE;
-    include('database/inserts_basedados.php');
-    }
-}
-/** Remove um Veiculo, utiliza o mesmo método de remover clientes */
-if(isset($_POST['removerveiculo'])){
-    $rm_veiculo = $_POST['rm_veiculo'];
-    $rm_id_veiculo = substr($rm_veiculo, 0, 1);
-    $acao = 'delete';
-    $insert = "DELETE FROM veiculos WHERE IDVeiculo='$rm_id_veiculo'";
-    $adicionar_foto = FALSE;
-    include('database/inserts_basedados.php');
-    } 
-
-/** Adicionar um novo Veiculo, utiliza o mesmo método de adicionar clientes */
-if(isset($_POST['criarveiculo'])){
-    $modelo_veiculo = $_POST['modelo_veiculo'];
-    $marca_veiculo = $_POST['marca_veiculo'];
-    $tipo_veiculo = $_POST['tipo_veiculo'];
-    $velocidade_veiculo = $_POST['velocidade_veiculo'];
-    $peso_veiculo = $_POST['peso_veiculo'];
-    $consumo_veiculo = $_POST['consumo_veiculo'];
-    $cambio_veiculo = $_POST['cambio_veiculo'];
-    $combustivel_veiculo = $_POST['combustivel_veiculo'];
-    $preco_veiculo = $_POST['preco_veiculo'];
-    $estado_veiculo = $_POST['estado_veiculo'];
-    $stock_veiculo = $_POST['stock_veiculo'];
-    $quantidade_stock = $_POST['quantidade_stock'];
-    $pronto_stock_veiculo = $_POST['pronto_stock_veiculo'];
-    $consulta = 'SELECT IDVeiculo FROM veiculos';
-    include("database/selects_basedados.php");
-    $insert = "INSERT INTO veiculos(modelo, marca, preco, estadoveiculo, velocidademaxima, peso, consumomedio, cambio, combustivel, em_stock, quantidade_stock, pronto_adicionar_stock) 
-    VALUES ('$modelo_veiculo', '$marca_veiculo', '$preco_veiculo', '$estado_veiculo', '$velocidade_veiculo', '$peso_veiculo', '$consumo_veiculo', '$cambio_veiculo','$combustivel_veiculo','$stock_veiculo','$quantidade_stock','$pronto_stock_veiculo')";
-    $acao = 'insert';
-    $adicionar_foto = FALSE;
-    include('database/inserts_basedados.php');
-    }
-?>
+    ?>
 </body>
 </html>
