@@ -41,7 +41,7 @@ if(isset($_SESSION['produtos_veiculos']) || isset($_SESSION['produtos_artigos'])
     } 
     /** if(isset($_SESSION['produtos_veiculos'])): Se um veiculo foi adicionado ao carrinho, resgata id_veiculo definido na página carrinho_artigos */
     if(isset($_SESSION['produtos_veiculos'])){
-        $id_veiculo =  $_SESSION['id_veiculo']['id_veiculo'];
+        $id_veiculo = $_SESSION['id_veiculo']['id_veiculo'];
         // Id_veiculo passa a ser si próprio na posição zero logo que $_SESSION['id_veiculo']['id_veiculo'] é um array
         $id_veiculo = $id_veiculo[0];
         $tipo_produto = "veiculo";

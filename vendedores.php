@@ -10,8 +10,6 @@ ini_set('display_errors', 0);
 // Inicia a sessão
 session_start();
 ob_start();
-// Desabilita a demonstração de erros, para que não haja a possibilidade de aparecer erros para o usuário final
-ini_set('display_errors', 0);
 //resgata os valores das session em variaveis
 $id_users = isset($_SESSION['id_users']) ? $_SESSION['id_users']: "";	
 $nome_user = isset($_SESSION['nome']) ? $_SESSION['nome']: "";

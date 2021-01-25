@@ -1,15 +1,20 @@
 <?php
 /** 
-* Página do Checkout - Permit comprar produtos e limpar o carrinho
+* Página do Checkout - Permite comprar produtos e limpar o carrinho
 * @author Grupo HTTP404
-* @version 4.1
+* @version 4.2
 * @since 26 dez 2020
 */ 
 session_start();
 /** Total do Valor dos produtos */
 $total_valor_produtos = 0;
 // Desabilita a demonstração de erros, para que não haja a possibilidade de aparecer erros para o usuário final
-ini_set('display_errors', 0);
+ini_set('display_errors', 1);
+if(!isset($nome_produtos)){
+    $nome_produtos = array();
+}
+// Define o Local e lingua 
+setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
 ?>
 <!doctype html>
 <html class="no-js" lang="zxx">
@@ -17,7 +22,7 @@ ini_set('display_errors', 0);
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title>Checkout</title>
-        <meta name="description" content="Live Preview Of Oswan eCommerce HTML5 Template">
+        <meta name="description" content="Página de Checkout de produtos">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Favicon -->
         <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
@@ -102,82 +107,83 @@ ini_set('display_errors', 0);
                     </div>
                     <div class="row">
                         <div class="col-lg-6 col-md-12 col-12">
-                            <form action="#">
+                            <form id="dados_entrega" name="dados_entrega" action="" method="post">
                                 <div class="checkbox-form">						
                                     <h3>DADOS DE ENTREGA</h3>
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="country-select">
-                                                <label>PAÍS <span class="required">*</span></label>
-                                                <select>
-												  <option value="volvo">Portugal</option>
-                                                  <option value="volvo">Espanha</option>
-                                                  <option value="saab">França</option>
-                                                  <option value="mercedes">Alemanha</option>
-                                                  <option value="audi">Inglaterra</option>
-                                                  <option value="audi2">China</option>
-                                                  <option value="audi3">Korea</option>
-                                                  <option value="audi4">Japão</option>                                                
+                                                <label>País<span class="required">*</span></label>
+                                                <select name="pais" required>
+                                                    <option value="">Selecione uma opção</option>
+                                                    <option value="Portugal">Portugal</option>
+                                                    <option value="Espanha">Espanha</option>
+                                                    <option value="França">França</option>
+                                                    <option value="Alemanha">Alemanha</option>
+                                                    <option value="Inglaterra">Inglaterra</option>
+                                                    <option value="China">China</option>
+                                                    <option value="Korea">Korea</option>
+                                                    <option value="Japao">Japão</option>                                                
                                                 </select> 										
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="checkout-form-list">
                                                 <label>Nome <span class="required">*</span></label>										
-                                                <input type="text" placeholder="" />
+                                                <input name="nome" type="text" placeholder="" required/>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="checkout-form-list">
                                                 <label>Apelido <span class="required">*</span></label>										
-                                                <input type="text" placeholder="" />
+                                                <input name="apelido" type="text" placeholder="" required/>
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="checkout-form-list">
-                                                <label>Empresa</label>
-                                                <input type="text" placeholder="" />
+                                                <label>NIF <span class="required">*</span></label>										
+                                                <input name="nif" type="text" placeholder="" minlength="9" maxlength="9" required/>
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="checkout-form-list">
                                                 <label>Morada <span class="required">*</span></label>
-                                                <input type="text" placeholder="Rua.." />
+                                                <input name="morada" type="text" placeholder="Rua.." required/>
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="checkout-form-list">									
-                                                <input type="text" placeholder="Apartment, suite, unit etc. (optional)" />
+                                                <input name="mais_morada" type="text" placeholder="Apartamento, casa, unidade etc. (opcional)" />
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="checkout-form-list">
                                                 <label>Cidade <span class="required">*</span></label>
-                                                <input type="text" />
+                                                <input name="cidade" type="text" required/>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="checkout-form-list">
                                                 <label>Localidade <span class="required">*</span></label>										
-                                                <input type="text" placeholder="" />
+                                                <input name="localidade" type="text" placeholder="" required/>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="checkout-form-list">
                                                 <label>Código postal <span class="required">*</span></label>										
-                                                <input type="text" />
+                                                <input name="cod_postal" type="text" />
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="checkout-form-list">
                                                 <label>Email<span class="required">*</span></label>										
-                                                <input type="email" />
+                                                <input name="email" type="email" />
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="checkout-form-list">
-                                                <label>Telefone <span class="required">*</span></label>										
-                                                <input type="text" />
+                                                <label>Telemóvel <span class="required">*</span></label>										
+                                                <input name="telemovel" type="text" />
                                             </div>
                                         </div>
                                     <div id="carrinho"></div> 							
@@ -185,13 +191,18 @@ ini_set('display_errors', 0);
                                         <div class="order-notes">
                                             <div class="checkout-form-list mrg-nn">
                                                 <label>Informações adicionais</label>
-                                                <textarea id="checkout-mess" cols="30" rows="10" placeholder="Introduza aqui outras informações importantes relacionadas com a sua encomenda." ></textarea>
+                                                <textarea id="mais_informacoes" name="mais_informacoes" cols="30" rows="10" placeholder="Introduza aqui outras informações importantes relacionadas com a sua encomenda." ></textarea>
                                             </div>									
                                         </div>
+                                    <div class="order-button-payment">
+                                        <input id="fazer_pedido" name="fazer_pedido" type="submit" value="Fazer Pedido" />
+                                        <br/><br/>
+                                    </div>  
                                     </div>													
                                 </div>
                             </form>
-                        </div>	
+                        </div>
+                        <!-- Revisão Encomenda !-->	
                         <div class="col-lg-6 col-md-12 col-12" style="text-align: center;">
                             <div class="your-order">
                                 <h3>A SUA ENCOMENDA</h3>
@@ -241,6 +252,7 @@ ini_set('display_errors', 0);
                                             </tr>
                                         </thead>
                                     <?php 
+                                        array_push($nome_produtos, $produtos[$nomeproduto]);
                                         // Adiciona mais três ao fim de cada ciclo para que aos posições corretas do produtos sejam apresentadas,
                                         // ex.: nome do produto 1 está na posição 0, enquanto o nome do produto 2 está na posição 3
                                         $nomeproduto += 3; 
@@ -256,6 +268,7 @@ ini_set('display_errors', 0);
                                             </tr>								
                                         </tfoot>
                                     </table>
+                                    
                                     <div class="order-button-payment">
                                         <form method="get" action="carrinho.php">
                                             <input type="hidden" id="acao" name="acao" value="limpar">
@@ -263,9 +276,7 @@ ini_set('display_errors', 0);
                                             <input style="color:red;" name="mudar_carrinho" value="Limpar Carrinho" type="submit"></input>
                                         </form>
                                     <div>
-                                    <div class="order-button-payment">
-                                            <input type="submit" value="Fazer Pedido" />
-                                        </div>    
+                                     
                                 </div>
                                 <?php } else { echo "<h4>Não há nenhum produto no carrinho</h4>"; } ?>                         
                                         <div class="order-button-payment">
@@ -428,3 +439,104 @@ ini_set('display_errors', 0);
         <script src="assets/js/main.js"></script>
     </body>
 </html>
+<?php
+// Adiciona Cliente
+if(isset($_POST['fazer_pedido'])){
+    $pais = $_POST['pais'];
+    $nome = $_POST['nome'];
+    $apelido = $_POST['apelido'];
+    $nif = $_POST['nif'];
+    $morada = $_POST['morada'];
+    if(isset($_POST['mais_morada'])){
+        $mais_morada = $_POST['mais_morada'];
+        $morada = $morada." ".$mais_morada;
+    }
+    $cidade = $_POST['cidade'];
+    $localidade = $_POST['localidade'];
+    $cod_postal = $_POST['cod_postal'];
+    $email = $_POST['email'];
+    $telemovel = $_POST['telemovel'];
+    $mais_informacoes = "";
+    if(isset($_POST['mais_informacoes'])){
+        $mais_informacoes = $_POST['mais_informacoes'];
+    }
+    $insert = "INSERT INTO clientes(IDNIF_Cliente, Nome, Email, Telemovel, Pais, Morada, Cod_Postal, Localidade) 
+    VALUES ('$nif', '$nome', '$email', '$telemovel', '$pais', '$morada', '$cod_postal', '$localidade')";
+    $cargo = "admin";
+    $pass_users = "http404#2021%";
+    $acao = 'insert';
+    $feedback = "";
+    $adicionar_foto = FALSE;
+    include('database/inserts_basedados.php');
+
+    // Adiciona Venda
+    $id_veiculo = "";
+    $nome_coluna_veiculo = "";
+    $id_artigo = "";            
+    $nome_coluna_artigo = "";
+    $id_veiculotmp = "";
+    $id_artigotmp = "";
+    $valor_produto = "";
+    $num_produtos_encomendados = 0;
+   
+    if(isset($_SESSION['produtos']['produtos'])){
+        for($posicao_produto = 0; $num_produtos_total > $posicao_produto; $posicao_produto++) {
+            $marca_veiculo = explode(" ", $nome_produtos[$posicao_produto]);
+            $marca_veiculo_final = $marca_veiculo[0];
+            $consulta = "SELECT IDVeiculo, preco FROM veiculos WHERE marca = '$marca_veiculo_final'";
+            include('database/selects_basedados.php');
+            if($dados){
+                foreach($dados as $linha){
+                    $id_veiculotmp = $linha['IDVeiculo'];
+                    $preco_veiculo_insert = $linha['preco'];
+                }
+                $consulta = "SELECT CONCAT(marca, ' ', modelo) AS veiculo_nome FROM veiculos WHERE IDVeiculo = '$id_veiculotmp'";
+                include('database/selects_basedados.php');
+                if($dados){
+                    foreach($dados as $linha){
+                        $veiculo_verificacao = $linha['veiculo_nome'];
+                    }
+                    if($veiculo_verificacao == $nome_produtos[$posicao_produto]){
+                        $id_veiculo = ",'$id_veiculotmp'";
+                        $nome_coluna_veiculo = ", IDVeiculo";
+                        $valor_produto = $preco_veiculo_insert;
+                    }
+                }
+            } else {
+                $consulta = "SELECT IDArtigo, preco from artigos WHERE nome = '$nome_produtos[$posicao_produto]'";
+                include('database/selects_basedados.php');
+                if($dados){   
+                    foreach($dados as $linha){
+                        $id_artigotmp = $linha['IDArtigo'];
+                        $preco_artigo_insert = $linha['preco'];
+                    }
+                    $id_artigo = ",'$id_artigotmp'";
+                    $nome_coluna_artigo = ", IDArtigo";
+                    $valor_produto = $preco_artigo_insert;
+                    $id_veiculo = "";
+                    $nome_coluna_veiculo = "";
+                }
+            }
+            $insert = "INSERT INTO vendas(IDNIF_Cliente$nome_coluna_veiculo$nome_coluna_artigo, ValorVenda, Venda_online) 
+            VALUES ('$nif'$id_veiculo$id_artigo, '$valor_produto', 'Sim')";
+            $acao = 'insert';
+            $adicionar_foto = FALSE;
+            include('database/inserts_basedados.php');
+            $data_atual = date("Y-m-d H:i:s");
+            $compras_do_cliente = array();
+            $consulta = "SELECT IDVenda, IDNIF_Cliente, ValorVenda, DataVenda FROM vendas WHERE IDNIF_Cliente = '$nif' AND DataVenda = '$data_atual' ORDER BY DataVenda DESC";
+            include('database/selects_basedados.php');
+            if($dados){
+                foreach($dados as $linha){
+                    array_push($compras_do_cliente, $linha['IDVenda'], $linha['IDNIF_Cliente'], $linha['ValorVenda'], $linha['DataVenda']);
+                }
+            }
+    }
+    
+    $_SESSION['compra_sucess'] = array("sim", $mais_informacoes, $compras_do_cliente);
+    echo "<script type='text/javascript'>
+            location.href='compra_sucess.php'
+            </script>";
+    }
+}
+?>

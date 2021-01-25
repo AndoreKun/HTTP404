@@ -1,5 +1,5 @@
-\hypertarget{selects__basedados_8php}{}\doxysection{Referência do Arquivo C\+:/\+Kleyton/\+STI/1.1.Ambiente\+Desen/trabalho\+\_\+adc/database/selects\+\_\+basedados.php}
-\label{selects__basedados_8php}\index{C:/Kleyton/STI/1.1.AmbienteDesen/trabalho\_adc/database/selects\_basedados.php@{C:/Kleyton/STI/1.1.AmbienteDesen/trabalho\_adc/database/selects\_basedados.php}}
+\hypertarget{selects__basedados_8php}{}\doxysection{Referência do Arquivo database/selects\+\_\+basedados.php}
+\label{selects__basedados_8php}\index{database/selects\_basedados.php@{database/selects\_basedados.php}}
 \doxysubsection*{Variáveis}
 \begin{DoxyCompactItemize}
 \item 
@@ -24,7 +24,7 @@ catch(PDOException \$e) \mbox{\hyperlink{selects__basedados_8php_a9b16730b941f4b
 
 
 
-Definição na linha 15 do arquivo selects\+\_\+basedados.\+php.
+Definição na linha 25 do arquivo selects\+\_\+basedados.\+php.
 
 \mbox{\Hypertarget{selects__basedados_8php_a78657b8bcc2f0262dd26b81fd6e5a011}\label{selects__basedados_8php_a78657b8bcc2f0262dd26b81fd6e5a011}} 
 \index{selects\_basedados.php@{selects\_basedados.php}!\$dados@{\$dados}}
@@ -34,7 +34,7 @@ Definição na linha 15 do arquivo selects\+\_\+basedados.\+php.
 
 
 
-Definição na linha 13 do arquivo selects\+\_\+basedados.\+php.
+Definição na linha 23 do arquivo selects\+\_\+basedados.\+php.
 
 \mbox{\Hypertarget{selects__basedados_8php_a9b16730b941f4b87e605dfd42fac1ad6}\label{selects__basedados_8php_a9b16730b941f4b87e605dfd42fac1ad6}} 
 \index{selects\_basedados.php@{selects\_basedados.php}!\$items@{\$items}}
@@ -44,7 +44,7 @@ Definição na linha 13 do arquivo selects\+\_\+basedados.\+php.
 
 
 
-Definição na linha 11 do arquivo selects\+\_\+basedados.\+php.
+Definição na linha 20 do arquivo selects\+\_\+basedados.\+php.
 
 \mbox{\Hypertarget{selects__basedados_8php_af27a9140d5f2658693e7fd107f716449}\label{selects__basedados_8php_af27a9140d5f2658693e7fd107f716449}} 
 \index{selects\_basedados.php@{selects\_basedados.php}!\$stmt@{\$stmt}}
@@ -52,9 +52,9 @@ Definição na linha 11 do arquivo selects\+\_\+basedados.\+php.
 \doxysubsubsection{\texorpdfstring{\$stmt}{$stmt}}
 {\footnotesize\ttfamily \$stmt = \$conexao-\/$>$query(\$consulta)}
 
+\$stmt\+: resultado da consulta 
 
-
-Definição na linha 12 do arquivo selects\+\_\+basedados.\+php.
+Definição na linha 22 do arquivo selects\+\_\+basedados.\+php.
 
 \mbox{\Hypertarget{selects__basedados_8php_abe4cc9788f52e49485473dc699537388}\label{selects__basedados_8php_abe4cc9788f52e49485473dc699537388}} 
 \index{selects\_basedados.php@{selects\_basedados.php}!try@{try}}
@@ -65,10 +65,23 @@ Definição na linha 12 do arquivo selects\+\_\+basedados.\+php.
 {\bfseries Valor inicial\+:}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\{}
+\DoxyCodeLine{    }
 \DoxyCodeLine{    \mbox{\hyperlink{selects__basedados_8php_a59202891d3dfbc57cd6e8bf51abe9f87}{\$conexao}} = \textcolor{keyword}{new} PDO(\textcolor{stringliteral}{"{}mysql:host=localhost;dbname=adc\_http404"{}}, \mbox{\hyperlink{download_8php_ac3dc42e449d42a0f869b18785d6b09b1}{\$cargo}}, \mbox{\hyperlink{download_8php_ab23b8736684fa430ee74e2f7398e39e0}{\$pass\_users}})}
 
 \end{DoxyCode}
+Página responsável por fazer um select na base de dados A variáveis não definidas nesta página mas utilizadas na mesma são definidas na página em que selects\+\_\+basedados for incluida com\+: include(\char`\"{}selects\+\_\+basedados.\+php\char`\"{}) \begin{DoxyAuthor}{Autor}
+Grupo HTTP 404 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Versão}
+1.\+2 
+\end{DoxyVersion}
+\begin{DoxySince}{Desde}
+1 jan 2021 
+\end{DoxySince}
+\begin{DoxyReturn}{Retorna}
+\$dados Resultado Final da consulta Tenta criar uma conexão à based de dados com método orientado a objetos(\+PDO), caso falhe, retorna a excecao 
+\end{DoxyReturn}
 
 
-Definição na linha 3 do arquivo selects\+\_\+basedados.\+php.
+Definição na linha 11 do arquivo selects\+\_\+basedados.\+php.
 

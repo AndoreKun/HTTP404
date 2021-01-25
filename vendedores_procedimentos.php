@@ -28,8 +28,7 @@ if ($logado == "N" || $id_users == ""){
             </script>";	
     exit();
 }
-// Define o Local e lingua, para as funções strftime e strtotime funcionarem bem na página
-setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
+
 // Define variáveis de session como "N", apenas se tornaram "S" caso aquela opção for submetida em vendedores.php
 $_SESSION['registar_vendas'] = "N";
 $_SESSION['clientes'] = "N";
@@ -79,7 +78,7 @@ if(isset($_POST['submit'])){
             $insert = "INSERT INTO vendas(IDNIF_Cliente, IDArtigo, ValorVenda, IDFuncionario) VALUES ('$clienteselecionado', '$artigoselecionado', '$valordavenda', '$id_users')";
             // inclui o script de conexão e insert
             include('database/inserts_basedados.php');
-            $_SESSION['RegistarVendas'] = "S";
+            $_SESSION['registar_vendas'] = "S";
         }
         // Mesmo processo para artigos
         if ($artigoselecionado == "" and $veiculoselecionado != ""){

@@ -1,0 +1,169 @@
+\hypertarget{vendedores__procedimentos_8php}{}\doxysection{Referência do Arquivo vendedores\+\_\+procedimentos.\+php}
+\label{vendedores__procedimentos_8php}\index{vendedores\_procedimentos.php@{vendedores\_procedimentos.php}}
+\doxysubsection*{Variáveis}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{vendedores__procedimentos_8php_a66486d77e1d5f360f12a9c8916fc3c3b}{\$id\+\_\+users}} = isset(\$\+\_\+\+SESSION\mbox{[}\textquotesingle{}id\+\_\+users\textquotesingle{}\mbox{]}) ? \$\+\_\+\+SESSION\mbox{[}\textquotesingle{}id\+\_\+users\textquotesingle{}\mbox{]}\+: \char`\"{}\char`\"{}
+\item 
+\mbox{\hyperlink{vendedores__procedimentos_8php_aed647b912da169a4e21674e9ed5df406}{\$nome\+\_\+user}} = isset(\$\+\_\+\+SESSION\mbox{[}\textquotesingle{}nome\textquotesingle{}\mbox{]}) ? \$\+\_\+\+SESSION\mbox{[}\textquotesingle{}nome\textquotesingle{}\mbox{]}\+: \char`\"{}\char`\"{}
+\item 
+\mbox{\hyperlink{vendedores__procedimentos_8php_a12e3c531aad1a90903240dffb7c1399c}{\$email\+\_\+users}} = isset(\$\+\_\+\+SESSION\mbox{[}\textquotesingle{}email\textquotesingle{}\mbox{]}) ? \$\+\_\+\+SESSION\mbox{[}\textquotesingle{}email\textquotesingle{}\mbox{]}\+: \char`\"{}\char`\"{}
+\item 
+\mbox{\hyperlink{vendedores__procedimentos_8php_ab23b8736684fa430ee74e2f7398e39e0}{\$pass\+\_\+users}} = isset(\$\+\_\+\+SESSION\mbox{[}\textquotesingle{}pass\textquotesingle{}\mbox{]}) ? \$\+\_\+\+SESSION\mbox{[}\textquotesingle{}pass\textquotesingle{}\mbox{]}\+: \char`\"{}\char`\"{}
+\item 
+\mbox{\hyperlink{vendedores__procedimentos_8php_a0729e3f087508359829f1ac216909adf}{\$logado}} = isset(\$\+\_\+\+SESSION\mbox{[}\textquotesingle{}logado\textquotesingle{}\mbox{]}) ? \$\+\_\+\+SESSION\mbox{[}\textquotesingle{}logado\textquotesingle{}\mbox{]}\+: \char`\"{}N\char`\"{}
+\item 
+\mbox{\hyperlink{vendedores__procedimentos_8php_ac3dc42e449d42a0f869b18785d6b09b1}{\$cargo}} = isset(\$\+\_\+\+SESSION\mbox{[}\textquotesingle{}cargo\textquotesingle{}\mbox{]}) ? \$\+\_\+\+SESSION\mbox{[}\textquotesingle{}cargo\textquotesingle{}\mbox{]}\+: \char`\"{}\char`\"{}
+\item 
+\mbox{\hyperlink{vendedores__procedimentos_8php_a8752e9f9470a017864b3b2c4c795b233}{if}}(\$logado==\char`\"{}N\char`\"{}$\vert$$\vert$ \$id\+\_\+users==\char`\"{}\char`\"{}) \mbox{\hyperlink{vendedores__procedimentos_8php_a507a269fa04d98d814b9fbe22a47ac02}{\$\+\_\+\+SESSION}} \mbox{[}\textquotesingle{}registar\+\_\+vendas\textquotesingle{}\mbox{]} = \char`\"{}N\char`\"{}
+\item 
+\mbox{\hyperlink{vendedores__procedimentos_8php_ad15279bb93fc457a1971f0fbb471fe4c}{\$\+\_\+\+SESSION}} \mbox{[}\textquotesingle{}clientes\textquotesingle{}\mbox{]} = \char`\"{}N\char`\"{}
+\item 
+\mbox{\hyperlink{vendedores__procedimentos_8php_a62fd34143adde4967543e5a8e9ab7873}{\$\+\_\+\+SESSION}} \mbox{[}\textquotesingle{}veiculos\textquotesingle{}\mbox{]} = \char`\"{}N\char`\"{}
+\item 
+\mbox{\hyperlink{vendedores__procedimentos_8php_a8f386cb7e5196523cfec094d99dc7c4b}{\$\+\_\+\+SESSION}} \mbox{[}\textquotesingle{}artigos\textquotesingle{}\mbox{]} = \char`\"{}N\char`\"{}
+\item 
+if(isset(\$\+\_\+\+POST\mbox{[}\textquotesingle{}submit\textquotesingle{}\mbox{]})) if(isset(\$\+\_\+\+POST\mbox{[}\textquotesingle{}atualizarcliente\textquotesingle{}\mbox{]})) if(isset(\$\+\_\+\+POST\mbox{[}\textquotesingle{}removercliente\textquotesingle{}\mbox{]})) if(isset(\$\+\_\+\+POST\mbox{[}\textquotesingle{}criarcliente\textquotesingle{}\mbox{]})) if(isset(\$\+\_\+\+POST\mbox{[}\textquotesingle{}atualizarveiculo\textquotesingle{}\mbox{]})) if(isset(\$\+\_\+\+POST\mbox{[}\textquotesingle{}removerveiculo\textquotesingle{}\mbox{]})) if(isset(\$\+\_\+\+POST\mbox{[}\textquotesingle{}criarveiculo\textquotesingle{}\mbox{]})) if(isset(\$\+\_\+\+POST\mbox{[}\textquotesingle{}atualizarartigo\textquotesingle{}\mbox{]})) if(isset(\$\+\_\+\+POST\mbox{[}\textquotesingle{}removerartigo\textquotesingle{}\mbox{]})) \mbox{\hyperlink{vendedores__procedimentos_8php_a8752e9f9470a017864b3b2c4c795b233}{if}} (isset( \$\+\_\+\+POST\mbox{[} \textquotesingle{}criarartigo\textquotesingle{}\mbox{]}))
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Variáveis}
+\mbox{\Hypertarget{vendedores__procedimentos_8php_a8f386cb7e5196523cfec094d99dc7c4b}\label{vendedores__procedimentos_8php_a8f386cb7e5196523cfec094d99dc7c4b}} 
+\index{vendedores\_procedimentos.php@{vendedores\_procedimentos.php}!\$\_SESSION@{\$\_SESSION}}
+\index{\$\_SESSION@{\$\_SESSION}!vendedores\_procedimentos.php@{vendedores\_procedimentos.php}}
+\doxysubsubsection{\texorpdfstring{\$\_SESSION}{$\_SESSION}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \$\+\_\+\+SESSION\mbox{[} \textquotesingle{}artigos\textquotesingle{}\mbox{]} = \char`\"{}N\char`\"{}}
+
+
+
+Definição na linha 36 do arquivo vendedores\+\_\+procedimentos.\+php.
+
+\mbox{\Hypertarget{vendedores__procedimentos_8php_ad15279bb93fc457a1971f0fbb471fe4c}\label{vendedores__procedimentos_8php_ad15279bb93fc457a1971f0fbb471fe4c}} 
+\index{vendedores\_procedimentos.php@{vendedores\_procedimentos.php}!\$\_SESSION@{\$\_SESSION}}
+\index{\$\_SESSION@{\$\_SESSION}!vendedores\_procedimentos.php@{vendedores\_procedimentos.php}}
+\doxysubsubsection{\texorpdfstring{\$\_SESSION}{$\_SESSION}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \$\+\_\+\+SESSION\mbox{[} \textquotesingle{}clientes\textquotesingle{}\mbox{]} = \char`\"{}N\char`\"{}}
+
+
+
+Definição na linha 34 do arquivo vendedores\+\_\+procedimentos.\+php.
+
+\mbox{\Hypertarget{vendedores__procedimentos_8php_a507a269fa04d98d814b9fbe22a47ac02}\label{vendedores__procedimentos_8php_a507a269fa04d98d814b9fbe22a47ac02}} 
+\index{vendedores\_procedimentos.php@{vendedores\_procedimentos.php}!\$\_SESSION@{\$\_SESSION}}
+\index{\$\_SESSION@{\$\_SESSION}!vendedores\_procedimentos.php@{vendedores\_procedimentos.php}}
+\doxysubsubsection{\texorpdfstring{\$\_SESSION}{$\_SESSION}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{vendedores__procedimentos_8php_a8752e9f9470a017864b3b2c4c795b233}{if}} ( \$logado==\char`\"{}N\char`\"{}$\vert$$\vert$\$id\+\_\+users==\char`\"{}\char`\"{}) \$\+\_\+\+SESSION\mbox{[} \textquotesingle{}registar\+\_\+vendas\textquotesingle{}\mbox{]} = \char`\"{}N\char`\"{}}
+
+
+
+Definição na linha 33 do arquivo vendedores\+\_\+procedimentos.\+php.
+
+\mbox{\Hypertarget{vendedores__procedimentos_8php_a62fd34143adde4967543e5a8e9ab7873}\label{vendedores__procedimentos_8php_a62fd34143adde4967543e5a8e9ab7873}} 
+\index{vendedores\_procedimentos.php@{vendedores\_procedimentos.php}!\$\_SESSION@{\$\_SESSION}}
+\index{\$\_SESSION@{\$\_SESSION}!vendedores\_procedimentos.php@{vendedores\_procedimentos.php}}
+\doxysubsubsection{\texorpdfstring{\$\_SESSION}{$\_SESSION}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \$\+\_\+\+SESSION\mbox{[} \textquotesingle{}veiculos\textquotesingle{}\mbox{]} = \char`\"{}N\char`\"{}}
+
+
+
+Definição na linha 35 do arquivo vendedores\+\_\+procedimentos.\+php.
+
+\mbox{\Hypertarget{vendedores__procedimentos_8php_ac3dc42e449d42a0f869b18785d6b09b1}\label{vendedores__procedimentos_8php_ac3dc42e449d42a0f869b18785d6b09b1}} 
+\index{vendedores\_procedimentos.php@{vendedores\_procedimentos.php}!\$cargo@{\$cargo}}
+\index{\$cargo@{\$cargo}!vendedores\_procedimentos.php@{vendedores\_procedimentos.php}}
+\doxysubsubsection{\texorpdfstring{\$cargo}{$cargo}}
+{\footnotesize\ttfamily \$cargo = isset(\$\+\_\+\+SESSION\mbox{[}\textquotesingle{}cargo\textquotesingle{}\mbox{]}) ? \$\+\_\+\+SESSION\mbox{[}\textquotesingle{}cargo\textquotesingle{}\mbox{]}\+: \char`\"{}\char`\"{}}
+
+
+
+Definição na linha 22 do arquivo vendedores\+\_\+procedimentos.\+php.
+
+\mbox{\Hypertarget{vendedores__procedimentos_8php_a12e3c531aad1a90903240dffb7c1399c}\label{vendedores__procedimentos_8php_a12e3c531aad1a90903240dffb7c1399c}} 
+\index{vendedores\_procedimentos.php@{vendedores\_procedimentos.php}!\$email\_users@{\$email\_users}}
+\index{\$email\_users@{\$email\_users}!vendedores\_procedimentos.php@{vendedores\_procedimentos.php}}
+\doxysubsubsection{\texorpdfstring{\$email\_users}{$email\_users}}
+{\footnotesize\ttfamily \$email\+\_\+users = isset(\$\+\_\+\+SESSION\mbox{[}\textquotesingle{}email\textquotesingle{}\mbox{]}) ? \$\+\_\+\+SESSION\mbox{[}\textquotesingle{}email\textquotesingle{}\mbox{]}\+: \char`\"{}\char`\"{}}
+
+
+
+Definição na linha 19 do arquivo vendedores\+\_\+procedimentos.\+php.
+
+\mbox{\Hypertarget{vendedores__procedimentos_8php_a66486d77e1d5f360f12a9c8916fc3c3b}\label{vendedores__procedimentos_8php_a66486d77e1d5f360f12a9c8916fc3c3b}} 
+\index{vendedores\_procedimentos.php@{vendedores\_procedimentos.php}!\$id\_users@{\$id\_users}}
+\index{\$id\_users@{\$id\_users}!vendedores\_procedimentos.php@{vendedores\_procedimentos.php}}
+\doxysubsubsection{\texorpdfstring{\$id\_users}{$id\_users}}
+{\footnotesize\ttfamily \$id\+\_\+users = isset(\$\+\_\+\+SESSION\mbox{[}\textquotesingle{}id\+\_\+users\textquotesingle{}\mbox{]}) ? \$\+\_\+\+SESSION\mbox{[}\textquotesingle{}id\+\_\+users\textquotesingle{}\mbox{]}\+: \char`\"{}\char`\"{}}
+
+
+
+Definição na linha 17 do arquivo vendedores\+\_\+procedimentos.\+php.
+
+\mbox{\Hypertarget{vendedores__procedimentos_8php_a0729e3f087508359829f1ac216909adf}\label{vendedores__procedimentos_8php_a0729e3f087508359829f1ac216909adf}} 
+\index{vendedores\_procedimentos.php@{vendedores\_procedimentos.php}!\$logado@{\$logado}}
+\index{\$logado@{\$logado}!vendedores\_procedimentos.php@{vendedores\_procedimentos.php}}
+\doxysubsubsection{\texorpdfstring{\$logado}{$logado}}
+{\footnotesize\ttfamily \$logado = isset(\$\+\_\+\+SESSION\mbox{[}\textquotesingle{}logado\textquotesingle{}\mbox{]}) ? \$\+\_\+\+SESSION\mbox{[}\textquotesingle{}logado\textquotesingle{}\mbox{]}\+: \char`\"{}N\char`\"{}}
+
+
+
+Definição na linha 21 do arquivo vendedores\+\_\+procedimentos.\+php.
+
+\mbox{\Hypertarget{vendedores__procedimentos_8php_aed647b912da169a4e21674e9ed5df406}\label{vendedores__procedimentos_8php_aed647b912da169a4e21674e9ed5df406}} 
+\index{vendedores\_procedimentos.php@{vendedores\_procedimentos.php}!\$nome\_user@{\$nome\_user}}
+\index{\$nome\_user@{\$nome\_user}!vendedores\_procedimentos.php@{vendedores\_procedimentos.php}}
+\doxysubsubsection{\texorpdfstring{\$nome\_user}{$nome\_user}}
+{\footnotesize\ttfamily \$nome\+\_\+user = isset(\$\+\_\+\+SESSION\mbox{[}\textquotesingle{}nome\textquotesingle{}\mbox{]}) ? \$\+\_\+\+SESSION\mbox{[}\textquotesingle{}nome\textquotesingle{}\mbox{]}\+: \char`\"{}\char`\"{}}
+
+
+
+Definição na linha 18 do arquivo vendedores\+\_\+procedimentos.\+php.
+
+\mbox{\Hypertarget{vendedores__procedimentos_8php_ab23b8736684fa430ee74e2f7398e39e0}\label{vendedores__procedimentos_8php_ab23b8736684fa430ee74e2f7398e39e0}} 
+\index{vendedores\_procedimentos.php@{vendedores\_procedimentos.php}!\$pass\_users@{\$pass\_users}}
+\index{\$pass\_users@{\$pass\_users}!vendedores\_procedimentos.php@{vendedores\_procedimentos.php}}
+\doxysubsubsection{\texorpdfstring{\$pass\_users}{$pass\_users}}
+{\footnotesize\ttfamily \$pass\+\_\+users = isset(\$\+\_\+\+SESSION\mbox{[}\textquotesingle{}pass\textquotesingle{}\mbox{]}) ? \$\+\_\+\+SESSION\mbox{[}\textquotesingle{}pass\textquotesingle{}\mbox{]}\+: \char`\"{}\char`\"{}}
+
+
+
+Definição na linha 20 do arquivo vendedores\+\_\+procedimentos.\+php.
+
+\mbox{\Hypertarget{vendedores__procedimentos_8php_a8752e9f9470a017864b3b2c4c795b233}\label{vendedores__procedimentos_8php_a8752e9f9470a017864b3b2c4c795b233}} 
+\index{vendedores\_procedimentos.php@{vendedores\_procedimentos.php}!if@{if}}
+\index{if@{if}!vendedores\_procedimentos.php@{vendedores\_procedimentos.php}}
+\doxysubsubsection{\texorpdfstring{if}{if}}
+{\footnotesize\ttfamily if (isset( \$\+\_\+\+POST\mbox{[} \textquotesingle{}submit\textquotesingle{}\mbox{]})) if (isset( \$\+\_\+\+POST\mbox{[} \textquotesingle{}atualizarcliente\textquotesingle{}\mbox{]})) if (isset( \$\+\_\+\+POST\mbox{[} \textquotesingle{}removercliente\textquotesingle{}\mbox{]})) if (isset( \$\+\_\+\+POST\mbox{[} \textquotesingle{}criarcliente\textquotesingle{}\mbox{]})) if (isset( \$\+\_\+\+POST\mbox{[} \textquotesingle{}atualizarveiculo\textquotesingle{}\mbox{]})) if (isset( \$\+\_\+\+POST\mbox{[} \textquotesingle{}removerveiculo\textquotesingle{}\mbox{]})) if (isset( \$\+\_\+\+POST\mbox{[} \textquotesingle{}criarveiculo\textquotesingle{}\mbox{]})) if (isset( \$\+\_\+\+POST\mbox{[} \textquotesingle{}atualizarartigo\textquotesingle{}\mbox{]})) if (isset( \$\+\_\+\+POST\mbox{[} \textquotesingle{}removerartigo\textquotesingle{}\mbox{]})) if(isset(\$\+\_\+\+POST\mbox{[}\textquotesingle{}criarartigo\textquotesingle{}\mbox{]})) (\begin{DoxyParamCaption}\item[{isset( \$\+\_\+\+POST\mbox{[} \textquotesingle{}criarartigo\textquotesingle{}\mbox{]})}]{ }\end{DoxyParamCaption})}
+
+Caso o formulário estiver sido submetido, faz o insert desejado Atualiza um Cliente na base de dados Remove um Cliente da base de dados Adicionar um novo Cliente na base de dados Atualiza um Veiculo, utiliza o mesmo método de atualizar clientes Remove um Veiculo, utiliza o mesmo método de remover clientes Adicionar um novo Veiculo, utiliza o mesmo método de adicionar clientes Atualiza um Artigo, utiliza o mesmo método de atualizar veiculos Remove um Artigo, utiliza o mesmo método de remover veiculos Adicionar um novo Artigo, utiliza o mesmo método de adicionar veiculos \$insertpronto\+: Verdadeiro quando estiver definido qual é o insert a ser feito
+
+\$clienteselecionado\+: Cliente Selecionado no formulário, obtido través do método POST
+
+Caso não tenha sido selecionado um cliente, define \$insertpronto como falso
+
+\$veiculoselecionado\+: Veiculo Selecionado no formulário, obtido através do método POST
+
+\$artigoselecionado\+: Artigo Selecionado no formulário, obtido através do método POST
+
+Caso não tenha sido selecionado um veiculo e um artigo, define \$insertpronto como falso
+
+Caso o insert estiver pronto(Se um cliente e um veiculo e/ou um artigo estiverem selecionados), Cria o insert para a base de dados. caso não esteja pronto, imprime que faltam valores para inserir a venda
+
+\$consulta\+: Consulta para a base de dados, para calcular o valor da vendas a ser enviado a \mbox{\hyperlink{selects__basedados_8php}{selects\+\_\+basedados.\+php}} para realizar a consulta
+
+\$insert\+: Query do Insert a ser enviado para \mbox{\hyperlink{inserts__basedados_8php}{inserts\+\_\+basedados.\+php}} para realizar o insert na base de dados
+
+\$acao\+: Acão a ser realizada em inserts\+\_\+basedeados.\+php(\char`\"{}\+Insert\char`\"{}, \char`\"{}\+Update\char`\"{} ou \char`\"{}\+Delete\char`\"{})
+
+\$imagem\+: A imagem que o utilizador fez o upload, que caso exista, serám convertida para binário e inserida na base de dados ~\newline
+
+
+\$rm\+\_\+nif\+\_\+cliente\+: NIF do cliente a ser removido
+
+\$clientenovo\+: Verdadeiro se o cliente não existe na base de dado, e falso se existe
+
+foreach(\$dados as \$linha)\+: Ciclo testa se o cliente já existe na base de dados ou não
+
+if(\$clientenovo == TRUE)\+: Se o Cliente for Novo, prepara o query do insert na base de dados
+
+Definição na linha 369 do arquivo vendedores\+\_\+procedimentos.\+php.
+
