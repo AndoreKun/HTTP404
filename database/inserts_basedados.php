@@ -48,6 +48,6 @@ try{
     }
     // desconecta da base de dados
     $conexao = null;
-    session_start();
+
     $_SESSION['feedback_insert'] = $feedback;
 ?>
