@@ -1,7 +1,8 @@
 var searchData=
 [
-  ['carrinho_2ephp_66',['carrinho.php',['../carrinho_8php.html',1,'']]],
-  ['carrinho_5fartigos_2ephp_67',['carrinho_artigos.php',['../carrinho__artigos_8php.html',1,'']]],
-  ['checkout_2ephp_68',['checkout.php',['../checkout_8php.html',1,'']]],
-  ['conexao_2eclass_2ephp_69',['Conexao.class.php',['../_conexao_8class_8php.html',1,'']]]
+  ['carrinho_2ephp_76',['carrinho.php',['../carrinho_8php.html',1,'']]],
+  ['carrinho_5fartigos_2ephp_77',['carrinho_artigos.php',['../carrinho__artigos_8php.html',1,'']]],
+  ['checkout_2ephp_78',['checkout.php',['../checkout_8php.html',1,'']]],
+  ['compra_5fsucess_2ephp_79',['compra_sucess.php',['../compra__sucess_8php.html',1,'']]],
+  ['conexao_2eclass_2ephp_80',['Conexao.class.php',['../_conexao_8class_8php.html',1,'']]]
 ];

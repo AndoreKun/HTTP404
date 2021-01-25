@@ -1,11 +1,11 @@
-\hypertarget{checkout_8php}{}\doxysection{Referência do Arquivo C\+:/\+Kleyton/\+STI/1.1.Ambiente\+Desen/trabalho\+\_\+adc/checkout.php}
-\label{checkout_8php}\index{C:/Kleyton/STI/1.1.AmbienteDesen/trabalho\_adc/checkout.php@{C:/Kleyton/STI/1.1.AmbienteDesen/trabalho\_adc/checkout.php}}
+\hypertarget{checkout_8php}{}\doxysection{Referência do Arquivo checkout.\+php}
+\label{checkout_8php}\index{checkout.php@{checkout.php}}
 \doxysubsection*{Variáveis}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{checkout_8php_a5356327e7656c11ad0adc10aa5ae2f1d}{\$total\+\_\+valor\+\_\+produtos}} = 0
 \item 
-\mbox{\hyperlink{download_8php_a7b8760bb85b618c76ba715dba4c5210b}{if}}(isset(\$\+\_\+\+SESSION\mbox{[}\textquotesingle{}produtos\textquotesingle{}\mbox{]}\mbox{[}\textquotesingle{}produtos\textquotesingle{}\mbox{]})) \mbox{\hyperlink{checkout_8php_a336c25abe9c541b0f1620f2eecdf5c04}{else}} \{ echo \char`\"{}$<$h4$>$Não há nenhum produto no carrinho$<$/h4$>$\char`\"{}
+\mbox{\hyperlink{vendedores__procedimentos_8php_a8752e9f9470a017864b3b2c4c795b233}{if}}(isset(\$\+\_\+\+SESSION\mbox{[}\textquotesingle{}produtos\textquotesingle{}\mbox{]}\mbox{[}\textquotesingle{}produtos\textquotesingle{}\mbox{]})) \mbox{\hyperlink{checkout_8php_a336c25abe9c541b0f1620f2eecdf5c04}{else}} \{ echo \char`\"{}$<$h4$>$Não há nenhum produto no carrinho$<$/h4$>$\char`\"{}
 \end{DoxyCompactItemize}
 
 
@@ -16,33 +16,33 @@
 \doxysubsubsection{\texorpdfstring{\$total\_valor\_produtos}{$total\_valor\_produtos}}
 {\footnotesize\ttfamily \$total\+\_\+valor\+\_\+produtos = 0}
 
-Total do Valor dos produtos. 
+Total do Valor dos produtos 
 
-Definição na linha 11 do arquivo checkout.\+php.
+Definição na linha 10 do arquivo checkout.\+php.
 
 \mbox{\Hypertarget{checkout_8php_a336c25abe9c541b0f1620f2eecdf5c04}\label{checkout_8php_a336c25abe9c541b0f1620f2eecdf5c04}} 
 \index{checkout.php@{checkout.php}!else@{else}}
 \index{else@{else}!checkout.php@{checkout.php}}
 \doxysubsubsection{\texorpdfstring{else}{else}}
-{\footnotesize\ttfamily \mbox{\hyperlink{download_8php_a7b8760bb85b618c76ba715dba4c5210b}{if}} (isset( \$\+\_\+\+SESSION\mbox{[} \textquotesingle{}produtos\textquotesingle{}\mbox{]}\mbox{[} \textquotesingle{}produtos\textquotesingle{}\mbox{]})) else \{ echo \char`\"{}$<$h4$>$Não há nenhum produto no carrinho$<$/h4$>$\char`\"{}}
+{\footnotesize\ttfamily \mbox{\hyperlink{vendedores__procedimentos_8php_a8752e9f9470a017864b3b2c4c795b233}{if}} (isset( \$\+\_\+\+SESSION\mbox{[} \textquotesingle{}produtos\textquotesingle{}\mbox{]}\mbox{[} \textquotesingle{}produtos\textquotesingle{}\mbox{]})) else \{ echo \char`\"{}$<$h4$>$Não há nenhum produto no carrinho$<$/h4$>$\char`\"{}}
 
-Caso esteja definido algum produto no array, imprime-\/os ao na secção de encomendas, senão imprime ao usuário que não existem produtos no carrinho. \$produtos\+: Array com todos os produtos do Carrinho.
+Caso esteja definido algum produto no array, imprime-\/os ao na secção de encomendas, senão imprime ao usuário que não existem produtos no carrinho \$produtos\+: Array com todos os produtos do Carrinho
 
-\$nomeproduto\+: Posição do nome dos produtos no array.
+\$nomeproduto\+: Posição do nome dos produtos no array
 
-\$qntdproduto\+: Posição da quantidade dos produtos no array.
+\$qntdproduto\+: Posição da quantidade dos produtos no array
 
-\$precoproduto\+: Posição do preço dos produtos no array.
+\$precoproduto\+: Posição do preço dos produtos no array
 
-\$num\+\_\+produtos\+\_\+total\+: Número total de produtos.
+\$num\+\_\+produtos\+\_\+total\+: Número total de produtos
 
-\$pos\+\_\+preco\+: Posição do preço no array do produtos.
+\$pos\+\_\+preco\+: Posição do preço no array do produtos
 
-for(\$preco\+\_\+veiculos = 0; \$num\+\_\+produtos\+\_\+total $>$ \$preco\+\_\+veiculos; \$preco\+\_\+veiculos++)\+: Calcula o valor total da compra.
+for(\$preco\+\_\+veiculos = 0; \$num\+\_\+produtos\+\_\+total $>$ \$preco\+\_\+veiculos; \$preco\+\_\+veiculos++)\+: Calcula o valor total da compra
 
-\$total\+\_\+valor\+\_\+produtos\+: Valor Total dos produtos.
+\$total\+\_\+valor\+\_\+produtos\+: Valor Total dos produtos
 
-for(\$num\+\_\+linhas = 0; \$num\+\_\+produtos\+\_\+total $>$ \$num\+\_\+linhas; \$num\+\_\+linhas++)\+: Ciclo que apresenta todos os produtos para o cliente.
+for(\$num\+\_\+linhas = 0; \$num\+\_\+produtos\+\_\+total $>$ \$num\+\_\+linhas; \$num\+\_\+linhas++)\+: Ciclo que apresenta todos os produtos para o cliente
 
-Definição na linha 272 do arquivo checkout.\+php.
+Definição na linha 281 do arquivo checkout.\+php.
 

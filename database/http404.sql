@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS `artigos` (
   PRIMARY KEY (`IDArtigo`)
 ) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Dumping data for table adc_http404.artigos: ~18 rows (approximately)
+-- Dumping data for table adc_http404.artigos: ~19 rows (approximately)
 /*!40000 ALTER TABLE `artigos` DISABLE KEYS */;
 INSERT INTO `artigos` (`IDArtigo`, `nome`, `descricao`, `tipo_artigo`, `preco`, `em_stock`, `quantidade_stock`) VALUES
 	(1, 'Performance Machine Supra Real Wheel', 'Rodas para mota', 'Peças', 1399, 'Sim', 10),
@@ -70,7 +70,7 @@ CREATE TABLE IF NOT EXISTS `clientes` (
   PRIMARY KEY (`IDNIF_Cliente`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Clientes que se registaram através do checkout na loja online ou numa loja física';
 
--- Dumping data for table adc_http404.clientes: ~9 rows (approximately)
+-- Dumping data for table adc_http404.clientes: ~8 rows (approximately)
 /*!40000 ALTER TABLE `clientes` DISABLE KEYS */;
 INSERT INTO `clientes` (`IDNIF_Cliente`, `Nome`, `Email`, `Telemovel`, `Pais`, `Morada`, `Cod_Postal`, `Localidade`, `Foto`) VALUES
 	('001910931', 'Inês Francisco', 'inesff@gmail.com', '009894120', 'Portugal', 'Rua dos 8 cavaleiros, Casa Nº2', '3500-004', 'Viseu', NULL),
@@ -112,7 +112,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   PRIMARY KEY (`id_users`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Dumping data for table adc_http404.users: ~6 rows (approximately)
+-- Dumping data for table adc_http404.users: ~8 rows (approximately)
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id_users`, `nome`, `email`, `pass`, `cargo`) VALUES
 	(1, 'André Pereira', 'andorelouise@gmail.com', 'http404#2021%', 'admin'),
@@ -165,7 +165,8 @@ CREATE TABLE IF NOT EXISTS `vendas` (
   `IDArtigo` int DEFAULT NULL,
   `ValorVenda` float NOT NULL,
   `DataVenda` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `IDFuncionario` int NOT NULL,
+  `IDFuncionario` int DEFAULT NULL,
+  `Venda_Online` char(3) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT 'Nao',
   PRIMARY KEY (`IDVenda`),
   KEY `FKIDVeiculo` (`IDVeiculo`),
   KEY `FKIDArtigo` (`IDArtigo`),
@@ -175,18 +176,18 @@ CREATE TABLE IF NOT EXISTS `vendas` (
   CONSTRAINT `FKIDFuncionario` FOREIGN KEY (`IDFuncionario`) REFERENCES `users` (`id_users`) ON UPDATE CASCADE,
   CONSTRAINT `FKIDNIF_Cliente` FOREIGN KEY (`IDNIF_Cliente`) REFERENCES `clientes` (`IDNIF_Cliente`) ON UPDATE CASCADE,
   CONSTRAINT `FKIDVeiculo` FOREIGN KEY (`IDVeiculo`) REFERENCES `veiculos` (`IDVeiculo`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Vendas Online não são feitas por funcionários, logo IDFuncionario pode ser nulo';
 
 -- Dumping data for table adc_http404.vendas: ~7 rows (approximately)
 /*!40000 ALTER TABLE `vendas` DISABLE KEYS */;
-INSERT INTO `vendas` (`IDVenda`, `IDNIF_Cliente`, `IDVeiculo`, `IDArtigo`, `ValorVenda`, `DataVenda`, `IDFuncionario`) VALUES
-	(1, '999999999', 3, NULL, 66000, '2020-11-21 18:32:31', 6),
-	(2, '123123123', 1, NULL, 50000, '2020-12-27 10:27:45', 6),
-	(3, '123123123', 4, NULL, 17000, '2020-12-27 10:30:45', 6),
-	(4, '123123123', NULL, 7, 64.88, '2020-12-28 15:31:59', 6),
-	(5, '123123123', NULL, 8, 489, '2020-12-28 15:31:59', 6),
-	(6, '290189213', NULL, 8, 489, '2020-12-28 18:48:37', 6),
-	(7, '290189213', NULL, 9, 270, '2020-12-30 13:53:17', 6);
+INSERT INTO `vendas` (`IDVenda`, `IDNIF_Cliente`, `IDVeiculo`, `IDArtigo`, `ValorVenda`, `DataVenda`, `IDFuncionario`, `Venda_Online`) VALUES
+	(1, '999999999', 3, NULL, 66000, '2020-11-21 18:32:31', 6, 'Nao'),
+	(2, '123123123', 1, NULL, 50000, '2020-12-27 10:27:45', 7, 'Nao'),
+	(3, '123123123', 4, NULL, 17000, '2020-12-27 10:30:45', 6, 'Nao'),
+	(4, '123123123', NULL, 7, 64.88, '2020-12-28 15:31:59', 6, 'Nao'),
+	(5, '123123123', NULL, 8, 489, '2020-12-28 15:31:59', 7, 'Nao'),
+	(6, '290189213', NULL, 8, 489, '2020-12-28 18:48:37', 6, 'Nao'),
+	(7, '290189213', NULL, 9, 270, '2020-12-30 13:53:17', 7, 'Nao');
 /*!40000 ALTER TABLE `vendas` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
