@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['readme_2emd_76',['README.md',['../_r_e_a_d_m_e_8md.html',1,'']]],
-  ['reservado_2ephp_77',['reservado.php',['../reservado_8php.html',1,'']]]
+  ['product_2ddetails_2ephp_86',['product-details.php',['../product-details_8php.html',1,'']]]
 ];
