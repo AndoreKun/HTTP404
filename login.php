@@ -1,3 +1,11 @@
+<?php
+/**
+*Pagina para login de funcionários, tem a função de redirecionar os utilizadores para sua area (vendedores, técnicos, patrão).
+*@author Grupo HTTP404
+*@version 3.1
+*@since 24 dez 2020
+**/
+?>
 <!DOCTYPE HTML>
 <html class="no-js" lang="zxx">
 <head>
@@ -6,10 +14,10 @@
     <title>HTTP 404</title>
     <meta name="description" content="HTTP 404 - O melhor site de vendas de veículos">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Favicon -->
+    <!-- Favicon - icones favoritos -->
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
     
-    <!-- all css here -->
+    <!-- Chamada de todos os css -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/animate.css">
     <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
@@ -58,14 +66,14 @@
                                             <article>
                                                 <form name="form_pesquisa" id="form_pesquisa" method="post" action="">
                                                     <div id="login-box-name">Email:</div>
-                            <div id="login-box-field">
-                                <input name="email" class="form-login" title="Username" value="" size="30"/>
-                            </div>
-                            <div id="login-box-name">Password:</div>
-                            <div id="login-box-field">
-                                <input name="pass" type="password" class="form-login" title="Password" value="" size="30"/>
-                            </div>
-                            <button name="acao" class="btn-style cr-btn" type="submit" form="form_pesquisa" value="logar">Login</button>
+                                                        <div id="login-box-field">
+                                                            <input name="email" class="form-login" title="Username" value="" size="30"/>
+                                                        </div>
+                                                        <div id="login-box-name">Password:</div>
+                                                        <div id="login-box-field">
+                                                            <input name="pass" type="password" class="form-login" title="Password" value="" size="30"/>
+                                                        </div>
+                                                        <button name="acao" class="btn-style cr-btn" type="submit" form="form_pesquisa" value="logar">Login</button>
                                                 </form>
                                             </article>
                                         </div>
@@ -81,29 +89,33 @@
 </body>
 </html>
 <?php
+/** Define a ação a ser feita através do formulário de login. **/
 $action = isset($_POST['acao']) ? trim($_POST['acao']) : '';
-	if(isset($action) && $action != ""){ 
-		
-		switch($action){
-			case 'logar':
-				//requerimos nossa classe de autenticação passando os valores dos inputs como parâmetros
-				require_once('class/Autentica.class.php');
-				//instancio a classse para podermos usar o método nela contida
-				$Autentica = new Autentica();
-				//setamos 
-				$Autentica->email	= $_POST['email'];
-				$Autentica->pass	= $_POST['pass'];
-				//chamamos nosso método						
-				if($Autentica->Validar_Usuario()){
-                    echo  "<script type='text/javascript'>
-                                location.href='reservado.php'
-                            </script>"; 
-				  }else{
-				   echo  "<script type='text/javascript'>
-                            alert('ATEN\u00c7\u00c4O, Login ou Senha inv\u00e1lidos...');location.href='login.php'
-						</script>"; 
-				  }
-			break;
-		}	
-	}
+/** Caso ação esteja definida e não seja uma string vazia, faz o login do funcionário e o redireciona. **/
+if(isset($action) && $action != ""){ 
+    
+    switch($action){
+        case 'logar':
+            /** require_once('class/Autentica.class.php'): requerimos nossa classe de autenticação passando os valores dos inputs como parâmetros. **/
+            require_once('class/Autentica.class.php');
+            /** $Autentica = new Autentica(): instancio a classse para podermos usar o método nela contida. **/
+            $Autentica = new Autentica();
+            /** $Autentica->email	= $_POST['email']: Definimos o email do funcionário. **/
+            $Autentica->email	= $_POST['email'];
+            /** $Autentica->pass	= $_POST['pass']: Definimos a palavra passe do funcionário. **/
+            $Autentica->pass	= $_POST['pass'];
+            /** if($Autentica->Validar_Usuario()): chama o método para verificar o funcionário, caso ele seja verificado, redireciona para a página reservados
+            * senão imprime que as informações de login estão erradas. **/
+            if($Autentica->Validar_Usuario()){
+                echo  "<script type='text/javascript'>
+                            location.href='reservado.php'
+                        </script>"; 
+                }else{
+                echo  "<script type='text/javascript'>
+                        alert('ATEN\u00c7\u00c4O, Login ou Senha inv\u00e1lidos...');location.href='login.php'
+                    </script>"; 
+                }
+        break;
+    }	
+}
 ?>

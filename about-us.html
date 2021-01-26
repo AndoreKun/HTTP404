@@ -1,3 +1,11 @@
+<!--
+/** 
+* Página de Informações da empresa
+* @author Grupo HTTP404
+* @version 2.6
+* @since 21 jan 2021
+*/
+-->
 <!doctype html>
 <html class="no-js" lang="zxx">
     <head>
@@ -6,10 +14,10 @@
         <title>Sobre nós</title>
         <meta name="description" content="HTTP 404 - O melhor site de vendas de veículos">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- Favicon -->
+        <!-- Favicon - ícones favoritos -->
         <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
 		
-		<!-- all css here -->
+		<!-- Chamada de todos os css -->
         <link rel="stylesheet" href="assets/css/bootstrap.min.css">
         <link rel="stylesheet" href="assets/css/animate.css">
         <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
@@ -24,6 +32,7 @@
         <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
     </head>
     <body>
+    <!-- Cabeçalho embrulhado -->
         <div class="wrapper">
             <header>
                 <div class="header-area transparent-bar ptb-55">
@@ -72,6 +81,7 @@
                     
                 </div>
             </header>
+            <!-- localização do usuário na página -->
             <div class="breadcrumb-area pt-255 pb-170" style="background-image: url(assets/img/banner/banner-4.jpg)">
                 <div class="container-fluid">
                     <div class="breadcrumb-content text-center">
@@ -85,6 +95,7 @@
                     </div>
                 </div>
             </div>
+            <!-- Principal - Sobre a empresa -->
             <div class="about-us-area pt-125 pb-125">
                 <div class="container">
                     <div class="row">
@@ -114,6 +125,7 @@
                     </div>
                 </div>
             </div>
+            <!-- Serviços da empresa -->
             <div class="services-area pb-100">
                 <div class="container">
                     <div class="row">
@@ -164,6 +176,7 @@
                     </div>
                 </div>
             </div>
+            <!-- Depoimento dos funcionários -->
             <div class="testimonial-area">
                 <div class="container">
                     <div class="section-title-2 section-title-position">
@@ -180,7 +193,7 @@
                                 <div class="col-lg-7">
                                     <div class="testimonial-content">
                                         <div class="testimonial-dec">
-                                            <p><span>HTTP4</span> Na nossa empresa fazemos de tudo para proporcionar a melhor experiência possível ao nosso consumidor.</p>
+                                            <p><span>HTTP404</span> Na nossa empresa fazemos de tudo para proporcionar a melhor experiência possível ao nosso consumidor.</p>
                                         </div>
                                         <div class="name-designation">
                                             <h4>João Da Silva</h4>
@@ -213,6 +226,7 @@
                     </div>
                 </div>
             </div>
+            <!-- Chamada dos Colaboradores -->
             <div class="team-area pt-120 pb-95">
                 <div class="container">
                     <div class="section-title text-center mb-60">
@@ -270,6 +284,7 @@
                     </div>
                 </div>
             </div>
+            <!-- Subscrição dos clientes -->	
             <div class="newsletter-area">
                 <div class="container">
                     <div class="newsletter-wrapper-all theme-bg-2">
@@ -281,12 +296,10 @@
                                         <h3>Subscreva aos nossos alertas</h3>
                                     </div>
                                     <div id="mc_embed_signup" class="subscribe-form">
-                                        <form action="#" method="post" id="#" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                                        <form action="envia_email.php" method="post" id="markenting-emails" name="mc-embedded-subscribe-form" class="validate">
                                             <div id="mc_embed_signup_scroll" class="mc-form">
-                                                <input type="email" value="" name="EMAIL" class="email" placeholder="Deixe aqui o seu email..." required>
-                                                <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-                                                <div class="mc-news" aria-hidden="true"><input type="text" name="b_6bbb9b6f5827bd842d9640c82_05d85f18ef" tabindex="-1" value=""></div>
-                                                <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+                                                <input type="email" id="email_interessado" name="email_interessado" class="email" placeholder="Deixe aqui o seu email..." required>
+                                                <div class="clear"><input type="submit" value="Subscribe" name="email-markenting" id="mc-embedded-subscribe" class="button"></div>
                                             </div>
                                         </form>
                                     </div>
@@ -296,6 +309,7 @@
                     </div>
                 </div>
             </div>
+            <!-- Inicio do Rodapé -->
             <footer>
                 <div class="footer-top pt-210 pb-98 theme-bg">
                     <div class="container">
@@ -410,7 +424,7 @@
 		
 		
 		
-		<!-- all js here -->
+		<!-- Chamada de todos os js -->
         <script src="assets/js/vendor/jquery-1.12.0.min.js"></script>
         <script src="assets/js/popper.js"></script>
         <script src="assets/js/bootstrap.min.js"></script>

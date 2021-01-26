@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Portal Http404: Código-Fonte de database/selects_basedados.php</title>
+<title>Portal Http404: Código-Fonte de C:/Kleyton/STI/1.1.AmbienteDesen/trabalho_adc/database/selects_basedados.php</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -62,7 +62,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_f32c53f2c0f0ccaeb11076e30674d5f4.html">database</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_8f8d8a113217a0f70e7a7216ffa88dbc.html">trabalho_adc</a></li><li class="navelem"><a class="el" href="dir_c360763be4adc01816e478733722240c.html">database</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -71,29 +71,28 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <a href="selects__basedados_8php.html">Vá para a documentação desse arquivo.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;&lt;?php</div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
-<div class="line"><a name="l00003"></a><span class="lineno"><a class="line" href="selects__basedados_8php.html#abe4cc9788f52e49485473dc699537388">    3</a></span>&#160;<span class="keywordflow">try</span>{</div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;    <a class="code" href="selects__basedados_8php.html#a59202891d3dfbc57cd6e8bf51abe9f87">$conexao</a> = <span class="keyword">new</span> PDO(<span class="stringliteral">&quot;mysql:host=localhost;dbname=adc_http404&quot;</span>, <a class="code" href="download_8php.html#ac3dc42e449d42a0f869b18785d6b09b1">$cargo</a>, <a class="code" href="download_8php.html#ab23b8736684fa430ee74e2f7398e39e0">$pass_users</a>);</div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;    }<span class="keywordflow">catch</span> (PDOException $e) {</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;        echo <span class="stringliteral">&quot;Failed to connect to MySQL: &quot;</span> . $e-&gt;getMessage();</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;        exit();</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    }</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <span class="comment">//Store table records into an array</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="selects__basedados_8php.html#a9b16730b941f4b87e605dfd42fac1ad6">   11</a></span>&#160;    <a class="code" href="selects__basedados_8php.html#a9b16730b941f4b87e605dfd42fac1ad6">$items</a> = array();</div>
-<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="selects__basedados_8php.html#af27a9140d5f2658693e7fd107f716449">   12</a></span>&#160;    <a class="code" href="selects__basedados_8php.html#af27a9140d5f2658693e7fd107f716449">$stmt</a> = <a class="code" href="selects__basedados_8php.html#a59202891d3dfbc57cd6e8bf51abe9f87">$conexao</a>-&gt;query(<a class="code" href="download_8php.html#a30468c01846ff97d820e5629aa87f631">$consulta</a>);</div>
-<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="selects__basedados_8php.html#a78657b8bcc2f0262dd26b81fd6e5a011">   13</a></span>&#160;    <a class="code" href="selects__basedados_8php.html#a78657b8bcc2f0262dd26b81fd6e5a011">$dados</a> = <a class="code" href="selects__basedados_8php.html#af27a9140d5f2658693e7fd107f716449">$stmt</a>-&gt;fetchAll(PDO::FETCH_ASSOC);</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
-<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="selects__basedados_8php.html#a59202891d3dfbc57cd6e8bf51abe9f87">   15</a></span>&#160;    <a class="code" href="selects__basedados_8php.html#a59202891d3dfbc57cd6e8bf51abe9f87">$conexao</a> = <span class="keyword">null</span>;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="selects__basedados_8php.html#a78657b8bcc2f0262dd26b81fd6e5a011">$dados</a>;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;?&gt;</div>
-<div class="ttc" id="adownload_8php_html_a30468c01846ff97d820e5629aa87f631"><div class="ttname"><a href="download_8php.html#a30468c01846ff97d820e5629aa87f631">$consulta</a></div><div class="ttdeci">if($logado==&quot;N&quot;|| $id_users==&quot;&quot;) $consulta</div><div class="ttdef"><b>Definition:</b> <a href="download_8php_source.html#l00021">download.php:21</a></div></div>
-<div class="ttc" id="adownload_8php_html_ab23b8736684fa430ee74e2f7398e39e0"><div class="ttname"><a href="download_8php.html#ab23b8736684fa430ee74e2f7398e39e0">$pass_users</a></div><div class="ttdeci">$pass_users</div><div class="ttdef"><b>Definition:</b> <a href="download_8php_source.html#l00009">download.php:9</a></div></div>
-<div class="ttc" id="adownload_8php_html_ac3dc42e449d42a0f869b18785d6b09b1"><div class="ttname"><a href="download_8php.html#ac3dc42e449d42a0f869b18785d6b09b1">$cargo</a></div><div class="ttdeci">$cargo</div><div class="ttdef"><b>Definition:</b> <a href="download_8php_source.html#l00011">download.php:11</a></div></div>
-<div class="ttc" id="aselects__basedados_8php_html_a59202891d3dfbc57cd6e8bf51abe9f87"><div class="ttname"><a href="selects__basedados_8php.html#a59202891d3dfbc57cd6e8bf51abe9f87">$conexao</a></div><div class="ttdeci">$conexao</div><div class="ttdef"><b>Definition:</b> <a href="selects__basedados_8php_source.html#l00015">selects_basedados.php:15</a></div></div>
-<div class="ttc" id="aselects__basedados_8php_html_a78657b8bcc2f0262dd26b81fd6e5a011"><div class="ttname"><a href="selects__basedados_8php.html#a78657b8bcc2f0262dd26b81fd6e5a011">$dados</a></div><div class="ttdeci">$dados</div><div class="ttdef"><b>Definition:</b> <a href="selects__basedados_8php_source.html#l00013">selects_basedados.php:13</a></div></div>
-<div class="ttc" id="aselects__basedados_8php_html_a9b16730b941f4b87e605dfd42fac1ad6"><div class="ttname"><a href="selects__basedados_8php.html#a9b16730b941f4b87e605dfd42fac1ad6">$items</a></div><div class="ttdeci">catch(PDOException $e) $items</div><div class="ttdef"><b>Definition:</b> <a href="selects__basedados_8php_source.html#l00011">selects_basedados.php:11</a></div></div>
-<div class="ttc" id="aselects__basedados_8php_html_af27a9140d5f2658693e7fd107f716449"><div class="ttname"><a href="selects__basedados_8php.html#af27a9140d5f2658693e7fd107f716449">$stmt</a></div><div class="ttdeci">$stmt</div><div class="ttdef"><b>Definition:</b> <a href="selects__basedados_8php_source.html#l00012">selects_basedados.php:12</a></div></div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="selects__basedados_8php.html#abe4cc9788f52e49485473dc699537388">   11</a></span>&#160;<span class="keywordflow">try</span>{</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <a class="code" href="selects__basedados_8php.html#a59202891d3dfbc57cd6e8bf51abe9f87">$conexao</a> = <span class="keyword">new</span> PDO(<span class="stringliteral">&quot;mysql:host=localhost;dbname=adc_http404&quot;</span>, <a class="code" href="download_8php.html#ac3dc42e449d42a0f869b18785d6b09b1">$cargo</a>, <a class="code" href="download_8php.html#ab23b8736684fa430ee74e2f7398e39e0">$pass_users</a>);</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="comment">// Se ocorrer um erro, imprime-o </span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    }<span class="keywordflow">catch</span> (PDOException $e) {</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        echo <span class="stringliteral">&quot;Failed to connect to MySQL: &quot;</span> . $e-&gt;getMessage();</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        exit();</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    }</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="selects__basedados_8php.html#a9b16730b941f4b87e605dfd42fac1ad6">   20</a></span>&#160;    <a class="code" href="selects__basedados_8php.html#a9b16730b941f4b87e605dfd42fac1ad6">$items</a> = array();</div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="selects__basedados_8php.html#af27a9140d5f2658693e7fd107f716449">   22</a></span>&#160;    <a class="code" href="selects__basedados_8php.html#af27a9140d5f2658693e7fd107f716449">$stmt</a> = <a class="code" href="selects__basedados_8php.html#a59202891d3dfbc57cd6e8bf51abe9f87">$conexao</a>-&gt;query(<a class="code" href="download_8php.html#a30468c01846ff97d820e5629aa87f631">$consulta</a>);</div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="selects__basedados_8php.html#a78657b8bcc2f0262dd26b81fd6e5a011">   23</a></span>&#160;    <a class="code" href="selects__basedados_8php.html#a78657b8bcc2f0262dd26b81fd6e5a011">$dados</a> = <a class="code" href="selects__basedados_8php.html#af27a9140d5f2658693e7fd107f716449">$stmt</a>-&gt;fetchAll(PDO::FETCH_ASSOC);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="comment">// desconecta da base de dados</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="selects__basedados_8php.html#a59202891d3dfbc57cd6e8bf51abe9f87">   25</a></span>&#160;    <a class="code" href="selects__basedados_8php.html#a59202891d3dfbc57cd6e8bf51abe9f87">$conexao</a> = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="selects__basedados_8php.html#a78657b8bcc2f0262dd26b81fd6e5a011">$dados</a>;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;?&gt;</div>
+<div class="ttc" id="adownload_8php_html_a30468c01846ff97d820e5629aa87f631"><div class="ttname"><a href="download_8php.html#a30468c01846ff97d820e5629aa87f631">$consulta</a></div><div class="ttdeci">if($logado==&quot;N&quot;|| $id_users==&quot;&quot;) $consulta</div><div class="ttdef"><b>Definition:</b> <a href="download_8php_source.html#l00027">download.php:27</a></div></div>
+<div class="ttc" id="adownload_8php_html_ab23b8736684fa430ee74e2f7398e39e0"><div class="ttname"><a href="download_8php.html#ab23b8736684fa430ee74e2f7398e39e0">$pass_users</a></div><div class="ttdeci">$pass_users</div><div class="ttdef"><b>Definition:</b> <a href="download_8php_source.html#l00015">download.php:15</a></div></div>
+<div class="ttc" id="adownload_8php_html_ac3dc42e449d42a0f869b18785d6b09b1"><div class="ttname"><a href="download_8php.html#ac3dc42e449d42a0f869b18785d6b09b1">$cargo</a></div><div class="ttdeci">$cargo</div><div class="ttdef"><b>Definition:</b> <a href="download_8php_source.html#l00017">download.php:17</a></div></div>
+<div class="ttc" id="aselects__basedados_8php_html_a59202891d3dfbc57cd6e8bf51abe9f87"><div class="ttname"><a href="selects__basedados_8php.html#a59202891d3dfbc57cd6e8bf51abe9f87">$conexao</a></div><div class="ttdeci">$conexao</div><div class="ttdef"><b>Definition:</b> <a href="selects__basedados_8php_source.html#l00025">selects_basedados.php:25</a></div></div>
+<div class="ttc" id="aselects__basedados_8php_html_a78657b8bcc2f0262dd26b81fd6e5a011"><div class="ttname"><a href="selects__basedados_8php.html#a78657b8bcc2f0262dd26b81fd6e5a011">$dados</a></div><div class="ttdeci">$dados</div><div class="ttdef"><b>Definition:</b> <a href="selects__basedados_8php_source.html#l00023">selects_basedados.php:23</a></div></div>
+<div class="ttc" id="aselects__basedados_8php_html_a9b16730b941f4b87e605dfd42fac1ad6"><div class="ttname"><a href="selects__basedados_8php.html#a9b16730b941f4b87e605dfd42fac1ad6">$items</a></div><div class="ttdeci">catch(PDOException $e) $items</div><div class="ttdef"><b>Definition:</b> <a href="selects__basedados_8php_source.html#l00020">selects_basedados.php:20</a></div></div>
+<div class="ttc" id="aselects__basedados_8php_html_af27a9140d5f2658693e7fd107f716449"><div class="ttname"><a href="selects__basedados_8php.html#af27a9140d5f2658693e7fd107f716449">$stmt</a></div><div class="ttdeci">$stmt</div><div class="ttdef"><b>Definition:</b> <a href="selects__basedados_8php_source.html#l00022">selects_basedados.php:22</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

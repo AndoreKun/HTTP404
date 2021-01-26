@@ -14,7 +14,6 @@ Thumbs.db
 
 # Aplicações
 *.app
-*.exe
 *.war
 
 # Ficheiros de mídia(grandes)
@@ -28,3 +27,6 @@ Thumbs.db
 # Ficheiros de teste de php/Javascript
 testes.php
 testes.js
+
+# Ficheiro de configurações do doxygen
+Doxyfile

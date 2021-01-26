@@ -21,9 +21,18 @@ Diagrama de hierarquia para Autentica\+:\begin{figure}[H]
 
 
 \doxysubsection{Descrição detalhada}
+Página que \mbox{\hyperlink{class_autentica}{Autentica}} o login dos funcionários \begin{DoxyAuthor}{Autor}
+Grupo HTTP 404 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Versão}
+1.\+1 
+\end{DoxyVersion}
+\begin{DoxySince}{Desde}
+24 dez 2020 
+\end{DoxySince}
 
 
-Definição na linha 4 do arquivo Autentica.\+class.\+php.
+Definição na linha 10 do arquivo Autentica.\+class.\+php.
 
 
 
@@ -36,13 +45,13 @@ Definição na linha 4 do arquivo Autentica.\+class.\+php.
 
 
 
-Definição na linha 7 do arquivo Autentica.\+class.\+php.
+Definição na linha 13 do arquivo Autentica.\+class.\+php.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{7                                  \{}
-\DoxyCodeLine{8         \$this-\/>erro = \textcolor{stringliteral}{''};}
-\DoxyCodeLine{9     \}}
+\DoxyCodeLine{13                                  \{}
+\DoxyCodeLine{14         \$this-\/>erro = \textcolor{stringliteral}{''};}
+\DoxyCodeLine{15     \}}
 
 \end{DoxyCode}
 
@@ -60,23 +69,23 @@ Reimplementa \mbox{\hyperlink{class_conexao_abc8e9e31bb15c8a44c3210ec551407c8}{C
 
 
 
-Definição na linha 15 do arquivo Autentica.\+class.\+php.
+Definição na linha 21 do arquivo Autentica.\+class.\+php.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{15                                 \{}
-\DoxyCodeLine{16         \textcolor{keywordflow}{if} (array\_key\_exists(\$name, \$this-\/>data)) \{}
-\DoxyCodeLine{17             \textcolor{keywordflow}{return} \$this-\/>data[\$name];}
-\DoxyCodeLine{18         \}}
-\DoxyCodeLine{19 }
-\DoxyCodeLine{20         \$trace = debug\_backtrace();}
-\DoxyCodeLine{21         trigger\_error(}
-\DoxyCodeLine{22             \textcolor{stringliteral}{'Undefined property via \_\_get(): '} . \$name .}
-\DoxyCodeLine{23             \textcolor{stringliteral}{' in '} . \$trace[0][\textcolor{stringliteral}{'file'}] .}
-\DoxyCodeLine{24             \textcolor{stringliteral}{' on line '} . \$trace[0][\textcolor{stringliteral}{'line'}],}
-\DoxyCodeLine{25             E\_USER\_NOTICE);}
-\DoxyCodeLine{26         \textcolor{keywordflow}{return} \textcolor{keyword}{null};}
-\DoxyCodeLine{27     \}}
+\DoxyCodeLine{21                                 \{}
+\DoxyCodeLine{22         \textcolor{keywordflow}{if} (array\_key\_exists(\$name, \$this-\/>data)) \{}
+\DoxyCodeLine{23             \textcolor{keywordflow}{return} \$this-\/>data[\$name];}
+\DoxyCodeLine{24         \}}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26         \$trace = debug\_backtrace();}
+\DoxyCodeLine{27         trigger\_error(}
+\DoxyCodeLine{28             \textcolor{stringliteral}{'Undefined property via \_\_get(): '} . \$name .}
+\DoxyCodeLine{29             \textcolor{stringliteral}{' in '} . \$trace[0][\textcolor{stringliteral}{'file'}] .}
+\DoxyCodeLine{30             \textcolor{stringliteral}{' on line '} . \$trace[0][\textcolor{stringliteral}{'line'}],}
+\DoxyCodeLine{31             E\_USER\_NOTICE);}
+\DoxyCodeLine{32         \textcolor{keywordflow}{return} \textcolor{keyword}{null};}
+\DoxyCodeLine{33     \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{class_autentica_a83c2703c91959192f759992ad5640b67}\label{class_autentica_a83c2703c91959192f759992ad5640b67}} 
@@ -91,13 +100,13 @@ Reimplementa \mbox{\hyperlink{class_conexao_a83c2703c91959192f759992ad5640b67}{C
 
 
 
-Definição na linha 11 do arquivo Autentica.\+class.\+php.
+Definição na linha 17 do arquivo Autentica.\+class.\+php.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{11                                         \{}
-\DoxyCodeLine{12         \$this-\/>data[\$name] = \$value;}
-\DoxyCodeLine{13     \}}
+\DoxyCodeLine{17                                         \{}
+\DoxyCodeLine{18         \$this-\/>data[\$name] = \$value;}
+\DoxyCodeLine{19     \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{class_autentica_ae755f067990075e1e875f96a0adfbaaf}\label{class_autentica_ae755f067990075e1e875f96a0adfbaaf}} 
@@ -106,46 +115,61 @@ Definição na linha 11 do arquivo Autentica.\+class.\+php.
 \doxysubsubsection{\texorpdfstring{Validar\_Usuario()}{Validar\_Usuario()}}
 {\footnotesize\ttfamily Validar\+\_\+\+Usuario (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+Função Que valida o login de um usuário \begin{DoxyAuthor}{Autor}
+Grupo HTTP 404 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Versão}
+1.\+1 
+\end{DoxyVersion}
+\begin{DoxySince}{Desde}
+24 dez 2020 
+\end{DoxySince}
+
+\begin{DoxyParams}{Parâmetros}
+{\em \$pdo} & instancia da classe conexao que foi herdada \\
+\hline
+{\em \$resultado} & Resultado da consulta\\
+\hline
+\end{DoxyParams}
 
 
-Definição na linha 29 do arquivo Autentica.\+class.\+php.
+Definição na linha 35 do arquivo Autentica.\+class.\+php.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{29                                          \{}
-\DoxyCodeLine{30             \textcolor{comment}{//instancio minha classe conex{\ucr}o que foi herdada}}
-\DoxyCodeLine{31             \mbox{\hyperlink{class_conexao_a5766efd703cef0e00bfc06b3f3acbe0e}{\$pdo}} = \textcolor{keyword}{new} \mbox{\hyperlink{class_conexao}{Conexao}}(); }
-\DoxyCodeLine{32             \textcolor{comment}{//chamamos nosso m{\ucr}todo select da classe conex{\ucr}o que nos retornar{\ucr} um conjunto de dados}}
-\DoxyCodeLine{33             \$resultado = \mbox{\hyperlink{class_conexao_a5766efd703cef0e00bfc06b3f3acbe0e}{\$pdo}}-\/>select(\textcolor{stringliteral}{"{}SELECT * FROM users WHERE email = '"{}}.\$this-\/>email.\textcolor{stringliteral}{"{}' AND pass = '"{}}.\$this-\/>pass.\textcolor{stringliteral}{"{}'"{}});}
-\DoxyCodeLine{34             \textcolor{comment}{//desconectamos}}
-\DoxyCodeLine{35             \mbox{\hyperlink{class_conexao_a5766efd703cef0e00bfc06b3f3acbe0e}{\$pdo}}-\/>desconectar();}
-\DoxyCodeLine{36             \textcolor{comment}{//agora vamos resgatar os valores obtidos pelo nosso m{\ucr}todo atrav{\ucr}s do foreach}}
-\DoxyCodeLine{37             \textcolor{comment}{//verificamos se houve registros dentro de nossa var se sim entra no if}}
-\DoxyCodeLine{38             \textcolor{keywordflow}{if}(count(\$resultado))\{}
-\DoxyCodeLine{39                 \textcolor{keywordflow}{foreach} (\$resultado as \$res) \{}
-\DoxyCodeLine{40                     \textcolor{comment}{//come{\ucr}amos nossa sess{\ucr}o para podermos usar os dados do usuario em nossa aplica{\ucr}{\ucr}o atrav{\ucr}s de}}
-\DoxyCodeLine{41                     \textcolor{comment}{//session, na qual podemos usar para controle de verificar se o user est{\ucr} logado ou n{\ucr}o, mostrar o nome do user na tela e etc.}}
-\DoxyCodeLine{42                     session\_start();}
-\DoxyCodeLine{43                     ob\_start();}
-\DoxyCodeLine{44                     \textcolor{comment}{//setamos as session com os valores obtido da tabela}}
-\DoxyCodeLine{45                     \mbox{\hyperlink{logout_8php_a5f545b9684799a00f7a14442205b98e3}{\$\_SESSION}}[\textcolor{stringliteral}{'id\_users'}] = \$res[\textcolor{stringliteral}{'id\_users'}];}
-\DoxyCodeLine{46                     \mbox{\hyperlink{logout_8php_a5f545b9684799a00f7a14442205b98e3}{\$\_SESSION}}[\textcolor{stringliteral}{'nome'}] = \$res[\textcolor{stringliteral}{'nome'}];}
-\DoxyCodeLine{47                     \mbox{\hyperlink{logout_8php_a5f545b9684799a00f7a14442205b98e3}{\$\_SESSION}}[\textcolor{stringliteral}{'email'}] = \$res[\textcolor{stringliteral}{'email'}];}
-\DoxyCodeLine{48                     \mbox{\hyperlink{logout_8php_a5f545b9684799a00f7a14442205b98e3}{\$\_SESSION}}[\textcolor{stringliteral}{'pass'}] = \$res[\textcolor{stringliteral}{'pass'}];}
-\DoxyCodeLine{49                     \mbox{\hyperlink{logout_8php_a5f545b9684799a00f7a14442205b98e3}{\$\_SESSION}}[\textcolor{stringliteral}{'logado'}] = \textcolor{charliteral}{'S'};}
-\DoxyCodeLine{50                     \mbox{\hyperlink{logout_8php_a5f545b9684799a00f7a14442205b98e3}{\$\_SESSION}}[\textcolor{stringliteral}{'cargo'}] = \$res[\textcolor{stringliteral}{'cargo'}];}
-\DoxyCodeLine{51             \}}
-\DoxyCodeLine{52                 \textcolor{comment}{//se tudo ocorrer bem retornamos true, ou seja verdade}}
-\DoxyCodeLine{53                 \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
-\DoxyCodeLine{54             \}\textcolor{keywordflow}{else}\{}
-\DoxyCodeLine{55                 \textcolor{comment}{//se algo deu errado retornamos false}}
-\DoxyCodeLine{56                 \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
-\DoxyCodeLine{57             \}}
-\DoxyCodeLine{58         \}}
+\DoxyCodeLine{35                                          \{}
+\DoxyCodeLine{44             \mbox{\hyperlink{class_conexao_a5766efd703cef0e00bfc06b3f3acbe0e}{\$pdo}} = \textcolor{keyword}{new} \mbox{\hyperlink{class_conexao}{Conexao}}(); }
+\DoxyCodeLine{45             \textcolor{comment}{//chamada do metodo select da classe conexao que nos retornara um conjunto de dados}}
+\DoxyCodeLine{46             \$resultado = \mbox{\hyperlink{class_conexao_a5766efd703cef0e00bfc06b3f3acbe0e}{\$pdo}}-\/>select(\textcolor{stringliteral}{"{}SELECT * FROM users WHERE email = '"{}}.\$this-\/>email.\textcolor{stringliteral}{"{}' AND pass = '"{}}.\$this-\/>pass.\textcolor{stringliteral}{"{}'"{}});}
+\DoxyCodeLine{47             \textcolor{comment}{//desconectamos}}
+\DoxyCodeLine{48             \mbox{\hyperlink{class_conexao_a5766efd703cef0e00bfc06b3f3acbe0e}{\$pdo}}-\/>desconectar();}
+\DoxyCodeLine{49             \textcolor{comment}{//agora vamos resgatar os valores obtidos pelo nosso metodo atraves do foreach}}
+\DoxyCodeLine{50             \textcolor{comment}{//verificamos se houve registros dentro de nossa var se sim entra no if}}
+\DoxyCodeLine{51             \textcolor{keywordflow}{if}(count(\$resultado))\{}
+\DoxyCodeLine{52                 \textcolor{keywordflow}{foreach} (\$resultado as \$res) \{}
+\DoxyCodeLine{53                     \textcolor{comment}{//comecamos nossa sessao para podermos usar os dados do usuario em nossa aplicacao atraves de}}
+\DoxyCodeLine{54                     \textcolor{comment}{//session, na qual podemos usar para controle de verificar se o user esta logado ou nao, mostrar o nome do user na tela e etc.}}
+\DoxyCodeLine{55                     session\_start();}
+\DoxyCodeLine{56                     ob\_start();}
+\DoxyCodeLine{57                     \textcolor{comment}{//setamos as session com os valores obtido da tabela}}
+\DoxyCodeLine{58                     \mbox{\hyperlink{inserts__basedados_8php_a6597fafbc7a6e8c1f9ca5cd19904e42a}{\$\_SESSION}}[\textcolor{stringliteral}{'id\_users'}] = \$res[\textcolor{stringliteral}{'id\_users'}];}
+\DoxyCodeLine{59                     \mbox{\hyperlink{inserts__basedados_8php_a6597fafbc7a6e8c1f9ca5cd19904e42a}{\$\_SESSION}}[\textcolor{stringliteral}{'nome'}] = \$res[\textcolor{stringliteral}{'nome'}];}
+\DoxyCodeLine{60                     \mbox{\hyperlink{inserts__basedados_8php_a6597fafbc7a6e8c1f9ca5cd19904e42a}{\$\_SESSION}}[\textcolor{stringliteral}{'email'}] = \$res[\textcolor{stringliteral}{'email'}];}
+\DoxyCodeLine{61                     \mbox{\hyperlink{inserts__basedados_8php_a6597fafbc7a6e8c1f9ca5cd19904e42a}{\$\_SESSION}}[\textcolor{stringliteral}{'pass'}] = \$res[\textcolor{stringliteral}{'pass'}];}
+\DoxyCodeLine{62                     \mbox{\hyperlink{inserts__basedados_8php_a6597fafbc7a6e8c1f9ca5cd19904e42a}{\$\_SESSION}}[\textcolor{stringliteral}{'logado'}] = \textcolor{charliteral}{'S'};}
+\DoxyCodeLine{63                     \mbox{\hyperlink{inserts__basedados_8php_a6597fafbc7a6e8c1f9ca5cd19904e42a}{\$\_SESSION}}[\textcolor{stringliteral}{'cargo'}] = \$res[\textcolor{stringliteral}{'cargo'}];}
+\DoxyCodeLine{64             \}}
+\DoxyCodeLine{65                 \textcolor{comment}{//se tudo ocorrer bem retornamos true, ou seja verdade}}
+\DoxyCodeLine{66                 \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{67             \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{68                 \textcolor{comment}{//se algo deu errado retornamos false}}
+\DoxyCodeLine{69                 \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{70             \}}
+\DoxyCodeLine{71         \}}
 
 \end{DoxyCode}
 
 
 A documentação para essa classe foi gerada a partir do seguinte arquivo\+:\begin{DoxyCompactItemize}
 \item 
-class/\mbox{\hyperlink{_autentica_8class_8php}{Autentica.\+class.\+php}}\end{DoxyCompactItemize}
+C\+:/\+Kleyton/\+STI/1.\+1.\+Ambiente\+Desen/trabalho\+\_\+adc/class/\mbox{\hyperlink{_autentica_8class_8php}{Autentica.\+class.\+php}}\end{DoxyCompactItemize}

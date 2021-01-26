@@ -31,9 +31,18 @@ Diagrama de hierarquia para Conexao\+:\begin{figure}[H]
 
 
 \doxysubsection{Descrição detalhada}
+Página que faz a conexão com a base de dados de forma segura para confirmar o login \begin{DoxyAuthor}{Autor}
+Grupo HTTP 404 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Versão}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxySince}{Desde}
+24 dez 2020 
+\end{DoxySince}
 
 
-Definição na linha 2 do arquivo Conexao.\+class.\+php.
+Definição na linha 8 do arquivo Conexao.\+class.\+php.
 
 
 
@@ -44,17 +53,26 @@ Definição na linha 2 do arquivo Conexao.\+class.\+php.
 \doxysubsubsection{\texorpdfstring{\_\_construct()}{\_\_construct()}}
 {\footnotesize\ttfamily \+\_\+\+\_\+construct (\begin{DoxyParamCaption}\item[{}]{\$pdo = {\ttfamily null} }\end{DoxyParamCaption})}
 
+Método que controi a classe \begin{DoxyAuthor}{Autor}
+Grupo HTTP 404 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Versão}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxySince}{Desde}
+24 dez 2020
+\end{DoxySince}
 
 
-Definição na linha 30 do arquivo Conexao.\+class.\+php.
+Definição na linha 35 do arquivo Conexao.\+class.\+php.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{30                                           \{}
-\DoxyCodeLine{31             \$this-\/>pdo = \mbox{\hyperlink{class_conexao_a5766efd703cef0e00bfc06b3f3acbe0e}{\$pdo}};}
-\DoxyCodeLine{32             \textcolor{keywordflow}{if} (\$this-\/>pdo == \textcolor{keyword}{null})}
-\DoxyCodeLine{33                 \$this-\/>\mbox{\hyperlink{class_conexao_a11494d46b6636875afea2d447ca4ea53}{conectar}}();}
-\DoxyCodeLine{34         \}}
+\DoxyCodeLine{35                                           \{}
+\DoxyCodeLine{42             \$this-\/>pdo = \mbox{\hyperlink{class_conexao_a5766efd703cef0e00bfc06b3f3acbe0e}{\$pdo}};}
+\DoxyCodeLine{43             \textcolor{keywordflow}{if} (\$this-\/>pdo == \textcolor{keyword}{null})}
+\DoxyCodeLine{44                 \$this-\/>\mbox{\hyperlink{class_conexao_a11494d46b6636875afea2d447ca4ea53}{conectar}}();}
+\DoxyCodeLine{45         \}}
 
 \end{DoxyCode}
 
@@ -72,23 +90,23 @@ Reimplementado por \mbox{\hyperlink{class_autentica_abc8e9e31bb15c8a44c3210ec551
 
 
 
-Definição na linha 11 do arquivo Conexao.\+class.\+php.
+Definição na linha 17 do arquivo Conexao.\+class.\+php.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{11                                     \{}
-\DoxyCodeLine{12             \textcolor{keywordflow}{if} (array\_key\_exists(\$name, \$this-\/>data)) \{}
-\DoxyCodeLine{13                 \textcolor{keywordflow}{return} \$this-\/>data[\$name];}
-\DoxyCodeLine{14             \}}
-\DoxyCodeLine{15 }
-\DoxyCodeLine{16             \$trace = debug\_backtrace();}
-\DoxyCodeLine{17             trigger\_error(}
-\DoxyCodeLine{18                 \textcolor{stringliteral}{'Undefined property via \_\_get(): '} . \$name .}
-\DoxyCodeLine{19                 \textcolor{stringliteral}{' in '} . \$trace[0][\textcolor{stringliteral}{'file'}] .}
-\DoxyCodeLine{20                 \textcolor{stringliteral}{' on line '} . \$trace[0][\textcolor{stringliteral}{'line'}],}
-\DoxyCodeLine{21                 E\_USER\_NOTICE);}
-\DoxyCodeLine{22             \textcolor{keywordflow}{return} \textcolor{keyword}{null};}
-\DoxyCodeLine{23         \}}
+\DoxyCodeLine{17                                     \{}
+\DoxyCodeLine{18             \textcolor{keywordflow}{if} (array\_key\_exists(\$name, \$this-\/>data)) \{}
+\DoxyCodeLine{19                 \textcolor{keywordflow}{return} \$this-\/>data[\$name];}
+\DoxyCodeLine{20             \}}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22             \$trace = debug\_backtrace();}
+\DoxyCodeLine{23             trigger\_error(}
+\DoxyCodeLine{24                 \textcolor{stringliteral}{'Undefined property via \_\_get(): '} . \$name .}
+\DoxyCodeLine{25                 \textcolor{stringliteral}{' in '} . \$trace[0][\textcolor{stringliteral}{'file'}] .}
+\DoxyCodeLine{26                 \textcolor{stringliteral}{' on line '} . \$trace[0][\textcolor{stringliteral}{'line'}],}
+\DoxyCodeLine{27                 E\_USER\_NOTICE);}
+\DoxyCodeLine{28             \textcolor{keywordflow}{return} \textcolor{keyword}{null};}
+\DoxyCodeLine{29         \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{class_conexao_a83c2703c91959192f759992ad5640b67}\label{class_conexao_a83c2703c91959192f759992ad5640b67}} 
@@ -103,13 +121,13 @@ Reimplementado por \mbox{\hyperlink{class_autentica_a83c2703c91959192f759992ad56
 
 
 
-Definição na linha 7 do arquivo Conexao.\+class.\+php.
+Definição na linha 13 do arquivo Conexao.\+class.\+php.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{7                                             \{}
-\DoxyCodeLine{8             \$this-\/>data[\$name] = \$value;}
-\DoxyCodeLine{9         \}}
+\DoxyCodeLine{13                                             \{}
+\DoxyCodeLine{14             \$this-\/>data[\$name] = \$value;}
+\DoxyCodeLine{15         \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{class_conexao_a11494d46b6636875afea2d447ca4ea53}\label{class_conexao_a11494d46b6636875afea2d447ca4ea53}} 
@@ -118,23 +136,32 @@ Definição na linha 7 do arquivo Conexao.\+class.\+php.
 \doxysubsubsection{\texorpdfstring{conectar()}{conectar()}}
 {\footnotesize\ttfamily conectar (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+Método que conecta com a base de de dados \begin{DoxyAuthor}{Autor}
+Grupo HTTP 404 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Versão}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxySince}{Desde}
+24 dez 2020
+\end{DoxySince}
 
 
-Definição na linha 37 do arquivo Conexao.\+class.\+php.
+Definição na linha 47 do arquivo Conexao.\+class.\+php.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{37                                    \{}
-\DoxyCodeLine{38             \textcolor{keywordflow}{try}\{}
-\DoxyCodeLine{39                 \$this-\/>pdo = \textcolor{keyword}{new} PDO(\textcolor{stringliteral}{"{}mysql:host=localhost;dbname=adc\_http404"{}},}
-\DoxyCodeLine{40                                 \textcolor{stringliteral}{"{}admin"{}},}
-\DoxyCodeLine{41                                 \textcolor{stringliteral}{"{}http404\#2021\%"{}},}
-\DoxyCodeLine{42                                 array(PDO::MYSQL\_ATTR\_INIT\_COMMAND => \textcolor{stringliteral}{"{}SET NAMES utf8"{}}));}
-\DoxyCodeLine{43             \}\textcolor{keywordflow}{catch} (PDOException \$e) \{}
-\DoxyCodeLine{44                 print \textcolor{stringliteral}{"{}Error!: "{}} . \$e-\/>getMessage() .\textcolor{stringliteral}{"{}<br/>"{}};}
-\DoxyCodeLine{45                 die();}
-\DoxyCodeLine{46             \}}
-\DoxyCodeLine{47         \}}
+\DoxyCodeLine{47                                    \{}
+\DoxyCodeLine{54             \textcolor{keywordflow}{try}\{}
+\DoxyCodeLine{55                 \$this-\/>pdo = \textcolor{keyword}{new} PDO(\textcolor{stringliteral}{"{}mysql:host=localhost;dbname=adc\_http404"{}},}
+\DoxyCodeLine{56                                 \textcolor{stringliteral}{"{}admin"{}},}
+\DoxyCodeLine{57                                 \textcolor{stringliteral}{"{}http404\#2021\%"{}},}
+\DoxyCodeLine{58                                 array(PDO::MYSQL\_ATTR\_INIT\_COMMAND => \textcolor{stringliteral}{"{}SET NAMES utf8"{}}));}
+\DoxyCodeLine{59             \}\textcolor{keywordflow}{catch} (PDOException \$e) \{}
+\DoxyCodeLine{60                 print \textcolor{stringliteral}{"{}Error!: "{}} . \$e-\/>getMessage() .\textcolor{stringliteral}{"{}<br/>"{}};}
+\DoxyCodeLine{61                 die();}
+\DoxyCodeLine{62             \}}
+\DoxyCodeLine{63         \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{class_conexao_ab4b39fe5953ce1f90723f825916337d7}\label{class_conexao_ab4b39fe5953ce1f90723f825916337d7}} 
@@ -143,15 +170,24 @@ Definição na linha 37 do arquivo Conexao.\+class.\+php.
 \doxysubsubsection{\texorpdfstring{desconectar()}{desconectar()}}
 {\footnotesize\ttfamily desconectar (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+Método que desconecta com a base de dados \begin{DoxyAuthor}{Autor}
+Grupo HTTP 404 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Versão}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxySince}{Desde}
+24 dez 2020
+\end{DoxySince}
 
 
-Definição na linha 50 do arquivo Conexao.\+class.\+php.
+Definição na linha 65 do arquivo Conexao.\+class.\+php.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{50                                       \{}
-\DoxyCodeLine{51             \$this-\/>pdo = \textcolor{keyword}{null};}
-\DoxyCodeLine{52         \}}
+\DoxyCodeLine{65                                       \{}
+\DoxyCodeLine{72             \$this-\/>pdo = \textcolor{keyword}{null};}
+\DoxyCodeLine{73         \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{class_conexao_a6e7560ad95a7986be67f7528c80e7f1a}\label{class_conexao_a6e7560ad95a7986be67f7528c80e7f1a}} 
@@ -160,15 +196,15 @@ Definição na linha 50 do arquivo Conexao.\+class.\+php.
 \doxysubsubsection{\texorpdfstring{getPdo()}{getPdo()}}
 {\footnotesize\ttfamily get\+Pdo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+metodo que retorna a variavel \$pdo 
 
-
-Definição na linha 25 do arquivo Conexao.\+class.\+php.
+Definição na linha 31 do arquivo Conexao.\+class.\+php.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{25                                  \{}
-\DoxyCodeLine{26             \textcolor{keywordflow}{return} \mbox{\hyperlink{class_conexao_a5766efd703cef0e00bfc06b3f3acbe0e}{\$this-\/>pdo}};}
-\DoxyCodeLine{27         \}}
+\DoxyCodeLine{31                                  \{}
+\DoxyCodeLine{32             \textcolor{keywordflow}{return} \mbox{\hyperlink{class_conexao_a5766efd703cef0e00bfc06b3f3acbe0e}{\$this-\/>pdo}};}
+\DoxyCodeLine{33         \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{class_conexao_aba804048bed81433b1331001898cd6ff}\label{class_conexao_aba804048bed81433b1331001898cd6ff}} 
@@ -177,17 +213,26 @@ Definição na linha 25 do arquivo Conexao.\+class.\+php.
 \doxysubsubsection{\texorpdfstring{select()}{select()}}
 {\footnotesize\ttfamily select (\begin{DoxyParamCaption}\item[{}]{\$sql }\end{DoxyParamCaption})}
 
+Função pública que faz o select da base de dados \begin{DoxyAuthor}{Autor}
+Grupo HTTP 404 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Versão}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxySince}{Desde}
+24 dez 2020
+\end{DoxySince}
 
 
-Definição na linha 54 do arquivo Conexao.\+class.\+php.
+Definição na linha 75 do arquivo Conexao.\+class.\+php.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{54                                     \{}
-\DoxyCodeLine{55             \mbox{\hyperlink{selects__basedados_8php_af27a9140d5f2658693e7fd107f716449}{\$stmt}} = \$this-\/>pdo-\/>prepare(\$sql);}
-\DoxyCodeLine{56             \mbox{\hyperlink{selects__basedados_8php_af27a9140d5f2658693e7fd107f716449}{\$stmt}}-\/>execute();}
-\DoxyCodeLine{57             \textcolor{keywordflow}{return} \mbox{\hyperlink{selects__basedados_8php_af27a9140d5f2658693e7fd107f716449}{\$stmt}}-\/>fetchAll(PDO::FETCH\_ASSOC);}
-\DoxyCodeLine{58         \}}
+\DoxyCodeLine{75                                     \{}
+\DoxyCodeLine{82             \mbox{\hyperlink{selects__basedados_8php_af27a9140d5f2658693e7fd107f716449}{\$stmt}} = \$this-\/>pdo-\/>prepare(\$sql);}
+\DoxyCodeLine{83             \mbox{\hyperlink{selects__basedados_8php_af27a9140d5f2658693e7fd107f716449}{\$stmt}}-\/>execute();}
+\DoxyCodeLine{84             \textcolor{keywordflow}{return} \mbox{\hyperlink{selects__basedados_8php_af27a9140d5f2658693e7fd107f716449}{\$stmt}}-\/>fetchAll(PDO::FETCH\_ASSOC);}
+\DoxyCodeLine{85         \}}
 
 \end{DoxyCode}
 
@@ -199,12 +244,12 @@ Definição na linha 54 do arquivo Conexao.\+class.\+php.
 \doxysubsubsection{\texorpdfstring{\$pdo}{$pdo}}
 {\footnotesize\ttfamily \$pdo = null\hspace{0.3cm}{\ttfamily [protected]}}
 
+variavel da classe Base 
 
-
-Definição na linha 5 do arquivo Conexao.\+class.\+php.
+Definição na linha 11 do arquivo Conexao.\+class.\+php.
 
 
 
 A documentação para essa classe foi gerada a partir do seguinte arquivo\+:\begin{DoxyCompactItemize}
 \item 
-class/\mbox{\hyperlink{_conexao_8class_8php}{Conexao.\+class.\+php}}\end{DoxyCompactItemize}
+C\+:/\+Kleyton/\+STI/1.\+1.\+Ambiente\+Desen/trabalho\+\_\+adc/class/\mbox{\hyperlink{_conexao_8class_8php}{Conexao.\+class.\+php}}\end{DoxyCompactItemize}

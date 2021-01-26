@@ -1,31 +1,43 @@
-<?php 
+<?php
+/** Página dos detalhes dos produtos - Permite Adicionar e Remover produtos no carrinho.
+* @author Grupo HTTP404
+* @version 3.2
+* @since 26 dez 2020
+**/ 
+session_start();
 // Desabilita a demonstração de erros, para que não haja a possibilidade de aparecer erros para o usuário final
 ini_set('display_errors', 0);
 session_start(); 
 $botao_remover_veiculo = "";
 $voltar_para = $_SESSION['voltar_para'];
 function feedback ($id, $tipo_produto){
-    /**
-        *Funcao feedback que retorna uma mensagem quando um produto/artigo é adicionado/removido do carrinho e cria um botão para permitir
-        *o redirecionamento para a página que contém o carrinho
-        *@author André Pereira
+
+    /** Funcao feedback que retorna uma mensagem quando um produto/artigo é adicionado/removido do carrinho e cria um botão para permitir
+        *o redirecionamento para a página que contém o carrinho, também permite adicionar um botão para remover um veículo/artigo.
+        *@author Grupo HTTP404
         *@param int $id Número de Identificação do produto/veiculo, utilizado para mostrar a mensagem apenas naquele produto/artigo
         *@param string $tipo_produto Tipo do produto artigo/veículo
         *@param string $feedback Contém o feedback em html quando um produto é adicionado ou removido do carrinho
-        *@return array $verificacao Retorna as variáveis id e feedback
+        *@param string $botao_remover_veiculo Botão para remover veículos, em html
+        *@param string $botao_remover_artigo Botão para remover artigos, em html
+        *@return array $verificacao Retorna as variáveis id, feedback, e os botões (Definidos ou não)
         *@version 2.3                                                                                                                                                                                                                                                                               
 
-    */
+    **/
+
     $feedback = "";
     if($tipo_produto == "veiculo"){ 
+        /** $_SESSION['id_veiculo']['id_veiculo']: Array associativo com todos os ID's de veiculos. **/
         if(isset($_SESSION['id_veiculo']['id_veiculo'])){
             if ($_SESSION['id_veiculo']['id_veiculo'] == $id){
+                /** $_SESSION['feedback']['feedback']: Array associativo com o feedback (mensagem). **/
                 $feedback = $_SESSION['feedback']['feedback'];
                 
             }
         }
     }
     if($tipo_produto == "artigo"){
+        /** $_SESSION['id_artigo']['id_artigo']: Array associativo com todos os ID's de artigos. **/
         if(isset($_SESSION['id_artigo']['id_artigo'])){
             if ($_SESSION['id_artigo']['id_artigo'] == $id){
                 $feedback = $_SESSION['feedback']['feedback'];
@@ -34,10 +46,12 @@ function feedback ($id, $tipo_produto){
         }
     }
     $botao_remover_veiculo = "";
-    $botao_remover_artigo = ""; 
+    $botao_remover_artigo = "";
+    /** if(isset($_SESSION['abilitar_remover_veiculos'][$id])): Verifica se o array associativo no id enviado à função existe, se sim, define o botão. **/
     if(isset($_SESSION['abilitar_remover_veiculos'][$id])){
         $botao_remover_veiculo = $_SESSION['abilitar_remover_veiculos'][$id];
     }
+    /** if(isset($_SESSION['abilitar_remover_artigos'][$id])): Verifica se o array associativo no id enviado à função existe, se sim, define o botão. **/
     if(isset($_SESSION['abilitar_remover_artigos'][$id])){
         $botao_remover_artigo = $_SESSION['abilitar_remover_artigos'][$id];
     }
@@ -55,10 +69,10 @@ return $verificacao;
         <title>Loja Virtual</title>
         <meta name="description" content="Live Preview Of Oswan eCommerce HTML5 Template">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- Favicon -->
+        <!-- Favicon - ícones favoritos-->
         <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
 
-		<!-- all css here -->
+		<!-- Chamada de todos os css -->
         <link rel="stylesheet" href="assets/css/bootstrap.min.css">
         <link rel="stylesheet" href="assets/css/animate.css">
         <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
@@ -74,6 +88,7 @@ return $verificacao;
         <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
     </head>
     <body>
+     <!-- Cabeçalho embrulhado -->
         <div class="wrapper">
             <header>
                 <div class="header-area transparent-bar ptb-55">
@@ -116,6 +131,7 @@ return $verificacao;
                     </div>
                 </div>
             </header>
+             <!-- localização do usuário na página -->
             <div class="breadcrumb-area pt-255 pb-170" style="background-image: url(assets/img/banner/bannersupra.jpg)">
                 <div class="container-fluid">
                     <div class="breadcrumb-content text-center">
@@ -129,6 +145,7 @@ return $verificacao;
                     </div>
                 </div>
             </div>
+             <!-- Detalhes dos veiculo 1-->
             <div id=lexus class="product-details-area fluid-padding-3 ptb-130">
                 <div class="container-fluid">
                     <div class="row">
@@ -183,6 +200,7 @@ return $verificacao;
                             </div>
                         </div>
                         <div class="col-lg-6">
+                            <!-- Informacoes do veiculo 1-->
                             <div class="product-details-content">
                                 <h2>Lexus RC 200t</h2>
                                 <div class="quick-view-rating">
@@ -209,13 +227,13 @@ return $verificacao;
                                             <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                         </form>
                                     <?php 
-                                    // Chama a função feedback e envia o id do veiculo/artigo que está sendo adicionado, assim como o tipo de produto
+                                    /** Chama a função feedback e envia o id do veiculo/artigo que está sendo adicionado, assim como o tipo de produto */
                                     $retorno = feedback(1, "veiculo");
-                                    // A função Retorna o botão de remover caso o produto existir no carrinho
+                                    /** A função Retorna o botão de remover caso o produto existir no carrinho */
                                     echo $retorno[2];
-                                    // Espaço para alinhar texto e botões
+                                    /** Espaço para alinhar texto e botões */
                                     echo "<br/>";
-                                    // Se o id que foi enviado for igual ao id do veiculo que foi mandado, imprime uma mensagem(produtoa adicionado/removido do carrinho) 
+                                    /**Se o id que foi enviado for igual ao id do veiculo que foi mandado, imprime uma mensagem(produtoa adicionado/removido do carrinho) */
                                     if ($retorno[0] == 1){
                                         echo $retorno[1];
                                     }?>
@@ -232,6 +250,7 @@ return $verificacao;
                     </div>
                 </div>
             </div>
+             <!-- Detalhes do veiculo 2-->
             <div id=volvo class="product-details-area fluid-padding-3 ptb-130">
                 <div class="container-fluid">
                     <div class="row">
@@ -286,6 +305,7 @@ return $verificacao;
                             </div>
                         </div>
                         <div class="col-lg-6">
+                            <!-- Informacoes do veiculo 2-->
                             <div class="product-details-content">
                                 <h2>Volvo S60 T6 AWD R-Design Platinum 2017 </h2>
                                 <div class="quick-view-rating">
@@ -330,6 +350,7 @@ return $verificacao;
                     </div>
                 </div>
             </div>
+            <!-- Detalhes do veiculo 3-->
             <div id=supra class="product-details-area fluid-padding-3 ptb-130">
                 <div class="container-fluid">
                     <div class="row">
@@ -384,6 +405,7 @@ return $verificacao;
                             </div>
                         </div>
                         <div class="col-lg-6">
+                            <!-- Informacoes do veiuclo 3-->
                             <div class="product-details-content">
                                 <h2>Toyota GR Supra </h2>
                                 <div class="quick-view-rating">
@@ -429,6 +451,7 @@ return $verificacao;
                     </div>
                 </div>
             </div>
+            <!-- Detalhes do veiculo 4-->
             <div id=motobmw class="product-details-area fluid-padding-3 ptb-130">
                 <div class="container-fluid">
                     <div class="row">
@@ -483,6 +506,7 @@ return $verificacao;
                             </div>
                         </div>
                         <div class="col-lg-6">
+                            <!-- Informacoes do veiculo 4-->
                             <div class="product-details-content">
                                 <h2> BMW K 1600 GT </h2>
                                 <div class="quick-view-rating">
@@ -527,6 +551,7 @@ return $verificacao;
                     </div>
                 </div>
             </div>
+            <!-- Detalhes do produto 1-->
 			<div id=rodasupra class="product-details-area fluid-padding-3 ptb-130">
                 <div class="container-fluid">
                     <div class="row">
@@ -547,6 +572,7 @@ return $verificacao;
                         </div>
 						</div>
                         <div class="col-lg-6">
+                            <!-- Informacoes do produto 1-->
                             <div class="product-details-content">
                                 <h2> Performance Machine Supra Real Wheel </h2>
                                 <div class="quick-view-rating">
@@ -591,6 +617,7 @@ return $verificacao;
                     </div>
                 </div>
             </div>
+            <!-- Detalhes do produto 2-->
 			<div id=radioadorninja class="product-details-area fluid-padding-3 ptb-130">
                 <div class="container-fluid">
                     <div class="row">
@@ -611,6 +638,7 @@ return $verificacao;
                         </div>
 						</div>
                         <div class="col-lg-6">
+                            <!-- Informacoes do produto 2-->
                             <div class="product-details-content">
                                 <h2> Motorcycle Radiator Cooler For Kawasaki Ninja </h2>
                                 <div class="quick-view-rating">
@@ -655,7 +683,8 @@ return $verificacao;
                         </div>
                     </div>
                 </div>
-            </div>	
+            </div>
+            <!-- Detalhes do produto 3-->
 			<div id=bancomoto class="product-details-area fluid-padding-3 ptb-130">
                 <div class="container-fluid">
                     <div class="row">
@@ -676,6 +705,7 @@ return $verificacao;
                         </div>
 						</div>
                         <div class="col-lg-6">
+                            <!-- Informacoes do produto 3-->
                             <div class="product-details-content">
                                 <h2> Universal Motorcycle Retro Diamond Flat Style Seat </h2>
                                 <div class="quick-view-rating">
@@ -719,6 +749,7 @@ return $verificacao;
                     </div>
                 </div>
             </div>
+                <!-- Detalhes do produto 4-->
 				<div id=farol class="product-details-area fluid-padding-3 ptb-130">
                 <div class="container-fluid">
                     <div class="row">
@@ -739,6 +770,7 @@ return $verificacao;
                         </div>
 						</div>
                         <div class="col-lg-6">
+                            <!-- Informacoes do produto 4-->
                             <div class="product-details-content">
                                 <h2> Halo Motorcycle Headlight </h2>
                                 <div class="quick-view-rating">
@@ -784,6 +816,7 @@ return $verificacao;
                     </div>
                 </div>
             </div>
+            <!-- Detalhes do produto 5-->
 			<div id=tanque class="product-details-area fluid-padding-3 ptb-130">
                 <div class="container-fluid">
                     <div class="row">
@@ -804,6 +837,7 @@ return $verificacao;
                         </div>
 						</div>
                         <div class="col-lg-6">
+                            <!-- Informacoes do produto 5-->
                             <div class="product-details-content">
                                 <h2>Dished Wassell Peanut Motorcycle Gas Tank </h2>
                                 <div class="quick-view-rating">
@@ -852,6 +886,7 @@ return $verificacao;
                     </div>
                 </div>
             </div>
+            <!-- Detalhes do produto 6-->
 			<div id=velocimetro class="product-details-area fluid-padding-3 ptb-130">
                 <div class="container-fluid">
                     <div class="row">
@@ -872,6 +907,7 @@ return $verificacao;
                         </div>
 						</div>
                         <div class="col-lg-6">
+                            <!-- Informacoes do produto 6-->
                             <div class="product-details-content">
                                 <h2>Fydun Motorcycle Speedometer</h2>
                                 <div class="quick-view-rating">
@@ -887,7 +923,7 @@ return $verificacao;
                                 <div class="product-overview">
                                     <h5 class="pd-sub-title">Resumo do Produto</h5>
                                     <p>Este é um velocímetro digital LCD, que pode indicar sua velocidade com precisão, e com isso aumentar sua segurança rodoviária. 
-                                    O velocímetro é feito de robusta carcaça de ABS galvanizado, totalmente à prova d'água e permite resistir a pequenas colisões</p>
+                                    O velocímetro é feito de robusta carcaça de ABS galvanizado, totalmente à prova dágua e permite resistir a pequenas colisões</p>
                                 </div>
                                     <div class="quickview-btn-cart">
                                     <form method="get" action="carrinho_artigos.php">
@@ -916,6 +952,7 @@ return $verificacao;
                     </div>
                 </div>
             </div>
+            <!-- Detalhes do produto 7-->
 			<div id=medidor class="product-details-area fluid-padding-3 ptb-130">
                 <div class="container-fluid">
                     <div class="row">
@@ -936,6 +973,7 @@ return $verificacao;
                         </div>
 						</div>
                         <div class="col-lg-6">
+                            <!-- Informacoes do produto 7-->
                             <div class="product-details-content">
                                 <h2>Racetech Fuel Level Gauge</h2>
                                 <div class="quick-view-rating">
@@ -980,6 +1018,7 @@ return $verificacao;
                     </div>
                 </div>
             </div>
+            <!-- Detalhes do produto 8-->
 			<div id=capacete class="product-details-area fluid-padding-3 ptb-130">
                 <div class="container-fluid">
                     <div class="row">
@@ -1000,6 +1039,7 @@ return $verificacao;
                         </div>
 						</div>
                         <div class="col-lg-6">
+                            <!-- Informacoes do produto 8-->
                             <div class="product-details-content">
                                 <h2>Adult Full Face Matto Blue Helmet</h2>
                                 <div class="quick-view-rating">
@@ -1028,11 +1068,12 @@ return $verificacao;
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <?php 
-                                    $retorno = feedback(7, "veiculo");
+                                    $retorno = feedback(7, "artigo");
                                     echo $retorno[3];
                                     echo "<br/>";
                                     if ($retorno[0] == 7){
                                         echo $retorno[1];
+                                        
                                     }?>
                                 </div>
                                 <div class="product-share">
@@ -1047,6 +1088,7 @@ return $verificacao;
                     </div>
                 </div>
             </div>
+            <!-- Detalhes do produto 9-->
 			<div id=casaco class="product-details-area fluid-padding-3 ptb-130">
                 <div class="container-fluid">
                     <div class="row">
@@ -1067,6 +1109,7 @@ return $verificacao;
                         </div>
 						</div>
                         <div class="col-lg-6">
+                            <!-- Informacoes do produto 9-->
                             <div class="product-details-content">
                                 <h2>Racing 3 Leather Jacket</h2>
                                 <div class="quick-view-rating">
@@ -1112,6 +1155,7 @@ return $verificacao;
                     </div>
                 </div>
             </div>
+            <!-- Detalhes do produto 10-->
 			<div id=botas class="product-details-area fluid-padding-3 ptb-130">
                 <div class="container-fluid">
                     <div class="row">
@@ -1132,6 +1176,7 @@ return $verificacao;
                         </div>
 						</div>
                         <div class="col-lg-6">
+                            <!-- Informacoes do produto 10-->
                             <div class="product-details-content">
                                 <h2>FORMA Adventure Off-Road Motorcycle Boots</h2>
                                 <div class="quick-view-rating">
@@ -1148,7 +1193,7 @@ return $verificacao;
                                     <h5 class="pd-sub-title">Resumo do Produto</h5>
                                     <p>Projetadas especificamente para pilotos ADV, as Botas de Aventura Forma combinam o conforto e a 
                                     flexibilidade de uma bota de estrada com os recursos de proteção e altura total de botas off-road. 
-                                    Equipadas com acabamento em couro vintage e forro à prova d'água / respirável drytex, as botas Adventure
+                                    Equipadas com acabamento em couro vintage e forro à prova dágua / respirável drytex, as botas Adventure
                                     mantêm seus pés secos sem limitar a amplitude de movimento. A sola de dupla densidade oferece excelente 
                                     aderência à bicicleta e oferece aos pilotos uma superfície confortável e aderente para caminhar quando 
                                     descem da bicicleta. Os reforços e inserções de TPU integrados fornecem proteção contra lesões por impacto
@@ -1181,6 +1226,7 @@ return $verificacao;
                     </div>
                 </div>
             </div>
+            <!-- Detalhes do produto 11-->
 			<div id=joelheiras class="product-details-area fluid-padding-3 ptb-130">
                 <div class="container-fluid">
                     <div class="row">
@@ -1201,6 +1247,7 @@ return $verificacao;
                         </div>
 						</div>
                         <div class="col-lg-6">
+                            <!-- Informacoes do produto 11-->
                             <div class="product-details-content">
                                 <h2>HEROBIKER Motorcycle Knee Pads</h2>
                                 <div class="quick-view-rating">
@@ -1247,6 +1294,7 @@ return $verificacao;
                     </div>
                 </div>
             </div>
+            <!-- Detalhes do produto 11-->
 			<div id=capacete2 class="product-details-area fluid-padding-3 ptb-130">
                 <div class="container-fluid">
                     <div class="row">
@@ -1267,6 +1315,7 @@ return $verificacao;
                         </div>
 						</div>
                         <div class="col-lg-6">
+                            <!-- Informacoes do produto 11-->
                             <div class="product-details-content">
                                 <h2>LS2 Helmets Full Face Blaze Adventure Motorcycle Helmet, Matte Titanium 436B-103</h2>
                                 <div class="quick-view-rating">
@@ -1312,6 +1361,7 @@ return $verificacao;
                     </div>
                 </div>
             </div>
+            <!-- Detalhes do produto 12-->
 			<div id=cobertos class="product-details-area fluid-padding-3 ptb-130">
                 <div class="container-fluid">
                     <div class="row">
@@ -1332,6 +1382,7 @@ return $verificacao;
                         </div>
 						</div>
                         <div class="col-lg-6">
+                            <!-- Informacoes do produto 12-->
                             <div class="product-details-content">
                                 <h2>SUNFLOWER CAR</h2>
                                 <div class="quick-view-rating">
@@ -1378,6 +1429,7 @@ return $verificacao;
                     </div>
                 </div>
             </div>
+            <!-- Detalhes do produto 13-->
 			<div id=capa class="product-details-area fluid-padding-3 ptb-130">
                 <div class="container-fluid">
                     <div class="row">
@@ -1398,6 +1450,7 @@ return $verificacao;
                         </div>
 						</div>
                         <div class="col-lg-6">
+                            <!-- Informacoes do produto 13-->
                             <div class="product-details-content">
                                 <h2>Waterproof Car Cover - Large Sedan</h2>
                                 <div class="quick-view-rating">
@@ -1441,6 +1494,7 @@ return $verificacao;
                     </div>
                 </div>
             </div>
+            <!-- Detalhes do produto 14-->
 			<div id=organizador class="product-details-area fluid-padding-3 ptb-130">
                 <div class="container-fluid">
                     <div class="row">
@@ -1461,6 +1515,7 @@ return $verificacao;
                         </div>
 						</div>
                         <div class="col-lg-6">
+                            <!-- Informacoes do produto 14-->
                             <div class="product-details-content">
                                 <h2>Organizador de itens</h2>
                                 <div class="quick-view-rating">
@@ -1508,6 +1563,7 @@ return $verificacao;
                     </div>
                 </div>
             </div>
+            <!-- Detalhes do produto 15-->
 			<div id=luzes class="product-details-area fluid-padding-3 ptb-130">
                 <div class="container-fluid">
                     <div class="row">
@@ -1528,6 +1584,7 @@ return $verificacao;
                         </div>
 						</div>
                         <div class="col-lg-6">
+                            <!-- Informacoes do produto 15-->
                             <div class="product-details-content">
                                 <h2> Govee luzes interiores para carro </h2>
                                 <div class="quick-view-rating">
@@ -1575,6 +1632,7 @@ return $verificacao;
                     </div>
                 </div>
             </div>
+            <!-- Detalhes do produto 16-->
 			<div id=holder class="product-details-area fluid-padding-3 ptb-130">
                 <div class="container-fluid">
                     <div class="row">
@@ -1595,6 +1653,7 @@ return $verificacao;
                         </div>
 						</div>
                         <div class="col-lg-6">
+                            <!-- Informacoes do produto 16-->
                             <div class="product-details-content">
                                 <h2>PhoneHolder</h2>
                                 <div class="quick-view-rating">
@@ -1643,6 +1702,7 @@ return $verificacao;
                     </div>
                 </div>
             </div>
+            <!-- Detalhes do produto 17-->
 			<div id=capavolante class="product-details-area fluid-padding-3 ptb-130">
                 <div class="container-fluid">
                     <div class="row">
@@ -1663,6 +1723,7 @@ return $verificacao;
                         </div>
 						</div>
                         <div class="col-lg-6">
+                            <!-- Informacoes do produto 17-->
                             <div class="product-details-content">
                                 <h2>Capa para volante</h2>
                                 <div class="quick-view-rating">
@@ -1707,23 +1768,22 @@ return $verificacao;
                     </div>
                 </div>
             </div>
-            <div class="newsletter-area">
+           <!-- Subscrição dos clientes -->	
+           <div class="newsletter-area">
                 <div class="container">
                     <div class="newsletter-wrapper-all theme-bg-2">
                         <div class="row">
-
+                           
                             <div class="col-lg-20 col-12 col-md-12">
                                 <div class="newsletter-wrapper text-center">
                                     <div class="newsletter-title">
                                         <h3>Subscreva aos nossos alertas</h3>
                                     </div>
                                     <div id="mc_embed_signup" class="subscribe-form">
-                                        <form action="#" method="post" id="#" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                                        <form action="envia_email.php" method="post" id="markenting-emails" name="mc-embedded-subscribe-form" class="validate">
                                             <div id="mc_embed_signup_scroll" class="mc-form">
-                                                <input type="email" value="" name="EMAIL" class="email" placeholder="Deixe aqui o seu email..." required>
-                                                <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-                                                <div class="mc-news" aria-hidden="true"><input type="text" name="b_6bbb9b6f5827bd842d9640c82_05d85f18ef" tabindex="-1" value=""></div>
-                                                <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+                                                <input type="email" id="email_interessado" name="email_interessado" class="email" placeholder="Deixe aqui o seu email..." required>
+                                                <div class="clear"><input type="submit" value="Subscribe" name="email-markenting" id="mc-embedded-subscribe" class="button"></div>
                                             </div>
                                         </form>
                                     </div>
@@ -1733,6 +1793,7 @@ return $verificacao;
                     </div>
                 </div>
             </div>
+            <!-- Inicio do Rodapé -->
             <footer>
                 <div class="footer-top pt-210 pb-98 theme-bg">
                     <div class="container">
@@ -1823,7 +1884,7 @@ return $verificacao;
                 </div>
             </footer>
         </div>
-		<!-- all js here -->
+		<!-- Chamada de todos os js -->
         <script src="assets/js/vendor/jquery-1.12.0.min.js"></script>
         <script src="assets/js/popper.js"></script>
         <script src="assets/js/bootstrap.min.js"></script>

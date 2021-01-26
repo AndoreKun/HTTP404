@@ -1,13 +1,12 @@
+<!doctype html>
 <!--
 /**
 *Pagina principal do portal
-*@author Andre, Kleyton, Rui, Jose
-*@version 2.1
-*@since 16 jan 2021
+*@author Grupo HTTP404
+*@version 4.4
+*@since 18 dez 2020
 */
 -->
-
-<!doctype html>
 <html class="no-js" lang="zxx">
     <head>
         <meta charset="utf-8">
@@ -15,10 +14,10 @@
         <title>Página inicial</title>
         <meta name="description" content="HTTP 404 - O melhor site de vendas de veículos">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- Favicon -->
+        <!-- Favicon - ícones de visualização.-->
         <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
 		
-		<!-- all css here -->
+		<!-- Todos os css -->
         <link rel="stylesheet" href="assets/css/bootstrap.min.css">
         <link rel="stylesheet" href="assets/css/animate.css">
         <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
@@ -34,7 +33,7 @@
     </head>
     <body>
         <div class="wrapper">
-            <!-- header start -->
+            <!-- Cabeçalho da Pagina -->
             <header>
                 <div class="header-area transparent-bar ptb-55">
                     <div class="container">
@@ -49,6 +48,7 @@
                                     <div class="header-contact">
                                     </div>
                                     <div class="menu-wrapper text-center">
+                                        <!-- Botão do Menu -->
                                         <button class="menu-toggle">
                                             <img class="s-open" alt="" src="assets/img/icon-img/menu.png">
                                             <img class="s-close" alt="" src="assets/img/icon-img/menu-close.png">
@@ -80,6 +80,7 @@
                     </div>
                 </div>
             </header>
+            <!-- Slide dos produtos  -->
             <div class="slider-area">
                 <div class="slider-active owl-carousel">
                     <div class="single-slider slider-1" style="background-image: url(assets/img/slider/slider-bg.jpg)">
@@ -122,9 +123,10 @@
                 </div>
               <div class="slider-social">
                     <ul>
+                        <!-- Slide das redes sociais -->
                         <li class="facebook"><a href="https://www.facebook.com/Http404-104014971631032"><i class="icofont icofont-social-facebook"></i></a></li>
                         <li class="twitter"><a href="https://twitter.com/Http404V"><i class="icofont icofont-social-twitter"></i></a></li>
-                        <li class="instagram"><a href="https://instagram.com/lojahttp404"><i class="icofont icofont-social-instagram"></i></a></li> <!--/* author: kleyton date: 16 jan 2021*/-->
+                        <li class="instagram"><a href="https://instagram.com/lojahttp404"><i class="icofont icofont-social-instagram"></i></a></li>
                     </ul>
                 </div>
         </div>
@@ -194,6 +196,7 @@
                     </div>
                 </div>
             </div>
+            <!-- Depoimentos dos clientes -->
             <div class="testimonial-area">
                 <div class="container">
                     <div class="section-title-2 section-title-position">
@@ -243,6 +246,7 @@
                     </div>
                 </div>
             </div>
+            <!-- Subscrição dos clientes -->	
             <div class="newsletter-area">
                 <div class="container">
                     <div class="newsletter-wrapper-all theme-bg-2">
@@ -254,12 +258,10 @@
                                         <h3>Subscreva aos nossos alertas</h3>
                                     </div>
                                     <div id="mc_embed_signup" class="subscribe-form">
-                                        <form action="#" method="post" id="#" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                                        <form action="envia_email.php" method="post" id="markenting-emails" name="mc-embedded-subscribe-form" class="validate">
                                             <div id="mc_embed_signup_scroll" class="mc-form">
-                                                <input type="email" value="" name="EMAIL" class="email" placeholder="Deixe aqui o seu email..." required>
-                                                <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-                                                <div class="mc-news" aria-hidden="true"><input type="text" name="b_6bbb9b6f5827bd842d9640c82_05d85f18ef" tabindex="-1" value=""></div>
-                                                <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+                                                <input type="email" id="email_interessado" name="email_interessado" class="email" placeholder="Deixe aqui o seu email..." required>
+                                                <div class="clear"><input type="submit" value="Subscribe" name="email-markenting" id="mc-embedded-subscribe" class="button"></div>
                                             </div>
                                         </form>
                                     </div>
@@ -269,6 +271,7 @@
                     </div>
                 </div>
             </div>
+            <!-- Rodapé da pagina principal -->
             <footer>
                 <div class="footer-top pt-210 pb-98 theme-bg">
                     <div class="container">
@@ -370,7 +373,7 @@
 		
 		
 		
-		<!-- all js here -->
+		<!-- Chamada de todos os js -->
         <script src="assets/js/vendor/jquery-1.12.0.min.js"></script>
         <script src="assets/js/popper.js"></script>
         <script src="assets/js/bootstrap.min.js"></script>

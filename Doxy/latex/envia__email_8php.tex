@@ -1,0 +1,36 @@
+\hypertarget{envia__email_8php}{}\doxysection{Referência do Arquivo C\+:/\+Kleyton/\+STI/1.1.Ambiente\+Desen/trabalho\+\_\+adc/envia\+\_\+email.php}
+\label{envia__email_8php}\index{C:/Kleyton/STI/1.1.AmbienteDesen/trabalho\_adc/envia\_email.php@{C:/Kleyton/STI/1.1.AmbienteDesen/trabalho\_adc/envia\_email.php}}
+\doxysubsection*{Funções}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{envia__email_8php_a1516c5ac158aea0f19adc62e916535a3}{Enviar\+Mail}} (\$destinatario, \$assunto, \$mensagem, \$endereco\+\_\+cliente, \$compra\+\_\+cliente)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Funções}
+\mbox{\Hypertarget{envia__email_8php_a1516c5ac158aea0f19adc62e916535a3}\label{envia__email_8php_a1516c5ac158aea0f19adc62e916535a3}} 
+\index{envia\_email.php@{envia\_email.php}!EnviarMail@{EnviarMail}}
+\index{EnviarMail@{EnviarMail}!envia\_email.php@{envia\_email.php}}
+\doxysubsubsection{\texorpdfstring{EnviarMail()}{EnviarMail()}}
+{\footnotesize\ttfamily Enviar\+Mail (\begin{DoxyParamCaption}\item[{}]{\$destinatario,  }\item[{}]{\$assunto,  }\item[{}]{\$mensagem,  }\item[{}]{\$endereco\+\_\+cliente,  }\item[{}]{\$compra\+\_\+cliente }\end{DoxyParamCaption})}
+
+
+
+Definição na linha 4 do arquivo envia\+\_\+email.\+php.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{5 \{}
+\DoxyCodeLine{6     \$de = \textcolor{stringliteral}{"{}portalhttp404@gmail.com"{}};}
+\DoxyCodeLine{7     \$headers = \textcolor{stringliteral}{"{}From: HTTP 404 <'.\$de.'>\(\backslash\)n"{}};}
+\DoxyCodeLine{8     \$headers = \textcolor{stringliteral}{"{}Content-\/Type: Text/HTML; charset=UTF-\/8\(\backslash\)n"{}};}
+\DoxyCodeLine{9     \textcolor{comment}{// formatação da mensagem em HTML}}
+\DoxyCodeLine{10     \textcolor{keywordflow}{switch}(\mbox{\hyperlink{compra__sucess_8php_a2a94709f1ce70da464c1ec3280048e6b}{\$mensagem}}) \{ }
+\DoxyCodeLine{11         \textcolor{keywordflow}{case} \textcolor{stringliteral}{'email\_venda'}: }
+\DoxyCodeLine{12             \mbox{\hyperlink{compra__sucess_8php_a2a94709f1ce70da464c1ec3280048e6b}{\$mensagem}} = include(\textcolor{stringliteral}{"{}email\_html.php"{}});                 }
+\DoxyCodeLine{13     \}}
+\DoxyCodeLine{14     mail(\$destinatario,\mbox{\hyperlink{compra__sucess_8php_aea0d4709f3c11a5d93e06b1f820cb521}{\$assunto}},\mbox{\hyperlink{compra__sucess_8php_a2a94709f1ce70da464c1ec3280048e6b}{\$mensagem}},\$headers);}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 \}}
+
+\end{DoxyCode}

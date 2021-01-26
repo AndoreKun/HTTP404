@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Portal Http404: Código-Fonte de class/Conexao.class.php</title>
+<title>Portal Http404: Código-Fonte de C:/Kleyton/STI/1.1.AmbienteDesen/trabalho_adc/class/Conexao.class.php</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -62,7 +62,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_b159045c86742e23382de6113e3621b5.html">class</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_8f8d8a113217a0f70e7a7216ffa88dbc.html">trabalho_adc</a></li><li class="navelem"><a class="el" href="dir_4ebfd0636ae5dba5fb7fa334dc5ede02.html">class</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -70,76 +70,71 @@ $(function() {
 <div class="title">Conexao.class.php</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="_conexao_8class_8php.html">Vá para a documentação desse arquivo.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;&lt;?php    </div>
-<div class="line"><a name="l00002"></a><span class="lineno"><a class="line" href="class_conexao.html">    2</a></span>&#160;    <span class="keyword">class </span><a class="code" href="class_conexao.html">Conexao</a> {</div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;        <span class="keyword">private</span> $data = array();</div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;        <span class="comment">//variavel da classe Base</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno"><a class="line" href="class_conexao.html#a5766efd703cef0e00bfc06b3f3acbe0e">    5</a></span>&#160;        <span class="keyword">protected</span> <a class="code" href="class_conexao.html#a5766efd703cef0e00bfc06b3f3acbe0e">$pdo</a> = <span class="keyword">null</span>;</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;        </div>
-<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="class_conexao.html#a83c2703c91959192f759992ad5640b67">    7</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">function</span> <a class="code" href="class_conexao.html#a83c2703c91959192f759992ad5640b67">__set</a>($name, $value){</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;            $this-&gt;data[$name] = $value;</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;        }</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
-<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="class_conexao.html#abc8e9e31bb15c8a44c3210ec551407c8">   11</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">function</span> <a class="code" href="class_conexao.html#abc8e9e31bb15c8a44c3210ec551407c8">__get</a>($name){</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;            <span class="keywordflow">if</span> (array_key_exists($name, $this-&gt;data)) {</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;                <span class="keywordflow">return</span> $this-&gt;data[$name];</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;            }</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;            $trace = debug_backtrace();</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;            trigger_error(</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;                <span class="stringliteral">&#39;Undefined property via __get(): &#39;</span> . $name .</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;                <span class="stringliteral">&#39; in &#39;</span> . $trace[0][<span class="stringliteral">&#39;file&#39;</span>] .</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;                <span class="stringliteral">&#39; on line &#39;</span> . $trace[0][<span class="stringliteral">&#39;line&#39;</span>],</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;                E_USER_NOTICE);</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        }</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="comment">//metodo que retorna a variavel $pdo</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="class_conexao.html#a6e7560ad95a7986be67f7528c80e7f1a">   25</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">function</span> <a class="code" href="class_conexao.html#a6e7560ad95a7986be67f7528c80e7f1a">getPdo</a>() {</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="class_conexao.html#a5766efd703cef0e00bfc06b3f3acbe0e">$this-&gt;pdo</a>;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        }</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="comment">//metodo construtor da classe</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="class_conexao.html#a39c9cbfd5b6472d99e5b19ac7c05ade1">   30</a></span>&#160;        <span class="keyword">function</span> <a class="code" href="class_conexao.html#a39c9cbfd5b6472d99e5b19ac7c05ade1">__construct</a>(<a class="code" href="class_conexao.html#a5766efd703cef0e00bfc06b3f3acbe0e">$pdo</a> = <span class="keyword">null</span>) {</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            $this-&gt;pdo = <a class="code" href="class_conexao.html#a5766efd703cef0e00bfc06b3f3acbe0e">$pdo</a>;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            <span class="keywordflow">if</span> ($this-&gt;pdo == <span class="keyword">null</span>)</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                $this-&gt;<a class="code" href="class_conexao.html#a11494d46b6636875afea2d447ca4ea53">conectar</a>();</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        }</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="comment">//metodo que conecta com o banco de dados</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="class_conexao.html#a11494d46b6636875afea2d447ca4ea53">   37</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">function</span> <a class="code" href="class_conexao.html#a11494d46b6636875afea2d447ca4ea53">conectar</a>() {</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            <span class="keywordflow">try</span>{</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                $this-&gt;pdo = <span class="keyword">new</span> PDO(<span class="stringliteral">&quot;mysql:host=localhost;dbname=adc_http404&quot;</span>,</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                                <span class="stringliteral">&quot;admin&quot;</span>,</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                                <span class="stringliteral">&quot;http404#2021%&quot;</span>,</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                                array(PDO::MYSQL_ATTR_INIT_COMMAND =&gt; <span class="stringliteral">&quot;SET NAMES utf8&quot;</span>));</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            }<span class="keywordflow">catch</span> (PDOException $e) {</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                print <span class="stringliteral">&quot;Error!: &quot;</span> . $e-&gt;getMessage() .<span class="stringliteral">&quot;&lt;br/&gt;&quot;</span>;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                die();</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            }</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        }</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="comment">//metodo que desconecta</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="class_conexao.html#ab4b39fe5953ce1f90723f825916337d7">   50</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">function</span> <a class="code" href="class_conexao.html#ab4b39fe5953ce1f90723f825916337d7">desconectar</a>() {</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            $this-&gt;pdo = <span class="keyword">null</span>;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        }</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        </div>
-<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="class_conexao.html#aba804048bed81433b1331001898cd6ff">   54</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">function</span> <a class="code" href="class_conexao.html#aba804048bed81433b1331001898cd6ff">select</a>($sql){</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            <a class="code" href="selects__basedados_8php.html#af27a9140d5f2658693e7fd107f716449">$stmt</a> = $this-&gt;pdo-&gt;prepare($sql);</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            <a class="code" href="selects__basedados_8php.html#af27a9140d5f2658693e7fd107f716449">$stmt</a>-&gt;execute();</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="selects__basedados_8php.html#af27a9140d5f2658693e7fd107f716449">$stmt</a>-&gt;fetchAll(PDO::FETCH_ASSOC);</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        }</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;}</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;?&gt;</div>
-<div class="ttc" id="aclass_conexao_html"><div class="ttname"><a href="class_conexao.html">Conexao</a></div><div class="ttdef"><b>Definition:</b> <a href="_conexao_8class_8php_source.html#l00002">Conexao.class.php:2</a></div></div>
-<div class="ttc" id="aclass_conexao_html_a11494d46b6636875afea2d447ca4ea53"><div class="ttname"><a href="class_conexao.html#a11494d46b6636875afea2d447ca4ea53">Conexao\conectar</a></div><div class="ttdeci">conectar()</div><div class="ttdef"><b>Definition:</b> <a href="_conexao_8class_8php_source.html#l00037">Conexao.class.php:37</a></div></div>
-<div class="ttc" id="aclass_conexao_html_a39c9cbfd5b6472d99e5b19ac7c05ade1"><div class="ttname"><a href="class_conexao.html#a39c9cbfd5b6472d99e5b19ac7c05ade1">Conexao\__construct</a></div><div class="ttdeci">__construct($pdo=null)</div><div class="ttdef"><b>Definition:</b> <a href="_conexao_8class_8php_source.html#l00030">Conexao.class.php:30</a></div></div>
-<div class="ttc" id="aclass_conexao_html_a5766efd703cef0e00bfc06b3f3acbe0e"><div class="ttname"><a href="class_conexao.html#a5766efd703cef0e00bfc06b3f3acbe0e">Conexao\$pdo</a></div><div class="ttdeci">$pdo</div><div class="ttdef"><b>Definition:</b> <a href="_conexao_8class_8php_source.html#l00005">Conexao.class.php:5</a></div></div>
-<div class="ttc" id="aclass_conexao_html_a6e7560ad95a7986be67f7528c80e7f1a"><div class="ttname"><a href="class_conexao.html#a6e7560ad95a7986be67f7528c80e7f1a">Conexao\getPdo</a></div><div class="ttdeci">getPdo()</div><div class="ttdef"><b>Definition:</b> <a href="_conexao_8class_8php_source.html#l00025">Conexao.class.php:25</a></div></div>
-<div class="ttc" id="aclass_conexao_html_a83c2703c91959192f759992ad5640b67"><div class="ttname"><a href="class_conexao.html#a83c2703c91959192f759992ad5640b67">Conexao\__set</a></div><div class="ttdeci">__set($name, $value)</div><div class="ttdef"><b>Definition:</b> <a href="_conexao_8class_8php_source.html#l00007">Conexao.class.php:7</a></div></div>
-<div class="ttc" id="aclass_conexao_html_ab4b39fe5953ce1f90723f825916337d7"><div class="ttname"><a href="class_conexao.html#ab4b39fe5953ce1f90723f825916337d7">Conexao\desconectar</a></div><div class="ttdeci">desconectar()</div><div class="ttdef"><b>Definition:</b> <a href="_conexao_8class_8php_source.html#l00050">Conexao.class.php:50</a></div></div>
-<div class="ttc" id="aclass_conexao_html_aba804048bed81433b1331001898cd6ff"><div class="ttname"><a href="class_conexao.html#aba804048bed81433b1331001898cd6ff">Conexao\select</a></div><div class="ttdeci">select($sql)</div><div class="ttdef"><b>Definition:</b> <a href="_conexao_8class_8php_source.html#l00054">Conexao.class.php:54</a></div></div>
-<div class="ttc" id="aclass_conexao_html_abc8e9e31bb15c8a44c3210ec551407c8"><div class="ttname"><a href="class_conexao.html#abc8e9e31bb15c8a44c3210ec551407c8">Conexao\__get</a></div><div class="ttdeci">__get($name)</div><div class="ttdef"><b>Definition:</b> <a href="_conexao_8class_8php_source.html#l00011">Conexao.class.php:11</a></div></div>
-<div class="ttc" id="aselects__basedados_8php_html_af27a9140d5f2658693e7fd107f716449"><div class="ttname"><a href="selects__basedados_8php.html#af27a9140d5f2658693e7fd107f716449">$stmt</a></div><div class="ttdeci">$stmt</div><div class="ttdef"><b>Definition:</b> <a href="selects__basedados_8php_source.html#l00012">selects_basedados.php:12</a></div></div>
+<a href="_conexao_8class_8php.html">Vá para a documentação desse arquivo.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;&lt;?php </div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="class_conexao.html">    8</a></span>&#160;    <span class="keyword">class </span><a class="code" href="class_conexao.html">Conexao</a> {</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;        <span class="keyword">private</span> $data = array();</div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="class_conexao.html#a5766efd703cef0e00bfc06b3f3acbe0e">   11</a></span>&#160;        <span class="keyword">protected</span> <a class="code" href="class_conexao.html#a5766efd703cef0e00bfc06b3f3acbe0e">$pdo</a> = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        </div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="class_conexao.html#a83c2703c91959192f759992ad5640b67">   13</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">function</span> <a class="code" href="class_conexao.html#a83c2703c91959192f759992ad5640b67">__set</a>($name, $value){</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;            $this-&gt;data[$name] = $value;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        }</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="class_conexao.html#abc8e9e31bb15c8a44c3210ec551407c8">   17</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">function</span> <a class="code" href="class_conexao.html#abc8e9e31bb15c8a44c3210ec551407c8">__get</a>($name){</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;            <span class="keywordflow">if</span> (array_key_exists($name, $this-&gt;data)) {</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;                <span class="keywordflow">return</span> $this-&gt;data[$name];</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;            }</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            $trace = debug_backtrace();</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            trigger_error(</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;                <span class="stringliteral">&#39;Undefined property via __get(): &#39;</span> . $name .</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;                <span class="stringliteral">&#39; in &#39;</span> . $trace[0][<span class="stringliteral">&#39;file&#39;</span>] .</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;                <span class="stringliteral">&#39; on line &#39;</span> . $trace[0][<span class="stringliteral">&#39;line&#39;</span>],</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;                E_USER_NOTICE);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        }</div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="class_conexao.html#a6e7560ad95a7986be67f7528c80e7f1a">   31</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">function</span> <a class="code" href="class_conexao.html#a6e7560ad95a7986be67f7528c80e7f1a">getPdo</a>() {</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="class_conexao.html#a5766efd703cef0e00bfc06b3f3acbe0e">$this-&gt;pdo</a>;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        }</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="class_conexao.html#a39c9cbfd5b6472d99e5b19ac7c05ade1">   35</a></span>&#160;        <span class="keyword">function</span> <a class="code" href="class_conexao.html#a39c9cbfd5b6472d99e5b19ac7c05ade1">__construct</a>(<a class="code" href="class_conexao.html#a5766efd703cef0e00bfc06b3f3acbe0e">$pdo</a> = <span class="keyword">null</span>) {</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            $this-&gt;pdo = <a class="code" href="class_conexao.html#a5766efd703cef0e00bfc06b3f3acbe0e">$pdo</a>;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            <span class="keywordflow">if</span> ($this-&gt;pdo == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                $this-&gt;<a class="code" href="class_conexao.html#a11494d46b6636875afea2d447ca4ea53">conectar</a>();</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        }</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="class_conexao.html#a11494d46b6636875afea2d447ca4ea53">   47</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">function</span> <a class="code" href="class_conexao.html#a11494d46b6636875afea2d447ca4ea53">conectar</a>() {</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            <span class="keywordflow">try</span>{</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                $this-&gt;pdo = <span class="keyword">new</span> PDO(<span class="stringliteral">&quot;mysql:host=localhost;dbname=adc_http404&quot;</span>,</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                                <span class="stringliteral">&quot;admin&quot;</span>,</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                                <span class="stringliteral">&quot;http404#2021%&quot;</span>,</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                                array(PDO::MYSQL_ATTR_INIT_COMMAND =&gt; <span class="stringliteral">&quot;SET NAMES utf8&quot;</span>));</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            }<span class="keywordflow">catch</span> (PDOException $e) {</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                print <span class="stringliteral">&quot;Error!: &quot;</span> . $e-&gt;getMessage() .<span class="stringliteral">&quot;&lt;br/&gt;&quot;</span>;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                die();</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            }</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        }</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="class_conexao.html#ab4b39fe5953ce1f90723f825916337d7">   65</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">function</span> <a class="code" href="class_conexao.html#ab4b39fe5953ce1f90723f825916337d7">desconectar</a>() {</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            $this-&gt;pdo = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        }</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        </div>
+<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="class_conexao.html#aba804048bed81433b1331001898cd6ff">   75</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">function</span> <a class="code" href="class_conexao.html#aba804048bed81433b1331001898cd6ff">select</a>($sql){</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            <a class="code" href="selects__basedados_8php.html#af27a9140d5f2658693e7fd107f716449">$stmt</a> = $this-&gt;pdo-&gt;prepare($sql);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            <a class="code" href="selects__basedados_8php.html#af27a9140d5f2658693e7fd107f716449">$stmt</a>-&gt;execute();</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="selects__basedados_8php.html#af27a9140d5f2658693e7fd107f716449">$stmt</a>-&gt;fetchAll(PDO::FETCH_ASSOC);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        }</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;}</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;?&gt;</div>
+<div class="ttc" id="aclass_conexao_html"><div class="ttname"><a href="class_conexao.html">Conexao</a></div><div class="ttdef"><b>Definition:</b> <a href="_conexao_8class_8php_source.html#l00008">Conexao.class.php:8</a></div></div>
+<div class="ttc" id="aclass_conexao_html_a11494d46b6636875afea2d447ca4ea53"><div class="ttname"><a href="class_conexao.html#a11494d46b6636875afea2d447ca4ea53">Conexao\conectar</a></div><div class="ttdeci">conectar()</div><div class="ttdef"><b>Definition:</b> <a href="_conexao_8class_8php_source.html#l00047">Conexao.class.php:47</a></div></div>
+<div class="ttc" id="aclass_conexao_html_a39c9cbfd5b6472d99e5b19ac7c05ade1"><div class="ttname"><a href="class_conexao.html#a39c9cbfd5b6472d99e5b19ac7c05ade1">Conexao\__construct</a></div><div class="ttdeci">__construct($pdo=null)</div><div class="ttdef"><b>Definition:</b> <a href="_conexao_8class_8php_source.html#l00035">Conexao.class.php:35</a></div></div>
+<div class="ttc" id="aclass_conexao_html_a5766efd703cef0e00bfc06b3f3acbe0e"><div class="ttname"><a href="class_conexao.html#a5766efd703cef0e00bfc06b3f3acbe0e">Conexao\$pdo</a></div><div class="ttdeci">$pdo</div><div class="ttdef"><b>Definition:</b> <a href="_conexao_8class_8php_source.html#l00011">Conexao.class.php:11</a></div></div>
+<div class="ttc" id="aclass_conexao_html_a6e7560ad95a7986be67f7528c80e7f1a"><div class="ttname"><a href="class_conexao.html#a6e7560ad95a7986be67f7528c80e7f1a">Conexao\getPdo</a></div><div class="ttdeci">getPdo()</div><div class="ttdef"><b>Definition:</b> <a href="_conexao_8class_8php_source.html#l00031">Conexao.class.php:31</a></div></div>
+<div class="ttc" id="aclass_conexao_html_a83c2703c91959192f759992ad5640b67"><div class="ttname"><a href="class_conexao.html#a83c2703c91959192f759992ad5640b67">Conexao\__set</a></div><div class="ttdeci">__set($name, $value)</div><div class="ttdef"><b>Definition:</b> <a href="_conexao_8class_8php_source.html#l00013">Conexao.class.php:13</a></div></div>
+<div class="ttc" id="aclass_conexao_html_ab4b39fe5953ce1f90723f825916337d7"><div class="ttname"><a href="class_conexao.html#ab4b39fe5953ce1f90723f825916337d7">Conexao\desconectar</a></div><div class="ttdeci">desconectar()</div><div class="ttdef"><b>Definition:</b> <a href="_conexao_8class_8php_source.html#l00065">Conexao.class.php:65</a></div></div>
+<div class="ttc" id="aclass_conexao_html_aba804048bed81433b1331001898cd6ff"><div class="ttname"><a href="class_conexao.html#aba804048bed81433b1331001898cd6ff">Conexao\select</a></div><div class="ttdeci">select($sql)</div><div class="ttdef"><b>Definition:</b> <a href="_conexao_8class_8php_source.html#l00075">Conexao.class.php:75</a></div></div>
+<div class="ttc" id="aclass_conexao_html_abc8e9e31bb15c8a44c3210ec551407c8"><div class="ttname"><a href="class_conexao.html#abc8e9e31bb15c8a44c3210ec551407c8">Conexao\__get</a></div><div class="ttdeci">__get($name)</div><div class="ttdef"><b>Definition:</b> <a href="_conexao_8class_8php_source.html#l00017">Conexao.class.php:17</a></div></div>
+<div class="ttc" id="aselects__basedados_8php_html_af27a9140d5f2658693e7fd107f716449"><div class="ttname"><a href="selects__basedados_8php.html#af27a9140d5f2658693e7fd107f716449">$stmt</a></div><div class="ttdeci">$stmt</div><div class="ttdef"><b>Definition:</b> <a href="selects__basedados_8php_source.html#l00022">selects_basedados.php:22</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
