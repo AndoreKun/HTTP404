@@ -1068,11 +1068,12 @@ return $verificacao;
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <?php 
-                                    $retorno = feedback(7, "veiculo");
+                                    $retorno = feedback(7, "artigo");
                                     echo $retorno[3];
                                     echo "<br/>";
                                     if ($retorno[0] == 7){
                                         echo $retorno[1];
+                                        
                                     }?>
                                 </div>
                                 <div class="product-share">
