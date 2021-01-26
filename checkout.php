@@ -2,14 +2,14 @@
 /** 
 * Página do Checkout - Permite comprar produtos e limpar o carrinho
 * @author Grupo HTTP404
-* @version 4.2
+* @version 5.0
 * @since 26 dez 2020
 */ 
 session_start();
 /** Total do Valor dos produtos */
 $total_valor_produtos = 0;
 // Desabilita a demonstração de erros, para que não haja a possibilidade de aparecer erros para o usuário final
-ini_set('display_errors', 1);
+ini_set('display_errors', 0);
 if(!isset($nome_produtos)){
     $nome_produtos = array();
 }
@@ -40,6 +40,7 @@ setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
         <link rel="stylesheet" href="assets/css/style.css">
         <link rel="stylesheet" href="assets/css/responsive.css">
         <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
+        <script src="assets/js/mostraselecao.js"></script>
     </head>
     <body>
         <div class="wrapper">
@@ -102,15 +103,44 @@ setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-6 col-md-12 col-12">
+                        <div class="col-lg-6 col-md-12 col-12" >
                             <form id="dados_entrega" name="dados_entrega" action="" method="post">
                                 <div class="checkbox-form">						
                                     <h3>DADOS DE ENTREGA</h3>
                                     <div class="row">
+                                        <!-- login de cliente para importar dados de checkout!-->
+                                        <div id="dados_entrega_auto">
+                                            <div class="col-md-12"> 
+                                                <select id="cliente_exits" name="cliente_exits" required onchange="admSelectCheck(this, false)">
+                                                    <option id="manual" name="cliente_novo" value="cliente_novo" selected>Inserir Dados de Checkout Manualmente</option>
+                                                    <option id="opcao" name="cliente_existe" value="cliente_existe">Inserir Dados de Checkout Automaticamente</option>
+                                                </select> 
+                                            </div>
+                                            <form>
+                                            <div id="elemento" name="elemento" style="display: none">
+                                                <div class="col-md-12">
+                                                    <div class="checkout-form-list">
+                                                        <label>NIF <span class="required">*</span></label>										
+                                                        <input name="nif" type="text" placeholder="" minlength="9" maxlength="9" required/>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="checkout-form-list">
+                                                        <label>Password<span class="required">*</span></label>										
+                                                        <input name="nif_password" type="text" placeholder="" minlength="5" required/>
+                                                    </div>
+                                                
+                                                <div class="order-button-payment">
+                                                    <input style="width: 350px; text-align: center;" id="login" name="login" type="submit" value="Login" />
+                                                    <br/><br/>
+                                                </div> 
+                                                </div> 
+                                            </div>
+                                        </form>  
+                                        </div>
                                         <div class="col-md-12">
                                             <div class="country-select">
                                                 <label>País<span class="required">*</span></label>
@@ -202,6 +232,8 @@ setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
                                 </div>
                             </form>
                         </div>
+                        
+                        <br/>
                         <!-- Revisão Encomenda !-->	
                         <div class="col-lg-6 col-md-12 col-12" style="text-align: center;">
                             <div class="your-order">
@@ -259,9 +291,28 @@ setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
                                         $qntdproduto += 3;
                                         $precoproduto += 3;
                                         }
+                                        $portes = 10; 
+                                        $symbl = "€";
+                                        if($total_valor_produtos > 99){
+                                            $portes = 5; 
+                                        }
+                                        $total_valor_produtos = $total_valor_produtos + $portes;
+                                        if($total_valor_produtos > 999){
+                                            $portes = "Grátis";
+                                            $symbl = "";
+                                        }
                                     ?>
+                                        <tr class="cart_item">
+                                            <th>Portes</th>
+                                            <td>
+                                                <strong><span class="amount">
+                                                <?php echo $portes.$symbl?></span></strong>
+                                            </td>
+                                        </tr>
+                                    
                                         <tfoot>
                                             <tr class="order-total">
+                                                
                                                 <th>Total</th>
                                                 <td><strong><span class="amount"><?php echo $total_valor_produtos;?>€</span></strong>
                                                 </td>
@@ -441,6 +492,7 @@ setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
 </html>
 <?php
 // Adiciona Cliente
+$nif = "";
 if(isset($_POST['fazer_pedido'])){
     $pais = $_POST['pais'];
     $nome = $_POST['nome'];
@@ -523,20 +575,24 @@ if(isset($_POST['fazer_pedido'])){
             $adicionar_foto = FALSE;
             include('database/inserts_basedados.php');
             $data_atual = date("Y-m-d H:i:s");
-            $compras_do_cliente = array();
-            $consulta = "SELECT IDVenda, IDNIF_Cliente, ValorVenda, DataVenda FROM vendas WHERE IDNIF_Cliente = '$nif' AND DataVenda = '$data_atual' ORDER BY DataVenda DESC";
-            include('database/selects_basedados.php');
-            if($dados){
-                foreach($dados as $linha){
-                    array_push($compras_do_cliente, $linha['IDVenda'], $linha['IDNIF_Cliente'], $linha['ValorVenda'], $linha['DataVenda']);
-                }
-            }
     }
+    $compras_do_cliente = array();
+    $consulta = "SELECT v.IDVenda, v.ValorVenda, v.DataVenda, c.Nome, c.Email, c.Morada, c.Cod_Postal, c.Localidade, c.Pais, c.Telemovel FROM vendas AS v, clientes AS c 
+    WHERE c.IDNIF_Cliente = '$nif' AND v.DataVenda = '$data_atual' ORDER BY v.DataVenda DESC";
+    include('database/selects_basedados.php');
+    if($dados){
+        foreach($dados as $linha){
+            array_push($compras_do_cliente, $linha['IDVenda'], $nif, $linha['ValorVenda'], $linha['DataVenda'], $portes);
+            $endereço_enviado = array($linha['Nome'], $linha['Email'], $linha['Morada'], $linhas['Cod_Postal'], $linha['Localidade'], $linha['Pais'], $linha['Telemovel']);
+        }
+    }
+
+    $_SESSION['compra_sucess'] = array("sim", $mais_informacoes, $compras_do_cliente, $endereço_enviado);
     
-    $_SESSION['compra_sucess'] = array("sim", $mais_informacoes, $compras_do_cliente);
     echo "<script type='text/javascript'>
             location.href='compra_sucess.php'
             </script>";
     }
+    
 }
 ?>
