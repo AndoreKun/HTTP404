@@ -66,14 +66,14 @@
                                             <article>
                                                 <form name="form_pesquisa" id="form_pesquisa" method="post" action="">
                                                     <div id="login-box-name">Email:</div>
-                            <div id="login-box-field">
-                                <input name="email" class="form-login" title="Username" value="" size="30"/>
-                            </div>
-                            <div id="login-box-name">Password:</div>
-                            <div id="login-box-field">
-                                <input name="pass" type="password" class="form-login" title="Password" value="" size="30"/>
-                            </div>
-                            <button name="acao" class="btn-style cr-btn" type="submit" form="form_pesquisa" value="logar">Login</button>
+                                                        <div id="login-box-field">
+                                                            <input name="email" class="form-login" title="Username" value="" size="30"/>
+                                                        </div>
+                                                        <div id="login-box-name">Password:</div>
+                                                        <div id="login-box-field">
+                                                            <input name="pass" type="password" class="form-login" title="Password" value="" size="30"/>
+                                                        </div>
+                                                        <button name="acao" class="btn-style cr-btn" type="submit" form="form_pesquisa" value="logar">Login</button>
                                                 </form>
                                             </article>
                                         </div>
