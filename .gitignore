@@ -14,7 +14,6 @@ Thumbs.db
 
 # Aplicações
 *.app
-*.exe
 *.war
 
 # Ficheiros de mídia(grandes)

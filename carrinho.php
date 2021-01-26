@@ -81,10 +81,15 @@ if(isset($_GET['mudar_carrinho'])){
             // Limpa todas as variáveis de forma que o carrinho fique sem nenhum artigo/veiculo
             unset($_SESSION['produtos']['produtos']);
             unset($_SESSION['carrinho_veiculos']);
-            unset($_SESSION['carrrinho_artigos']);
+            unset($_SESSION['carrinho_artigos']);
             unset($_SESSION['prod_veiculos_antigos']);
-            // Destrói a sessão, e com isso os arrays associativos session
-            session_destroy(); 
+            unset($_SESSION['id_veiculo']['id_veiculo']);
+            unset($_SESSION['id_artigo']['id_artigo']);
+            unset($_SESSION['abilitar_remover_veiculos']);
+            unset($_SESSION['abilitar_remover_artigos']);
+            unset($_SESSION['produtos_veiculos']);
+            unset($_SESSION['produtos_artigos']);
+            unset($_SESSION['feedback']['feedback']);
             break;
     }       
 }
