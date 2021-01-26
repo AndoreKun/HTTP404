@@ -2,7 +2,7 @@ var indexSectionsWithContent =
 {
   0: "$<_acdefgilprstuv",
   1: "ac",
-  2: "acdeilprstuv",
+  2: "acdeilprsuv",
   3: "_cdefgsv",
   4: "$eit",
   5: "<"
