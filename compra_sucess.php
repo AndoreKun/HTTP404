@@ -2,14 +2,17 @@
 /** 
 * Página é apresentada quando uma compra é realizada com sucesso
 * @author Grupo HTTP404
-* @version 1.1
+* @version 1.2
 * @since 24 jan 2021
 */
 // Desabilita a demonstração de erros, para que não haja a possibilidade de aparecer erros para o usuário final
 ini_set('display_errors', 0);
-
+// Inicia a sessão
 session_start();
+/** include("envia_email.php"): Inclui o script que contém a função para enviar emails */
 include("envia_email.php");
+
+// Declara as Variáveis
 $id_encomenda = "";
 $nif_do_cliente = "";
 $valor_total_venda = "";
@@ -17,12 +20,14 @@ $data_encomenda = "";
 $compra_cliente = "";
 $endereco_cliente = "";
 
+/** $verifica_compra: Array que contém informação se uma compra foi feita, e informação sobre informações a mais sobre a encomenda */
 $verifica_compra = array("nao", "sem_inf_adc");
 if(isset($_SESSION['compra_sucess'])){
     $verifica_compra[0] = $_SESSION['compra_sucess'][0];
     $verifica_compra[1] = $_SESSION['compra_sucess'][1];
     $compra_cliente = $_SESSION['compra_sucess'][2];
     $endereco_cliente = $_SESSION['compra_sucess'][3];
+    // Limpa todo o carrinho
     unset($_SESSION['produtos']['produtos']);
     unset($_SESSION['carrinho_veiculos']);
     unset($_SESSION['carrinho_artigos']);
@@ -35,31 +40,33 @@ if(isset($_SESSION['compra_sucess'])){
     unset($_SESSION['produtos_artigos']);
     unset($_SESSION['feedback']['feedback']);
 }
-
+/** if ($verifica_compra[0] == "nao" ): verifica se uma compra foi feita, senão redireciona o cliente devolta para checkout.php */
 if ($verifica_compra[0] == "nao" ){	    
     echo  "<script type='text/javascript'>
                 location.href='checkout.php'
             </script>";	
     exit();
 } else {
-    
-    $num_encomendas_feitas = (count($verifica_compra) - 2) / 4;
+    /** $id_encomenda: Número da encomenda feita(Caso o cliente tenha encomendados varios produtos, o último id de encomenda prevalece) */
     $id_encomenda = $compra_cliente[0];
+    /** $nif_do_cliente: NIF do cliente */
     $nif_do_cliente =  $compra_cliente[1];
+    /** $valor_total_venda: Valor total da Encomenda */
     $valor_total_venda = $compra_cliente[2];
+    /** $data_encomenda: Data completa exata que a encomenda foi realizada */
     $data_encomenda = $compra_cliente[3];
-    if($verifica_compra[1] != "sem_inf_adc"){
-        $email = $endereco_cliente[1];
-        $assunto = "Informações adicionais para a encomenda Nº $id_encomenda do cliente com NIF: $nif_do_cliente";
-        $mensagem = $verifica_compra[1];
-        EnviarMail($email, $assunto, $mensagem, 0, 0);
-       
-    }
+    // Variáveis para a função EnviarMail
+    /** $email: Email do cliente */
     $email = $endereco_cliente[1];
+    /** $assunto: Assunto do email */
     $assunto = "Obrigado Pela Sua Compra!";
+    /** $mensagem: Mensagem/Corpo do email */
     $mensagem = "email_venda";
-    EnviarMail($email, $assunto, $mensagem, $endereco_cliente, $compra_cliente);
-    
+    /** EnviarMail($email, $assunto, $mensagem, $endereco_cliente, $compra_cliente, $verifica_compra): Chama a função que envia email com os dados da encomenda para o cliente */
+    EnviarMail($email, $assunto, $mensagem, $endereco_cliente, $compra_cliente, $verifica_compra);
+    $_SESSION['compra_sucess'] = array();
+    /** Limpa o array associativo em compra_sucess, para caso o cliente recarregue a página, a mesma não envie outro email, mas sim o redirecione de volta para checkout */
+    unset($_SESSION['compra_sucess']);
 }
 
 ?>
@@ -113,9 +120,13 @@ if ($verifica_compra[0] == "nao" ){
                                                 <ul>
                                                     <li><a href="index.html">PÁGINA INICIAL</a></li>
                                                     <li class="active"><a href="about-us.html">SOBRE NÓS</a></li>
-                                                    <li><a href="product-details.php">LOJA</a>
+                                                    <li><a href="#">LOJA</a>
+                                                        <ul>
+                                                            <li><a href="product-details.php">Loja</a></li>                                                       
+                                                            <li><a href="checkout.php">Checkout</a></li>                                                         
+                                                        </ul>
                                                     </li>
-                                                    <li><a href="#">ACESSOS</a>
+                                                    <li><a href="">ACESSOS</a>
                                                         <ul>
                                                             <li><a href="login.php">Acesso Reservado</a></li>
                                                         </ul>
@@ -143,6 +154,7 @@ if ($verifica_compra[0] == "nao" ){
             </header>
             <div>
             </div>
+            <!-- Subscrição dos clientes -->	
             <div class="newsletter-area">
                 <div class="container">
                     <div class="newsletter-wrapper-all theme-bg-2">
@@ -154,12 +166,10 @@ if ($verifica_compra[0] == "nao" ){
                                         <h3>Subscreva aos nossos alertas</h3>
                                     </div>
                                     <div id="mc_embed_signup" class="subscribe-form">
-                                        <form action="#" method="post" id="#" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                                        <form action="envia_email.php" method="post" id="markenting-emails" name="mc-embedded-subscribe-form" class="validate">
                                             <div id="mc_embed_signup_scroll" class="mc-form">
-                                                <input type="email" value="" name="EMAIL" class="email" placeholder="Deixe aqui o seu email..." required>
-                                                <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-                                                <div class="mc-news" aria-hidden="true"><input type="text" name="b_6bbb9b6f5827bd842d9640c82_05d85f18ef" tabindex="-1" value=""></div>
-                                                <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+                                                <input type="email" id="email_interessado" name="email_interessado" class="email" placeholder="Deixe aqui o seu email..." required>
+                                                <div class="clear"><input type="submit" value="Subscribe" name="email-markenting" id="mc-embedded-subscribe" class="button"></div>
                                             </div>
                                         </form>
                                     </div>
