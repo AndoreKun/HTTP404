@@ -1,36 +1,63 @@
-\hypertarget{envia__email_8php}{}\doxysection{Referência do Arquivo C\+:/\+Kleyton/\+STI/1.1.Ambiente\+Desen/trabalho\+\_\+adc/envia\+\_\+email.php}
-\label{envia__email_8php}\index{C:/Kleyton/STI/1.1.AmbienteDesen/trabalho\_adc/envia\_email.php@{C:/Kleyton/STI/1.1.AmbienteDesen/trabalho\_adc/envia\_email.php}}
+\hypertarget{envia__email_8php}{}\doxysection{Referência do Arquivo envia\+\_\+email.\+php}
+\label{envia__email_8php}\index{envia\_email.php@{envia\_email.php}}
 \doxysubsection*{Funções}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{envia__email_8php_a1516c5ac158aea0f19adc62e916535a3}{Enviar\+Mail}} (\$destinatario, \$assunto, \$mensagem, \$endereco\+\_\+cliente, \$compra\+\_\+cliente)
+\mbox{\hyperlink{envia__email_8php_a847436e75d9097e9818507b9bf728d50}{Enviar\+Mail}} (\$destinatario, \$assunto, \$mensagem, \$endereco\+\_\+cliente, \$compra\+\_\+cliente, \$verifica\+\_\+compra)
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Funções}
-\mbox{\Hypertarget{envia__email_8php_a1516c5ac158aea0f19adc62e916535a3}\label{envia__email_8php_a1516c5ac158aea0f19adc62e916535a3}} 
+\mbox{\Hypertarget{envia__email_8php_a847436e75d9097e9818507b9bf728d50}\label{envia__email_8php_a847436e75d9097e9818507b9bf728d50}} 
 \index{envia\_email.php@{envia\_email.php}!EnviarMail@{EnviarMail}}
 \index{EnviarMail@{EnviarMail}!envia\_email.php@{envia\_email.php}}
 \doxysubsubsection{\texorpdfstring{EnviarMail()}{EnviarMail()}}
-{\footnotesize\ttfamily Enviar\+Mail (\begin{DoxyParamCaption}\item[{}]{\$destinatario,  }\item[{}]{\$assunto,  }\item[{}]{\$mensagem,  }\item[{}]{\$endereco\+\_\+cliente,  }\item[{}]{\$compra\+\_\+cliente }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily Enviar\+Mail (\begin{DoxyParamCaption}\item[{}]{\$destinatario,  }\item[{}]{\$assunto,  }\item[{}]{\$mensagem,  }\item[{}]{\$endereco\+\_\+cliente,  }\item[{}]{\$compra\+\_\+cliente,  }\item[{}]{\$verifica\+\_\+compra }\end{DoxyParamCaption})}
 
+Página que contêm a função de enviar email, também possibilita guardar os emails de cliente interessados na base de dados \begin{DoxyAuthor}{Autor}
+Grupo HTTP404 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Versão}
+1.\+3 
+\end{DoxyVersion}
+\begin{DoxySince}{Desde}
+25 jan 2021 Função Envia Email dado obrigatoriamente um destinatario, um assunto e uma mensagem. Também aceita mais 3 valores opcionais ATENÇÂO\+: Para que a função seja operacional deverá seguir os passos para configurar os arquivos da forma certa que se localiza na nossa wiki 
+\end{DoxySince}
+\begin{DoxyAuthor}{Autor}
+Grupo HTTP404 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Versão}
+1.\+2 
+\end{DoxyVersion}
+\begin{DoxySince}{Desde}
+25 jan 2021 
+\end{DoxySince}
 
+\begin{DoxyParams}[1]{Parâmetros}
+string & {\em \$destinatario} & Email do Destinatário \\
+\hline
+string & {\em \$assunto} & Assunto do email \\
+\hline
+string & {\em \$mensagem} & Mensagem/\+Corpo do Email \\
+\hline
+\end{DoxyParams}
+\$de\+: Email que enviará o email(Atenção essa opção é apenas para fins visuais no cabeçalho, para mudar o email predefinido acesse nossa wiki)
 
-Definição na linha 4 do arquivo envia\+\_\+email.\+php.
+Caso a variável \$mensagem seja \textquotesingle{}email\+\_\+venda\textquotesingle{}, inclui o ficheiro com o email que em HTML relativo ao resumo de uma encomenda para clientes
 
+\$email\+\_\+interessado\+: Email Inserido do Formulário
 
-\begin{DoxyCode}{0}
-\DoxyCodeLine{5 \{}
-\DoxyCodeLine{6     \$de = \textcolor{stringliteral}{"{}portalhttp404@gmail.com"{}};}
-\DoxyCodeLine{7     \$headers = \textcolor{stringliteral}{"{}From: HTTP 404 <'.\$de.'>\(\backslash\)n"{}};}
-\DoxyCodeLine{8     \$headers = \textcolor{stringliteral}{"{}Content-\/Type: Text/HTML; charset=UTF-\/8\(\backslash\)n"{}};}
-\DoxyCodeLine{9     \textcolor{comment}{// formatação da mensagem em HTML}}
-\DoxyCodeLine{10     \textcolor{keywordflow}{switch}(\mbox{\hyperlink{compra__sucess_8php_a2a94709f1ce70da464c1ec3280048e6b}{\$mensagem}}) \{ }
-\DoxyCodeLine{11         \textcolor{keywordflow}{case} \textcolor{stringliteral}{'email\_venda'}: }
-\DoxyCodeLine{12             \mbox{\hyperlink{compra__sucess_8php_a2a94709f1ce70da464c1ec3280048e6b}{\$mensagem}} = include(\textcolor{stringliteral}{"{}email\_html.php"{}});                 }
-\DoxyCodeLine{13     \}}
-\DoxyCodeLine{14     mail(\$destinatario,\mbox{\hyperlink{compra__sucess_8php_aea0d4709f3c11a5d93e06b1f820cb521}{\$assunto}},\mbox{\hyperlink{compra__sucess_8php_a2a94709f1ce70da464c1ec3280048e6b}{\$mensagem}},\$headers);}
-\DoxyCodeLine{15 }
-\DoxyCodeLine{16 \}}
+\$insert\+: Query do insert na base de dados
 
-\end{DoxyCode}
+\$acao\+: Ação a ser feita(INSERT/\+UPDATE/\+DELETE)
+
+\$adicionar\+\_\+foto\+: Verdadeiro caso queria adicionar uma foto na base de ados
+
+\$cargo\+: Cargo que será utilizado ao fazer o insert na base de dados
+
+\$pass\+\_\+users\+: Palavra passe de cargo
+
+Inclui o script de INSERTS na base de dados
+
+Definição na linha 9 do arquivo envia\+\_\+email.\+php.
+

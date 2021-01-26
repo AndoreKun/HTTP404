@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Portal Http404: Referência da Classe Conexao</title>
+<title>Portal Http 404: Referência da Classe Conexao</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Portal Http404
+   <div id="projectname">Portal Http 404
    </div>
   </td>
  </tr>
@@ -128,14 +128,7 @@ Atributos Protegidos</h2></td></tr>
 <dl class="section since"><dt>Desde</dt><dd>24 dez 2020</dd></dl>
 
 <p class="definition">Definição na linha <a class="el" href="_conexao_8class_8php_source.html#l00035">35</a> do arquivo <a class="el" href="_conexao_8class_8php_source.html">Conexao.class.php</a>.</p>
-<div class="fragment"><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                                          {</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            $this-&gt;pdo = <a class="code" href="class_conexao.html#a5766efd703cef0e00bfc06b3f3acbe0e">$pdo</a>;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            <span class="keywordflow">if</span> ($this-&gt;pdo == <span class="keyword">null</span>)</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                $this-&gt;<a class="code" href="class_conexao.html#a11494d46b6636875afea2d447ca4ea53">conectar</a>();</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        }</div>
-<div class="ttc" id="aclass_conexao_html_a11494d46b6636875afea2d447ca4ea53"><div class="ttname"><a href="class_conexao.html#a11494d46b6636875afea2d447ca4ea53">Conexao\conectar</a></div><div class="ttdeci">conectar()</div><div class="ttdef"><b>Definition:</b> <a href="_conexao_8class_8php_source.html#l00047">Conexao.class.php:47</a></div></div>
-<div class="ttc" id="aclass_conexao_html_a5766efd703cef0e00bfc06b3f3acbe0e"><div class="ttname"><a href="class_conexao.html#a5766efd703cef0e00bfc06b3f3acbe0e">Conexao\$pdo</a></div><div class="ttdeci">$pdo</div><div class="ttdef"><b>Definition:</b> <a href="_conexao_8class_8php_source.html#l00011">Conexao.class.php:11</a></div></div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <h2 class="groupheader">Funções membros</h2>
@@ -158,20 +151,7 @@ Atributos Protegidos</h2></td></tr>
 <p>Reimplementado por <a class="el" href="class_autentica.html#abc8e9e31bb15c8a44c3210ec551407c8">Autentica</a>.</p>
 
 <p class="definition">Definição na linha <a class="el" href="_conexao_8class_8php_source.html#l00017">17</a> do arquivo <a class="el" href="_conexao_8class_8php_source.html">Conexao.class.php</a>.</p>
-<div class="fragment"><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;                                    {</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;            <span class="keywordflow">if</span> (array_key_exists($name, $this-&gt;data)) {</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;                <span class="keywordflow">return</span> $this-&gt;data[$name];</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;            }</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            $trace = debug_backtrace();</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            trigger_error(</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;                <span class="stringliteral">&#39;Undefined property via __get(): &#39;</span> . $name .</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;                <span class="stringliteral">&#39; in &#39;</span> . $trace[0][<span class="stringliteral">&#39;file&#39;</span>] .</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;                <span class="stringliteral">&#39; on line &#39;</span> . $trace[0][<span class="stringliteral">&#39;line&#39;</span>],</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;                E_USER_NOTICE);</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a id="a83c2703c91959192f759992ad5640b67"></a>
@@ -203,10 +183,7 @@ Atributos Protegidos</h2></td></tr>
 <p>Reimplementado por <a class="el" href="class_autentica.html#a83c2703c91959192f759992ad5640b67">Autentica</a>.</p>
 
 <p class="definition">Definição na linha <a class="el" href="_conexao_8class_8php_source.html#l00013">13</a> do arquivo <a class="el" href="_conexao_8class_8php_source.html">Conexao.class.php</a>.</p>
-<div class="fragment"><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;                                            {</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;            $this-&gt;data[$name] = $value;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a id="a11494d46b6636875afea2d447ca4ea53"></a>
@@ -228,18 +205,7 @@ Atributos Protegidos</h2></td></tr>
 <dl class="section since"><dt>Desde</dt><dd>24 dez 2020</dd></dl>
 
 <p class="definition">Definição na linha <a class="el" href="_conexao_8class_8php_source.html#l00047">47</a> do arquivo <a class="el" href="_conexao_8class_8php_source.html">Conexao.class.php</a>.</p>
-<div class="fragment"><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                                   {</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            <span class="keywordflow">try</span>{</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                $this-&gt;pdo = <span class="keyword">new</span> PDO(<span class="stringliteral">&quot;mysql:host=localhost;dbname=adc_http404&quot;</span>,</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                                <span class="stringliteral">&quot;admin&quot;</span>,</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                                <span class="stringliteral">&quot;http404#2021%&quot;</span>,</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                                array(PDO::MYSQL_ATTR_INIT_COMMAND =&gt; <span class="stringliteral">&quot;SET NAMES utf8&quot;</span>));</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            }<span class="keywordflow">catch</span> (PDOException $e) {</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                print <span class="stringliteral">&quot;Error!: &quot;</span> . $e-&gt;getMessage() .<span class="stringliteral">&quot;&lt;br/&gt;&quot;</span>;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                die();</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            }</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a id="ab4b39fe5953ce1f90723f825916337d7"></a>
@@ -261,10 +227,7 @@ Atributos Protegidos</h2></td></tr>
 <dl class="section since"><dt>Desde</dt><dd>24 dez 2020</dd></dl>
 
 <p class="definition">Definição na linha <a class="el" href="_conexao_8class_8php_source.html#l00065">65</a> do arquivo <a class="el" href="_conexao_8class_8php_source.html">Conexao.class.php</a>.</p>
-<div class="fragment"><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                                      {</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            $this-&gt;pdo = <span class="keyword">null</span>;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a id="a6e7560ad95a7986be67f7528c80e7f1a"></a>
@@ -284,10 +247,7 @@ Atributos Protegidos</h2></td></tr>
 <p>metodo que retorna a variavel $pdo </p>
 
 <p class="definition">Definição na linha <a class="el" href="_conexao_8class_8php_source.html#l00031">31</a> do arquivo <a class="el" href="_conexao_8class_8php_source.html">Conexao.class.php</a>.</p>
-<div class="fragment"><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                                 {</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="class_conexao.html#a5766efd703cef0e00bfc06b3f3acbe0e">$this-&gt;pdo</a>;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a id="aba804048bed81433b1331001898cd6ff"></a>
@@ -310,13 +270,7 @@ Atributos Protegidos</h2></td></tr>
 <dl class="section since"><dt>Desde</dt><dd>24 dez 2020</dd></dl>
 
 <p class="definition">Definição na linha <a class="el" href="_conexao_8class_8php_source.html#l00075">75</a> do arquivo <a class="el" href="_conexao_8class_8php_source.html">Conexao.class.php</a>.</p>
-<div class="fragment"><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                                    {</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            <a class="code" href="selects__basedados_8php.html#af27a9140d5f2658693e7fd107f716449">$stmt</a> = $this-&gt;pdo-&gt;prepare($sql);</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            <a class="code" href="selects__basedados_8php.html#af27a9140d5f2658693e7fd107f716449">$stmt</a>-&gt;execute();</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="selects__basedados_8php.html#af27a9140d5f2658693e7fd107f716449">$stmt</a>-&gt;fetchAll(PDO::FETCH_ASSOC);</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        }</div>
-<div class="ttc" id="aselects__basedados_8php_html_af27a9140d5f2658693e7fd107f716449"><div class="ttname"><a href="selects__basedados_8php.html#af27a9140d5f2658693e7fd107f716449">$stmt</a></div><div class="ttdeci">$stmt</div><div class="ttdef"><b>Definition:</b> <a href="selects__basedados_8php_source.html#l00022">selects_basedados.php:22</a></div></div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <h2 class="groupheader">Campos</h2>
@@ -346,7 +300,7 @@ Atributos Protegidos</h2></td></tr>
 </div>
 </div>
 <hr/>A documentação para essa classe foi gerada a partir do seguinte arquivo:<ul>
-<li>C:/Kleyton/STI/1.1.AmbienteDesen/trabalho_adc/class/<a class="el" href="_conexao_8class_8php_source.html">Conexao.class.php</a></li>
+<li>class/<a class="el" href="_conexao_8class_8php_source.html">Conexao.class.php</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

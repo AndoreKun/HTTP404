@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Portal Http404: Referência do Arquivo C:/Kleyton/STI/1.1.AmbienteDesen/trabalho_adc/database/inserts_basedados.php</title>
+<title>Portal Http 404: Referência do Arquivo database/inserts_basedados.php</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Portal Http404
+   <div id="projectname">Portal Http 404
    </div>
   </td>
  </tr>
@@ -62,7 +62,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_8f8d8a113217a0f70e7a7216ffa88dbc.html">trabalho_adc</a></li><li class="navelem"><a class="el" href="dir_c360763be4adc01816e478733722240c.html">database</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_f32c53f2c0f0ccaeb11076e30674d5f4.html">database</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -77,6 +77,8 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variáveis</h2></td></tr>
+<tr class="memitem:af1a461b5e5792535b17c20ac1b3c3070"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inserts__basedados_8php.html#af1a461b5e5792535b17c20ac1b3c3070">$feedback</a> = &quot;&quot;</td></tr>
+<tr class="separator:af1a461b5e5792535b17c20ac1b3c3070"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abe4cc9788f52e49485473dc699537388"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inserts__basedados_8php.html#abe4cc9788f52e49485473dc699537388">try</a></td></tr>
 <tr class="separator:abe4cc9788f52e49485473dc699537388"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a753c4666a955220ce7a5cb04ef8a2031"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inserts__basedados_8php.html#a753c4666a955220ce7a5cb04ef8a2031">$sucesso</a> = TRUE</td></tr>
@@ -99,7 +101,7 @@ Variáveis</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definição na linha <a class="el" href="inserts__basedados_8php_source.html#l00052">52</a> do arquivo <a class="el" href="inserts__basedados_8php_source.html">inserts_basedados.php</a>.</p>
+<p class="definition">Definição na linha <a class="el" href="inserts__basedados_8php_source.html#l00053">53</a> do arquivo <a class="el" href="inserts__basedados_8php_source.html">inserts_basedados.php</a>.</p>
 
 </div>
 </div>
@@ -116,7 +118,34 @@ Variáveis</h2></td></tr>
 </div><div class="memdoc">
 <p>Se sucesso for verdadeiro, define o feedback consoante a ação realizada </p>
 
-<p class="definition">Definição na linha <a class="el" href="inserts__basedados_8php_source.html#l00050">50</a> do arquivo <a class="el" href="inserts__basedados_8php_source.html">inserts_basedados.php</a>.</p>
+<p class="definition">Definição na linha <a class="el" href="inserts__basedados_8php_source.html#l00051">51</a> do arquivo <a class="el" href="inserts__basedados_8php_source.html">inserts_basedados.php</a>.</p>
+
+</div>
+</div>
+<a id="af1a461b5e5792535b17c20ac1b3c3070"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af1a461b5e5792535b17c20ac1b3c3070">&#9670;&nbsp;</a></span>$feedback</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">$<a class="el" href="product-details_8php.html#a5029c4d08bf53127c9182988e34ebac5">feedback</a> = &quot;&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Página responsável por fazer um insert na base de dados, também permite inserir imagens e imprime um feedback A variáveis não definidas nesta página mas utilizadas na mesma são definidas na página em que inserts_basedados for incluida com: include("inserts_basedados.php") </p><dl class="section author"><dt>Autor</dt><dd>Grupo HTTP 404 </dd></dl>
+<dl class="section version"><dt>Versão</dt><dd>1.2 </dd></dl>
+<dl class="section since"><dt>Desde</dt><dd>2 jan 2021 </dd></dl>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">$acao</td><td>Ação que foi realizada ("Insert", "delete" ou "update"), definida na página em que inserts_basedados for incluida </td></tr>
+    <tr><td class="paramname">$feedback</td><td>Feedback a ser mostrado ao utilizador, varia de acordo com a ação enviada </td></tr>
+    <tr><td class="paramname">$adicionar_foto</td><td>Verdadeiro caso queira adicionar uma foto na base de dados, definida na página em que inserts_basedados for incluida </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definição na linha <a class="el" href="inserts__basedados_8php_source.html#l00013">13</a> do arquivo <a class="el" href="inserts__basedados_8php_source.html">inserts_basedados.php</a>.</p>
 
 </div>
 </div>
@@ -133,7 +162,7 @@ Variáveis</h2></td></tr>
 </div><div class="memdoc">
 <p>$sucesso: é verdadeiro caso consiga fazer upload de uma foto à base de dados em <a class="el" href="upload_8php.html">upload.php</a> </p>
 
-<p class="definition">Definição na linha <a class="el" href="inserts__basedados_8php_source.html#l00028">28</a> do arquivo <a class="el" href="inserts__basedados_8php_source.html">inserts_basedados.php</a>.</p>
+<p class="definition">Definição na linha <a class="el" href="inserts__basedados_8php_source.html#l00029">29</a> do arquivo <a class="el" href="inserts__basedados_8php_source.html">inserts_basedados.php</a>.</p>
 
 </div>
 </div>
@@ -150,23 +179,13 @@ Variáveis</h2></td></tr>
 </div><div class="memdoc">
 <b>Valor inicial:</b><div class="fragment"><div class="line">{</div>
 <div class="line">    </div>
-<div class="line">    <a class="code" href="inserts__basedados_8php.html#a8d0f3c1c3d0784e7a8ec38230ee4a652">$conexao</a> = <span class="keyword">new</span> PDO(<span class="stringliteral">&quot;mysql:host=localhost;dbname=adc_http404&quot;</span>, <a class="code" href="download_8php.html#ac3dc42e449d42a0f869b18785d6b09b1">$cargo</a>, <a class="code" href="download_8php.html#ab23b8736684fa430ee74e2f7398e39e0">$pass_users</a>)</div>
-<div class="ttc" id="adownload_8php_html_ab23b8736684fa430ee74e2f7398e39e0"><div class="ttname"><a href="download_8php.html#ab23b8736684fa430ee74e2f7398e39e0">$pass_users</a></div><div class="ttdeci">$pass_users</div><div class="ttdef"><b>Definition:</b> <a href="download_8php_source.html#l00015">download.php:15</a></div></div>
-<div class="ttc" id="adownload_8php_html_ac3dc42e449d42a0f869b18785d6b09b1"><div class="ttname"><a href="download_8php.html#ac3dc42e449d42a0f869b18785d6b09b1">$cargo</a></div><div class="ttdeci">$cargo</div><div class="ttdef"><b>Definition:</b> <a href="download_8php_source.html#l00017">download.php:17</a></div></div>
-<div class="ttc" id="ainserts__basedados_8php_html_a8d0f3c1c3d0784e7a8ec38230ee4a652"><div class="ttname"><a href="inserts__basedados_8php.html#a8d0f3c1c3d0784e7a8ec38230ee4a652">$conexao</a></div><div class="ttdeci">if($adicionar_foto==TRUE) catch(PDOException $e) if($sucesso==TRUE) $conexao</div><div class="ttdef"><b>Definition:</b> <a href="inserts__basedados_8php_source.html#l00050">inserts_basedados.php:50</a></div></div>
-</div><!-- fragment --><p>Página responsável por fazer um insert na base de dados, também permite inserir imagens e imprime um feedback A variáveis não definidas nesta página mas utilizadas na mesma são definidas na página em que inserts_basedados for incluida com: include("inserts_basedados.php") </p><dl class="section author"><dt>Autor</dt><dd>Grupo HTTP 404 </dd></dl>
-<dl class="section version"><dt>Versão</dt><dd>1.2 </dd></dl>
-<dl class="section since"><dt>Desde</dt><dd>2 jan 2021 </dd></dl>
-<dl class="params"><dt>Parâmetros</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">$acao</td><td>Ação que foi realizada ("Insert", "delete" ou "update"), definida na página em que inserts_basedados for incluida </td></tr>
-    <tr><td class="paramname">$feedback</td><td>Feedback a ser mostrado ao utilizador, varia de acordo com a ação enviada </td></tr>
-    <tr><td class="paramname">$adicionar_foto</td><td>Verdadeiro caso queira adicionar uma foto na base de dados, definida na página em que inserts_basedados for incluida Tenta criar uma conexão à based de dados com método orientado a objetos(PDO), caso falhe, retorna a excecao </td></tr>
-  </table>
-  </dd>
-</dl>
+<div class="line">    <a class="code" href="inserts__basedados_8php.html#a8d0f3c1c3d0784e7a8ec38230ee4a652">$conexao</a> = <span class="keyword">new</span> PDO(<span class="stringliteral">&quot;mysql:host=localhost;dbname=adc_http404&quot;</span>, <a class="code" href="checkout_8php.html#ac3dc42e449d42a0f869b18785d6b09b1">$cargo</a>, <a class="code" href="checkout_8php.html#ab23b8736684fa430ee74e2f7398e39e0">$pass_users</a>)</div>
+<div class="ttc" id="acheckout_8php_html_ab23b8736684fa430ee74e2f7398e39e0"><div class="ttname"><a href="checkout_8php.html#ab23b8736684fa430ee74e2f7398e39e0">$pass_users</a></div><div class="ttdeci">$pass_users</div><div class="ttdef"><b>Definition:</b> <a href="checkout_8php_source.html#l00512">checkout.php:512</a></div></div>
+<div class="ttc" id="acheckout_8php_html_ac3dc42e449d42a0f869b18785d6b09b1"><div class="ttname"><a href="checkout_8php.html#ac3dc42e449d42a0f869b18785d6b09b1">$cargo</a></div><div class="ttdeci">$cargo</div><div class="ttdef"><b>Definition:</b> <a href="checkout_8php_source.html#l00510">checkout.php:510</a></div></div>
+<div class="ttc" id="ainserts__basedados_8php_html_a8d0f3c1c3d0784e7a8ec38230ee4a652"><div class="ttname"><a href="inserts__basedados_8php.html#a8d0f3c1c3d0784e7a8ec38230ee4a652">$conexao</a></div><div class="ttdeci">if($adicionar_foto==TRUE) catch(PDOException $e) if($sucesso==TRUE) $conexao</div><div class="ttdef"><b>Definition:</b> <a href="inserts__basedados_8php_source.html#l00051">inserts_basedados.php:51</a></div></div>
+</div><!-- fragment --><p>Tenta criar uma conexão à base de dados com método orientado a objetos(PDO), caso falhe, retorna a excecao </p>
 
-<p class="definition">Definição na linha <a class="el" href="inserts__basedados_8php_source.html#l00014">14</a> do arquivo <a class="el" href="inserts__basedados_8php_source.html">inserts_basedados.php</a>.</p>
+<p class="definition">Definição na linha <a class="el" href="inserts__basedados_8php_source.html#l00015">15</a> do arquivo <a class="el" href="inserts__basedados_8php_source.html">inserts_basedados.php</a>.</p>
 
 </div>
 </div>
