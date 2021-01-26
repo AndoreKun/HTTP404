@@ -2,50 +2,66 @@
 /** 
 * Página é apresentada quando uma compra é realizada com sucesso
 * @author Grupo HTTP404
-* @version 1.0
+* @version 1.1
 * @since 24 jan 2021
 */
+// Desabilita a demonstração de erros, para que não haja a possibilidade de aparecer erros para o usuário final
+ini_set('display_errors', 0);
+
+session_start();
+include("envia_email.php");
 $id_encomenda = "";
 $nif_do_cliente = "";
-$valor_total_venda = "50.000"."€";
+$valor_total_venda = "";
 $data_encomenda = "";
+$compra_cliente = "";
+$endereco_cliente = "";
 
-include("envia_email.php");
-
-$verifica_compra = array("nao", "");
+$verifica_compra = array("nao", "sem_inf_adc");
 if(isset($_SESSION['compra_sucess'])){
     $verifica_compra[0] = $_SESSION['compra_sucess'][0];
     $verifica_compra[1] = $_SESSION['compra_sucess'][1];
+    $compra_cliente = $_SESSION['compra_sucess'][2];
+    $endereco_cliente = $_SESSION['compra_sucess'][3];
+    unset($_SESSION['produtos']['produtos']);
+    unset($_SESSION['carrinho_veiculos']);
+    unset($_SESSION['carrinho_artigos']);
+    unset($_SESSION['prod_veiculos_antigos']);
+    unset($_SESSION['id_veiculo']['id_veiculo']);
+    unset($_SESSION['id_artigo']['id_artigo']);
+    unset($_SESSION['abilitar_remover_veiculos']);
+    unset($_SESSION['abilitar_remover_artigos']);
+    unset($_SESSION['produtos_veiculos']);
+    unset($_SESSION['produtos_artigos']);
+    unset($_SESSION['feedback']['feedback']);
 }
 
-if ($verifica_compra[1] == "nao" ){	    
+if ($verifica_compra[0] == "nao" ){	    
     echo  "<script type='text/javascript'>
                 location.href='checkout.php'
             </script>";	
     exit();
-} elseif ($verifica_compra[0] == "bananas") {
-    $num_encomendas_feitas = (count($verifica_compra) - 2) / 4;
-    $id_encomenda = $verifica_compra[2];
-    $nif_do_cliente =  $verifica_compra[3];
-    $valor_total_venda = $verifica_compra[4];
-    $data_encomenda = $verifica_compra[5];
-    $cargo = "admin";
-    $pass_users = "http404#2021%";
-    $consulta = "SELECT IDVenda FROM vendas WHERE DataVenda = '$data_encomenda' ORDER BY DataVenda DESC";
-    include('database/selects_basedados.php');
-    if($dados){
-        foreach($dados as $linha){
-            array_push($encomendas, $linha['IDVenda']);
-        }
-        $id_encomenda = $encomendas[0];
-    }
+} else {
     
-    if($verifica_compra[1] != ""){
-        EnviarMail("andrepereira180903@gmail.com", "Informações adicionais para a encomenda Nº $id_encomenda do cliente $nif_do_cliente", $verifica_compra[1]);
+    $num_encomendas_feitas = (count($verifica_compra) - 2) / 4;
+    $id_encomenda = $compra_cliente[0];
+    $nif_do_cliente =  $compra_cliente[1];
+    $valor_total_venda = $compra_cliente[2];
+    $data_encomenda = $compra_cliente[3];
+    if($verifica_compra[1] != "sem_inf_adc"){
+        $email = $endereco_cliente[1];
+        $assunto = "Informações adicionais para a encomenda Nº $id_encomenda do cliente com NIF: $nif_do_cliente";
+        $mensagem = $verifica_compra[1];
+        EnviarMail($email, $assunto, $mensagem, 0, 0);
+       
     }
+    $email = $endereco_cliente[1];
+    $assunto = "Obrigado Pela Sua Compra!";
+    $mensagem = "email_venda";
+    EnviarMail($email, $assunto, $mensagem, $endereco_cliente, $compra_cliente);
+    
 }
-// Desabilita a demonstração de erros, para que não haja a possibilidade de aparecer erros para o usuário final
-ini_set('display_errors', 1);
+
 ?>
 <!doctype html>
 <html class="no-js" lang="zxx">
