@@ -1,16 +1,44 @@
 <?php
+/** 
+* Página contém todo o HTML e PHP com o corpo de emails para serem enviados a clientes
+* @author Grupo HTTP404
+* @version 1.2
+* @since 26 jan 2021
+*/
 
+/** $detalhes_importantes_enc: Informações importantes sobre a encomenda definidas pelo cliente */
 $detalhes_importantes_enc = "";
+/** $sybl: Define o que aparece após o valor dos portes*/
+$sybl = "";
+/** $valor_produtos: Valor total dos produtos(com portes) */
+$valor_produtos = $compra_cliente[2];
+
 if(isset($verifica_compra)){
+    /** if($verifica_compra[1] != "sem_inf_adc"): Caso uma compra for feita e as informações adicionais não forem o predefinido, define a variável $detalhes_importantes_enc
+     * para mostrar essa informações como resumo no email*/
     if($verifica_compra[1] != "sem_inf_adc"){
         $detalhes_importantes_enc = $verifica_compra[1];
     }
 }
+
 if(isset($endereco_cliente)){
+    /** $postal_local_pais: Caso o endereço esteja definido, Junta o codigo postal, a localidade e o país na mesma linha para imprimir no email */
     $postal_local_pais = $endereco_cliente[3].' '.$endereco_cliente[4].' '.$endereco_cliente[5];
 }
+/** if(isset($compra_cliente[4])): Caso os portes estejam definidos, define $sybl e $valor_produtos em função de portes */
+if(isset($compra_cliente[4])){
+    /** if($compra_cliente[4] != "Grátis"): Caso os portes não forem grátis, define $sybl como o símbolo do euro e diminui o valor dos portes ao valor total dos produtos
+     * para obter o valor dos produtos sem portes para mostrar no email. Por fim junta ao valor dos portes, $sybl.
+     * Senão, Como os portes são grátis, o preço total dos produtos e preço após portes serão iguais. E $sybl será uma string vazia.
+     */
+    if($compra_cliente[4] != "Grátis"){
+        $sybl = "€";
+        $valor_produtos = $compra_cliente[2] - $compra_cliente[4];
+        $valor_produtos = $valor_produtos.'€';
+    } 
+}
 
-// Email Encomendas
+// Email de Encomendas
 $mensagem = "
 <!DOCTYPE html
     PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
@@ -361,7 +389,7 @@ $mensagem = "
                                                                     <h5 style='Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:arial,
                                                                         helvetica neue, helvetica,
                                                                         sans-serif;line-height:21px;color:#333333'>
-                                                                        Encomendado em: $compra_cliente[2]</h5>
+                                                                        Encomendado em: $compra_cliente[3]</h5>
                                                                 </td>
                                                             </tr>
                                                         </table>
@@ -565,7 +593,7 @@ $mensagem = "
                                                                                 style='padding:0;Margin:0'>
                                                                                 <h3
                                                                                     style='Margin:0;line-height:26px;mso-line-height-rule:exactly;font-family:tahoma, verdana, segoe, sans-serif;font-size:17px;font-style:normal;font-weight:normal;color:#333333'>
-                                                                                    $compra_cliente[2]</h3>
+                                                                                    $valor_produtos</h3>
                                                                             </td>
                                                                         </tr>
                                                                         <tr style='border-collapse:collapse'>
@@ -579,7 +607,7 @@ $mensagem = "
                                                                                 style='padding:0;Margin:0'>
                                                                                 <h3
                                                                                     style='Margin:0;line-height:26px;mso-line-height-rule:exactly;font-family:tahoma, verdana, segoe, sans-serif;font-size:17px;font-style:normal;font-weight:normal;color:#333333'>
-                                                                                    $compra_cliente[4]</h3>
+                                                                                    $compra_cliente[4]$sybl</h3>
                                                                             </td>
                                                                         </tr>
                                                                     </table>
@@ -604,7 +632,7 @@ $mensagem = "
                                                                                 style='padding:0;Margin:0'>
                                                                                 <h3
                                                                                     style='Margin:0;line-height:26px;mso-line-height-rule:exactly;font-family:tahoma, verdana, segoe, sans-serif;font-size:17px;font-style:normal;font-weight:normal;color:#333333'>
-                                                                                    <strong>$compra_cliente[2]</strong></h3>
+                                                                                    <strong>$compra_cliente[2]€</strong></h3>
                                                                             </td>
                                                                         </tr>
                                                                     </table>
