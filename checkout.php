@@ -2,7 +2,7 @@
 /** 
 * Página do Checkout - Permite comprar produtos e limpar o carrinho
 * @author Grupo HTTP404
-* @version 5.0
+* @version 5.2
 * @since 26 dez 2020
 */ 
 session_start();
@@ -101,12 +101,37 @@ setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
             <!-- Inicio da área do checkout -->
             <div class="checkout-area pt-130 pb-100">
                 <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                        </div>
-                    </div>
+
                     <div class="row">
                         <div class="col-lg-6 col-md-12 col-12" >
+                        <form id="auto-checkout" name="auto-checkout" method="post" action="">
+                            <div id="elemento" name="elemento" style="display: none">
+                            <h3>Digite o seu NIF e sua Senha de Checkout:</h3>
+                                <div class="col-md-12">
+                                    <div class="checkout-form-list">
+                                        <label>NIF <span class="required">*</span></label>										
+                                        <input name="nif_login" type="text" placeholder="" minlength="9" maxlength="9" required/>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="checkout-form-list">
+                                        <label>Senha<span class="required">*</span></label>										
+                                        <input name="nif_password" type="password" placeholder="" minlength="6" maxlength="15" required/>
+                                    </div>
+                                    <div class="order-notes">
+                                        <div class="checkout-form-list mrg-nn">
+                                            <label>Informações adicionais</label>
+                                            <textarea id="mais_informacoes_login" name="mais_informacoes_login" cols="30" rows="10" placeholder="Introduza aqui outras informações importantes relacionadas com a sua encomenda." ></textarea>
+                                        </div>
+                                </div>   
+                                <h5>Novo por aqui? Insira seus dados de entrega e uma senha no formulário abaixo para habilitar o checkout automático!</h5>
+                                <div class="order-button-payment">
+                                    <input style="text-align: center;" id="login_autocheckout" name="login_autocheckout" type="submit" value="Fazer Pedido" />
+                                    <br/><br/>
+                                </div> 
+                            </div> 
+                        </div>
+                        </form>
                             <form id="dados_entrega" name="dados_entrega" action="" method="post">
                                 <div class="checkbox-form">						
                                     <h3>DADOS DE ENTREGA</h3>
@@ -118,28 +143,7 @@ setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
                                                     <option id="manual" name="cliente_novo" value="cliente_novo" selected>Inserir Dados de Checkout Manualmente</option>
                                                     <option id="opcao" name="cliente_existe" value="cliente_existe">Inserir Dados de Checkout Automaticamente</option>
                                                 </select> 
-                                            </div>
-                                            <form>
-                                            <div id="elemento" name="elemento" style="display: none">
-                                                <div class="col-md-12">
-                                                    <div class="checkout-form-list">
-                                                        <label>NIF <span class="required">*</span></label>										
-                                                        <input name="nif" type="text" placeholder="" minlength="9" maxlength="9" required/>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <div class="checkout-form-list">
-                                                        <label>Password<span class="required">*</span></label>										
-                                                        <input name="nif_password" type="text" placeholder="" minlength="5" required/>
-                                                    </div>
-                                                
-                                                <div class="order-button-payment">
-                                                    <input style="width: 350px; text-align: center;" id="login" name="login" type="submit" value="Login" />
-                                                    <br/><br/>
-                                                </div> 
-                                                </div> 
-                                            </div>
-                                        </form>  
+                                            </div>  
                                         </div>
                                         <div class="col-md-12">
                                             <div class="country-select">
@@ -169,16 +173,22 @@ setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
                                                 <input name="apelido" type="text" placeholder="" required/>
                                             </div>
                                         </div>
-                                        <div class="col-md-12">
+                                        <div class="col-md-6">
                                             <div class="checkout-form-list">
                                                 <label>NIF <span class="required">*</span></label>										
                                                 <input name="nif" type="text" placeholder="" minlength="9" maxlength="9" required/>
                                             </div>
                                         </div>
+                                        <div class="col-md-6">
+                                            <div class="checkout-form-list">
+                                                <label> Senha de Checkout<span class="required">*</span></label>										
+                                                <input name="senha_checkout" type="password" placeholder="Digite uma Senha" minlength="6" maxlength="15" required/>
+                                            </div>
+                                        </div>
                                         <div class="col-md-12">
                                             <div class="checkout-form-list">
                                                 <label>Morada <span class="required">*</span></label>
-                                                <input name="morada" type="text" placeholder="Rua.." required/>
+                                                <input name="morada" type="text" placeholder="Rua..." required/>
                                             </div>
                                         </div>
                                         <div class="col-md-12">
@@ -186,12 +196,7 @@ setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
                                                 <input name="mais_morada" type="text" placeholder="Apartamento, casa, unidade etc. (opcional)" />
                                             </div>
                                         </div>
-                                        <div class="col-md-12">
-                                            <div class="checkout-form-list">
-                                                <label>Cidade <span class="required">*</span></label>
-                                                <input name="cidade" type="text" required/>
-                                            </div>
-                                        </div>
+                                        
                                         <div class="col-md-6">
                                             <div class="checkout-form-list">
                                                 <label>Localidade <span class="required">*</span></label>										
@@ -201,7 +206,7 @@ setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
                                         <div class="col-md-6">
                                             <div class="checkout-form-list">
                                                 <label>Código postal <span class="required">*</span></label>										
-                                                <input name="cod_postal" type="text" />
+                                                <input name="cod_postal" type="text" maxlength="10"/>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
@@ -213,7 +218,7 @@ setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
                                         <div class="col-md-6">
                                             <div class="checkout-form-list">
                                                 <label>Telemóvel <span class="required">*</span></label>										
-                                                <input name="telemovel" type="text" />
+                                                <input name="telemovel" type="text"  maxlength="12"/>
                                             </div>
                                         </div>
                                     <div id="carrinho"></div> 							
@@ -296,11 +301,14 @@ setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
                                         if($total_valor_produtos > 99){
                                             $portes = 5; 
                                         }
-                                        $total_valor_produtos = $total_valor_produtos + $portes;
                                         if($total_valor_produtos > 999){
                                             $portes = "Grátis";
                                             $symbl = "";
                                         }
+                                        if($portes != "Grátis"){
+                                            $total_valor_produtos = $total_valor_produtos + $portes;
+                                        }
+                                        
                                     ?>
                                         <tr class="cart_item">
                                             <th>Portes</th>
@@ -343,7 +351,8 @@ setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
                     </div>
                 </div>
             </div>
-            <!-- Fim da área do checkout -->	
+            <!-- Fim da área do checkout -->
+            <!-- Subscrição dos clientes -->	
             <div class="newsletter-area">
                 <div class="container">
                     <div class="newsletter-wrapper-all theme-bg-2">
@@ -355,12 +364,10 @@ setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
                                         <h3>Subscreva aos nossos alertas</h3>
                                     </div>
                                     <div id="mc_embed_signup" class="subscribe-form">
-                                        <form action="#" method="post" id="#" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                                        <form action="envia_email.php" method="post" id="markenting-emails" name="mc-embedded-subscribe-form" class="validate">
                                             <div id="mc_embed_signup_scroll" class="mc-form">
-                                                <input type="email" value="" name="EMAIL" class="email" placeholder="Deixe aqui o seu email..." required>
-                                                <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-                                                <div class="mc-news" aria-hidden="true"><input type="text" name="b_6bbb9b6f5827bd842d9640c82_05d85f18ef" tabindex="-1" value=""></div>
-                                                <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+                                                <input type="email" id="email_interessado" name="email_interessado" class="email" placeholder="Deixe aqui o seu email..." required>
+                                                <div class="clear"><input type="submit" value="Subscribe" name="email-markenting" id="mc-embedded-subscribe" class="button"></div>
                                             </div>
                                         </form>
                                     </div>
@@ -493,55 +500,166 @@ setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
 <?php
 // Adiciona Cliente
 $nif = "";
+/** $dados_checkout: É verdadeiro quando existem dados de checkout(nome do cliente, morada, etc) para prevenir que o sistema faça o insert de uma venda apena ao carregar a página checkout */
+$dados_checkout = FALSE;
+/** $acao: Ação a ser feita com dados de entrega de clientes na base de dados(INSERT ou UPDATE) */
+$acao = 'insert';
+/** $adicionar_foto: Define se deseja adicionar uma foto no INSERT da base de dados */
+$adicionar_foto = FALSE;
+/** $cargo: Define o Cargo que será utilizado para fazer a ligação à base de dados */
+$cargo = "admin";
+/** $pass_users: Define a palavra passe do Cargo que será utilizado para fazer a ligação à base de dados */
+$pass_users = "http404#2021%";
+/** $mais_informacoes: Contém mais informações sobre a encomenda feita */
+$mais_informacoes = "";
+/** $nome_mais_informacoes: Contém o nome da coluna da base de dados em que será inserido as infomações */
+$nome_mais_informacoes = "";
+/** $mais_informacoes_insert: Define a sintaxe do insert de $mais_informacoes */
+$mais_informacoes_insert = "";
+/** $inserir_dados_login: Verdadeiro Caso esteja tudo pronto para adicionar os dados de login de checkout de clientes */
+$inserir_dados_login = TRUE;
+
+$acao_dados_login = 'insert';
+
+/** if(isset($_POST['login_autocheckout'])): Caso o formulário que contém o checkout automatico de produtos for submetido, prepara essas infomações para o checkout*/
+if(isset($_POST['login_autocheckout'])){
+    /** $nif_login: nif do cliente, inserido no formulário */
+    $nif_login = $_POST['nif_login'];
+    /** $nif_password: senha do cliente, inserido no formulário */
+    $nif_password = $_POST['nif_password'];
+    /** if(isset($_POST['mais_informacoes_login'])): Caso no login automatico sejam inseridas mais informações sobre a encomenda, as prepara para adicionar à base de dados */
+    if(isset($_POST['mais_informacoes_login'])){
+        $mais_informacoes = $_POST['mais_informacoes_login'];
+        $mais_informacoes_insert = ",'$mais_informacoes'";
+        $nome_mais_informacoes = ", Informacoes_Encomenda";
+    }
+    /** $consulta: Query da consulta à base de dados */
+    $consulta = "SELECT NIF_Cliente, Senha_Cliente FROM login_clientes WHERE NIF_Cliente = '$nif_login' AND Senha_Cliente = '$nif_password'";
+    /** include('database/selects_basedados.php'): Inclui o script de consulta à base de dados */
+    include('database/selects_basedados.php');
+    /** if($dados): Caso o mesmo retorne dados significa que o login está correto, logo começa a preparar os dados para adicionar na base de dados 
+     * Caso não retorne dados, limpa o array POST e imprime uma mensagem ao cliente que seu login está errado
+     * Limpa o array POST para que não sejam enviados dados apenas ao recarregar a página
+    */
+    if($dados){
+        // define que dados serão adicionados
+        $dados_checkout = TRUE;
+        $nif = $nif_login;
+        $inserir_dados_login = FALSE;
+        $_POST = array();
+        /** unset($_POST): Limpa o array para que dados nao forem inseridos novamente na base de dados apenas ao carregar a pagina */
+        unset($_POST);
+    } else { 
+        $dados_checkout = FALSE;
+        // Limpa o array post
+        $_POST = array(); 
+        unset($_POST);
+        echo  "<script type='text/javascript'>
+                        alert('ATEN\u00c7\u00c4O, NIF ou Senha inv\u00e1lidos...');location.href='checkout.php'
+                    </script>";
+    }
+}
+/** if(isset($_POST['fazer_pedido'])): Caso o pedido for feito através de inserir dados manualmente no formulario em checkout, começa a preparar esse dados para enviar à base de dados */
 if(isset($_POST['fazer_pedido'])){
+    /** $nif: NIF do Cliente */
+    $nif = $_POST['nif'];
+    /** $consulta: Query da consulta */
+    $consulta = "SELECT IDNIF_Cliente FROM clientes WHERE IDNIF_Cliente = '$nif'";
+    /** include('database/selects_basedados.php'): Chama Script de consulta à base de dados */
+    include('database/selects_basedados.php');
+    /** Caso Retorne dados significa que o nif já existe na base de dados, logo define a acao como update */
+    if($dados){
+        /** $acao: Ao ser definida para 'update', vai atualizar os dados do cliente com aquele nif na base de dados */
+        $acao = 'update';
+        /** $acao_dados_login: Ao se definido para 'update', vai atualizar a password associado ao nif do cliente que foi introduzido*/
+        $acao_dados_login = 'update';
+    }
+    /** $senha_checkout: Senha escolhida pelo utilizador para que possa usar a funcionalidade de chekout automatico */
+    $senha_checkout = $_POST['senha_checkout'];
+    /** $pais: Pais de residência do cliente */
     $pais = $_POST['pais'];
     $nome = $_POST['nome'];
     $apelido = $_POST['apelido'];
-    $nif = $_POST['nif'];
+    /** $nome: Nome Completo do Cliente */
+    $nome = $nome.' '.$apelido;
+    /** $morada: Morada do cliente */
     $morada = $_POST['morada'];
+    /** if(isset($_POST['mais_morada']): Caso exista mais morada(Definida na segunda linha do formulário) a concatena com morada para formar a morada completa do cliente */
     if(isset($_POST['mais_morada'])){
         $mais_morada = $_POST['mais_morada'];
         $morada = $morada." ".$mais_morada;
     }
-    $cidade = $_POST['cidade'];
+    /** $localidade: Localidade do cliente */
     $localidade = $_POST['localidade'];
+    /** $cod_postal: Código Postal do cliente */
     $cod_postal = $_POST['cod_postal'];
+    /** $email: Email do cliente */
     $email = $_POST['email'];
+    /** $telemovel: Telemovel do Cliente */
     $telemovel = $_POST['telemovel'];
-    $mais_informacoes = "";
+    /** if(isset($_POST['mais_informacoes'])): Caso mais informações sobre a encomenda sejam definidas no formulário, as prepara para inserir na base de dados */
     if(isset($_POST['mais_informacoes'])){
         $mais_informacoes = $_POST['mais_informacoes'];
+        $mais_informacoes_insert = ",'$mais_informacoes'";
+        $nome_mais_informacoes = ", Informacoes_Encomenda";
     }
-    $insert = "INSERT INTO clientes(IDNIF_Cliente, Nome, Email, Telemovel, Pais, Morada, Cod_Postal, Localidade) 
-    VALUES ('$nif', '$nome', '$email', '$telemovel', '$pais', '$morada', '$cod_postal', '$localidade')";
-    $cargo = "admin";
-    $pass_users = "http404#2021%";
-    $acao = 'insert';
-    $feedback = "";
-    $adicionar_foto = FALSE;
-    include('database/inserts_basedados.php');
+    /** if($acao == 'insert'): Caso a acao seja 'insert'(Dados colocados manualmente no formulário), os envia para a base de dados */
+    if($acao == 'insert'){
+        $insert = "INSERT INTO clientes(IDNIF_Cliente, Nome, Email, Telemovel, Pais, Morada, Cod_Postal, Localidade) 
+        VALUES ('$nif', '$nome', '$email', '$telemovel', '$pais', '$morada', '$cod_postal', '$localidade')";
+        include('database/inserts_basedados.php');
+    /** elseif($acao == 'update'): Senão, se for 'update'(NIF do cliente já existe na base de dados), atualiza os dados de entrega do cliente */
+    } elseif($acao == 'update') {
+        $insert = "UPDATE clientes SET Nome='$nome', Email='$email', Telemovel='$telemovel', Pais='$pais', Morada='$morada', Cod_Postal='$cod_postal', Localidade='$localidade' WHERE IDNIF_Cliente = '$nif'";
+        include('database/inserts_basedados.php');
+    }
+    /** $dados_checkout: Define os dados como prontos para fazer o checkout */
+    $dados_checkout = TRUE;
+    /** unset($_POST): Limpa o array para que dados nao forem inseridos novamente na base de dados apenas ao carregar a pagina */
+    $_POST = array();
+    unset($_POST);
+}
+// Adiciona Venda
 
-    // Adiciona Venda
-    $id_veiculo = "";
-    $nome_coluna_veiculo = "";
-    $id_artigo = "";            
-    $nome_coluna_artigo = "";
-    $id_veiculotmp = "";
-    $id_artigotmp = "";
-    $valor_produto = "";
-    $num_produtos_encomendados = 0;
-   
-    if(isset($_SESSION['produtos']['produtos'])){
+/** $id_veiculo: ID do Veículo comprado, nulo caso não foram comprados veículos */
+$id_veiculo = "";
+/** $nome_coluna_veiculo: Nome da coluna na base de dados onde está o id de veículo, finalidade de caso id de veiculo seja nulo, o query do insert possa ser alterado */
+$nome_coluna_veiculo = "";
+/** $id_artigo: ID do Artigo comprado, nulo caso não foram comprados artigos */
+$id_artigo = "";        
+/** $nome_coluna_artigo: Nome da coluna na base de dados onde está o id de artigoo, finalidade de caso id de artigo seja nulo, o query do insert possa ser alterado */
+$nome_coluna_artigo = "";
+/** $id_veiculotmp: Variável guarda informações temporárias de veiculos*/
+$id_veiculotmp = "";
+/** $id_artigotmp: Variável guarda informações tempórarias de artigos */
+$id_artigotmp = "";
+/** $valor_produto: Valor total de um único produto */
+$valor_produto = "";
+/** if(isset($_SESSION['produtos']['produtos'])): Caso existam produtos no carrinho, passa a segunda verificação */
+if(isset($_SESSION['produtos']['produtos'])){
+    /** if($dados_checkout == TRUE): Caso os dados estiverem prontos para fazer checkout, começa a prepará-los para enviar à base de dados
+     */
+    if($dados_checkout == TRUE){
+        /** for($posicao_produto = 0; $num_produtos_total > $posicao_produto; $posicao_produto++): Repete o ciclo o número de produtos em total dentro do carrinho 
+        * Com a marca de um veiculo, define seu id com uma consulta. Caso dados foram retornados significa que $nome_produtos naquela posição é um veiculo, logo então
+        * define as variáveis para inserir um veiculo na base de dados. Senão, significa que naquela posicao está um artigo e repete o mesmo processo
+        */
         for($posicao_produto = 0; $num_produtos_total > $posicao_produto; $posicao_produto++) {
+            // Testa Veículo
             $marca_veiculo = explode(" ", $nome_produtos[$posicao_produto]);
+            /** $marca_veiculo_final: Marca do Veículo(s) Comprado */
             $marca_veiculo_final = $marca_veiculo[0];
+            /** $consulta:  Query Consulta de veiculos e seus precos em funcao da marca */
             $consulta = "SELECT IDVeiculo, preco FROM veiculos WHERE marca = '$marca_veiculo_final'";
+            // Script consulta
             include('database/selects_basedados.php');
             if($dados){
+                /** foreach($dados as $linha): Repete o ciclo em função do número de linhas retornadas da base de dados */
                 foreach($dados as $linha){
                     $id_veiculotmp = $linha['IDVeiculo'];
                     $preco_veiculo_insert = $linha['preco'];
                 }
+                /** $consulta: Consulta de marcas e modelos de veiculos em funcao do id */
                 $consulta = "SELECT CONCAT(marca, ' ', modelo) AS veiculo_nome FROM veiculos WHERE IDVeiculo = '$id_veiculotmp'";
                 include('database/selects_basedados.php');
                 if($dados){
@@ -555,6 +673,7 @@ if(isset($_POST['fazer_pedido'])){
                     }
                 }
             } else {
+                // Testa Artigo
                 $consulta = "SELECT IDArtigo, preco from artigos WHERE nome = '$nome_produtos[$posicao_produto]'";
                 include('database/selects_basedados.php');
                 if($dados){   
@@ -569,30 +688,53 @@ if(isset($_POST['fazer_pedido'])){
                     $nome_coluna_veiculo = "";
                 }
             }
-            $insert = "INSERT INTO vendas(IDNIF_Cliente$nome_coluna_veiculo$nome_coluna_artigo, ValorVenda, Venda_online) 
-            VALUES ('$nif'$id_veiculo$id_artigo, '$valor_produto', 'Sim')";
+            /** $insert: Faz a venda propriamente dita(INSERT na tabela vendas) dos valores finais definidos */
+            $insert = "INSERT INTO vendas(IDNIF_Cliente$nome_coluna_veiculo$nome_coluna_artigo, ValorVenda, Venda_online$nome_mais_informacoes) 
+            VALUES ('$nif'$id_veiculo$id_artigo, '$total_valor_produtos', 'Sim'$mais_informacoes_insert)";
+            /** $acao: Define a Acao atual como insert na base de dados */
             $acao = 'insert';
-            $adicionar_foto = FALSE;
+            /** include('database/inserts_basedados.php'): Chama o Script de Inserts, Updates e deletes na base de dados */
             include('database/inserts_basedados.php');
+            /** $data_atual: Define a data completa atual */
             $data_atual = date("Y-m-d H:i:s");
+            /** if($inserir_dados_login == TRUE): Caso foi definido para inserir dados de login de checkout para o atual cliente, começa as operações para o mesmo */
+            if($inserir_dados_login == TRUE){
+                switch($acao_dados_login){
+                    /** case 'insert': Caso a Ação seja de 'insert', insere os valores na base de dados */
+                    case 'insert':
+                        $insert = "INSERT INTO login_clientes(NIF_Cliente, Senha_Cliente) VALUES('$nif', '$senha_checkout')";
+                        include('database/inserts_basedados.php');
+                        break;
+                    /** case 'insert': Caso a Ação seja de 'update', atualiza os valores na base de dados em função do nif do cliente atual */
+                    case 'update':
+                        $insert = "UPDATE login_clientes SET Senha_Cliente = '$senha_checkout' WHERE NIF_Cliente = '$nif'";
+                        include('database/inserts_basedados.php');
+                        break;
+                }
+            }
     }
+    /** $compras_do_cliente: Array que Contém O Número da Venda, O nif do cliente, o Valor da Venda, a data da Venda e os portes */
     $compras_do_cliente = array();
+    /** $consulta: query da consulta à base de dados, consulta todos os valores necessários para enviar para email do cliente*/
     $consulta = "SELECT v.IDVenda, v.ValorVenda, v.DataVenda, c.Nome, c.Email, c.Morada, c.Cod_Postal, c.Localidade, c.Pais, c.Telemovel FROM vendas AS v, clientes AS c 
     WHERE c.IDNIF_Cliente = '$nif' AND v.DataVenda = '$data_atual' ORDER BY v.DataVenda DESC";
+    // Script de consulta na base de dados
     include('database/selects_basedados.php');
     if($dados){
+        /** Caso Retorne dados,  repete o ciclo em função do número de linhas retornadas da consulta feita */
         foreach($dados as $linha){
+            // Empurra para o array de $compras_do_cliente os dados relacionados com a encomenda feita
             array_push($compras_do_cliente, $linha['IDVenda'], $nif, $linha['ValorVenda'], $linha['DataVenda'], $portes);
-            $endereço_enviado = array($linha['Nome'], $linha['Email'], $linha['Morada'], $linhas['Cod_Postal'], $linha['Localidade'], $linha['Pais'], $linha['Telemovel']);
+            /** $endereço_enviado: Define o Endereço completo do cliente atual, para enviar como revisão para o email */
+            $endereço_enviado = array($linha['Nome'], $linha['Email'], $linha['Morada'], $linha['Cod_Postal'], $linha['Localidade'], $linha['Pais'], $linha['Telemovel']);
         }
     }
-
+    /** $_SESSION['compra_sucess']: Define o array associativo session com todos os dados para enviar ao email do cliente */
     $_SESSION['compra_sucess'] = array("sim", $mais_informacoes, $compras_do_cliente, $endereço_enviado);
-    
+    // Redireciona o cliente para compra_sucess.php
     echo "<script type='text/javascript'>
             location.href='compra_sucess.php'
             </script>";
     }
-    
 }
 ?>
