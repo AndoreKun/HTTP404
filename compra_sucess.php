@@ -155,7 +155,7 @@ if ($verifica_compra[0] == "nao" ){
             <div>
             </div>
             <!-- Subscrição dos clientes -->	
-            <div class="newsletter-area">
+            <div id="subscricao_markenting" class="newsletter-area">
                 <div class="container">
                     <div class="newsletter-wrapper-all theme-bg-2">
                         <div class="row">
@@ -169,6 +169,7 @@ if ($verifica_compra[0] == "nao" ){
                                         <form action="envia_email.php" method="post" id="markenting-emails" name="mc-embedded-subscribe-form" class="validate">
                                             <div id="mc_embed_signup_scroll" class="mc-form">
                                                 <input type="email" id="email_interessado" name="email_interessado" class="email" placeholder="Deixe aqui o seu email..." required>
+                                                <input type="hidden" id="voltar_para" name="voltar_para" value="compra_sucess.php#subscricao_markenting">
                                                 <div class="clear"><input type="submit" value="Subscribe" name="email-markenting" id="mc-embedded-subscribe" class="button"></div>
                                             </div>
                                         </form>
