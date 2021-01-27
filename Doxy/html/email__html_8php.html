@@ -79,10 +79,38 @@ Variáveis</h2></td></tr>
 <tr class="separator:add4bb354b59c3a823a3aff20fcd99764"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af3474c4d98ec5764218ee1fe6e0a7edb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="email__html_8php.html#af3474c4d98ec5764218ee1fe6e0a7edb">$valor_produtos</a> = $compra_cliente[2]</td></tr>
 <tr class="separator:af3474c4d98ec5764218ee1fe6e0a7edb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2a94709f1ce70da464c1ec3280048e6b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="vendedores__procedimentos_8php.html#a8752e9f9470a017864b3b2c4c795b233">if</a>(isset($verifica_compra)) <a class="el" href="vendedores__procedimentos_8php.html#a8752e9f9470a017864b3b2c4c795b233">if</a>(isset($endereco_cliente)) <a class="el" href="vendedores__procedimentos_8php.html#a8752e9f9470a017864b3b2c4c795b233">if</a>(isset($compra_cliente[4]))&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="email__html_8php.html#a2a94709f1ce70da464c1ec3280048e6b">$mensagem</a></td></tr>
+<tr class="memitem:a4d84ae78bf746521e65ffcea284d1340"><td class="memItemLeft" align="right" valign="top"><a class="el" href="vendedores__procedimentos_8php.html#a8752e9f9470a017864b3b2c4c795b233">if</a>(isset($verifica_compra)) <a class="el" href="vendedores__procedimentos_8php.html#a8752e9f9470a017864b3b2c4c795b233">if</a>(isset($endereco_cliente)) <a class="el" href="vendedores__procedimentos_8php.html#a8752e9f9470a017864b3b2c4c795b233">if</a>(isset($compra_cliente[4]))&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="email__html_8php.html#a4d84ae78bf746521e65ffcea284d1340">$data_atual</a> = date(&quot;Y-m-d H:i:s&quot;)</td></tr>
+<tr class="separator:a4d84ae78bf746521e65ffcea284d1340"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31b5e384bb9849e154a5a243c4e98993"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="email__html_8php.html#a31b5e384bb9849e154a5a243c4e98993">$mensagem_compra</a></td></tr>
+<tr class="separator:a31b5e384bb9849e154a5a243c4e98993"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad05b9fcec882c60e4a1f36d28e343c2e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="email__html_8php.html#ad05b9fcec882c60e4a1f36d28e343c2e">$mensagem_marketing</a></td></tr>
+<tr class="separator:ad05b9fcec882c60e4a1f36d28e343c2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2431ebb1271c571bab451ef62a830370"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="email__html_8php.html#a2431ebb1271c571bab451ef62a830370">$mensagem_produto</a></td></tr>
+<tr class="separator:a2431ebb1271c571bab451ef62a830370"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a94709f1ce70da464c1ec3280048e6b"><td class="memItemLeft" align="right" valign="top">return&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="email__html_8php.html#a2a94709f1ce70da464c1ec3280048e6b">$mensagem</a> = array($mensagem_compra, $mensagem_marketing, $mensagem_produto)</td></tr>
 <tr class="separator:a2a94709f1ce70da464c1ec3280048e6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Variáveis</h2>
+<a id="a4d84ae78bf746521e65ffcea284d1340"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d84ae78bf746521e65ffcea284d1340">&#9670;&nbsp;</a></span>$data_atual</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="vendedores__procedimentos_8php.html#a8752e9f9470a017864b3b2c4c795b233">if</a> (isset( $verifica_compra)) <a class="el" href="vendedores__procedimentos_8php.html#a8752e9f9470a017864b3b2c4c795b233">if</a> (isset( $endereco_cliente)) <a class="el" href="vendedores__procedimentos_8php.html#a8752e9f9470a017864b3b2c4c795b233">if</a> (isset( $compra_cliente[4])) $data_atual = date(&quot;Y-m-d H:i:s&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>if(isset($compra_cliente[4])): Caso os portes estejam definidos, define $sybl e $valor_produtos em função de portes </p>
+<p>if($verifica_compra[1] != "sem_inf_adc"): Caso uma compra for feita e as informações adicionais não forem o predefinido, define a variável $detalhes_importantes_enc para mostrar essa informações como resumo no email</p>
+<p>$postal_local_pais: Caso o endereço esteja definido, Junta o codigo postal, a localidade e o país na mesma linha para imprimir no email</p>
+<p>if($compra_cliente[4] != "Grátis"): Caso os portes não forem grátis, define $sybl como o símbolo do euro e diminui o valor dos portes ao valor total dos produtos para obter o valor dos produtos sem portes para mostrar no email. Por fim junta ao valor dos portes, $sybl. Senão, Como os portes são grátis, o preço total dos produtos e preço após portes serão iguais. E $sybl será uma string vazia.</p>
+
+<p class="definition">Definição na linha <a class="el" href="email__html_8php_source.html#l00044">44</a> do arquivo <a class="el" href="email__html_8php_source.html">email_html.php</a>.</p>
+
+</div>
+</div>
 <a id="a6b2711899e8539aae7644332d8de63ea"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6b2711899e8539aae7644332d8de63ea">&#9670;&nbsp;</a></span>$detalhes_importantes_enc</h2>
 
@@ -94,11 +122,9 @@ Variáveis</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Página contém todo o HTML e PHP com o corpo de emails para serem enviados a clientes </p><dl class="section author"><dt>Autor</dt><dd>Grupo HTTP404 </dd></dl>
-<dl class="section version"><dt>Versão</dt><dd>1.2 </dd></dl>
-<dl class="section since"><dt>Desde</dt><dd>26 jan 2021 $detalhes_importantes_enc: Informações importantes sobre a encomenda definidas pelo cliente </dd></dl>
+<p>$detalhes_importantes_enc: Informações importantes sobre a encomenda definidas pelo cliente </p>
 
-<p class="definition">Definição na linha <a class="el" href="email__html_8php_source.html#l00010">10</a> do arquivo <a class="el" href="email__html_8php_source.html">email_html.php</a>.</p>
+<p class="definition">Definição na linha <a class="el" href="email__html_8php_source.html#l00013">13</a> do arquivo <a class="el" href="email__html_8php_source.html">email_html.php</a>.</p>
 
 </div>
 </div>
@@ -109,16 +135,60 @@ Variáveis</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">return $mensagem</td>
+          <td class="memname">return $mensagem = array($mensagem_compra, $mensagem_marketing, $mensagem_produto)</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>if(isset($compra_cliente[4])): Caso os portes estejam definidos, define $sybl e $valor_produtos em função de portes </p>
-<p>if($verifica_compra[1] != "sem_inf_adc"): Caso uma compra for feita e as informações adicionais não forem o predefinido, define a variável $detalhes_importantes_enc para mostrar essa informações como resumo no email</p>
-<p>$postal_local_pais: Caso o endereço esteja definido, Junta o codigo postal, a localidade e o país na mesma linha para imprimir no email</p>
-<p>if($compra_cliente[4] != "Grátis"): Caso os portes não forem grátis, define $sybl como o símbolo do euro e diminui o valor dos portes ao valor total dos produtos para obter o valor dos produtos sem portes para mostrar no email. Por fim junta ao valor dos portes, $sybl. Senão, Como os portes são grátis, o preço total dos produtos e preço após portes serão iguais. E $sybl será uma string vazia.</p>
 
-<p class="definition">Definição na linha <a class="el" href="email__html_8php_source.html#l00042">42</a> do arquivo <a class="el" href="email__html_8php_source.html">email_html.php</a>.</p>
+<p class="definition">Definição na linha <a class="el" href="email__html_8php_source.html#l02136">2136</a> do arquivo <a class="el" href="email__html_8php_source.html">email_html.php</a>.</p>
+
+</div>
+</div>
+<a id="a31b5e384bb9849e154a5a243c4e98993"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a31b5e384bb9849e154a5a243c4e98993">&#9670;&nbsp;</a></span>$mensagem_compra</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">$mensagem_compra</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="email__html_8php_source.html#l00047">47</a> do arquivo <a class="el" href="email__html_8php_source.html">email_html.php</a>.</p>
+
+</div>
+</div>
+<a id="ad05b9fcec882c60e4a1f36d28e343c2e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad05b9fcec882c60e4a1f36d28e343c2e">&#9670;&nbsp;</a></span>$mensagem_marketing</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">$mensagem_marketing</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="email__html_8php_source.html#l00862">862</a> do arquivo <a class="el" href="email__html_8php_source.html">email_html.php</a>.</p>
+
+</div>
+</div>
+<a id="a2431ebb1271c571bab451ef62a830370"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2431ebb1271c571bab451ef62a830370">&#9670;&nbsp;</a></span>$mensagem_produto</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">$mensagem_produto</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="email__html_8php_source.html#l01499">1499</a> do arquivo <a class="el" href="email__html_8php_source.html">email_html.php</a>.</p>
 
 </div>
 </div>
@@ -135,7 +205,7 @@ Variáveis</h2></td></tr>
 </div><div class="memdoc">
 <p>$sybl: Define o que aparece após o valor dos portes </p>
 
-<p class="definition">Definição na linha <a class="el" href="email__html_8php_source.html#l00012">12</a> do arquivo <a class="el" href="email__html_8php_source.html">email_html.php</a>.</p>
+<p class="definition">Definição na linha <a class="el" href="email__html_8php_source.html#l00015">15</a> do arquivo <a class="el" href="email__html_8php_source.html">email_html.php</a>.</p>
 
 </div>
 </div>
@@ -152,7 +222,7 @@ Variáveis</h2></td></tr>
 </div><div class="memdoc">
 <p>$valor_produtos: Valor total dos produtos(com portes) </p>
 
-<p class="definition">Definição na linha <a class="el" href="email__html_8php_source.html#l00014">14</a> do arquivo <a class="el" href="email__html_8php_source.html">email_html.php</a>.</p>
+<p class="definition">Definição na linha <a class="el" href="email__html_8php_source.html#l00017">17</a> do arquivo <a class="el" href="email__html_8php_source.html">email_html.php</a>.</p>
 
 </div>
 </div>

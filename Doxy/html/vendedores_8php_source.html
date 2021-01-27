@@ -579,8 +579,60 @@ $(function() {
 <div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160;        }</div>
 <div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160;    }</div>
 <div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160;    ?&gt;</div>
-<div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160;&lt;/body&gt;</div>
-<div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160;&lt;/html&gt;</div>
+<div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160;&lt;br/&gt;&lt;br/&gt;</div>
+<div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160;&lt;h2&gt;Veículo Prontos Para Adicionar Ao Stand&lt;/h2&gt;</div>
+<div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160;&lt;form <span class="keywordtype">id</span>=<span class="stringliteral">&quot;lista_de_veiculos&quot;</span> method=<span class="stringliteral">&quot;post&quot;</span>&gt;</div>
+<div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160;&lt;input style=<span class="stringliteral">&quot;cursor: pointer; width:300px; margin:4px; text-align: center&quot;</span> name=<span class="stringliteral">&quot;lista_veiculos&quot;</span> type=<span class="stringliteral">&quot;submit&quot;</span> value=<span class="stringliteral">&quot;Obter Lista&quot;</span> <span class="keyword">class</span>=<span class="stringliteral">&quot;btn-style cr-btn&quot;</span>&gt;&lt;/input&gt;</div>
+<div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160;&lt;/form&gt;</div>
+<div class="line"><a name="l00529"></a><span class="lineno">  529</span>&#160; </div>
+<div class="line"><a name="l00530"></a><span class="lineno">  530</span>&#160;&lt;?php</div>
+<div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160;<span class="keywordflow">if</span>(isset($_POST[<span class="stringliteral">&#39;lista_veiculos&#39;</span>])){</div>
+<div class="line"><a name="l00534"></a><span class="lineno">  534</span>&#160;    <a class="code" href="vendedores_8php.html#aeeddcc27316238563f0b43d707d63901">$consulta</a> = <span class="stringliteral">&#39;SELECT IDVeiculo, modelo, marca, preco, tipoveiculo, estadoveiculo, em_stock, pronto_adicionar_stand from veiculos&#39;</span>;</div>
+<div class="line"><a name="l00536"></a><span class="lineno">  536</span>&#160;    include <span class="stringliteral">&quot;database/selects_basedados.php&quot;</span>;      </div>
+<div class="line"><a name="l00537"></a><span class="lineno">  537</span>&#160;    ?&gt;</div>
+<div class="line"><a name="l00538"></a><span class="lineno">  538</span>&#160;    &lt;!-- Imprime os resultado obtidos em uma tabela !--&gt;</div>
+<div class="line"><a name="l00539"></a><span class="lineno">  539</span>&#160;    &lt;div <span class="keyword">class</span>=<span class="stringliteral">&quot;container&quot;</span>&gt;</div>
+<div class="line"><a name="l00540"></a><span class="lineno">  540</span>&#160;    &lt;br/&gt;</div>
+<div class="line"><a name="l00541"></a><span class="lineno">  541</span>&#160;    &lt;br/&gt;</div>
+<div class="line"><a name="l00542"></a><span class="lineno">  542</span>&#160;    &lt;div style=<span class="stringliteral">&quot;text-align: center&quot;</span>&gt;</div>
+<div class="line"><a name="l00543"></a><span class="lineno">  543</span>&#160;        &lt;h2 style=<span class="stringliteral">&quot;color:black;&quot;</span>&gt;Detalhes de Veículos Prontos Para Adicionar ao Stand&lt;/h2&gt;</div>
+<div class="line"><a name="l00544"></a><span class="lineno">  544</span>&#160;            &lt;br/&gt;</div>
+<div class="line"><a name="l00545"></a><span class="lineno">  545</span>&#160;            &lt;table <span class="keyword">class</span>=<span class="stringliteral">&quot;table table-striped table-bordered&quot;</span>&gt; </div>
+<div class="line"><a name="l00546"></a><span class="lineno">  546</span>&#160;                    &lt;tr&gt; </div>
+<div class="line"><a name="l00547"></a><span class="lineno">  547</span>&#160;                        &lt;th&gt;Número <span class="keywordflow">do</span> Veículo&lt;/th&gt;</div>
+<div class="line"><a name="l00548"></a><span class="lineno">  548</span>&#160;                        &lt;th&gt;Modelo <span class="keywordflow">do</span> Veículo&lt;/th&gt;</div>
+<div class="line"><a name="l00549"></a><span class="lineno">  549</span>&#160;                        &lt;th&gt;Marca <span class="keywordflow">do</span> Veiculo&lt;/th&gt;</div>
+<div class="line"><a name="l00550"></a><span class="lineno">  550</span>&#160;                        &lt;th&gt;Preço <span class="keywordflow">do</span> Veículo&lt;/th&gt;</div>
+<div class="line"><a name="l00551"></a><span class="lineno">  551</span>&#160;                        &lt;th&gt;Tipo de Veículo&lt;/th&gt;</div>
+<div class="line"><a name="l00552"></a><span class="lineno">  552</span>&#160;                        &lt;th&gt;Estado Do Veículo&lt;/th&gt;</div>
+<div class="line"><a name="l00553"></a><span class="lineno">  553</span>&#160;                        &lt;th&gt;Em Stock no Stand&lt;/th&gt;</div>
+<div class="line"><a name="l00554"></a><span class="lineno">  554</span>&#160;                        &lt;th&gt;Pronto Para Adicionar Ao Stand&lt;/th&gt;</div>
+<div class="line"><a name="l00555"></a><span class="lineno">  555</span>&#160;                    &lt;/tr&gt;</div>
+<div class="line"><a name="l00556"></a><span class="lineno">  556</span>&#160;                &lt;tbody&gt;</div>
+<div class="line"><a name="l00557"></a><span class="lineno">  557</span>&#160;                    &lt;?php </div>
+<div class="line"><a name="l00559"></a><span class="lineno">  559</span>&#160;                    <span class="keywordflow">foreach</span>(<a class="code" href="download_8php.html#a78657b8bcc2f0262dd26b81fd6e5a011">$dados</a> as $linha) { ?&gt;</div>
+<div class="line"><a name="l00560"></a><span class="lineno">  560</span>&#160;                    &lt;tr&gt;</div>
+<div class="line"><a name="l00561"></a><span class="lineno">  561</span>&#160;                        &lt;td&gt;&lt;?php echo $linha [<span class="stringliteral">&#39;IDVeiculo&#39;</span>]; ?&gt;&lt;/td&gt;</div>
+<div class="line"><a name="l00562"></a><span class="lineno">  562</span>&#160;                        &lt;td&gt;&lt;?php echo $linha [<span class="stringliteral">&#39;modelo&#39;</span>]; ?&gt;&lt;/td&gt;</div>
+<div class="line"><a name="l00563"></a><span class="lineno">  563</span>&#160;                        &lt;td&gt;&lt;?php echo $linha [<span class="stringliteral">&#39;marca&#39;</span>]; ?&gt;&lt;/td&gt;</div>
+<div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;                        &lt;td&gt;&lt;?php echo $linha [<span class="stringliteral">&#39;preco&#39;</span>]; ?&gt;&lt;/td&gt;</div>
+<div class="line"><a name="l00565"></a><span class="lineno">  565</span>&#160;                        &lt;td&gt;&lt;?php echo $linha [<span class="stringliteral">&#39;tipoveiculo&#39;</span>]; ?&gt;&lt;/td&gt;</div>
+<div class="line"><a name="l00566"></a><span class="lineno">  566</span>&#160;                        &lt;td&gt;&lt;?php echo $linha [<span class="stringliteral">&#39;estadoveiculo&#39;</span>]; ?&gt;&lt;/td&gt;</div>
+<div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160;                        &lt;td&gt;&lt;?php echo $linha [<span class="stringliteral">&#39;em_stock&#39;</span>]; ?&gt;&lt;/td&gt;</div>
+<div class="line"><a name="l00568"></a><span class="lineno">  568</span>&#160;                        &lt;td&gt;&lt;?php echo $linha [<span class="stringliteral">&#39;pronto_adicionar_stand&#39;</span>]; ?&gt;&lt;/td&gt;</div>
+<div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160;                    &lt;/tr&gt;</div>
+<div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160;                    &lt;?php } ?&gt;</div>
+<div class="line"><a name="l00571"></a><span class="lineno">  571</span>&#160;                    &lt;/tbody&gt;</div>
+<div class="line"><a name="l00572"></a><span class="lineno">  572</span>&#160;            &lt;/table&gt;</div>
+<div class="line"><a name="l00573"></a><span class="lineno">  573</span>&#160;            &lt;table&gt;</div>
+<div class="line"><a name="l00574"></a><span class="lineno">  574</span>&#160;            &lt;!-- Chama o ficheiro download.php para fazer o download dos dados selecionados em formato excel !--&gt;</div>
+<div class="line"><a name="l00575"></a><span class="lineno">  575</span>&#160;            &lt;button onclick=<span class="stringliteral">&quot;location.href=&#39;database/download.php?consulta=&lt;?php echo $consulta ?&gt;&amp;adicionarvalor=N&#39;&quot;</span> </div>
+<div class="line"><a name="l00576"></a><span class="lineno">  576</span>&#160;            name=<span class="stringliteral">&quot;downloadfile&quot;</span> value=<span class="stringliteral">&quot;Exportar Para Excel&quot;</span> <span class="keyword">class</span>=<span class="stringliteral">&quot;btn btn-success&quot;</span> style=<span class="stringliteral">&quot;cursor: pointer; width:300px; float:right;&quot;</span>&gt;Exportar Para Excel&lt;/button&gt;</div>
+<div class="line"><a name="l00577"></a><span class="lineno">  577</span>&#160;        &lt;/div&gt;</div>
+<div class="line"><a name="l00578"></a><span class="lineno">  578</span>&#160;    &lt;/div&gt;</div>
+<div class="line"><a name="l00579"></a><span class="lineno">  579</span>&#160;    &lt;?php }?&gt;</div>
+<div class="line"><a name="l00580"></a><span class="lineno">  580</span>&#160;&lt;/body&gt;</div>
+<div class="line"><a name="l00581"></a><span class="lineno">  581</span>&#160;&lt;/html&gt;</div>
 <div class="ttc" id="acompra__sucess_8php_html_a6137b9d1b9ecb8eccd478af540601c24"><div class="ttname"><a href="compra__sucess_8php.html#a6137b9d1b9ecb8eccd478af540601c24">$_SESSION</a></div><div class="ttdeci">$_SESSION['compra_sucess']</div><div class="ttdef"><b>Definition:</b> <a href="compra__sucess_8php_source.html#l00067">compra_sucess.php:67</a></div></div>
 <div class="ttc" id="adownload_8php_html_a78657b8bcc2f0262dd26b81fd6e5a011"><div class="ttname"><a href="download_8php.html#a78657b8bcc2f0262dd26b81fd6e5a011">$dados</a></div><div class="ttdeci">$dados</div><div class="ttdef"><b>Definition:</b> <a href="download_8php_source.html#l00044">download.php:44</a></div></div>
 <div class="ttc" id="avendedores_8php_html_a0729e3f087508359829f1ac216909adf"><div class="ttname"><a href="vendedores_8php.html#a0729e3f087508359829f1ac216909adf">$logado</a></div><div class="ttdeci">$logado</div><div class="ttdef"><b>Definition:</b> <a href="vendedores_8php_source.html#l00018">vendedores.php:18</a></div></div>

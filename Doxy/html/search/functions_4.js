@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['feedback_127',['feedback',['../product-details_8php.html#a5029c4d08bf53127c9182988e34ebac5',1,'product-details.php']]]
+  ['feedback_131',['feedback',['../product-details_8php.html#a5029c4d08bf53127c9182988e34ebac5',1,'product-details.php']]]
 ];

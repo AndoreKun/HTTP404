@@ -530,9 +530,9 @@ setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
 <?php
 /** if(isset($_POST['adicionar_stand'])): Caso o formulário tiver sido submetido, imprime a informação desejada. **/
 if(isset($_POST['lista_veiculos'])){
-    // Query da base de dados
+    /** $consulta Query da base de dados */
     $consulta = 'SELECT IDVeiculo, modelo, marca, preco, tipoveiculo, estadoveiculo, em_stock, pronto_adicionar_stand from veiculos';
-    // Chama o ficheiro de conexão à base de dados
+    /** include "database/selects_basedados.php": Inclui o script de conexão e consulta à base de dados */
     include "database/selects_basedados.php";      
     ?>
     <!-- Imprime os resultado obtidos em uma tabela !-->
@@ -555,7 +555,7 @@ if(isset($_POST['lista_veiculos'])){
                     </tr>
                 <tbody>
                     <?php 
-                    // Ciclo para definir variáveis com resultado do consulta
+                    /** foreach($dados as $linha): Ciclo para definir variáveis com resultado do consulta */
                     foreach($dados as $linha) { ?>
                     <tr>
                         <td><?php echo $linha ['IDVeiculo']; ?></td>
