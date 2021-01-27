@@ -70,7 +70,7 @@ CREATE TABLE IF NOT EXISTS `clientes` (
   PRIMARY KEY (`IDNIF_Cliente`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Clientes que se registaram através do checkout na loja online ou numa loja física';
 
--- Dumping data for table adc_http404.clientes: ~9 rows (approximately)
+-- Dumping data for table adc_http404.clientes: ~12 rows (approximately)
 /*!40000 ALTER TABLE `clientes` DISABLE KEYS */;
 INSERT INTO `clientes` (`IDNIF_Cliente`, `Nome`, `Email`, `Telemovel`, `Pais`, `Morada`, `Cod_Postal`, `Localidade`, `Foto`) VALUES
 	('001910931', 'Inês Francisco', 'inesf@gmail.com', '009894120', 'Portugal', 'Rua dos 8 cavaleiros, Casa Nº2', '3500-004', 'Viseu', NULL),
@@ -93,17 +93,16 @@ CREATE TABLE IF NOT EXISTS `interessados` (
   `IDInteressado` int NOT NULL AUTO_INCREMENT,
   `Email` char(60) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`IDInteressado`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='"Semi-clientes" que apenas colocaram seu email no site';
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='"Semi-clientes" que apenas colocaram seu email no site';
 
--- Dumping data for table adc_http404.interessados: ~5 rows (approximately)
+-- Dumping data for table adc_http404.interessados: ~7 rows (approximately)
 /*!40000 ALTER TABLE `interessados` DISABLE KEYS */;
 INSERT INTO `interessados` (`IDInteressado`, `Email`) VALUES
-	(1, 'jacobalexender@thisemailsdoesnotexist.com'),
-	(2, 'jamesnirob@randommail.com'),
-	(3, 'pedrogomes123@emailnaoexiste.com'),
-	(4, 'andorelouise@gmail.com'),
-	(5, 'a70648@ualg.pt'),
-	(6, 'andrepereira180903@gmail.com');
+	(1, 'andorelouise@gmail.com'),
+	(2, 'a70648@ualg.pt'),
+	(3, 'andrepereira180903@gmail.com'),
+	(4, 'dedeluiz.pereira@gmail.com'),
+	(5, 'a70648@ualg.pt');
 /*!40000 ALTER TABLE `interessados` ENABLE KEYS */;
 
 -- Dumping structure for table adc_http404.login_clientes
@@ -206,7 +205,7 @@ CREATE TABLE IF NOT EXISTS `vendas` (
   CONSTRAINT `FKIDVeiculo` FOREIGN KEY (`IDVeiculo`) REFERENCES `veiculos` (`IDVeiculo`) ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Vendas Online não são feitas por funcionários, logo IDFuncionario pode ser nulo';
 
--- Dumping data for table adc_http404.vendas: ~11 rows (approximately)
+-- Dumping data for table adc_http404.vendas: ~17 rows (approximately)
 /*!40000 ALTER TABLE `vendas` DISABLE KEYS */;
 INSERT INTO `vendas` (`IDVenda`, `IDNIF_Cliente`, `IDVeiculo`, `IDArtigo`, `ValorVenda`, `DataVenda`, `IDFuncionario`, `Venda_Online`, `Informacoes_Encomenda`) VALUES
 	(1, '999999999', 3, NULL, 66000, '2020-11-21 18:32:31', 6, 'Nao', NULL),
