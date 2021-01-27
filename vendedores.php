@@ -521,5 +521,63 @@ setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
         }
     }
     ?>
+<br/><br/>
+<h2>Veículo Prontos Para Adicionar Ao Stand</h2>
+<form id="lista_de_veiculos" method="post">
+<input style="cursor: pointer; width:300px; margin:4px; text-align: center" name="lista_veiculos" type="submit" value="Obter Lista" class="btn-style cr-btn"></input>
+</form>
+
+<?php
+/** if(isset($_POST['adicionar_stand'])): Caso o formulário tiver sido submetido, imprime a informação desejada. **/
+if(isset($_POST['lista_veiculos'])){
+    // Query da base de dados
+    $consulta = 'SELECT IDVeiculo, modelo, marca, preco, tipoveiculo, estadoveiculo, em_stock, pronto_adicionar_stand from veiculos';
+    // Chama o ficheiro de conexão à base de dados
+    include "database/selects_basedados.php";      
+    ?>
+    <!-- Imprime os resultado obtidos em uma tabela !-->
+    <div class="container">
+    <br/>
+    <br/>
+    <div style="text-align: center">
+        <h2 style="color:black;">Detalhes de Veículos Prontos Para Adicionar ao Stand</h2>
+            <br/>
+            <table class="table table-striped table-bordered"> 
+                    <tr> 
+                        <th>Número do Veículo</th>
+                        <th>Modelo do Veículo</th>
+                        <th>Marca do Veiculo</th>
+                        <th>Preço do Veículo</th>
+                        <th>Tipo de Veículo</th>
+                        <th>Estado Do Veículo</th>
+                        <th>Em Stock no Stand</th>
+                        <th>Pronto Para Adicionar Ao Stand</th>
+                    </tr>
+                <tbody>
+                    <?php 
+                    /** $vendas: Número total do valor de vendas. **/
+                    $vendas = 0;
+                    // Ciclo para definir variáveis com resultado do consulta
+                    foreach($dados as $linha) { ?>
+                    <tr>
+                        <td><?php echo $linha ['IDVeiculo']; ?></td>
+                        <td><?php echo $linha ['modelo']; ?></td>
+                        <td><?php echo $linha ['marca']; ?></td>
+                        <td><?php echo $linha ['preco']; ?></td>
+                        <td><?php echo $linha ['tipoveiculo']; ?></td>
+                        <td><?php echo $linha ['estadoveiculo']; ?></td>
+                        <td><?php echo $linha ['em_stock']; ?></td>
+                        <td><?php echo $linha ['pronto_adicionar_stand']; ?></td>
+                    </tr>
+                    <?php } ?>
+                    </tbody>
+            </table>
+            <table>
+            <!-- Chama o ficheiro download.php para fazer o download dos dados selecionados em formato excel !-->
+            <button onclick="location.href='database/download.php?consulta=<?php echo $consulta ?>&adicionarvalor=N'" 
+            name="downloadfile" value="Exportar Para Excel" class="btn btn-success" style="cursor: pointer; width:300px; float:right;">Exportar Para Excel</button>
+        </div>
+    </div>
+    <?php }?>
 </body>
 </html>
