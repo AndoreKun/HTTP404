@@ -1,5 +1,5 @@
 <?php
-/** Página dos detalhes dos produtos - Permite Adicionar e Remover produtos no carrinho
+/** Página dos detalhes dos produtos - Permite Adicionar e Remover produtos no carrinho.
 * @author Grupo HTTP404
 * @version 3.2
 * @since 26 dez 2020
@@ -11,9 +11,9 @@ session_start();
 $botao_remover_veiculo = "";
 $voltar_para = $_SESSION['voltar_para'];
 function feedback ($id, $tipo_produto){
-    /**
-        *Funcao feedback que retorna uma mensagem quando um produto/artigo é adicionado/removido do carrinho e cria um botão para permitir
-        *o redirecionamento para a página que contém o carrinho, também permite adicionar um botão para remover um veículo/artigo
+
+    /** Funcao feedback que retorna uma mensagem quando um produto/artigo é adicionado/removido do carrinho e cria um botão para permitir
+        *o redirecionamento para a página que contém o carrinho, também permite adicionar um botão para remover um veículo/artigo.
         *@author Grupo HTTP404
         *@param int $id Número de Identificação do produto/veiculo, utilizado para mostrar a mensagem apenas naquele produto/artigo
         *@param string $tipo_produto Tipo do produto artigo/veículo
@@ -23,21 +23,21 @@ function feedback ($id, $tipo_produto){
         *@return array $verificacao Retorna as variáveis id, feedback, e os botões (Definidos ou não)
         *@version 2.3                                                                                                                                                                                                                                                                               
 
-    */
+    **/
 
     $feedback = "";
     if($tipo_produto == "veiculo"){ 
-        /** $_SESSION['id_veiculo']['id_veiculo']: Array associativo com todos os ID's de veiculos */
+        /** $_SESSION['id_veiculo']['id_veiculo']: Array associativo com todos os ID's de veiculos. **/
         if(isset($_SESSION['id_veiculo']['id_veiculo'])){
             if ($_SESSION['id_veiculo']['id_veiculo'] == $id){
-                /** $_SESSION['feedback']['feedback']: Array associativo com o feedback (mensagem) */
+                /** $_SESSION['feedback']['feedback']: Array associativo com o feedback (mensagem). **/
                 $feedback = $_SESSION['feedback']['feedback'];
                 
             }
         }
     }
     if($tipo_produto == "artigo"){
-        /** $_SESSION['id_artigo']['id_artigo']: Array associativo com todos os ID's de artigos */
+        /** $_SESSION['id_artigo']['id_artigo']: Array associativo com todos os ID's de artigos. **/
         if(isset($_SESSION['id_artigo']['id_artigo'])){
             if ($_SESSION['id_artigo']['id_artigo'] == $id){
                 $feedback = $_SESSION['feedback']['feedback'];
@@ -47,11 +47,11 @@ function feedback ($id, $tipo_produto){
     }
     $botao_remover_veiculo = "";
     $botao_remover_artigo = "";
-    /** if(isset($_SESSION['abilitar_remover_veiculos'][$id])): Verifica se o array associativo no id enviado à função existe, se sim, define o botão */ 
+    /** if(isset($_SESSION['abilitar_remover_veiculos'][$id])): Verifica se o array associativo no id enviado à função existe, se sim, define o botão. **/
     if(isset($_SESSION['abilitar_remover_veiculos'][$id])){
         $botao_remover_veiculo = $_SESSION['abilitar_remover_veiculos'][$id];
     }
-    /** if(isset($_SESSION['abilitar_remover_artigos'][$id])): Verifica se o array associativo no id enviado à função existe, se sim, define o botão */ 
+    /** if(isset($_SESSION['abilitar_remover_artigos'][$id])): Verifica se o array associativo no id enviado à função existe, se sim, define o botão. **/
     if(isset($_SESSION['abilitar_remover_artigos'][$id])){
         $botao_remover_artigo = $_SESSION['abilitar_remover_artigos'][$id];
     }
@@ -1068,11 +1068,12 @@ return $verificacao;
                                         <input class="btn-style cr-btn" name="mudar_carrinho" value="Adicionar ao Carrinho" type="submit" style="cursor: pointer"></input>
                                     </form>
                                     <?php 
-                                    $retorno = feedback(7, "veiculo");
+                                    $retorno = feedback(7, "artigo");
                                     echo $retorno[3];
                                     echo "<br/>";
                                     if ($retorno[0] == 7){
                                         echo $retorno[1];
+                                        
                                     }?>
                                 </div>
                                 <div class="product-share">
@@ -1767,24 +1768,23 @@ return $verificacao;
                     </div>
                 </div>
             </div>
-            <!-- Subscrição dos clientes -->
-            <div class="newsletter-area">
+           <!-- Subscrição dos clientes -->	
+           <div id="subscricao_markenting" class="newsletter-area">
                 <div class="container">
                     <div class="newsletter-wrapper-all theme-bg-2">
                         <div class="row">
-
+                           
                             <div class="col-lg-20 col-12 col-md-12">
                                 <div class="newsletter-wrapper text-center">
                                     <div class="newsletter-title">
                                         <h3>Subscreva aos nossos alertas</h3>
                                     </div>
                                     <div id="mc_embed_signup" class="subscribe-form">
-                                        <form action="#" method="post" id="#" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                                        <form action="envia_email.php" method="post" id="markenting-emails" name="mc-embedded-subscribe-form" class="validate">
                                             <div id="mc_embed_signup_scroll" class="mc-form">
-                                                <input type="email" value="" name="EMAIL" class="email" placeholder="Deixe aqui o seu email..." required>
-                                                <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-                                                <div class="mc-news" aria-hidden="true"><input type="text" name="b_6bbb9b6f5827bd842d9640c82_05d85f18ef" tabindex="-1" value=""></div>
-                                                <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+                                                <input type="email" id="email_interessado" name="email_interessado" class="email" placeholder="Deixe aqui o seu email..." required>
+                                                <input type="hidden" id="voltar_para" name="voltar_para" value="product-details.php#subscricao_markenting">
+                                                <div class="clear"><input type="submit" value="Subscribe" name="email-markenting" id="mc-embedded-subscribe" class="button"></div>
                                             </div>
                                         </form>
                                     </div>

@@ -2,8 +2,8 @@ var indexSectionsWithContent =
 {
   0: "$<_acdefgilprstuv",
   1: "ac",
-  2: "acdilprsuv",
-  3: "_cdfgsv",
+  2: "acdeilprstuv",
+  3: "_cdefgsv",
   4: "$eit",
   5: "<"
 };

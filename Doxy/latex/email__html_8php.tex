@@ -1,0 +1,108 @@
+\hypertarget{email__html_8php}{}\doxysection{Referência do Arquivo email\+\_\+html.\+php}
+\label{email__html_8php}\index{email\_html.php@{email\_html.php}}
+\doxysubsection*{Variáveis}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{email__html_8php_a6b2711899e8539aae7644332d8de63ea}{\$detalhes\+\_\+importantes\+\_\+enc}} = \char`\"{}\char`\"{}
+\item 
+\mbox{\hyperlink{email__html_8php_add4bb354b59c3a823a3aff20fcd99764}{\$sybl}} = \char`\"{}\char`\"{}
+\item 
+\mbox{\hyperlink{email__html_8php_af3474c4d98ec5764218ee1fe6e0a7edb}{\$valor\+\_\+produtos}} = \$compra\+\_\+cliente\mbox{[}2\mbox{]}
+\item 
+\mbox{\hyperlink{vendedores__procedimentos_8php_a8752e9f9470a017864b3b2c4c795b233}{if}}(isset(\$verifica\+\_\+compra)) \mbox{\hyperlink{vendedores__procedimentos_8php_a8752e9f9470a017864b3b2c4c795b233}{if}}(isset(\$endereco\+\_\+cliente)) \mbox{\hyperlink{vendedores__procedimentos_8php_a8752e9f9470a017864b3b2c4c795b233}{if}}(isset(\$compra\+\_\+cliente\mbox{[}4\mbox{]})) \mbox{\hyperlink{email__html_8php_a4d84ae78bf746521e65ffcea284d1340}{\$data\+\_\+atual}} = date(\char`\"{}Y-\/m-\/d H\+:i\+:s\char`\"{})
+\item 
+\mbox{\hyperlink{email__html_8php_a31b5e384bb9849e154a5a243c4e98993}{\$mensagem\+\_\+compra}}
+\item 
+\mbox{\hyperlink{email__html_8php_ad05b9fcec882c60e4a1f36d28e343c2e}{\$mensagem\+\_\+marketing}}
+\item 
+\mbox{\hyperlink{email__html_8php_a2431ebb1271c571bab451ef62a830370}{\$mensagem\+\_\+produto}}
+\item 
+return \mbox{\hyperlink{email__html_8php_a2a94709f1ce70da464c1ec3280048e6b}{\$mensagem}} = array(\$mensagem\+\_\+compra, \$mensagem\+\_\+marketing, \$mensagem\+\_\+produto)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Variáveis}
+\mbox{\Hypertarget{email__html_8php_a4d84ae78bf746521e65ffcea284d1340}\label{email__html_8php_a4d84ae78bf746521e65ffcea284d1340}} 
+\index{email\_html.php@{email\_html.php}!\$data\_atual@{\$data\_atual}}
+\index{\$data\_atual@{\$data\_atual}!email\_html.php@{email\_html.php}}
+\doxysubsubsection{\texorpdfstring{\$data\_atual}{$data\_atual}}
+{\footnotesize\ttfamily \mbox{\hyperlink{vendedores__procedimentos_8php_a8752e9f9470a017864b3b2c4c795b233}{if}} (isset( \$verifica\+\_\+compra)) \mbox{\hyperlink{vendedores__procedimentos_8php_a8752e9f9470a017864b3b2c4c795b233}{if}} (isset( \$endereco\+\_\+cliente)) \mbox{\hyperlink{vendedores__procedimentos_8php_a8752e9f9470a017864b3b2c4c795b233}{if}} (isset( \$compra\+\_\+cliente\mbox{[}4\mbox{]})) \$data\+\_\+atual = date(\char`\"{}Y-\/m-\/d H\+:i\+:s\char`\"{})}
+
+if(isset(\$compra\+\_\+cliente\mbox{[}4\mbox{]}))\+: Caso os portes estejam definidos, define \$sybl e \$valor\+\_\+produtos em função de portes if(\$verifica\+\_\+compra\mbox{[}1\mbox{]} != \char`\"{}sem\+\_\+inf\+\_\+adc\char`\"{})\+: Caso uma compra for feita e as informações adicionais não forem o predefinido, define a variável \$detalhes\+\_\+importantes\+\_\+enc para mostrar essa informações como resumo no email
+
+\$postal\+\_\+local\+\_\+pais\+: Caso o endereço esteja definido, Junta o codigo postal, a localidade e o país na mesma linha para imprimir no email
+
+if(\$compra\+\_\+cliente\mbox{[}4\mbox{]} != \char`\"{}\+Grátis\char`\"{})\+: Caso os portes não forem grátis, define \$sybl como o símbolo do euro e diminui o valor dos portes ao valor total dos produtos para obter o valor dos produtos sem portes para mostrar no email. Por fim junta ao valor dos portes, \$sybl. Senão, Como os portes são grátis, o preço total dos produtos e preço após portes serão iguais. E \$sybl será uma string vazia.
+
+Definição na linha 44 do arquivo email\+\_\+html.\+php.
+
+\mbox{\Hypertarget{email__html_8php_a6b2711899e8539aae7644332d8de63ea}\label{email__html_8php_a6b2711899e8539aae7644332d8de63ea}} 
+\index{email\_html.php@{email\_html.php}!\$detalhes\_importantes\_enc@{\$detalhes\_importantes\_enc}}
+\index{\$detalhes\_importantes\_enc@{\$detalhes\_importantes\_enc}!email\_html.php@{email\_html.php}}
+\doxysubsubsection{\texorpdfstring{\$detalhes\_importantes\_enc}{$detalhes\_importantes\_enc}}
+{\footnotesize\ttfamily \$detalhes\+\_\+importantes\+\_\+enc = \char`\"{}\char`\"{}}
+
+\$detalhes\+\_\+importantes\+\_\+enc\+: Informações importantes sobre a encomenda definidas pelo cliente 
+
+Definição na linha 13 do arquivo email\+\_\+html.\+php.
+
+\mbox{\Hypertarget{email__html_8php_a2a94709f1ce70da464c1ec3280048e6b}\label{email__html_8php_a2a94709f1ce70da464c1ec3280048e6b}} 
+\index{email\_html.php@{email\_html.php}!\$mensagem@{\$mensagem}}
+\index{\$mensagem@{\$mensagem}!email\_html.php@{email\_html.php}}
+\doxysubsubsection{\texorpdfstring{\$mensagem}{$mensagem}}
+{\footnotesize\ttfamily return \$mensagem = array(\$mensagem\+\_\+compra, \$mensagem\+\_\+marketing, \$mensagem\+\_\+produto)}
+
+
+
+Definição na linha 2136 do arquivo email\+\_\+html.\+php.
+
+\mbox{\Hypertarget{email__html_8php_a31b5e384bb9849e154a5a243c4e98993}\label{email__html_8php_a31b5e384bb9849e154a5a243c4e98993}} 
+\index{email\_html.php@{email\_html.php}!\$mensagem\_compra@{\$mensagem\_compra}}
+\index{\$mensagem\_compra@{\$mensagem\_compra}!email\_html.php@{email\_html.php}}
+\doxysubsubsection{\texorpdfstring{\$mensagem\_compra}{$mensagem\_compra}}
+{\footnotesize\ttfamily \$mensagem\+\_\+compra}
+
+
+
+Definição na linha 47 do arquivo email\+\_\+html.\+php.
+
+\mbox{\Hypertarget{email__html_8php_ad05b9fcec882c60e4a1f36d28e343c2e}\label{email__html_8php_ad05b9fcec882c60e4a1f36d28e343c2e}} 
+\index{email\_html.php@{email\_html.php}!\$mensagem\_marketing@{\$mensagem\_marketing}}
+\index{\$mensagem\_marketing@{\$mensagem\_marketing}!email\_html.php@{email\_html.php}}
+\doxysubsubsection{\texorpdfstring{\$mensagem\_marketing}{$mensagem\_marketing}}
+{\footnotesize\ttfamily \$mensagem\+\_\+marketing}
+
+
+
+Definição na linha 862 do arquivo email\+\_\+html.\+php.
+
+\mbox{\Hypertarget{email__html_8php_a2431ebb1271c571bab451ef62a830370}\label{email__html_8php_a2431ebb1271c571bab451ef62a830370}} 
+\index{email\_html.php@{email\_html.php}!\$mensagem\_produto@{\$mensagem\_produto}}
+\index{\$mensagem\_produto@{\$mensagem\_produto}!email\_html.php@{email\_html.php}}
+\doxysubsubsection{\texorpdfstring{\$mensagem\_produto}{$mensagem\_produto}}
+{\footnotesize\ttfamily \$mensagem\+\_\+produto}
+
+
+
+Definição na linha 1499 do arquivo email\+\_\+html.\+php.
+
+\mbox{\Hypertarget{email__html_8php_add4bb354b59c3a823a3aff20fcd99764}\label{email__html_8php_add4bb354b59c3a823a3aff20fcd99764}} 
+\index{email\_html.php@{email\_html.php}!\$sybl@{\$sybl}}
+\index{\$sybl@{\$sybl}!email\_html.php@{email\_html.php}}
+\doxysubsubsection{\texorpdfstring{\$sybl}{$sybl}}
+{\footnotesize\ttfamily \$sybl = \char`\"{}\char`\"{}}
+
+\$sybl\+: Define o que aparece após o valor dos portes 
+
+Definição na linha 15 do arquivo email\+\_\+html.\+php.
+
+\mbox{\Hypertarget{email__html_8php_af3474c4d98ec5764218ee1fe6e0a7edb}\label{email__html_8php_af3474c4d98ec5764218ee1fe6e0a7edb}} 
+\index{email\_html.php@{email\_html.php}!\$valor\_produtos@{\$valor\_produtos}}
+\index{\$valor\_produtos@{\$valor\_produtos}!email\_html.php@{email\_html.php}}
+\doxysubsubsection{\texorpdfstring{\$valor\_produtos}{$valor\_produtos}}
+{\footnotesize\ttfamily \$valor\+\_\+produtos = \$compra\+\_\+cliente\mbox{[}2\mbox{]}}
+
+\$valor\+\_\+produtos\+: Valor total dos produtos(com portes) 
+
+Definição na linha 17 do arquivo email\+\_\+html.\+php.
+

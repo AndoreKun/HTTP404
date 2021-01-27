@@ -10,7 +10,8 @@
  * @param $adicionar_foto Verdadeiro caso queira adicionar uma foto na base de dados, definida na página em que inserts_basedados for incluida
  */
 
-/** Tenta criar uma conexão à based de dados com método orientado a objetos(PDO), caso falhe, retorna a excecao */
+$feedback = "";
+/** Tenta criar uma conexão à base de dados com método orientado a objetos(PDO), caso falhe, retorna a excecao */
 try{
     /** $conexão: conexão à base de dados*/
     $conexao = new PDO("mysql:host=localhost;dbname=adc_http404", $cargo, $pass_users);
@@ -48,6 +49,6 @@ try{
     }
     // desconecta da base de dados
     $conexao = null;
-    session_start();
+
     $_SESSION['feedback_insert'] = $feedback;
 ?>

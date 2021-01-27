@@ -1,98 +1,272 @@
-\hypertarget{checkout_8php}{}\doxysection{Referência do Arquivo C\+:/\+Kleyton/\+STI/1.1.Ambiente\+Desen/trabalho\+\_\+adc/checkout.php}
-\label{checkout_8php}\index{C:/Kleyton/STI/1.1.AmbienteDesen/trabalho\_adc/checkout.php@{C:/Kleyton/STI/1.1.AmbienteDesen/trabalho\_adc/checkout.php}}
+\hypertarget{checkout_8php}{}\doxysection{Referência do Arquivo checkout.\+php}
+\label{checkout_8php}\index{checkout.php@{checkout.php}}
 \doxysubsection*{Variáveis}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{checkout_8php_adc09b89cca3a1b3f8f43e2fa647747ed}{\$produtos}} = array()
-\item 
 \mbox{\hyperlink{checkout_8php_a5356327e7656c11ad0adc10aa5ae2f1d}{\$total\+\_\+valor\+\_\+produtos}} = 0
 \item 
-\mbox{\hyperlink{checkout_8php_aa6976e1b0cf8ee7af602d688d9aa01fa}{\$num\+\_\+produtos\+\_\+artigos}} = 0
+\mbox{\hyperlink{vendedores__procedimentos_8php_a8752e9f9470a017864b3b2c4c795b233}{if}}(isset(\$\+\_\+\+SESSION\mbox{[}\textquotesingle{}produtos\textquotesingle{}\mbox{]}\mbox{[}\textquotesingle{}produtos\textquotesingle{}\mbox{]})) \mbox{\hyperlink{checkout_8php_a336c25abe9c541b0f1620f2eecdf5c04}{else}} \{ echo \char`\"{}$<$h4$>$Não há nenhum produto no carrinho$<$/h4$>$\char`\"{}
 \item 
-\mbox{\hyperlink{checkout_8php_a40ccfc49ad23af92649c962b24ffd364}{\$num\+\_\+produtos\+\_\+veiculos}} = 0
+\mbox{\hyperlink{checkout_8php_a530de829dff1f0e5bb4cee25a7c6f732}{\$nif}} = \char`\"{}\char`\"{}
 \item 
-\mbox{\hyperlink{checkout_8php_a15eb64b37a63cf72a9f095162712a1e8}{\$artigos}} = \char`\"{}\char`\"{}
+\mbox{\hyperlink{checkout_8php_a9e0ffbb2e9a5b603d2ecba9ffbfc0eab}{\$dados\+\_\+checkout}} = FALSE
 \item 
-\mbox{\hyperlink{checkout_8php_a8c2cc5b8eec854beb647a40a8e2449ba}{\$veiculos}} = \char`\"{}\char`\"{}
+\mbox{\hyperlink{checkout_8php_a7568e65cc54a157309a5f01296c5bec7}{\$acao}} = \textquotesingle{}insert\textquotesingle{}
 \item 
-\mbox{\hyperlink{checkout_8php_a55a194ca09e833ccbea48edf6ea3ff33}{\$posicao\+\_\+veiculo}} = 0
+\mbox{\hyperlink{checkout_8php_a4a4b101b0f71b4fae26877ba74aa46e5}{\$adicionar\+\_\+foto}} = FALSE
 \item 
-\mbox{\hyperlink{checkout_8php_acb30596bcb97e450b512dcf2f95e4852}{\$posicao\+\_\+artigo}} = 1
+\mbox{\hyperlink{checkout_8php_ac3dc42e449d42a0f869b18785d6b09b1}{\$cargo}} = \char`\"{}admin\char`\"{}
 \item 
-\mbox{\hyperlink{checkout_8php_a9ac73bb64af9f8fd9e826b4814bd4fc8}{\$produtos\+\_\+novos}} = array()
+\mbox{\hyperlink{checkout_8php_ab23b8736684fa430ee74e2f7398e39e0}{\$pass\+\_\+users}} = \char`\"{}http404\#2021\%\char`\"{}
+\item 
+\mbox{\hyperlink{checkout_8php_ae78923b98251f425e3b7380b110a8fdb}{\$mais\+\_\+informacoes}} = \char`\"{}\char`\"{}
+\item 
+\mbox{\hyperlink{checkout_8php_a46381a14a2fb8e2522868421a63fc49f}{\$nome\+\_\+mais\+\_\+informacoes}} = \char`\"{}\char`\"{}
+\item 
+\mbox{\hyperlink{checkout_8php_a43f2b8d35fd602b422cc1595d0e37c57}{\$mais\+\_\+informacoes\+\_\+insert}} = \char`\"{}\char`\"{}
+\item 
+\mbox{\hyperlink{checkout_8php_a20abd480ceb262c663ea09815d2f7d00}{\$inserir\+\_\+dados\+\_\+login}} = TRUE
+\item 
+\mbox{\hyperlink{checkout_8php_ab25c9df54c5e40e617f82606fc60f1f7}{\$acao\+\_\+dados\+\_\+login}} = \textquotesingle{}insert\textquotesingle{}
+\item 
+\mbox{\hyperlink{vendedores__procedimentos_8php_a8752e9f9470a017864b3b2c4c795b233}{if}}(isset(\$\+\_\+\+POST\mbox{[}\textquotesingle{}login\+\_\+autocheckout\textquotesingle{}\mbox{]})) \mbox{\hyperlink{vendedores__procedimentos_8php_a8752e9f9470a017864b3b2c4c795b233}{if}}(isset(\$\+\_\+\+POST\mbox{[}\textquotesingle{}fazer\+\_\+pedido\textquotesingle{}\mbox{]})) \mbox{\hyperlink{checkout_8php_a643b0aed812d94283a410833f637265e}{\$id\+\_\+veiculo}} = \char`\"{}\char`\"{}
+\item 
+\mbox{\hyperlink{checkout_8php_afe9a36d93fb999e315897c584a94c374}{\$nome\+\_\+coluna\+\_\+veiculo}} = \char`\"{}\char`\"{}
+\item 
+\mbox{\hyperlink{checkout_8php_a6014ae40274b2f24211501e2a8a04469}{\$id\+\_\+artigo}} = \char`\"{}\char`\"{}
+\item 
+\mbox{\hyperlink{checkout_8php_a3456ddb80fabe1f5092c298470f04870}{\$nome\+\_\+coluna\+\_\+artigo}} = \char`\"{}\char`\"{}
+\item 
+\mbox{\hyperlink{checkout_8php_a9005ce1dfee26a986389f15c9a92705e}{\$id\+\_\+veiculotmp}} = \char`\"{}\char`\"{}
+\item 
+\mbox{\hyperlink{checkout_8php_aa914ec72460da9aa0a8b78c0803bd40d}{\$id\+\_\+artigotmp}} = \char`\"{}\char`\"{}
+\item 
+\mbox{\hyperlink{checkout_8php_ac88e03e52d28282a9fcc6da95ff9d861}{\$valor\+\_\+produto}} = \char`\"{}\char`\"{}
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Variáveis}
-\mbox{\Hypertarget{checkout_8php_a15eb64b37a63cf72a9f095162712a1e8}\label{checkout_8php_a15eb64b37a63cf72a9f095162712a1e8}} 
-\index{checkout.php@{checkout.php}!\$artigos@{\$artigos}}
-\index{\$artigos@{\$artigos}!checkout.php@{checkout.php}}
-\doxysubsubsection{\texorpdfstring{\$artigos}{$artigos}}
-{\footnotesize\ttfamily \$artigos = \char`\"{}\char`\"{}}
+\mbox{\Hypertarget{checkout_8php_a7568e65cc54a157309a5f01296c5bec7}\label{checkout_8php_a7568e65cc54a157309a5f01296c5bec7}} 
+\index{checkout.php@{checkout.php}!\$acao@{\$acao}}
+\index{\$acao@{\$acao}!checkout.php@{checkout.php}}
+\doxysubsubsection{\texorpdfstring{\$acao}{$acao}}
+{\footnotesize\ttfamily \$acao = \textquotesingle{}insert\textquotesingle{}}
+
+\$acao\+: Ação a ser feita com dados de entrega de clientes na base de dados(\+INSERT ou UPDATE) 
+
+Definição na linha 507 do arquivo checkout.\+php.
+
+\mbox{\Hypertarget{checkout_8php_ab25c9df54c5e40e617f82606fc60f1f7}\label{checkout_8php_ab25c9df54c5e40e617f82606fc60f1f7}} 
+\index{checkout.php@{checkout.php}!\$acao\_dados\_login@{\$acao\_dados\_login}}
+\index{\$acao\_dados\_login@{\$acao\_dados\_login}!checkout.php@{checkout.php}}
+\doxysubsubsection{\texorpdfstring{\$acao\_dados\_login}{$acao\_dados\_login}}
+{\footnotesize\ttfamily \$acao\+\_\+dados\+\_\+login = \textquotesingle{}insert\textquotesingle{}}
 
 
 
-Definição na linha 8 do arquivo checkout.\+php.
+Definição na linha 523 do arquivo checkout.\+php.
 
-\mbox{\Hypertarget{checkout_8php_aa6976e1b0cf8ee7af602d688d9aa01fa}\label{checkout_8php_aa6976e1b0cf8ee7af602d688d9aa01fa}} 
-\index{checkout.php@{checkout.php}!\$num\_produtos\_artigos@{\$num\_produtos\_artigos}}
-\index{\$num\_produtos\_artigos@{\$num\_produtos\_artigos}!checkout.php@{checkout.php}}
-\doxysubsubsection{\texorpdfstring{\$num\_produtos\_artigos}{$num\_produtos\_artigos}}
-{\footnotesize\ttfamily \$num\+\_\+produtos\+\_\+artigos = 0}
+\mbox{\Hypertarget{checkout_8php_a4a4b101b0f71b4fae26877ba74aa46e5}\label{checkout_8php_a4a4b101b0f71b4fae26877ba74aa46e5}} 
+\index{checkout.php@{checkout.php}!\$adicionar\_foto@{\$adicionar\_foto}}
+\index{\$adicionar\_foto@{\$adicionar\_foto}!checkout.php@{checkout.php}}
+\doxysubsubsection{\texorpdfstring{\$adicionar\_foto}{$adicionar\_foto}}
+{\footnotesize\ttfamily \$adicionar\+\_\+foto = FALSE}
+
+\$adicionar\+\_\+foto\+: Define se deseja adicionar uma foto no INSERT da base de dados 
+
+Definição na linha 509 do arquivo checkout.\+php.
+
+\mbox{\Hypertarget{checkout_8php_ac3dc42e449d42a0f869b18785d6b09b1}\label{checkout_8php_ac3dc42e449d42a0f869b18785d6b09b1}} 
+\index{checkout.php@{checkout.php}!\$cargo@{\$cargo}}
+\index{\$cargo@{\$cargo}!checkout.php@{checkout.php}}
+\doxysubsubsection{\texorpdfstring{\$cargo}{$cargo}}
+{\footnotesize\ttfamily \$cargo = \char`\"{}admin\char`\"{}}
+
+\$cargo\+: Define o Cargo que será utilizado para fazer a ligação à base de dados 
+
+Definição na linha 511 do arquivo checkout.\+php.
+
+\mbox{\Hypertarget{checkout_8php_a9e0ffbb2e9a5b603d2ecba9ffbfc0eab}\label{checkout_8php_a9e0ffbb2e9a5b603d2ecba9ffbfc0eab}} 
+\index{checkout.php@{checkout.php}!\$dados\_checkout@{\$dados\_checkout}}
+\index{\$dados\_checkout@{\$dados\_checkout}!checkout.php@{checkout.php}}
+\doxysubsubsection{\texorpdfstring{\$dados\_checkout}{$dados\_checkout}}
+{\footnotesize\ttfamily \$dados\+\_\+checkout = FALSE}
+
+\$dados\+\_\+checkout\+: É verdadeiro quando existem dados de checkout(nome do cliente, morada, etc) para prevenir que o sistema faça o insert de uma venda apena ao carregar a página checkout 
+
+Definição na linha 505 do arquivo checkout.\+php.
+
+\mbox{\Hypertarget{checkout_8php_a6014ae40274b2f24211501e2a8a04469}\label{checkout_8php_a6014ae40274b2f24211501e2a8a04469}} 
+\index{checkout.php@{checkout.php}!\$id\_artigo@{\$id\_artigo}}
+\index{\$id\_artigo@{\$id\_artigo}!checkout.php@{checkout.php}}
+\doxysubsubsection{\texorpdfstring{\$id\_artigo}{$id\_artigo}}
+{\footnotesize\ttfamily \$id\+\_\+artigo = \char`\"{}\char`\"{}}
+
+\$id\+\_\+artigo\+: ID do Artigo comprado, nulo caso não foram comprados artigos 
+
+Definição na linha 630 do arquivo checkout.\+php.
+
+\mbox{\Hypertarget{checkout_8php_aa914ec72460da9aa0a8b78c0803bd40d}\label{checkout_8php_aa914ec72460da9aa0a8b78c0803bd40d}} 
+\index{checkout.php@{checkout.php}!\$id\_artigotmp@{\$id\_artigotmp}}
+\index{\$id\_artigotmp@{\$id\_artigotmp}!checkout.php@{checkout.php}}
+\doxysubsubsection{\texorpdfstring{\$id\_artigotmp}{$id\_artigotmp}}
+{\footnotesize\ttfamily \$id\+\_\+artigotmp = \char`\"{}\char`\"{}}
+
+\$id\+\_\+artigotmp\+: Variável guarda informações tempórarias de artigos 
+
+Definição na linha 636 do arquivo checkout.\+php.
+
+\mbox{\Hypertarget{checkout_8php_a643b0aed812d94283a410833f637265e}\label{checkout_8php_a643b0aed812d94283a410833f637265e}} 
+\index{checkout.php@{checkout.php}!\$id\_veiculo@{\$id\_veiculo}}
+\index{\$id\_veiculo@{\$id\_veiculo}!checkout.php@{checkout.php}}
+\doxysubsubsection{\texorpdfstring{\$id\_veiculo}{$id\_veiculo}}
+{\footnotesize\ttfamily \mbox{\hyperlink{vendedores__procedimentos_8php_a8752e9f9470a017864b3b2c4c795b233}{if}} (isset( \$\+\_\+\+POST\mbox{[} \textquotesingle{}login\+\_\+autocheckout\textquotesingle{}\mbox{]})) \mbox{\hyperlink{vendedores__procedimentos_8php_a8752e9f9470a017864b3b2c4c795b233}{if}} (isset( \$\+\_\+\+POST\mbox{[} \textquotesingle{}fazer\+\_\+pedido\textquotesingle{}\mbox{]})) \$id\+\_\+veiculo = \char`\"{}\char`\"{}}
+
+if(isset(\$\+\_\+\+POST\mbox{[}\textquotesingle{}login\+\_\+autocheckout\textquotesingle{}\mbox{]}))\+: Caso o formulário que contém o checkout automatico de produtos for submetido, prepara essas infomações para o checkout if(isset(\$\+\_\+\+POST\mbox{[}\textquotesingle{}fazer\+\_\+pedido\textquotesingle{}\mbox{]}))\+: Caso o pedido for feito através de inserir dados manualmente no formulario em checkout, começa a preparar esse dados para enviar à base de dados \$id\+\_\+veiculo\+: ID do Veículo comprado, nulo caso não foram comprados veículos \$nif\+\_\+login\+: nif do cliente, inserido no formulário
+
+\$nif\+\_\+password\+: senha do cliente, inserido no formulário
+
+if(isset(\$\+\_\+\+POST\mbox{[}\textquotesingle{}mais\+\_\+informacoes\+\_\+login\textquotesingle{}\mbox{]}))\+: Caso no login automatico sejam inseridas mais informações sobre a encomenda, as prepara para adicionar à base de dados
+
+\$consulta\+: Query da consulta à base de dados
+
+include(\textquotesingle{}\mbox{\hyperlink{selects__basedados_8php}{database/selects\+\_\+basedados.\+php}}\textquotesingle{})\+: Inclui o script de consulta à base de dados
+
+if(\$dados)\+: Caso o mesmo retorne dados significa que o login está correto, logo começa a preparar os dados para adicionar na base de dados Caso não retorne dados, limpa o array POST e imprime uma mensagem ao cliente que seu login está errado Limpa o array POST para que não sejam enviados dados apenas ao recarregar a página
+
+unset(\$\+\_\+\+POST)\+: Limpa o array para que dados nao forem inseridos novamente na base de dados apenas ao carregar a pagina
+
+\$nif\+: NIF do Cliente
+
+\$consulta\+: Query da consulta
+
+include(\textquotesingle{}\mbox{\hyperlink{selects__basedados_8php}{database/selects\+\_\+basedados.\+php}}\textquotesingle{})\+: Chama Script de consulta à base de dados
+
+Caso Retorne dados significa que o nif já existe na base de dados, logo define a acao como update
+
+\$acao\+: Ao ser definida para \textquotesingle{}update\textquotesingle{}, vai atualizar os dados do cliente com aquele nif na base de dados
+
+\$acao\+\_\+dados\+\_\+login\+: Ao se definido para \textquotesingle{}update\textquotesingle{}, vai atualizar a password associado ao nif do cliente que foi introduzido
+
+\$senha\+\_\+checkout\+: Senha escolhida pelo utilizador para que possa usar a funcionalidade de chekout automatico
+
+\$pais\+: Pais de residência do cliente
+
+\$nome\+: Nome Completo do Cliente
+
+\$morada\+: Morada do cliente
+
+if(isset(\$\+\_\+\+POST\mbox{[}\textquotesingle{}mais\+\_\+morada\textquotesingle{}\mbox{]})\+: Caso exista mais morada(Definida na segunda linha do formulário) a concatena com morada para formar a morada completa do cliente
+
+\$localidade\+: Localidade do cliente
+
+\$cod\+\_\+postal\+: Código Postal do cliente
+
+\$email\+: Email do cliente
+
+\$telemovel\+: Telemovel do Cliente
+
+if(isset(\$\+\_\+\+POST\mbox{[}\textquotesingle{}mais\+\_\+informacoes\textquotesingle{}\mbox{]}))\+: Caso mais informações sobre a encomenda sejam definidas no formulário, as prepara para inserir na base de dados
+
+if(\$acao == \textquotesingle{}insert\textquotesingle{})\+: Caso a acao seja \textquotesingle{}insert\textquotesingle{}(Dados colocados manualmente no formulário), os envia para a base de dados
+
+elseif(\$acao == \textquotesingle{}update\textquotesingle{})\+: Senão, se for \textquotesingle{}update\textquotesingle{}(NIF do cliente já existe na base de dados), atualiza os dados de entrega do cliente
+
+\$dados\+\_\+checkout\+: Define os dados como prontos para fazer o checkout
+
+unset(\$\+\_\+\+POST)\+: Limpa o array para que dados nao forem inseridos novamente na base de dados apenas ao carregar a pagina
+
+Definição na linha 626 do arquivo checkout.\+php.
+
+\mbox{\Hypertarget{checkout_8php_a9005ce1dfee26a986389f15c9a92705e}\label{checkout_8php_a9005ce1dfee26a986389f15c9a92705e}} 
+\index{checkout.php@{checkout.php}!\$id\_veiculotmp@{\$id\_veiculotmp}}
+\index{\$id\_veiculotmp@{\$id\_veiculotmp}!checkout.php@{checkout.php}}
+\doxysubsubsection{\texorpdfstring{\$id\_veiculotmp}{$id\_veiculotmp}}
+{\footnotesize\ttfamily \$id\+\_\+veiculotmp = \char`\"{}\char`\"{}}
+
+\$id\+\_\+veiculotmp\+: Variável guarda informações temporárias de veiculos 
+
+Definição na linha 634 do arquivo checkout.\+php.
+
+\mbox{\Hypertarget{checkout_8php_a20abd480ceb262c663ea09815d2f7d00}\label{checkout_8php_a20abd480ceb262c663ea09815d2f7d00}} 
+\index{checkout.php@{checkout.php}!\$inserir\_dados\_login@{\$inserir\_dados\_login}}
+\index{\$inserir\_dados\_login@{\$inserir\_dados\_login}!checkout.php@{checkout.php}}
+\doxysubsubsection{\texorpdfstring{\$inserir\_dados\_login}{$inserir\_dados\_login}}
+{\footnotesize\ttfamily \$inserir\+\_\+dados\+\_\+login = TRUE}
+
+\$inserir\+\_\+dados\+\_\+login\+: Verdadeiro Caso esteja tudo pronto para adicionar os dados de login de checkout de clientes 
+
+Definição na linha 521 do arquivo checkout.\+php.
+
+\mbox{\Hypertarget{checkout_8php_ae78923b98251f425e3b7380b110a8fdb}\label{checkout_8php_ae78923b98251f425e3b7380b110a8fdb}} 
+\index{checkout.php@{checkout.php}!\$mais\_informacoes@{\$mais\_informacoes}}
+\index{\$mais\_informacoes@{\$mais\_informacoes}!checkout.php@{checkout.php}}
+\doxysubsubsection{\texorpdfstring{\$mais\_informacoes}{$mais\_informacoes}}
+{\footnotesize\ttfamily \$mais\+\_\+informacoes = \char`\"{}\char`\"{}}
+
+\$mais\+\_\+informacoes\+: Contém mais informações sobre a encomenda feita 
+
+Definição na linha 515 do arquivo checkout.\+php.
+
+\mbox{\Hypertarget{checkout_8php_a43f2b8d35fd602b422cc1595d0e37c57}\label{checkout_8php_a43f2b8d35fd602b422cc1595d0e37c57}} 
+\index{checkout.php@{checkout.php}!\$mais\_informacoes\_insert@{\$mais\_informacoes\_insert}}
+\index{\$mais\_informacoes\_insert@{\$mais\_informacoes\_insert}!checkout.php@{checkout.php}}
+\doxysubsubsection{\texorpdfstring{\$mais\_informacoes\_insert}{$mais\_informacoes\_insert}}
+{\footnotesize\ttfamily \$mais\+\_\+informacoes\+\_\+insert = \char`\"{}\char`\"{}}
+
+\$mais\+\_\+informacoes\+\_\+insert\+: Define a sintaxe do insert de \$mais\+\_\+informacoes 
+
+Definição na linha 519 do arquivo checkout.\+php.
+
+\mbox{\Hypertarget{checkout_8php_a530de829dff1f0e5bb4cee25a7c6f732}\label{checkout_8php_a530de829dff1f0e5bb4cee25a7c6f732}} 
+\index{checkout.php@{checkout.php}!\$nif@{\$nif}}
+\index{\$nif@{\$nif}!checkout.php@{checkout.php}}
+\doxysubsubsection{\texorpdfstring{\$nif}{$nif}}
+{\footnotesize\ttfamily \$nif = \char`\"{}\char`\"{}}
 
 
 
-Definição na linha 6 do arquivo checkout.\+php.
+Definição na linha 503 do arquivo checkout.\+php.
 
-\mbox{\Hypertarget{checkout_8php_a40ccfc49ad23af92649c962b24ffd364}\label{checkout_8php_a40ccfc49ad23af92649c962b24ffd364}} 
-\index{checkout.php@{checkout.php}!\$num\_produtos\_veiculos@{\$num\_produtos\_veiculos}}
-\index{\$num\_produtos\_veiculos@{\$num\_produtos\_veiculos}!checkout.php@{checkout.php}}
-\doxysubsubsection{\texorpdfstring{\$num\_produtos\_veiculos}{$num\_produtos\_veiculos}}
-{\footnotesize\ttfamily \$num\+\_\+produtos\+\_\+veiculos = 0}
+\mbox{\Hypertarget{checkout_8php_a3456ddb80fabe1f5092c298470f04870}\label{checkout_8php_a3456ddb80fabe1f5092c298470f04870}} 
+\index{checkout.php@{checkout.php}!\$nome\_coluna\_artigo@{\$nome\_coluna\_artigo}}
+\index{\$nome\_coluna\_artigo@{\$nome\_coluna\_artigo}!checkout.php@{checkout.php}}
+\doxysubsubsection{\texorpdfstring{\$nome\_coluna\_artigo}{$nome\_coluna\_artigo}}
+{\footnotesize\ttfamily \$nome\+\_\+coluna\+\_\+artigo = \char`\"{}\char`\"{}}
 
+\$nome\+\_\+coluna\+\_\+artigo\+: Nome da coluna na base de dados onde está o id de artigoo, finalidade de caso id de artigo seja nulo, o query do insert possa ser alterado 
 
+Definição na linha 632 do arquivo checkout.\+php.
 
-Definição na linha 7 do arquivo checkout.\+php.
+\mbox{\Hypertarget{checkout_8php_afe9a36d93fb999e315897c584a94c374}\label{checkout_8php_afe9a36d93fb999e315897c584a94c374}} 
+\index{checkout.php@{checkout.php}!\$nome\_coluna\_veiculo@{\$nome\_coluna\_veiculo}}
+\index{\$nome\_coluna\_veiculo@{\$nome\_coluna\_veiculo}!checkout.php@{checkout.php}}
+\doxysubsubsection{\texorpdfstring{\$nome\_coluna\_veiculo}{$nome\_coluna\_veiculo}}
+{\footnotesize\ttfamily \$nome\+\_\+coluna\+\_\+veiculo = \char`\"{}\char`\"{}}
 
-\mbox{\Hypertarget{checkout_8php_acb30596bcb97e450b512dcf2f95e4852}\label{checkout_8php_acb30596bcb97e450b512dcf2f95e4852}} 
-\index{checkout.php@{checkout.php}!\$posicao\_artigo@{\$posicao\_artigo}}
-\index{\$posicao\_artigo@{\$posicao\_artigo}!checkout.php@{checkout.php}}
-\doxysubsubsection{\texorpdfstring{\$posicao\_artigo}{$posicao\_artigo}}
-{\footnotesize\ttfamily \$posicao\+\_\+artigo = 1}
+\$nome\+\_\+coluna\+\_\+veiculo\+: Nome da coluna na base de dados onde está o id de veículo, finalidade de caso id de veiculo seja nulo, o query do insert possa ser alterado 
 
+Definição na linha 628 do arquivo checkout.\+php.
 
+\mbox{\Hypertarget{checkout_8php_a46381a14a2fb8e2522868421a63fc49f}\label{checkout_8php_a46381a14a2fb8e2522868421a63fc49f}} 
+\index{checkout.php@{checkout.php}!\$nome\_mais\_informacoes@{\$nome\_mais\_informacoes}}
+\index{\$nome\_mais\_informacoes@{\$nome\_mais\_informacoes}!checkout.php@{checkout.php}}
+\doxysubsubsection{\texorpdfstring{\$nome\_mais\_informacoes}{$nome\_mais\_informacoes}}
+{\footnotesize\ttfamily \$nome\+\_\+mais\+\_\+informacoes = \char`\"{}\char`\"{}}
 
-Definição na linha 11 do arquivo checkout.\+php.
+\$nome\+\_\+mais\+\_\+informacoes\+: Contém o nome da coluna da base de dados em que será inserido as infomações 
 
-\mbox{\Hypertarget{checkout_8php_a55a194ca09e833ccbea48edf6ea3ff33}\label{checkout_8php_a55a194ca09e833ccbea48edf6ea3ff33}} 
-\index{checkout.php@{checkout.php}!\$posicao\_veiculo@{\$posicao\_veiculo}}
-\index{\$posicao\_veiculo@{\$posicao\_veiculo}!checkout.php@{checkout.php}}
-\doxysubsubsection{\texorpdfstring{\$posicao\_veiculo}{$posicao\_veiculo}}
-{\footnotesize\ttfamily \$posicao\+\_\+veiculo = 0}
+Definição na linha 517 do arquivo checkout.\+php.
 
+\mbox{\Hypertarget{checkout_8php_ab23b8736684fa430ee74e2f7398e39e0}\label{checkout_8php_ab23b8736684fa430ee74e2f7398e39e0}} 
+\index{checkout.php@{checkout.php}!\$pass\_users@{\$pass\_users}}
+\index{\$pass\_users@{\$pass\_users}!checkout.php@{checkout.php}}
+\doxysubsubsection{\texorpdfstring{\$pass\_users}{$pass\_users}}
+{\footnotesize\ttfamily \$pass\+\_\+users = \char`\"{}http404\#2021\%\char`\"{}}
 
+\$pass\+\_\+users\+: Define a palavra passe do Cargo que será utilizado para fazer a ligação à base de dados 
 
-Definição na linha 10 do arquivo checkout.\+php.
-
-\mbox{\Hypertarget{checkout_8php_adc09b89cca3a1b3f8f43e2fa647747ed}\label{checkout_8php_adc09b89cca3a1b3f8f43e2fa647747ed}} 
-\index{checkout.php@{checkout.php}!\$produtos@{\$produtos}}
-\index{\$produtos@{\$produtos}!checkout.php@{checkout.php}}
-\doxysubsubsection{\texorpdfstring{\$produtos}{$produtos}}
-{\footnotesize\ttfamily \$produtos = array()}
-
-produtos comprados 
-
-Definição na linha 4 do arquivo checkout.\+php.
-
-\mbox{\Hypertarget{checkout_8php_a9ac73bb64af9f8fd9e826b4814bd4fc8}\label{checkout_8php_a9ac73bb64af9f8fd9e826b4814bd4fc8}} 
-\index{checkout.php@{checkout.php}!\$produtos\_novos@{\$produtos\_novos}}
-\index{\$produtos\_novos@{\$produtos\_novos}!checkout.php@{checkout.php}}
-\doxysubsubsection{\texorpdfstring{\$produtos\_novos}{$produtos\_novos}}
-{\footnotesize\ttfamily \$produtos\+\_\+novos = array()}
-
-
-
-Definição na linha 12 do arquivo checkout.\+php.
+Definição na linha 513 do arquivo checkout.\+php.
 
 \mbox{\Hypertarget{checkout_8php_a5356327e7656c11ad0adc10aa5ae2f1d}\label{checkout_8php_a5356327e7656c11ad0adc10aa5ae2f1d}} 
 \index{checkout.php@{checkout.php}!\$total\_valor\_produtos@{\$total\_valor\_produtos}}
@@ -100,17 +274,43 @@ Definição na linha 12 do arquivo checkout.\+php.
 \doxysubsubsection{\texorpdfstring{\$total\_valor\_produtos}{$total\_valor\_produtos}}
 {\footnotesize\ttfamily \$total\+\_\+valor\+\_\+produtos = 0}
 
+Total do Valor dos produtos 
 
+Definição na linha 10 do arquivo checkout.\+php.
 
-Definição na linha 5 do arquivo checkout.\+php.
+\mbox{\Hypertarget{checkout_8php_ac88e03e52d28282a9fcc6da95ff9d861}\label{checkout_8php_ac88e03e52d28282a9fcc6da95ff9d861}} 
+\index{checkout.php@{checkout.php}!\$valor\_produto@{\$valor\_produto}}
+\index{\$valor\_produto@{\$valor\_produto}!checkout.php@{checkout.php}}
+\doxysubsubsection{\texorpdfstring{\$valor\_produto}{$valor\_produto}}
+{\footnotesize\ttfamily \$valor\+\_\+produto = \char`\"{}\char`\"{}}
 
-\mbox{\Hypertarget{checkout_8php_a8c2cc5b8eec854beb647a40a8e2449ba}\label{checkout_8php_a8c2cc5b8eec854beb647a40a8e2449ba}} 
-\index{checkout.php@{checkout.php}!\$veiculos@{\$veiculos}}
-\index{\$veiculos@{\$veiculos}!checkout.php@{checkout.php}}
-\doxysubsubsection{\texorpdfstring{\$veiculos}{$veiculos}}
-{\footnotesize\ttfamily \$veiculos = \char`\"{}\char`\"{}}
+\$valor\+\_\+produto\+: Valor total de um único produto 
 
+Definição na linha 638 do arquivo checkout.\+php.
 
+\mbox{\Hypertarget{checkout_8php_a336c25abe9c541b0f1620f2eecdf5c04}\label{checkout_8php_a336c25abe9c541b0f1620f2eecdf5c04}} 
+\index{checkout.php@{checkout.php}!else@{else}}
+\index{else@{else}!checkout.php@{checkout.php}}
+\doxysubsubsection{\texorpdfstring{else}{else}}
+{\footnotesize\ttfamily \mbox{\hyperlink{vendedores__procedimentos_8php_a8752e9f9470a017864b3b2c4c795b233}{if}} (isset( \$\+\_\+\+SESSION\mbox{[} \textquotesingle{}produtos\textquotesingle{}\mbox{]}\mbox{[} \textquotesingle{}produtos\textquotesingle{}\mbox{]})) else \{ echo \char`\"{}$<$h4$>$Não há nenhum produto no carrinho$<$/h4$>$\char`\"{}}
 
-Definição na linha 9 do arquivo checkout.\+php.
+Caso esteja definido algum produto no array, imprime-\/os ao na secção de encomendas, senão imprime ao usuário que não existem produtos no carrinho \$produtos\+: Array com todos os produtos do Carrinho
+
+\$nomeproduto\+: Posição do nome dos produtos no array
+
+\$qntdproduto\+: Posição da quantidade dos produtos no array
+
+\$precoproduto\+: Posição do preço dos produtos no array
+
+\$num\+\_\+produtos\+\_\+total\+: Número total de produtos
+
+\$pos\+\_\+preco\+: Posição do preço no array do produtos
+
+for(\$preco\+\_\+veiculos = 0; \$num\+\_\+produtos\+\_\+total $>$ \$preco\+\_\+veiculos; \$preco\+\_\+veiculos++)\+: Calcula o valor total da compra
+
+\$total\+\_\+valor\+\_\+produtos\+: Valor Total dos produtos
+
+for(\$num\+\_\+linhas = 0; \$num\+\_\+produtos\+\_\+total $>$ \$num\+\_\+linhas; \$num\+\_\+linhas++)\+: Ciclo que apresenta todos os produtos para o cliente
+
+Definição na linha 340 do arquivo checkout.\+php.
 

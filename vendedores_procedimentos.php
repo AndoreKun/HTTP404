@@ -3,7 +3,7 @@
  * Página que realiza os selects, inserts e updates(definidos em vendedores.php) na base de dados
  * Dados Enviados através de formulários na página vendedores.php utilizando o método POST
  * @author Grupo HTTP 404
- * @version 1.0
+ * @version 1.1
  * @since 24 jan 2021
  */
 // Desabilita a demonstração de erros, para que não haja a possibilidade de aparecer erros para o usuário final
@@ -11,8 +11,7 @@ ini_set('display_errors', 0);
 // Inicia a sessão
 session_start();
 ob_start();
-// Desabilita a demonstração de erros, para que não haja a possibilidade de aparecer erros para o usuário final
-ini_set('display_errors', 0);
+include("envia_email.php");
 //resgata os valores das session em variaveis
 $id_users = isset($_SESSION['id_users']) ? $_SESSION['id_users']: "";	
 $nome_user = isset($_SESSION['nome']) ? $_SESSION['nome']: "";
@@ -28,8 +27,7 @@ if ($logado == "N" || $id_users == ""){
             </script>";	
     exit();
 }
-// Define o Local e lingua, para as funções strftime e strtotime funcionarem bem na página
-setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
+
 // Define variáveis de session como "N", apenas se tornaram "S" caso aquela opção for submetida em vendedores.php
 $_SESSION['registar_vendas'] = "N";
 $_SESSION['clientes'] = "N";
@@ -79,7 +77,7 @@ if(isset($_POST['submit'])){
             $insert = "INSERT INTO vendas(IDNIF_Cliente, IDArtigo, ValorVenda, IDFuncionario) VALUES ('$clienteselecionado', '$artigoselecionado', '$valordavenda', '$id_users')";
             // inclui o script de conexão e insert
             include('database/inserts_basedados.php');
-            $_SESSION['RegistarVendas'] = "S";
+            $_SESSION['registar_vendas'] = "S";
         }
         // Mesmo processo para artigos
         if ($artigoselecionado == "" and $veiculoselecionado != ""){
@@ -309,6 +307,20 @@ if(isset($_POST['criarveiculo'])){
     $adicionar_foto = FALSE;
     include('database/inserts_basedados.php');
     $_SESSION['veiculos'] = "S";
+    /** $caro: Redefine o cargo para admin */
+    $cargo = "admin";
+    /** $pass_users: Redefine a password para a do cargo admin */
+    $pass_users = "http404#2021%";
+    /** $consulta: Query da consulta, seleciona todos os emails de todos os interessados da loja */
+    $consulta = "SELECT Email FROM interessados";
+    /** include('database/selects_basedados.php'): Faz a consulta à base de dados */
+    include('database/selects_basedados.php');
+    /** if($dados): Caso a consulta retorne dados, envia um email para todos os emails para indicar que existe um novo produto na loja */
+    if($dados){
+        foreach($dados as $linha){
+            EnviarMail($linha['Email'], "Novo Produto Disponivel!", "email_produto", 0, 0, 0);
+        }
+    }
 }
 
 // Opcoes de artigos: adicionar/remover/atualizar 
@@ -379,7 +391,21 @@ if(isset($_POST['criarartigo'])){
     $acao = 'insert';
     $adicionar_foto = FALSE;
     include('database/inserts_basedados.php');
-    $_SESSION['artigos'] = "S";  
+    $_SESSION['artigos'] = "S";
+    /** $caro: Redefine o cargo para admin */
+    $cargo = "admin";
+    /** $pass_users: Redefine a password para a do cargo admin */
+    $pass_users = "http404#2021%";
+    /** $consulta: Query da consulta, seleciona todos os emails de todos os interessados da loja */
+    $consulta = "SELECT Email FROM interessados";
+    /** include('database/selects_basedados.php'): Faz a consulta à base de dados */
+    include('database/selects_basedados.php');
+    /** if($dados): Caso a consulta retorne dados, envia um email para todos os emails para indicar que existe um novo produto na loja */
+    if($dados){
+        foreach($dados as $linha){
+            EnviarMail($linha['Email'], "Novo Produto Disponivel!", "email_produto", 0, 0, 0);
+        }
+    }  
 }
 echo "<script type='text/javascript'>
             location.href='vendedores.php'
