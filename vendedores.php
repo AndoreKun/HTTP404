@@ -555,8 +555,6 @@ if(isset($_POST['lista_veiculos'])){
                     </tr>
                 <tbody>
                     <?php 
-                    /** $vendas: Número total do valor de vendas. **/
-                    $vendas = 0;
                     // Ciclo para definir variáveis com resultado do consulta
                     foreach($dados as $linha) { ?>
                     <tr>
