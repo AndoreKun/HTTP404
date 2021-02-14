@@ -31,12 +31,15 @@ function EnviarMail($destinatario, $assunto, $mensagem, $endereco_cliente, $comp
         case 'email_venda': 
             $mensagem = include("email_html.php");
             $mensagem = $mensagem[0];
+            break;
         case 'email_markenting':
             $mensagem = include("email_html.php");  
-            $mensagem = $mensagem[1]; 
+            $mensagem = $mensagem[1];
+            break; 
         case 'email_produto':
             $mensagem = include("email_html.php");  
-            $mensagem = $mensagem[2];             
+            $mensagem = $mensagem[2];    
+            break;        
     }
     // Com a função mail() do PHP envia um email
     mail($destinatario,$assunto,$mensagem,$headers);
