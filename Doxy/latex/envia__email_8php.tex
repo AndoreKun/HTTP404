@@ -1,5 +1,5 @@
-\hypertarget{envia__email_8php}{}\doxysection{Referência do Arquivo envia\+\_\+email.\+php}
-\label{envia__email_8php}\index{envia\_email.php@{envia\_email.php}}
+\hypertarget{envia__email_8php}{}\doxysection{Referência do Arquivo C\+:/\+Kleyton/\+STI/1.1.Ambiente\+Desen/trabalho\+\_\+adc/envia\+\_\+email.php}
+\label{envia__email_8php}\index{C:/Kleyton/STI/1.1.AmbienteDesen/trabalho\_adc/envia\_email.php@{C:/Kleyton/STI/1.1.AmbienteDesen/trabalho\_adc/envia\_email.php}}
 \doxysubsection*{Funções}
 \begin{DoxyCompactItemize}
 \item 
@@ -58,3 +58,55 @@ Inclui o script de INSERTS na base de dados
 
 Definição na linha 12 do arquivo envia\+\_\+email.\+php.
 
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{22 \{}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{25     \$de = \textcolor{stringliteral}{"{}portalhttp404@gmail.com"{}};}
+\DoxyCodeLine{26     \textcolor{comment}{// Configura o Cabeçalho}}
+\DoxyCodeLine{27     \$headers = \textcolor{stringliteral}{"{}From: HTTP 404 <'.\$de.'>\(\backslash\)n"{}};}
+\DoxyCodeLine{28     \$headers .= \textcolor{stringliteral}{"{}Content-\/Type: Text/HTML; charset=UTF-\/8\(\backslash\)n"{}};}
+\DoxyCodeLine{30     \textcolor{keywordflow}{switch}(\mbox{\hyperlink{compra__sucess_8php_a92e5fbd34afc4cb04c07776465aa838d}{\$mensagem}}) \{ }
+\DoxyCodeLine{31         \textcolor{keywordflow}{case} \textcolor{stringliteral}{'email\_venda'}: }
+\DoxyCodeLine{32             \mbox{\hyperlink{compra__sucess_8php_a92e5fbd34afc4cb04c07776465aa838d}{\$mensagem}} = include(\textcolor{stringliteral}{"{}email\_html.php"{}});}
+\DoxyCodeLine{33             \mbox{\hyperlink{compra__sucess_8php_a92e5fbd34afc4cb04c07776465aa838d}{\$mensagem}} = \mbox{\hyperlink{compra__sucess_8php_a92e5fbd34afc4cb04c07776465aa838d}{\$mensagem}}[0];}
+\DoxyCodeLine{34         \textcolor{keywordflow}{case} \textcolor{stringliteral}{'email\_markenting'}:}
+\DoxyCodeLine{35             \mbox{\hyperlink{compra__sucess_8php_a92e5fbd34afc4cb04c07776465aa838d}{\$mensagem}} = include(\textcolor{stringliteral}{"{}email\_html.php"{}});  }
+\DoxyCodeLine{36             \mbox{\hyperlink{compra__sucess_8php_a92e5fbd34afc4cb04c07776465aa838d}{\$mensagem}} = \mbox{\hyperlink{compra__sucess_8php_a92e5fbd34afc4cb04c07776465aa838d}{\$mensagem}}[1]; }
+\DoxyCodeLine{37         \textcolor{keywordflow}{case} \textcolor{stringliteral}{'email\_produto'}:}
+\DoxyCodeLine{38             \mbox{\hyperlink{compra__sucess_8php_a92e5fbd34afc4cb04c07776465aa838d}{\$mensagem}} = include(\textcolor{stringliteral}{"{}email\_html.php"{}});  }
+\DoxyCodeLine{39             \mbox{\hyperlink{compra__sucess_8php_a92e5fbd34afc4cb04c07776465aa838d}{\$mensagem}} = \mbox{\hyperlink{compra__sucess_8php_a92e5fbd34afc4cb04c07776465aa838d}{\$mensagem}}[2];             }
+\DoxyCodeLine{40     \}}
+\DoxyCodeLine{41     \textcolor{comment}{// Com a função mail() do PHP envia um email}}
+\DoxyCodeLine{42     mail(\$destinatario,\mbox{\hyperlink{compra__sucess_8php_aea0d4709f3c11a5d93e06b1f820cb521}{\$assunto}},\mbox{\hyperlink{compra__sucess_8php_a92e5fbd34afc4cb04c07776465aa838d}{\$mensagem}},\$headers);}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44 \}}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46 }
+\DoxyCodeLine{48 \textcolor{keywordflow}{if}(isset(\$\_POST[\textcolor{stringliteral}{'email-\/markenting'}]))\{}
+\DoxyCodeLine{50     \$email\_interessado = \$\_POST[\textcolor{stringliteral}{'email\_interessado'}];}
+\DoxyCodeLine{52     \mbox{\hyperlink{atualiza__carrinho_8php_a1130b7e84ce8d55718262932d52dabec}{\$voltar\_para}} = \$\_POST[\textcolor{stringliteral}{'voltar\_para'}];}
+\DoxyCodeLine{53     \mbox{\hyperlink{download_8php_a30468c01846ff97d820e5629aa87f631}{\$consulta}} = \textcolor{stringliteral}{"{}SELECT Email FROM interessados WHERE Email = '\$email\_interessado'"{}};}
+\DoxyCodeLine{55     \$insert = \textcolor{stringliteral}{"{}INSERT INTO interessados(Email) VALUES('\$email\_interessado')"{}};}
+\DoxyCodeLine{57     \mbox{\hyperlink{checkout_8php_a7568e65cc54a157309a5f01296c5bec7}{\$acao}} = \textcolor{stringliteral}{"{}insert"{}};}
+\DoxyCodeLine{59     \mbox{\hyperlink{checkout_8php_a4a4b101b0f71b4fae26877ba74aa46e5}{\$adicionar\_foto}} = FALSE;}
+\DoxyCodeLine{61     \mbox{\hyperlink{checkout_8php_ac3dc42e449d42a0f869b18785d6b09b1}{\$cargo}} = \textcolor{stringliteral}{"{}admin"{}};}
+\DoxyCodeLine{63     \mbox{\hyperlink{checkout_8php_ab23b8736684fa430ee74e2f7398e39e0}{\$pass\_users}} = \textcolor{stringliteral}{"{}http404\#2021\%"{}};}
+\DoxyCodeLine{65     include(\textcolor{stringliteral}{'database/selects\_basedados.php'});}
+\DoxyCodeLine{67     \textcolor{keywordflow}{if}(\mbox{\hyperlink{download_8php_a78657b8bcc2f0262dd26b81fd6e5a011}{\$dados}})\{}
+\DoxyCodeLine{68         \$\_POST = array(); }
+\DoxyCodeLine{69         unset(\$\_POST);}
+\DoxyCodeLine{70         echo  \textcolor{stringliteral}{"{}<script type='text/javascript'>}}
+\DoxyCodeLine{71 \textcolor{stringliteral}{                        alert('ATEN\(\backslash\)u00c7\(\backslash\)u00c4O, Email inv\(\backslash\)u00e1lido!');location.href='\$voltar\_para'}}
+\DoxyCodeLine{72 \textcolor{stringliteral}{                    </script>"{}};}
+\DoxyCodeLine{73     \} \textcolor{keywordflow}{else} \{    }
+\DoxyCodeLine{75         include(\textcolor{stringliteral}{'database/inserts\_basedados.php'});}
+\DoxyCodeLine{76         \mbox{\hyperlink{envia__email_8php_a847436e75d9097e9818507b9bf728d50}{EnviarMail}}(\$email\_interessado, \textcolor{stringliteral}{"{}Obrigado Pela Sua Subscrição!"{}}, \textcolor{stringliteral}{"{}email\_markenting"{}}, 0, 0, 0);}
+\DoxyCodeLine{77         \textcolor{comment}{// Redireciona de volta a checkout}}
+\DoxyCodeLine{78         echo  \textcolor{stringliteral}{"{}<script type='text/javascript'>}}
+\DoxyCodeLine{79 \textcolor{stringliteral}{                    location.href='\$voltar\_para'}}
+\DoxyCodeLine{80 \textcolor{stringliteral}{                </script>"{}}; }
+\DoxyCodeLine{81     \}}
+\DoxyCodeLine{82 \}}
+
+\end{DoxyCode}
